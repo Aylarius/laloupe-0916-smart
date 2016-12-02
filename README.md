@@ -35,7 +35,7 @@ SerieBundle
 `php app/console doctrine:schema:update --force`  
   
 7. Enfin mettre les droits sur le projet en saisissant dans le terminal :  
-`sudo chmod -R 777 web/images/ app/cache/ app/logs/`  
+`sudo chmod -R 777 app/cache/ app/logs/`  
 
 8. Vous pouvez désormais afficher le site via votre localhost de cette façon :  
 `localhost/laloupe-0916-smart/web/` 

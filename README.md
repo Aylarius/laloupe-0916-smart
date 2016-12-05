@@ -45,7 +45,7 @@ Attention, si vous n'avez pas composer installé sur votre machine :
 7. Enfin mettre les droits sur le projet en saisissant dans le terminal :  
 `sudo chmod -R 777 app/cache/ app/logs/`  
 
-8. Ajouter les assets (le dossier public) en production    
+8. Ajouter et lier les assets (le dossier Resources/public)    
 `php app/console assets:install --symlink`   
 
 9. Vous pouvez désormais afficher le site via votre localhost de cette façon :  

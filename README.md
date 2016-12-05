@@ -41,9 +41,12 @@ Attention, si vous n'avez pas composer installé sur votre machine :
   
 6. Mettre à jour votre base de données via le terminal :  
 `php app/console doctrine:schema:update --force`  
-  
+
 7. Enfin mettre les droits sur le projet en saisissant dans le terminal :  
 `sudo chmod -R 777 app/cache/ app/logs/`  
 
-8. Vous pouvez désormais afficher le site via votre localhost de cette façon :  
+8. Ajouter les assets (le dossier public) en production    
+`php app/console assets:install --symlink`   
+
+9. Vous pouvez désormais afficher le site via votre localhost de cette façon :  
 `localhost/laloupe-0916-smart/web/` 

@@ -1,0 +1,262 @@
+/**********Global*********/
+body {
+    font-size: 16px;
+}
+
+.row {
+    margin: 0;
+}
+
+a:focus {
+    outline:inherit;
+    text-decoration: none;
+}
+
+/********* NAVBAR ********/
+
+.container-fluid>.navbar-collapse, .container-fluid>.navbar-header, .container>.navbar-collapse, .container>.navbar-header {
+    margin: 0;
+}
+
+.navbar {
+    margin-bottom: 0;
+    border: inherit;
+}
+
+.navbar .container-fluid {
+    padding: 0;
+}
+
+.navbar-header {
+    background-color: rgb(35, 35, 35);
+    height: 70px!important;
+    border-bottom: 5px solid rgb(255, 168, 52);
+}
+
+.navbar, .navbar-nav>li>a {
+    height: 70px!important;
+    font-size: 1.75rem;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: white!important;
+    font-weight: bold;
+    padding-top: 20px;
+    margin-right: 20px;
+}
+
+.navbar-default .navbar-collapse {
+    background-color: rgb(35, 35, 35);
+}
+
+.container-fluid>.navbar-collapse, .container>.navbar-collapse {
+    background-color: rgb(35, 35, 35);
+    border-bottom: 5px solid rgb(255, 168, 52);
+    height: 100%;
+}
+
+@media screen and (min-width:769px) {
+    .navbar-default .navbar-collapse, .navbar-collapse.collapse {
+        border-bottom: 5px solid rgb(255, 168, 52);
+        height: 70px!important;
+    }
+}
+
+@media screen and (max-width:768px) {
+    .navbar-default .navbar-collapse, .navbar-collapse.collapse {
+        border-bottom: 5px solid rgb(255, 168, 52);
+        height: 100%!important;
+    }
+}
+
+.navbar-brand {
+    font-size: 2rem;
+    color: white!important;
+    font-weight: bold;
+    line-height: 35px;
+    margin-left: 80px!important;
+}
+
+.navbar-toggle {
+    margin-top: 15px;
+    background-color: inherit;
+}
+
+.navbar-default .navbar-toggle:hover {
+    background-color: rgb(255, 168, 52);
+}
+
+.navbar-default .navbar-toggle:focus {
+    background-color: rgb(35, 35, 35);
+}
+
+.navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover {
+    outline: inherit;
+}
+
+.glyphicon-search:before, .glyphicon-user:before, .glyphicon-calendar:before {
+    margin-right: 10px;
+}
+
+#searchHide {
+    background-color: rgb(35, 35, 35);
+    border-bottom: 5px solid rgb(255, 168, 52);
+    height: 100px;
+}
+
+#search input {
+    height: 50px;
+    margin-top: 25px;
+    padding-left: 10px;
+    width: 90%;
+    font-size: 1.75rem;
+}
+
+#search input:focus {
+    outline: inherit;
+}
+
+
+#search .glyphicon-search {
+    font-size: 2rem;
+    color: white;
+    background-color: rgb(255, 168, 52);
+    width: 10%;
+    max-width: 52px;
+    height: 50px;
+    line-height: 45px;
+}
+
+
+/**********Modal***********/
+
+.modal-header {
+    text-align: right;
+    border-bottom: 0;
+    padding: 20px 20px 0px 0px;
+    font-size: 1.75rem;
+}
+
+.glyphicon-remove {
+    cursor: pointer;
+}
+
+.modal-content {
+    -webkit-border-radius:inherit;
+    -moz-border-radius:inherit;
+    border-radius:inherit;
+}
+
+.modal-body {
+    text-align: center;
+}
+
+.modal-body a {
+    background-color: rgb(255, 168, 52)!important;
+    color: white;
+    font-size: 2rem;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin: 20px 0px 20px 0!important;
+    display: block;
+    text-align: center!important;
+    text-transform: uppercase;
+}
+
+.modal-body h3 {
+    font-size: 1.75rem;
+}
+
+
+.modal-body a:hover {
+    text-decoration: none;
+}
+
+
+/*******Page série Non Loggué ********/
+
+.serieNL {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.banniere {
+    background-image: url("../img/flash.jpg");
+    height: 70vh;
+    width: 100%;
+    position: relative;
+}
+
+.menuNL {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    height: 20vh;
+    width: 100%;
+    top: 484px;
+    color: white;
+}
+
+.menuNL h1 {
+    margin-top: 40px;
+    margin-left: 420px;
+    font-size: 1.5rem;
+}
+
+.menuNL ul {
+    margin-top: 20px;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.menuNL li {
+    list-style-type: none;
+    display: inline;
+    font-size: 1.25rem;
+    margin: 0px 10px 0px 10px;
+    padding-right: -50px;
+}
+
+.follow {
+    background-color: rgb(50, 50, 50);
+    height: 10vh;
+    position: relative;
+}
+
+.follow a {
+    background-color: rgb(255, 168, 52)!important;
+    color: white;
+    font-size: 1.25rem;
+    padding: 10px 20px 10px 20px;
+    display: block;
+    width: 15%;
+    text-align: center!important;
+    position: absolute;
+    margin-top: 20px;
+    margin-left: 425px;
+}
+
+.follow a:hover {
+    text-decoration: none;
+}
+
+
+
+/************Footer*************/
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background-color: rgb(35, 35, 35);
+    border-top: 5px solid rgb(255, 168, 52);
+    color: white;
+}
+
+.footer p {
+    font-weight: bold;
+    font-size: 1.25rem;
+    text-align: center;
+    padding-top: 15px;
+}

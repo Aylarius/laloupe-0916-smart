@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="shortcut icon" href="{{ asset('bundles/serie/assets/img/logo.png') }}">
+
+        <title>MEAN Starter ES6</title>
+
+        <link rel="stylesheet" href="{{ asset('bundles/serie/vendor/bootstrap/dist/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('bundles/serie/assets/css/style.css') }}">
+
+    </head>
+    <body>
+        <ng-include src="'{{ asset('bundles/serie/views/navbarNonLoggue.html') }}'"></ng-include>
+        <div class="container">
+        </div>
+
+        <script src="{{ asset('bundles/serie/vendor/jquery/dist/jquery.min.js') }}"></script>
+        <script src="{{ asset('bundles/serie/vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+
+        <script src="{{ asset('bundles/serie/vendor/angular/angular.min.js') }}"></script>
+        <script src="{{ asset('bundles/serie/vendor/angular-route/angular-route.min.js') }}"></script>
+
+        <script src="{{ asset('bundles/serie/js/services/todoService.js') }}"></script>
+        <script src="{{ asset('bundles/serie/js/controllers/navbarController.js') }}"></script>
+
+        <script src="{{ asset('bundles/serie/js/controllers/mainController.js') }}"></script>
+
+        <script src="{{ asset('bundles/serie/js/routes.js') }}"></script>
+
+        <script src="{{ asset('bundles/serie/js/app.js') }}"></script>
+
+
+    </body>
+</html>

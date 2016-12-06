@@ -2,6 +2,7 @@ angular.module('app', ['ngRoute'])
     .service('todoService', todoService)
     .controller('mainController', mainController)
     .controller('navbarController', navbarController)
+    .controller('serieController', serieController)
     .controller('hpController', hpController)
     .directive('a', function() {
         return {

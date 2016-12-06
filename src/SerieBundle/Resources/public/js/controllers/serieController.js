@@ -2,7 +2,7 @@ function serieController() {
 
     this.isToggled = false;
     $('#star').hide();
-    this.toggleSearch = () => {
+    this.toggleFollow = () => {
         this.isToggled = !this.isToggled;
         console.log(this.isToggled);
         if (this.isToggled === false) {

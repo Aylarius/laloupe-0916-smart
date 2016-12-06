@@ -306,8 +306,7 @@ body {
 }
 
 .custom-header h3 {
-	color: #ddd;
-	color: rgba(255,255,255,0.6);
+	color: rgb(255,255,255);
 	font-weight: 300;
 	line-height: 30px;
 	text-align: right;
@@ -338,12 +337,7 @@ body {
 	background: rgba(255,255,255,0.3);
 	margin: 0 1px;
 	font-size: 20px;
-	border-radius: 0 3px 3px 0;
 	box-shadow: inset 0 1px rgba(255,255,255,0.2);
-}
-
-.custom-header nav i:first-child {
-	border-radius: 3px 0 0 3px;
 }
 
 .custom-header nav i:hover {
@@ -360,7 +354,6 @@ body {
 
 .custom-header nav i:last-child {
 	margin-left: 20px;
-	border-radius: 3px;
 }
 
 .fc-calendar {
@@ -371,15 +364,13 @@ body {
 	left: 20px;
 	right: 20px;
 	height: auto;
-	border-radius: 20px;
 	position: absolute;
 }
 
 .fc-calendar .fc-head { 
-	background: rgba(255,255,255,0.2);
-	color: rgba(255,255,255,0.9);
+	background: #FFA834;
+	color: rgba(255,255,255,1);
 	box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
-	border-radius: 20px 20px 0 0;
 	height: 40px;
 	line-height: 40px;
 	padding: 0 20px;
@@ -388,9 +379,9 @@ body {
 .fc-calendar .fc-head > div {
 	font-weight: 300;
 	text-transform: uppercase;
-	font-size: 14px;
+	font-size: 16px;
+	font-weight: 500;
 	letter-spacing: 3px;
-	text-shadow: 0 1px 1px rgba(0,0,0,0.4);
 }
 
 .fc-calendar .fc-row > div > span.fc-date {
@@ -449,7 +440,7 @@ body {
 
 .fc-calendar .fc-row > div.fc-today {
 	background: transparent;
-	box-shadow: inset 0 0 100px rgba(255,255,255,0.1);
+	box-shadow: inset 0 0 100px rgba(255,168,52,0.4);
 }
 
 .fc-calendar .fc-row > div.fc-today:after { 

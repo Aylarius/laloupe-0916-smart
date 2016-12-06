@@ -1,3 +1,4 @@
 serie_homepage:
     path:     /
     defaults: { _controller: SerieBundle:Default:index }
+

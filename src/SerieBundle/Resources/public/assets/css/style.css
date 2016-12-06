@@ -47,8 +47,10 @@ a:focus {
 
 .navbar-default .navbar-collapse {
     background-color: rgb(35, 35, 35);
-}
+    z-index: 10000;
+    position: relative;
 
+}
 .container-fluid>.navbar-collapse, .container>.navbar-collapse {
     background-color: rgb(35, 35, 35);
     border-bottom: 5px solid rgb(255, 168, 52);
@@ -75,6 +77,8 @@ a:focus {
     font-weight: bold;
     line-height: 35px;
     margin-left: 80px!important;
+    position: relative;
+    z-index: 20000;
 }
 
 .navbar-toggle {
@@ -102,6 +106,12 @@ a:focus {
     background-color: rgb(35, 35, 35);
     border-bottom: 5px solid rgb(255, 168, 52);
     height: 100px;
+}
+
+#search {
+    z-index:10000;
+    position: absolute;
+    width: 100%;
 }
 
 #search input {

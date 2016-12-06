@@ -7,7 +7,7 @@ const routes = ($routeProvider, $httpProvider) => {
             controllerAs: 'vm'
         })
         .otherwise({
-            redirectTo: '/'
+            redirectTo: ''
         })
 
 }

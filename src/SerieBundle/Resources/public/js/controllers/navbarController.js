@@ -13,5 +13,5 @@ function navbarController (){
         } else {
             $('#searchHide').show();
         }
-    };
+    }
 }

@@ -4,7 +4,6 @@ function navbarController (){
         $('#myInput').focus()
     });
 
-
     this.isToggled = false;
     this.toggleSearch = () => {
         this.isToggled = !this.isToggled;
@@ -14,5 +13,5 @@ function navbarController (){
         } else {
             $('#searchHide').show();
         }
-    };
+    }
 }

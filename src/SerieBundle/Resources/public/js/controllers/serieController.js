@@ -1,17 +1,16 @@
-function navbarController (){
-
-    $('#myModal').on('shown.bs.modal', function() {
-        $('#myInput').focus();
-    });
+function serieController() {
 
     this.isToggled = false;
+    $('#star').hide();
     this.toggleSearch = () => {
         this.isToggled = !this.isToggled;
         console.log(this.isToggled);
         if (this.isToggled === false) {
-            $('#searchHide').hide();
+            $('#star').hide();
+            $('#star-empty').show();
         } else {
-            $('#searchHide').show();
+            $('#star-empty').hide();
+            $('#star').show();
         }
     };
 }

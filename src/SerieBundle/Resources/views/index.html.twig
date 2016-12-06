@@ -17,6 +17,7 @@
     <body>
         <ng-include src="'{{ asset('bundles/serie/views/navbarNonLoggue.html') }}'"></ng-include>
         <ng-view></ng-view>
+        <ng-include src="'{{ asset('bundles/serie/views/footer.html') }}'"></ng-include>
 
         <script src="{{ asset('bundles/serie/vendor/jquery/dist/jquery.min.js') }}"></script>
         <script src="{{ asset('bundles/serie/vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
@@ -25,10 +26,10 @@
         <script src="{{ asset('bundles/serie/vendor/angular-route/angular-route.min.js') }}"></script>
 
         <script src="{{ asset('bundles/serie/js/services/todoService.js') }}"></script>
-        <script src="{{ asset('bundles/serie/js/controllers/navbarController.js') }}"></script>
-        <script src="{{ asset('bundles/serie/js/controllers/hpController.js') }}"></script>
 
+        <script src="{{ asset('bundles/serie/js/controllers/navbarController.js') }}"></script>
         <script src="{{ asset('bundles/serie/js/controllers/mainController.js') }}"></script>
+        <script src="{{ asset('bundles/serie/js/controllers/hpController.js') }}"></script>
 
         <script src="{{ asset('bundles/serie/js/routes.js') }}"></script>
 

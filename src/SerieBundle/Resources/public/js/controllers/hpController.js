@@ -42,13 +42,13 @@ function hpController() {
                 $(this).siblings(':first').children(':first-child').clone().appendTo($(this));
             }
         });
-    }), 0);
+    }), 1000);
 
 
     this.isToggled1 = false;
     this.toggleMore = () => {
         this.isToggled1 = !this.isToggled1;
-    };
+    }
     if (this.isToggled1 === true) {
       $('.card-block').show = true;
     }

@@ -410,6 +410,31 @@ a:focus {
     background-image: none;
 }
 
+#more{
+  background-color: rgb(214,214,214);
+}
+
+.followMore {
+    height: 80px;
+    position: relative;
+}
+
+.followMore a {
+    background-color: rgb(255, 168, 52)!important;
+    color: white;
+    font-size: 2rem;
+    padding: 10px 20px 10px 20px;
+    display: block;
+    width: 200px;
+    text-align: left;
+    position: absolute;
+    margin-top: 15px;
+    margin-left: 50px;
+}
+
+.followMore a:hover {
+    text-decoration: none;
+}
 
 /*CSS slider carousel "Derniers épisodes"*/
 

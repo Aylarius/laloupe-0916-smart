@@ -25,20 +25,45 @@ function hpController() {
         'img': 'bundles/serie/assets/img/bigbang.jpg'
     }];
 
-      $(document).ready(setTimeout(function() {
-          $('.multi-item-carousel1').carousel({interval: false});
-          $('.multi-item-carousel1 .item').each(function() {
-              var next = $(this).next();
-              if (!next.length) {
-                  next = $(this).siblings(':first');
-              }
-              next.children(':first-child').clone().appendTo($(this));
+    $(document).ready(setTimeout(function() {
+        $('.multi-item-carousel1').carousel({
+            interval: false
+        });
+        $('.multi-item-carousel1 .item').each(function() {
+            var next = $(this).next();
+            if (!next.length) {
+                next = $(this).siblings(':first');
+            }
+            next.children(':first-child').clone().appendTo($(this));
 
-              if (next.next().length > 0) {
-                  next.next().children(':first-child').clone().appendTo($(this));
-              } else {
-                  $(this).siblings(':first').children(':first-child').clone().appendTo($(this));
-              }
-          });
-      }),0);
+            if (next.next().length > 0) {
+                next.next().children(':first-child').clone().appendTo($(this));
+            } else {
+                $(this).siblings(':first').children(':first-child').clone().appendTo($(this));
+            }
+        });
+    }), 0);
+
+
+    this.isToggled1 = false;
+    this.toggleMore = () => {
+        this.isToggled1 = !this.isToggled1;
+    };
+    if (this.isToggled1 === true) {
+      $('.card-block').show = true;
+    }
+
+    this.isToggled = false;
+    $('#star').hide();
+    this.toggleFollow = () => {
+        this.isToggled = !this.isToggled;
+        console.log(this.isToggled);
+        if (this.isToggled === false) {
+            $('#star').hide();
+            $('#star-empty').show();
+        } else {
+            $('#star-empty').hide();
+            $('#star').show();
+        }
+    };
 }

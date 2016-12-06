@@ -1,4 +1,4 @@
-        <div class="container-fluid">
+        <div class="container-fluid"  ng-controller="hpController as vm">
 
             <!-- Bandeau en-tête -->
             <div class="row hpnl-band">
@@ -60,16 +60,16 @@
                         <div class="col-md-12">
                             <!-- Carousel items -->
                             <div class="carousel multi-item-carousel1 slide" id="eventCarousel" data-interval="0">
-                                <div class="carousel-inner onebyone-carosel" ng-controller="hpController as vm">
-                                    <div class="item" ng-class="{active:$index == 0}" ng-repeat="tvShow in vm.tvShows">
+                                <div class="carousel-inner onebyone-carosel">
+                                    <div class="item" ng-class="{active:$index == 0}" ng-repeat="tvShow in vm.tvShows" ng-click='vm.toggleMore()' ng-mouseleave="show = false" ng-mouseenter="show = true">
                                         <div class="col-xs-4">
-                                            <div class="card" ng-mouseleave="vm.show = false">
+                                            <div class="card">
                                                 <!--Card image-->
-                                                <img href="#1" class="img-fluid" ng-src="{{ tvShow.img }}" ng-mouseenter="vm.show = true">
+                                                <img href="#1" class="img-fluid" ng-src="{{ tvShow.img }}">
                                                 <!--/.Card image-->
 
                                                 <!--Card content-->
-                                                <div class="card-block" ng-show="vm.show">
+                                                <div class="card-block" ng-show="show">
                                                     <!--Title-->
                                                     <h4 class="card-title">{{ tvShow.id }}</h4>
                                                     <!--Text-->
@@ -90,8 +90,20 @@
                                 </a>
                             </div>
                         </div>
+
                     </div>
                 </div>
+            </div>
+            <div id="more" class="col-md-12">
+              <div ng-show='vm.isToggled1'>
+                <div class="followMore">
+                    <a ng-click='vm.toggleFollow()' prevent>
+                        <span id="star-empty" class="glyphicon glyphicon-star-empty"></span>
+                        <span id="star" class="glyphicon glyphicon-star"></span>
+                        Suivre la série</a>
+                </div>
+
+              </div>
             </div>
 
             <!-- visualisation de la fiche série "Séries les plus populaires" -->

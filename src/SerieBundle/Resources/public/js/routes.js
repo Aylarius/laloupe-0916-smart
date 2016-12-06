@@ -6,6 +6,9 @@ const routes = ($routeProvider, $httpProvider) => {
             controller: 'mainController',
             controllerAs: 'vm'
         })
+        .when('/calendrier', {
+            templateUrl: 'bundles/serie/views/calendrier.html'
+        })
         .otherwise({
             redirectTo: ''
         })

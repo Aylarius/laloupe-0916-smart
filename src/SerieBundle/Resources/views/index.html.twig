@@ -16,8 +16,7 @@
     </head>
     <body>
         <ng-include src="'{{ asset('bundles/serie/views/navbarNonLoggue.html') }}'"></ng-include>
-        <div class="container">
-        </div>
+        <ng-view></ng-view>
 
         <script src="{{ asset('bundles/serie/vendor/jquery/dist/jquery.min.js') }}"></script>
         <script src="{{ asset('bundles/serie/vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
@@ -27,6 +26,7 @@
 
         <script src="{{ asset('bundles/serie/js/services/todoService.js') }}"></script>
         <script src="{{ asset('bundles/serie/js/controllers/navbarController.js') }}"></script>
+        <script src="{{ asset('bundles/serie/js/controllers/hpController.js') }}"></script>
 
         <script src="{{ asset('bundles/serie/js/controllers/mainController.js') }}"></script>
 

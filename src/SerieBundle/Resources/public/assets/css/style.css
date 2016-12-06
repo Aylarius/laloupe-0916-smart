@@ -260,3 +260,123 @@ a:focus {
     text-align: center;
     padding-top: 15px;
 }
+
+/*bandeau en-tête*/
+.hpnl-band {
+    margin-top: 4%;
+    margin-bottom: 4%;
+}
+.hpnl-title {
+    font-size: 5em;
+}
+.hpnl-text {
+    font-size: 2em;
+}
+.btn-login {
+    background-color: rgb(255, 168, 52)!important;
+    color: white;
+    font-size: 2em;
+    padding: 10px;
+    margin: 20px 0 !important;
+    display: block;
+}
+
+/*titre bandeau pop et last*/
+.hp-title-band {
+    margin-bottom: 20px;
+}
+.carousel-control {
+    width: 7%;
+    background-image: none !important;
+}
+
+/*slider pop et last*/
+.img-fluid {
+    width: 100%;
+}
+
+/*row hp-band-pop*/
+.hp-band-pop {
+    background-color: #606060;
+    color: #ffffff;
+    padding-bottom: 30px;
+}
+
+/*row hp-band-last*/
+.hp-band-last {
+    background-color: #ebebeb;
+    padding-bottom: 30px;
+}
+.hp-band-last-text {
+    margin-top: 4%;
+    font-size: 1.3em;
+}
+.hp-band-last-text-date {
+    margin-top: 4%;
+    font-size: 1.3em;
+    font-style: italic;
+}
+
+/*CSS slider carousel "Serie populaire"*/
+.multi-item-carousel1 .carousel-inner > .item {
+    -webkit-transition: 500ms ease-in-out left;
+    transition: 500ms ease-in-out left;
+}
+.multi-item-carousel1 .carousel-inner .active.left {
+    left: -33%;
+}
+.multi-item-carousel1 .carousel-inner .active.right {
+    left: 33%;
+}
+.multi-item-carousel1 .carousel-inner .next {
+    left: 33%;
+}
+.multi-item-carousel1 .carousel-inner .prev {
+    left: -33%;
+}
+@media all and (transform-3d), (-webkit-transform-3d) {
+    .multi-item-carousel1 .carousel-inner > .item {
+        -webkit-transition: 500ms ease-in-out all;
+        transition: 500ms ease-in-out all;
+        -webkit-backface-visibility: visible;
+        backface-visibility: visible;
+        -webkit-transform: none!important;
+        transform: none!important;
+    }
+}
+.multi-item-carousel1 .carouse-control.left,
+.multi-item-carousel1 .carouse-control.right {
+    background-image: none;
+}
+
+/*CSS slider carousel "Derniers épisodes"*/
+.multi-item-carousel2 .carousel-inner > .item {
+    -webkit-transition: 500ms ease-in-out left;
+    transition: 500ms ease-in-out left;
+}
+.multi-item-carousel2 .carousel-inner .active.left {
+    left: -33%;
+}
+.multi-item-carousel2 .carousel-inner .active.right {
+    left: 33%;
+}
+.multi-item-carousel2 .carousel-inner .next {
+    left: 33%;
+}
+.multi-item-carousel2 .carousel-inner .prev {
+    left: -33%;
+}
+@media all and (transform-3d), (-webkit-transform-3d) {
+    .multi-item-carousel2 .carousel-inner > .item {
+        -webkit-transition: 500ms ease-in-out all;
+        transition: 500ms ease-in-out all;
+        -webkit-backface-visibility: visible;
+        backface-visibility: visible;
+        -webkit-transform: none!important;
+        transform: none!important;
+    }
+}
+.multi-item-carousel2 .carouse-control.left,
+.multi-item-carousel2 .carouse-control.right {
+    background-image: none;
+}

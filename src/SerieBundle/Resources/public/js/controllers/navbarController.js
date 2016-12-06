@@ -2,7 +2,7 @@ function navbarController (){
 
     $('#myModal').on('shown.bs.modal', function() {
         $('#myInput').focus()
-    })
+    });
 
 
     this.isToggled = false;

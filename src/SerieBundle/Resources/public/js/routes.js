@@ -2,7 +2,7 @@ const routes = ($routeProvider, $httpProvider) => {
 
     $routeProvider
         .when('/', {
-            templateUrl: 'views/main.html',
+            templateUrl: 'bundles/serie/views/main.html',
             controller: 'mainController',
             controllerAs: 'vm'
         })

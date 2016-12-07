@@ -1,238 +1,252 @@
-        <div class="container-fluid"  ng-controller="hpController as vm">
+<div class="container-fluid" ng-controller="hpController as vm">
 
-            <!-- Bandeau en-tête -->
-            <div class="row hpnl-band">
+    <!-- Bandeau en-tête -->
+    <div class="row hpnl-band">
 
-                <!-- Slider -->
-                <div class="col-lg-6 hpnl-band-left">
-                    <div class="row">
-                        <div class="col-lg-10 col-lg-offset-1">
-                            <div id="carousel-bandeau-generic" class="carousel slide" data-ride="carousel">
-
-                                <!-- Wrapper for slides -->
-                                <div class="carousel-inner">
-                                    <div class="item active">
-                                        <img src="bundles/serie/assets/img/téléchargement.jpeg" alt="Flash">
-                                    </div>
-                                    <div class="item">
-                                        <img src="bundles/serie/assets/img/Breaking-Bad.jpg" alt="Breaking-Bad">
-                                    </div>
-                                    <div class="item">
-                                        <img src="bundles/serie/assets/img/hannibal.jpg" alt="hannibal">
-                                    </div>
-                                </div>
-
-                                <!-- Controls -->
-                                <a class="left carousel-control" href="#carousel-bandeau-generic" role="button" data-slide="prev" prevent>
-                                    <span class="glyphicon glyphicon-chevron-left"></span>
-                                </a>
-                                <a class="right carousel-control" href="#carousel-bandeau-generic" role="button" data-slide="next" prevent>
-                                    <span class="glyphicon glyphicon-chevron-right"></span>
-                                </a>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 hpnl-band-right">
-                    <div class="row">
-                        <div class="col-lg-10 col-lg-offset-1">
-                            <h1 class="hpnl-title text-center">SmartWatch</h1>
-                            <p class="hpnl-text text-center">
-                                Suivez toutes vos séries et ne
-                                <br>manquez plus un seul épisode !
-                            </p>
-                            <div class="row">
-                                <div class="col-lg-6 col-lg-offset-3">
-                                    <a href="#" class="btn-login text-center" prevent>S'INSCRIRE</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Séries les plus populaires -->
-            <div class="row hp-band-pop">
-                <div class="col-lg-12">
-                    <h2 class="hp-title-band">SERIES LES PLUS POPULAIRES</h2>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <!-- Carousel items -->
-                            <div class="carousel multi-item-carousel1 slide" id="eventCarousel" data-interval="0">
-                                <div class="carousel-inner onebyone-carosel">
-                                    <div class="item" ng-class="{active:$index == 0}" ng-repeat="tvShow in vm.tvShows" ng-click='vm.toggleMore()' ng-mouseleave="show = false" ng-mouseenter="show = true">
-                                        <div class="col-xs-4">
-                                            <div class="card">
-                                                <!--Card image-->
-                                                <img href="#1" class="img-fluid" ng-src="{{ tvShow.img }}">
-                                                <!--/.Card image-->
-
-                                                <!--Card content-->
-                                                <div class="card-block" ng-show="show">
-                                                    <!--Title-->
-                                                    <h4 class="card-title">{{ tvShow.id }}</h4>
-                                                    <!--Text-->
-                                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                                    <a href="#" class="btn btn-primary" prevent>Boink!</a>
-                                                </div>
-                                                <!--/.Card content-->
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <a class="left carousel-control" href="#eventCarousel" data-slide="prev" prevent>
-                                    <i class="glyphicon glyphicon-chevron-left"></i>
-                                </a>
-                                <a class="right carousel-control" href="#eventCarousel" data-slide="next" prevent>
-                                    <i class="glyphicon glyphicon-chevron-right"></i>
-                                </a>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <div id="more" class="col-md-12">
-              <div ng-show='vm.isToggled1'>
-                <div class="followMore">
-                    <a ng-click='vm.toggleFollow()' prevent>
-                        <span id="star-empty" class="glyphicon glyphicon-star-empty"></span>
-                        <span id="star" class="glyphicon glyphicon-star"></span>
-                        Suivre la série</a>
-                </div>
-
-              </div>
-            </div>
-
-            <!-- visualisation de la fiche série "Séries les plus populaires" -->
-
+        <!-- Slider -->
+        <div class="col-lg-6 hpnl-band-left">
             <div class="row">
-                <div class="col-lg-12"></div>
+                <div class="col-lg-10 col-lg-offset-1">
+                    <div id="carousel-bandeau-generic" class="carousel slide" data-ride="carousel">
 
-            </div>
-
-            <!-- Derniers épisodes -->
-
-            <div class="row hp-band-last">
-                <div class="col-lg-12">
-                    <h2 class="hp-title-band">DERNIERS EPISODES</h2>
-
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="carousel slide multi-item-carousel2" id="theCarousel2">
-                                <div class="carousel-inner">
-                                    <div class="item active">
-                                        <div class="col-xs-4">
-                                            <a href="#1"><img src="bundles/serie/assets/img/2176.png" class="img-responsive" prevent></a>
-                                            <p class="text-center hp-band-last-text">
-                                                Nom de série
-                                                <br>
-                                                Episode X - Saison X
-                                            </p>
-                                            <p class="text-center hp-band-last-text-date">
-                                                Date de sortie
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="col-xs-4">
-                                            <a href="#1"><img src="bundles/serie/assets/img/68455929-dexter-wallpapers (1).jpg" class="img-responsive" prevent></a>
-                                            <p class="text-center hp-band-last-text">
-                                                Nom de série
-                                                <br>
-                                                Episode X - Saison X
-                                            </p>
-                                            <p class="text-center hp-band-last-text-date">
-                                                Date de sortie
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="col-xs-4">
-                                            <a href="#1"><img src="bundles/serie/assets/img/Breaking-Bad.jpg" class="img-responsive" prevent></a>
-                                            <p class="text-center hp-band-last-text">
-                                                Nom de série
-                                                <br>
-                                                Episode X - Saison X
-                                            </p>
-                                            <p class="text-center hp-band-last-text-date">
-                                                Date de sortie
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="col-xs-4">
-                                            <a href="#1"><img src="bundles/serie/assets/img/hannibal.jpg" class="img-responsive" prevent></a>
-                                            <p class="text-center hp-band-last-text">
-                                                Nom de série
-                                                <br>
-                                                Episode X - Saison X
-                                            </p>
-                                            <p class="text-center hp-band-last-text-date">
-                                                Date de sortie
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="col-xs-4">
-                                            <a href="#1"><img src="bundles/serie/assets/img/maxresdefault-1.jpg" class="img-responsive" prevent></a>
-                                            <p class="text-center hp-band-last-text">
-                                                Nom de série
-                                                <br>
-                                                Episode X - Saison X
-                                            </p>
-                                            <p class="text-center hp-band-last-text-date">
-                                                Date de sortie
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="col-xs-4">
-                                            <a href="#1"><img src="bundles/serie/assets/img/walking-dead-ddotomen.jpeg" class="img-responsive" prevent></a>
-                                            <p class="text-center hp-band-last-text">
-                                                Nom de série
-                                                <br>
-                                                Episode X - Saison X
-                                            </p>
-                                            <p class="text-center hp-band-last-text-date">
-                                                Date de sortie
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="col-xs-4">
-                                            <a href="#1"><img src="bundles/serie/assets/img/the-big-bang-theory.jpg" class="img-responsive" prevent></a>
-                                            <p class="text-center hp-band-last-text">
-                                                Nom de série
-                                                <br>
-                                                Episode X - Saison X
-                                            </p>
-                                            <p class="text-center hp-band-last-text-date">
-                                                Date de sortie
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <a class="left carousel-control" href="#theCarousel2" data-slide="prev" prevent>
-                                    <i class="glyphicon glyphicon-chevron-left"></i>
-                                </a>
-                                <a class="right carousel-control" href="#theCarousel2" data-slide="next" prevent>
-                                    <i class="glyphicon glyphicon-chevron-right"></i>
-                                </a>
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <img src="bundles/serie/assets/img/téléchargement.jpeg" alt="Flash">
+                            </div>
+                            <div class="item">
+                                <img src="bundles/serie/assets/img/Breaking-Bad.jpg" alt="Breaking-Bad">
+                            </div>
+                            <div class="item">
+                                <img src="bundles/serie/assets/img/hannibal.jpg" alt="hannibal">
                             </div>
                         </div>
+
+                        <!-- Controls -->
+                        <a class="left carousel-control" href="#carousel-bandeau-generic" role="button" data-slide="prev" prevent>
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                        </a>
+                        <a class="right carousel-control" href="#carousel-bandeau-generic" role="button" data-slide="next" prevent>
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                        </a>
                     </div>
 
                 </div>
             </div>
-
-            <!-- visualisation de la fiche série "Derniers épisodes" -->
-
+        </div>
+        <div class="col-lg-6 hpnl-band-right">
             <div class="row">
-                <div class="col-lg-12"></div>
+                <div class="col-lg-10 col-lg-offset-1">
+                    <h1 class="hpnl-title text-center">SmartWatch</h1>
+                    <p class="hpnl-text text-center">
+                        Suivez toutes vos séries et ne
+                        <br>manquez plus un seul épisode !
+                    </p>
+                    <div class="row">
+                        <div class="col-lg-6 col-lg-offset-3">
+                            <a class="signup" href="#" prevent>S'INSCRIRE</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Séries les plus populaires -->
+    <div class="row hp-band-pop">
+        <div class="col-lg-12">
+            <h2 class="hp-title-band">SERIES LES PLUS POPULAIRES</h2>
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Carousel items -->
+                    <div class="carousel multi-item-carousel1 slide" id="eventCarousel" data-interval="0">
+                        <div class="carousel-inner onebyone-carosel">
+                            <div class="item" ng-class="{active:$index == 0}" ng-repeat="tvShow in vm.tvShows">
+                                <div class="col-xs-4" ng-click='vm.toggleMore()' ng-mouseleave="show = false" ng-mouseenter="show = true">
+                                    <div class="card">
+                                        <!--Card image-->
+                                        <img href="#1" class="img-fluid" ng-src="{{ tvShow.img }}">
+                                        <!--/.Card image-->
+
+                                        <!--Card content-->
+                                        <div class="card-block" ng-show="show">
+                                            <!--Title-->
+                                            <h4 class="card-title">{{ tvShow.id }}</h4>
+                                            <!--Text-->
+                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                            <a href="#" class="btn btn-primary" prevent>Boink!</a>
+                                        </div>
+                                        <!--/.Card content-->
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <a class="left carousel-control" href="#eventCarousel" data-slide="prev" prevent>
+                            <i class="glyphicon glyphicon-chevron-left"></i>
+                        </a>
+                        <a class="right carousel-control" href="#eventCarousel" data-slide="next" prevent>
+                            <i class="glyphicon glyphicon-chevron-right"></i>
+                        </a>
+                    </div>
+                </div>
 
             </div>
         </div>
+    </div>
+    <div id="more" class="row" ng-show='vm.isToggled1'>
+        <div class="col-xs-12 col-sm-6 col-md-8 followMore">
+            <a id="btn-follow" ng-click='vm.toggleFollow()' prevent>
+                <span id="star-empty" class="glyphicon glyphicon-star-empty"></span>
+                <span id="star" class="glyphicon glyphicon-star"></span>
+                Suivre la série</a>
+            <div class="contenu">
+                <h2>Teen Wolf</h2>
+                <h3>6 saisons - 81 épisodes</h3>
+                <h3>54098 followers</h3>
+                <p>
+                    Scott McCall est un adolescent tout ce qu'il y a de plus ordinaire. Il n'est pas le plus populaire de son lycée, il n'en est pas la risée non plus... Un soir, son meilleur ami Stiles le convainc de suivre en cachette les recherches de la police pour
+                    retrouver un corps dans les bois alentours. Au cours de cette expédition, il se retrouve nez à nez avec une bête étrange et particulièrement féroce...
+                </p>
+                <a id="btn-see" class="center-block" href="#" prevent>Voir la série</a>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4">
+            <img src="bundles/serie/assets/img/maxresdefault-1.jpg" height="100%" width="100%" alt="Teen Wolf"/>
+            <div id="info">
+                <p><strong>Catégories :</strong> supernatural</p>
+                <p><strong>Réseau :</strong> ABC</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- visualisation de la fiche série "Séries les plus populaires" -->
+
+    <div class="row">
+        <div class="col-lg-12"></div>
+
+    </div>
+
+    <!-- Derniers épisodes -->
+
+    <div class="row hp-band-last">
+        <div class="col-lg-12">
+            <h2 class="hp-title-band">DERNIERS EPISODES</h2>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="carousel slide multi-item-carousel2" id="theCarousel2">
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <div class="col-xs-4">
+                                    <a href="#1"><img src="bundles/serie/assets/img/2176.png" class="img-responsive" prevent></a>
+                                    <p class="text-center hp-band-last-text">
+                                        Nom de série
+                                        <br>
+                                        Episode X - Saison X
+                                    </p>
+                                    <p class="text-center hp-band-last-text-date">
+                                        Date de sortie
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="col-xs-4">
+                                    <a href="#1"><img src="bundles/serie/assets/img/68455929-dexter-wallpapers (1).jpg" class="img-responsive" prevent></a>
+                                    <p class="text-center hp-band-last-text">
+                                        Nom de série
+                                        <br>
+                                        Episode X - Saison X
+                                    </p>
+                                    <p class="text-center hp-band-last-text-date">
+                                        Date de sortie
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="col-xs-4">
+                                    <a href="#1"><img src="bundles/serie/assets/img/Breaking-Bad.jpg" class="img-responsive" prevent></a>
+                                    <p class="text-center hp-band-last-text">
+                                        Nom de série
+                                        <br>
+                                        Episode X - Saison X
+                                    </p>
+                                    <p class="text-center hp-band-last-text-date">
+                                        Date de sortie
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="col-xs-4">
+                                    <a href="#1"><img src="bundles/serie/assets/img/hannibal.jpg" class="img-responsive" prevent></a>
+                                    <p class="text-center hp-band-last-text">
+                                        Nom de série
+                                        <br>
+                                        Episode X - Saison X
+                                    </p>
+                                    <p class="text-center hp-band-last-text-date">
+                                        Date de sortie
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="col-xs-4">
+                                    <a href="#1"><img src="bundles/serie/assets/img/maxresdefault-1.jpg" class="img-responsive" prevent></a>
+                                    <p class="text-center hp-band-last-text">
+                                        Nom de série
+                                        <br>
+                                        Episode X - Saison X
+                                    </p>
+                                    <p class="text-center hp-band-last-text-date">
+                                        Date de sortie
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="col-xs-4">
+                                    <a href="#1"><img src="bundles/serie/assets/img/walking-dead-ddotomen.jpeg" class="img-responsive" prevent></a>
+                                    <p class="text-center hp-band-last-text">
+                                        Nom de série
+                                        <br>
+                                        Episode X - Saison X
+                                    </p>
+                                    <p class="text-center hp-band-last-text-date">
+                                        Date de sortie
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="col-xs-4">
+                                    <a href="#1"><img src="bundles/serie/assets/img/the-big-bang-theory.jpg" class="img-responsive" prevent></a>
+                                    <p class="text-center hp-band-last-text">
+                                        Nom de série
+                                        <br>
+                                        Episode X - Saison X
+                                    </p>
+                                    <p class="text-center hp-band-last-text-date">
+                                        Date de sortie
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <a class="left carousel-control" href="#theCarousel2" data-slide="prev" prevent>
+                            <i class="glyphicon glyphicon-chevron-left"></i>
+                        </a>
+                        <a class="right carousel-control" href="#theCarousel2" data-slide="next" prevent>
+                            <i class="glyphicon glyphicon-chevron-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- visualisation de la fiche série "Derniers épisodes" -->
+
+    <div class="row">
+        <div class="col-lg-12"></div>
+
+    </div>
+</div>

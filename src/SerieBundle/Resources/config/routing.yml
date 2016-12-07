@@ -1,8 +1,3 @@
 serie_homepage:
     path:     /
     defaults: { _controller: SerieBundle:Default:index }
-serie_page:
-    path:     /serie
-serie_calendrier:
-    path:     /calendrier
-    defaults: { _controller: SerieBundle:Default:index }

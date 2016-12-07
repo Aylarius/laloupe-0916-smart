@@ -273,8 +273,8 @@ a:focus {
     text-decoration: none;
 }
 
-.saison li a{
-  color: white;
+.saison li a {
+    color: white;
 }
 
 .saison a:hover {
@@ -284,19 +284,109 @@ a:focus {
 
 /************Footer*************/
 
-.footer {
+footer {
     width: 100%;
     height: 60px;
     background-color: rgb(35, 35, 35);
     border-top: 5px solid rgb(255, 168, 52);
+    text-align: center;
+    padding-top: 10px;
+}
+
+footer a, footer span {
+    font-weight: bold;
+    font-size: 1.75rem;
+    text-align: center;
+    margin-top: 35px;
     color: white;
 }
 
-.footer p {
-    font-weight: bold;
-    font-size: 1.25rem;
+footer a:hover {
+  text-decoration: none;
+  color: rgb(255, 168, 52);
+}
+
+
+/***********Modal CGU FOOTER *************/
+
+.modal-header {
+    background-color: rgb(35, 35, 35);
+    text-align: right;
+    padding: 20px 20px 0px 0px;
+    font-size: 2rem;
+    color: white;
+    height: 70px;
+    border-bottom: 5px solid rgb(255, 168, 52);
+}
+
+.modal-footer {
+    background-color: rgb(35, 35, 35);
+    text-align: right;
+    padding: 20px 20px 0px 0px;
+    font-size: 2rem;
+    color: white;
+    height: 70px;
+    border-top: 5px solid rgb(255, 168, 52);
+    margin-top: 20px;
+}
+
+.modal-footer a {
+    background-color: rgb(255, 168, 52);
+    color: white;
+    font-size: 2rem;
+    padding: 10px 20px 10px 20px;
+    margin: 20px 0px 20px 0;
+    text-align: right;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.modal-footer a:hover {
+    text-decoration: none;
+}
+
+.glyphicon-remove {
+    cursor: pointer;
+}
+
+.modal-content {
+    -webkit-border-radius: inherit;
+    -moz-border-radius: inherit;
+    border-radius: inherit;
+    top: 100px;
+}
+
+.modal-body {
+    text-align: justify;
+}
+
+.modal-body h4 {
+    font-size: 40px;
+}
+
+.modal-body h5 {
+    font-size: 35px;
+}
+
+.modal-body h6 {
+    font-size: 25px;
+}
+
+.modal-body p {
+    font-size: 20px;
+    padding-left: 7%;
+    padding-right: 7%;
+}
+
+.modal-body h4, h5, h6 {
+    margin: inherit;
+    margin-top: 10px;
+    margin-bottom: 10px;
     text-align: center;
-    padding-top: 15px;
+}
+
+.modal-body a:hover {
+    text-decoration: none;
 }
 
 
@@ -315,13 +405,18 @@ a:focus {
     font-size: 2em;
 }
 
-.btn-login {
+.signup {
     background-color: rgb(255, 168, 52)!important;
     color: white;
     font-size: 2em;
     padding: 10px;
     margin: 20px 0 !important;
     display: block;
+}
+
+.signup:hover {
+    text-decoration: none;
+    color: white;
 }
 
 
@@ -410,12 +505,15 @@ a:focus {
     background-image: none;
 }
 
-#more{
-  background-color: rgb(214,214,214);
+
+/*********Carousel div open click **********/
+
+#more {
+    background-color: rgb(214, 214, 214);
+    height: 100%;
 }
 
 .followMore {
-    height: 80px;
     position: relative;
 }
 
@@ -427,14 +525,52 @@ a:focus {
     display: block;
     width: 200px;
     text-align: left;
-    position: absolute;
+    position: relative;
     margin-top: 15px;
-    margin-left: 50px;
 }
 
-.followMore a:hover {
+#btn-see {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#btn-follow {
+    margin-top: 0;
+    position: absolute;
+    left: 0;
+}
+
+#btn-see:hover, #btn-follow:hover {
     text-decoration: none;
 }
+
+.contenu {
+    text-align: center;
+    padding-top: 40px;
+}
+
+#more img {
+    margin-top: 50px;
+    margin-left: -20px;
+}
+
+#more p {
+    font-size: 20px;
+    text-align: justify;
+}
+
+.contenu p {
+    padding-top: 20px;
+    padding-bottom: 10px;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+#info {
+    margin-top: 20px;
+    padding: inherit;
+}
+
 
 /*CSS slider carousel "Derniers épisodes"*/
 

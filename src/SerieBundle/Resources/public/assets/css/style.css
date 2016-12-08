@@ -360,18 +360,18 @@ footer a:focus {
     text-align: justify;
 }
 
-
 .modal-body p {
     padding-left: 7%;
     padding-right: 7%;
 }
 
-.modal-body h2, h3, h4 {
+.modal-body h2, .modal-body h3, .modal-body h4 {
     margin: inherit;
     margin-top: 10px;
     margin-bottom: 10px;
     text-align: center;
 }
+
 .img-card {
   max-height: 300px;
 }
@@ -653,4 +653,123 @@ footer a:focus {
 
 .multi-item-carousel2 .carouse-control.left, .multi-item-carousel2 .carouse-control.right {
     background-image: none;
+}
+
+/* --- Profile Page --- */
+#profile-page {
+  padding: 0px;
+}
+
+#img-section {
+  background-color: #606060;
+  text-align: center;
+  color: white;
+  padding-bottom: 30px;
+  padding-top: 30px;
+}
+#img-section img {
+  border-radius: 50%;
+  border: 5px solid rgb(255,168,52);
+  margin-bottom: 20px;
+}
+#edit-btn {
+  position: absolute;
+  top:0px;
+  right: 30px;
+  color: white;
+  font-size: 2rem;
+}
+#edit-btn i {
+  font-size: 2.5rem;
+  margin-right: 5px;
+}
+#stat-section {
+  background-color: #232323;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: white;
+  font-size: 1.75rem;
+}
+#stat-section th, #stat-section td {
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-bottom: 5px;
+  text-align: center;
+}
+#stat-container {
+  text-align: center;
+}
+#stat-container table {
+  display: inline-table;
+}
+#serie-section {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+#serie-section h2 {
+  margin-bottom: 20px;
+}
+#serie-card {
+  background-color: #EBEBEB;
+  margin-bottom: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+  padding-bottom: 10px;
+}
+#serie-container {
+  padding: 0px;
+}
+#serie-container img {
+  width: 100%;
+}
+#serie-container h4 {
+  margin-left: 10px;
+}
+#serie-container .progress{
+  border-radius: inherit;
+  margin-bottom: 0;
+  background-color: #C0C0C0;
+  height: 18px;
+}
+#serie-container .progress-bar{
+  background: rgb(255,168,52);
+  width: 0%;
+  box-shadow: inherit;
+}
+
+#tag-section {
+  background-color: #EBEBEB;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 1.75rem;
+}
+
+.tag-container {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.tag {
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  margin-right: 5px;
+  margin-left: 5px;
+  background-color: white;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+.tag.active {
+  background-color: rgb(255,168,52);
+}
+
+#tag-section i {
+  color: #606060;
+  font-size: 2.5rem;
+  margin-right: 5px;
+}
+#voir-plus {
+  font-size: 2.25rem;
+  font-weight: 500;
+  margin-top: 20px;
 }

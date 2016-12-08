@@ -9,6 +9,6 @@ var codropsEvents = {
 	'11-09-2016' : '<a href="http://tympanus.net/codrops/2012/11/09/responsive-wordpress-theme-giveaway/">Responsive WordPress Theme Giveaway</a>',
 	'11-06-2016' : '<a href="http://tympanus.net/codrops/2012/11/06/gamma-gallery-a-responsive-image-gallery-experiment/">Gamma Gallery: A Responsive Image Gallery Experiment</a>',
 	'11-02-2016' : '<a href="http://tympanus.net/codrops/2012/11/02/heading-set-styling-with-css/">Heading Set Styling with CSS</a>',
-	'12-25-2016' : '<span>Christmas Day</span>',
-	'12-31-2016' : '<span>New Year\'s Eve</span>'
+	'12-25-2016' : '<span>Jour de Noël</span>',
+	'12-31-2016' : '<span>Jour de l\'an</span>'
 };

@@ -17,6 +17,12 @@ const routes = ($routeProvider, $httpProvider) => {
         .when('/profile', {
             templateUrl: 'bundles/serie/views/profile.html'
         })
+        .when('/inscription', {
+            templateUrl: 'bundles/serie/views/inscription.html'
+        })
+        .when('/connexion', {
+            templateUrl: 'bundles/serie/views/connexion.html'
+        })
         .otherwise({
             redirectTo: ''
         })

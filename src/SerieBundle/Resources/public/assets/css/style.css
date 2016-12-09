@@ -301,9 +301,6 @@ footer a:hover, footer a:focus {
   text-decoration: none;
   color: rgb(255, 168, 52);
 }
-footer a:focus {
-  color: white;
-}
 
 
 /***********Modal CGU FOOTER *************/
@@ -312,7 +309,7 @@ footer a:focus {
     background-color: rgb(35, 35, 35);
     text-align: right;
     padding: 20px 20px 0px 0px;
-    font-size: 2rem;
+    font-size: 2.5rem;
     color: white;
     height: 70px;
     border-bottom: 5px solid rgb(255, 168, 52);
@@ -321,12 +318,12 @@ footer a:focus {
 .modal-footer {
     background-color: rgb(35, 35, 35);
     text-align: right;
-    padding: 20px 20px 0px 0px;
     font-size: 2rem;
     color: white;
     height: 70px;
     border-top: 5px solid rgb(255, 168, 52);
     margin-top: 20px;
+    padding: 20px 20px 20px 0px;
 }
 
 .modal-footer a {
@@ -346,6 +343,10 @@ footer a:focus {
 
 .glyphicon-remove {
     cursor: pointer;
+}
+
+.glyphicon-remove:hover {
+    color: rgb(255, 168, 52);
 }
 
 footer .modal-content {
@@ -390,6 +391,11 @@ footer .modal-content {
   color: rgb(255,168,52);
 }
 
+.modal-body a:focus {
+    text-decoration: none;
+    color: white;
+}
+
 .card i {
   margin-right: 10px;
   font-size: 2rem;
@@ -432,8 +438,6 @@ footer .modal-content {
     0% { -webkit-transform: scale(1) rotate(0deg);}
     100% { -webkit-transform: scale(1) rotate(720deg);}
 }
-
-
 
 /*bandeau en-tête*/
 
@@ -583,6 +587,7 @@ footer .modal-content {
     margin-top: 0;
     position: absolute;
     left: 0;
+    cursor: pointer;
 }
 
 #btn-see:hover, #btn-follow:hover {

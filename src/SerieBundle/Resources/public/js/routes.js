@@ -14,6 +14,9 @@ const routes = ($routeProvider, $httpProvider) => {
         .when('/calendrier', {
             templateUrl: 'bundles/serie/views/calendrier.html'
         })
+        .when('/profile', {
+            templateUrl: 'bundles/serie/views/profile.html'
+        })
         .otherwise({
             redirectTo: ''
         })

@@ -348,7 +348,7 @@ footer a:focus {
     cursor: pointer;
 }
 
-.modal-content {
+footer .modal-content {
     -webkit-border-radius: inherit;
     -moz-border-radius: inherit;
     border-radius: inherit;
@@ -772,4 +772,14 @@ footer a:focus {
   font-size: 2.25rem;
   font-weight: 500;
   margin-top: 20px;
+}
+
+@media screen and (max-width: 430px) {
+  #edit-btn {
+    top:-20px;
+    right: 20px;
+  }
+  #stat-container i {
+    display: none;
+  }
 }

@@ -815,7 +815,13 @@ footer .modal-content {
 .form-control:focus {
   outline: inherit;
 }
-
+.form-link {
+  color: black;
+}
+.form-link:hover {
+  color: rgb(255,168,52);
+  text-decoration: none;
+}
 .btn-orange {
   background-color: rgb(255,168,52);
   border: 2px solid rgb(255,168,52);
@@ -834,9 +840,11 @@ hr {
   background-color: rgb(255,168,52);
   height: 5px;
   width: 50%;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 .form-social {
-  padding-top: 20px;
+  padding-top: 10px;
   padding-bottom: 40px;
 }
 .form-social button {

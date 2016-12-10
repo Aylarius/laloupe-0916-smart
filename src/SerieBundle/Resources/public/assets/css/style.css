@@ -557,7 +557,6 @@ footer .modal-content {
 
 
 /*********Carousel div open click **********/
-
 #more {
     background-color: rgb(214, 214, 214);
     height: 100%;
@@ -822,6 +821,10 @@ footer .modal-content {
 .form-link:hover {
   color: rgb(255,168,52);
   text-decoration: none;
+}
+
+.help-block {
+ font-size: 1rem;
 }
 .btn-orange {
   background-color: rgb(255,168,52);

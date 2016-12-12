@@ -180,15 +180,22 @@ a:focus {
 }
 
 
-/*******Page série Non Loggué ********/
+/*___Page série Non Loggué _______________________________________________________________________________________
+________________________________________________________________________________________________________________*/
 
-.serieNL {
+
+/*global*/
+
+#serieNL-page {
     width: 100%;
     margin: 0;
     padding: 0;
 }
 
-.banniere {
+
+/*header*/
+
+#banniere {
     background: url("../img/flash.jpg") center center;
     height: 500px;
     width: 100%;
@@ -196,33 +203,36 @@ a:focus {
     background-size: cover;
 }
 
-.menuNL {
+#stat-serie {
     background-color: rgba(0, 0, 0, 0.5);
     position: absolute;
     width: 100%;
     bottom: 0px;
+    left: 0px;
     color: white;
 }
 
-.menuNL h1 {
+#banniere h1 {
     margin-top: 40px;
     font-size: 3rem;
     padding-left: 50px;
     text-align: left;
 }
 
-.menuNL ul {
-    margin-top: 20px;
-    padding-left: 50px;
-    margin-bottom: 20px;
-    text-align: left;
+#banniere th, #banniere td {
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom: 5px;
+    text-align: center;
 }
 
-.menuNL li {
-    list-style-type: none;
-    display: inline;
-    font-size: 2rem;
-    margin: 0px 10px 0px 10px;
+#stat-serie table {
+    display: inline-table;
+    margin-left: 40px;
+}
+
+#stat-serie {
+    text-align: left;
 }
 
 .follow {
@@ -248,37 +258,33 @@ a:focus {
     text-decoration: none;
 }
 
-.saison {
+
+/*résumé de la série*/
+
+
+/*Onglet saison*/
+
+#tab-saison {
     background-color: rgb(50, 50, 50);
-    height: 80px;
+    height: 60px;
     position: relative;
     color: white;
+    padding-top: 20px;
 }
 
-.saison ul {
-    padding-top: 25px;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.saison li {
-    list-style-type: none;
-    display: inline;
-    font-size: 2rem;
-    margin: 0px 10px 0px 10px;
-    text-decoration: none;
-}
-
-.saison li a {
+#tab-saison a {
     color: white;
+    font-size: 1.75rem;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
-.saison a:hover {
+#tab-saison a:hover{
     text-decoration: none;
 }
 
-
-/************Footer*************/
+/*___Footer___________________________________________________________________________________________________
+____________________________________________________________________________________________________________*/
 
 footer {
     width: 100%;
@@ -298,8 +304,8 @@ footer a, footer span {
 }
 
 footer a:hover, footer a:focus {
-  text-decoration: none;
-  color: rgb(255, 168, 52);
+    text-decoration: none;
+    color: rgb(255, 168, 52);
 }
 
 
@@ -374,21 +380,21 @@ footer .modal-content {
 }
 
 .img-card {
-  max-height: 300px;
+    max-height: 300px;
 }
 
 .card a {
-  background-color: inherit;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  font-size: 1.75rem;
-  margin: 0px;
-  font-weight: 500;
-  color: inherit;
+    background-color: inherit;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 1.75rem;
+    margin: 0px;
+    font-weight: 500;
+    color: inherit;
 }
 
-.card a:hover{
-  color: rgb(255,168,52);
+.card a:hover {
+    color: rgb(255, 168, 52);
 }
 
 .modal-body a:focus {
@@ -397,47 +403,65 @@ footer .modal-content {
 }
 
 .card i {
-  margin-right: 10px;
-  font-size: 2rem;
+    margin-right: 10px;
+    font-size: 2rem;
 }
 
 .card h3 {
-  text-transform: uppercase;
+    text-transform: uppercase;
 }
 
 .img-card {
-  border-radius: 50%;
-  border: 5px solid rgb(255,168,52);
-  margin-top: 30px;
+    border-radius: 50%;
+    border: 5px solid rgb(255, 168, 52);
+    margin-top: 30px;
 }
 
 .img-card:hover {
-	-webkit-box-shadow: 1px 1px 3px #333;
-	-moz-box-shadow: 1px 1px 3px #333;
-	box-shadow: 1px 1px 3px #333;
-	-webkit-transform: scale(1);
-	-moz-transform: scale(1) ;
-	-ms-transform: scale(1);
-	-o-transform: scale(1);
-	transform:  scale(1);
-	animation: rotate 0.5s;
+    -webkit-box-shadow: 1px 1px 3px #333;
+    -moz-box-shadow: 1px 1px 3px #333;
+    box-shadow: 1px 1px 3px #333;
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+    animation: rotate 0.5s;
     -webkit-animation: rotate 0.5s;
     -moz-animation: rotate 0.5s;
     -o-animation: rotate 0.5s;
     animation: rotate 0.5s;
 }
-@keyframes rotate{
-    0% { transform:  scale(1) rotate(0deg); -webkit-transform: scale(1) rotate(0deg);}
-    100% { transform:  scale(1) rotate(360deg); -webkit-transform: scale(1) rotate(360deg);}
+
+@keyframes rotate {
+    0% {
+        transform: scale(1) rotate(0deg);
+        -webkit-transform: scale(1) rotate(0deg);
+    }
+    100% {
+        transform: scale(1) rotate(360deg);
+        -webkit-transform: scale(1) rotate(360deg);
+    }
 }
- @-moz-keyframes rotate {
-    0% { -moz-transform: scale(1) rotate(0deg);}
-    100% { -moz-transform: scale(1) rotate(360deg);}
+
+@-moz-keyframes rotate {
+    0% {
+        -moz-transform: scale(1) rotate(0deg);
+    }
+    100% {
+        -moz-transform: scale(1) rotate(360deg);
+    }
 }
- @-webkit-keyframes rotate {
-    0% { -webkit-transform: scale(1) rotate(0deg);}
-    100% { -webkit-transform: scale(1) rotate(360deg);}
+
+@-webkit-keyframes rotate {
+    0% {
+        -webkit-transform: scale(1) rotate(0deg);
+    }
+    100% {
+        -webkit-transform: scale(1) rotate(360deg);
+    }
 }
+
 
 /*bandeau en-tête*/
 
@@ -461,6 +485,7 @@ footer .modal-content {
     padding: 10px;
     margin: 20px 0 !important;
     display: block;
+    text-align: center;
 }
 
 .signup:hover {
@@ -660,131 +685,149 @@ footer .modal-content {
     background-image: none;
 }
 
+
 /* --- Profile Page --- */
+
 #profile-page {
-  padding: 0px;
+    padding: 0px;
 }
 
 #img-section {
-  background-color: #606060;
-  text-align: center;
-  color: white;
-  padding-bottom: 30px;
-  padding-top: 30px;
+    background-color: #606060;
+    text-align: center;
+    color: white;
+    padding-bottom: 30px;
+    padding-top: 30px;
 }
+
 #img-section img {
-  border-radius: 50%;
-  border: 5px solid rgb(255,168,52);
-  margin-bottom: 20px;
+    border-radius: 50%;
+    border: 5px solid rgb(255, 168, 52);
+    margin-bottom: 20px;
 }
+
 #edit-btn {
-  position: absolute;
-  top:0px;
-  right: 30px;
-  color: white;
-  font-size: 2rem;
+    position: absolute;
+    top: 0px;
+    right: 30px;
+    color: white;
+    font-size: 2rem;
 }
+
 #edit-btn i {
-  font-size: 2.5rem;
-  margin-right: 5px;
+    font-size: 2.5rem;
+    margin-right: 5px;
 }
+
 #stat-section {
-  background-color: #232323;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  color: white;
-  font-size: 1.75rem;
+    background-color: #232323;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: white;
+    font-size: 1.75rem;
 }
+
 #stat-section th, #stat-section td {
-  padding-right: 10px;
-  padding-left: 10px;
-  padding-bottom: 5px;
-  text-align: center;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom: 5px;
+    text-align: center;
 }
+
 #stat-container {
-  text-align: center;
+    text-align: center;
 }
+
 #stat-container table {
-  display: inline-table;
+    display: inline-table;
 }
+
 #serie-section {
-  padding-top: 20px;
-  padding-bottom: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
+
 #serie-section h2 {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 }
+
 #serie-card {
-  background-color: #EBEBEB;
-  margin-bottom: 10px;
-  margin-left: 5px;
-  margin-right: 5px;
-  padding-bottom: 10px;
+    background-color: #EBEBEB;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    padding-bottom: 10px;
 }
+
 #serie-container {
-  padding: 0px;
+    padding: 0px;
 }
+
 #serie-container img {
-  width: 100%;
+    width: 100%;
 }
+
 #serie-container h4 {
-  margin-left: 10px;
+    margin-left: 10px;
 }
-#serie-container .progress{
-  border-radius: inherit;
-  margin-bottom: 0;
-  background-color: #C0C0C0;
-  height: 18px;
+
+#serie-container .progress {
+    border-radius: inherit;
+    margin-bottom: 0;
+    background-color: #C0C0C0;
+    height: 18px;
 }
-#serie-container .progress-bar{
-  background: rgb(255,168,52);
-  width: 0%;
-  box-shadow: inherit;
+
+#serie-container .progress-bar {
+    background: rgb(255, 168, 52);
+    width: 0%;
+    box-shadow: inherit;
 }
 
 #tag-section {
-  background-color: #EBEBEB;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  font-size: 1.75rem;
+    background-color: #EBEBEB;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 1.75rem;
 }
 
 .tag-container {
-  margin-top: 20px;
-  margin-bottom: 10px;
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
 .tag {
-  padding: 5px 10px;
-  margin-bottom: 10px;
-  margin-right: 5px;
-  margin-left: 5px;
-  background-color: white;
-  border-radius: 20px;
-  display: inline-block;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+    margin-right: 5px;
+    margin-left: 5px;
+    background-color: white;
+    border-radius: 20px;
+    display: inline-block;
 }
 
 .tag.active {
-  background-color: rgb(255,168,52);
+    background-color: rgb(255, 168, 52);
 }
 
 #tag-section i {
-  color: #606060;
-  font-size: 2.5rem;
-  margin-right: 5px;
+    color: #606060;
+    font-size: 2.5rem;
+    margin-right: 5px;
 }
+
 #voir-plus {
-  font-size: 2.25rem;
-  font-weight: 500;
-  margin-top: 20px;
+    font-size: 2.25rem;
+    font-weight: 500;
+    margin-top: 20px;
 }
 
 @media screen and (max-width: 430px) {
-  #edit-btn {
-    top:-20px;
-    right: 20px;
-  }
-  #stat-container i {
-    display: none;
-  }
+    #edit-btn {
+        top: -20px;
+        right: 20px;
+    }
+    #stat-container i {
+        display: none;
+    }
 }

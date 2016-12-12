@@ -1,35 +1,62 @@
-<div class="container serieNL">
-    <div class="row">
-        <div class="banniere">
-        <div class="menuNL">
+<div id="serieNL-page" class="container-fluid">
+    <div id="banniere" class="row center-block">
+        <div id="stat-serie" class="col-xs-12">
             <h1>The flash</h1>
-            <ul>
-                <li>Saison 3</li>
-                <li>Episodes 86</li>
-                <li>Durée 60min</li>
-                <li>Statut En cours</li>
-                <li>Followers 54 872</li>
-            </ul>
+            <table>
+                <th>Saisons</th>
+                <th>Episodes</th>
+                <th>Durée</th>
+                <th>Statut</th>
+                <th>Followers</th>
+                <tr>
+                    <td>3</td>
+                    <td>86</td>
+                    <td>60min</td>
+                    <td>En cours</td>
+                    <td>54 872</td>
+                </tr>
+            </table>
         </div>
-      </div>
-        <div class="follow">
+    </div>
+    <div id="tracking-serie" class="row">
+        <div class="follow col-xs-12">
             <a href="#" ng-click='vm.toggleFollow()' prevent>
                 <span id="star-empty" class="glyphicon glyphicon-star-empty"></span>
                 <span id="star" class="glyphicon glyphicon-star"></span>
                 Suivre la série</a>
         </div>
     </div>
-</div>
-<div id="resume">
-    <h1>Résumé</h1>
-    <p>
-        Jeune expert de la police scientifique de Central City, Barry Allen se retrouve doté d'une vitesse extraordinaire après avoir été frappé par la foudre. Sous le costume de Flash, il utilise ses nouveaux pouvoirs pour combattre le crime.
-    </p>
-</div>
-<div class="saison">
-  <ul>
-    <li><a href="#" prevent>Saison 1</a></li>
-    <li><a href="#" prevent>Saison 2</a></li>
-    <li><a href="#" prevent>Saison 3</a></li>
-  </ul>
+    <div id="info-serie" class="row">
+        <div id="resume-serie" class="row">
+            <div class="col-xs-offset-1 col-xs-10">
+                <h1>Résumé</h1>
+                <p>
+                    Jeune expert de la police scientifique de Central City, Barry Allen se retrouve doté d'une vitesse extraordinaire après avoir été frappé par la foudre. Sous le costume de Flash, il utilise ses nouveaux pouvoirs pour combattre le crime.
+
+                    <strong>Catégorie :</strong>
+                    Supernatural
+                    <strong>Réseau :</strong>
+                    ABC
+                </p>
+            </div>
+        </div>
+    </div>
+    <div id="actor-serie" class="row">
+        <div class="col-xs-offset-1 col-xs-12">
+            <h1>Casting</h1>
+        </div>
+    </div>
+    <div id="tab-saison" class="row center-block">
+        <div class="col-xs-12 text-center">
+            <span>
+                <a href="#" prevent>Saison 1</a>
+            </span>
+            <span>
+                <a href="#" prevent>Saison 2</a>
+            </span>
+            <span>
+                <a href="#" prevent>Saison 3</a>
+            </span>
+        </div>
+    </div>
 </div>

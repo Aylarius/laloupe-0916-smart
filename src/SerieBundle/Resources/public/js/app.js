@@ -1,6 +1,5 @@
 angular.module('app', ['ngRoute','slickCarousel'])
     .service('tmdbService', tmdbService)
-    .controller('mainController', mainController)
     .controller('navbarController', navbarController)
     .controller('serieController', serieController)
     .controller('hpController', hpController)

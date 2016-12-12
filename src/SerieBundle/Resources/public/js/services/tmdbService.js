@@ -7,7 +7,7 @@ function tmdbService($http) {
         return this.$http.get("https://api.themoviedb.org/3/discover/tv?api_key=fc533e12b849e49e74ab5d046165bcc7&language=fr-FR&sort_by=popularity.desc");
     };
 
-    this.sheetSerie = () => {
-        return this.$http.get("https://api.themoviedb.org/3/tv/60735?api_key=fc533e12b849e49e74ab5d046165bcc7&language=fr-FR");
+    this.sheetSerie = (id) => {
+        return this.$http.get("https://api.themoviedb.org/3/tv/"+ id +"?api_key=fc533e12b849e49e74ab5d046165bcc7&language=fr-FR");
     };
 }

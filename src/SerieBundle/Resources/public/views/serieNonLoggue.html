@@ -1,21 +1,15 @@
-<div id="serieNL-page" class="container-fluid">
-    <div id="banniere" class="row center-block">
-        <div id="stat-serie" class="col-xs-12">
-            <h1>The flash</h1>
-            <table>
-                <th>Saisons</th>
-                <th>Episodes</th>
-                <th>Durée</th>
-                <th>Statut</th>
-                <th>Followers</th>
-                <tr>
-                    <td>3</td>
-                    <td>86</td>
-                    <td>60min</td>
-                    <td>En cours</td>
-                    <td>54 872</td>
-                </tr>
-            </table>
+<div class="container serieNL">
+    <div class="row">
+        <div class="col-lg-12 banniere">
+        <div class="col-lg-12 menuNL">
+            <h1>{{ vm.sheetSerie.name }}</h1>
+            <ul>
+                <li>Saison {{vm.sheetSerie.number_of_seasons}}</li>
+                <li>Episodes {{vm.sheetSerie.number_of_episodes}}</li>
+                <li>Durée {{vm.sheetSerie.episode_run_time[0]}} min</li>
+                <li>Statut {{vm.sheetSerie.status}}</li>
+                <li>Followers {{vm.sheetSerie.popularity}}</li>
+            </ul>
         </div>
     </div>
     <div id="tracking-serie" class="row">
@@ -26,37 +20,15 @@
                 Suivre la série</a>
         </div>
     </div>
-    <div id="info-serie" class="row">
-        <div id="resume-serie" class="row">
-            <div class="col-xs-offset-1 col-xs-10">
-                <h1>Résumé</h1>
-                <p>
-                    Jeune expert de la police scientifique de Central City, Barry Allen se retrouve doté d'une vitesse extraordinaire après avoir été frappé par la foudre. Sous le costume de Flash, il utilise ses nouveaux pouvoirs pour combattre le crime.
-
-                    <strong>Catégorie :</strong>
-                    Supernatural
-                    <strong>Réseau :</strong>
-                    ABC
-                </p>
-            </div>
-        </div>
-    </div>
-    <div id="actor-serie" class="row">
-        <div class="col-xs-offset-1 col-xs-12">
-            <h1>Casting</h1>
-        </div>
-    </div>
-    <div id="tab-saison" class="row center-block">
-        <div class="col-xs-12 text-center">
-            <span>
-                <a href="#" prevent>Saison 1</a>
-            </span>
-            <span>
-                <a href="#" prevent>Saison 2</a>
-            </span>
-            <span>
-                <a href="#" prevent>Saison 3</a>
-            </span>
-        </div>
-    </div>
+</div>
+<div id="resume">
+    <h1>Résumé</h1>
+    <p>
+        {{vm.sheetSerie.overview}}
+    </p>
+</div>
+<div class="saison">
+  <ul ng-repeat="season in vm.sheetSerie.seasons">
+    <li><a href="{{season.id}}" prevent>Saison {{season.season_number}}</a></li>
+  </ul>
 </div>

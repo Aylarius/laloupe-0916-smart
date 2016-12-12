@@ -1,4 +1,14 @@
-function serieController() {
+function serieController(tmdbService) {
+
+    this.tmdbService = tmdbService;
+
+    this.load = () => {
+      this.tmdbService.sheetSerie().then((response) => {
+        this.sheetSerie = response.data;
+      });
+    };
+
+    this.load();
 
     this.isToggled = false;
     $('#star').hide();
@@ -13,4 +23,5 @@ function serieController() {
             $('#star').show();
         }
     };
+
 }

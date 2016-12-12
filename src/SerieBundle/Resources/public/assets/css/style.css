@@ -1,7 +1,9 @@
 /**********Global*********/
-
+html {
+  font-size: 16px;
+  font-size: 1rem;
+}
 body {
-    font-size: 16px;
 }
 
 .row {
@@ -37,7 +39,7 @@ a:focus {
 
 .navbar, .navbar-nav>li>a {
     height: 70px!important;
-    font-size: 1.75rem;
+    font-size: 1.125rem;
 }
 
 .navbar-default .navbar-nav>li>a {
@@ -74,7 +76,7 @@ a:focus {
 }
 
 .navbar-brand {
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: white!important;
     font-weight: bold;
     line-height: 35px;
@@ -116,19 +118,23 @@ a:focus {
     width: 100%;
 }
 
-#search input {
-    height: 50px;
+#search input, .search input {
+    height: 45px;
     margin-top: 25px;
     padding-left: 10px;
-    width: 90%;
-    font-size: 1.75rem;
+    font-size: 1.25rem;
+    position: absolute;
+    left: 0;
+    border-radius: inherit;
 }
 
-#search input:focus {
+#search input:focus, .search input:focus {
     outline: inherit;
+    box-shadow: inherit;
+    border: 1px solid #ccc;
 }
 
-#search .glyphicon-search {
+/*#search .glyphicon-search {
     font-size: 2rem;
     color: white;
     background-color: rgb(255, 168, 52);
@@ -137,8 +143,19 @@ a:focus {
     height: 50px;
     line-height: 45px;
     margin-left: -5px;
-}
+}*/
 
+.btn-search {
+  background-color: rgb(255,168,52);
+border: 2px solid rgb(255,168,52);
+color: white;
+font-size: 1.25rem;
+border-radius: inherit;
+position: absolute;
+right: 0;
+height: 45px;
+top: 25px;
+}
 
 /**********Modal***********/
 
@@ -146,14 +163,14 @@ a:focus {
     text-align: right;
     border-bottom: 0;
     padding: 20px 20px 0px 0px;
-    font-size: 1.75rem;
+    font-size: 1.25rem;
 }
 
 .glyphicon-remove {
     cursor: pointer;
 }
 
-.modal-content {
+#myModal .modal-content {
     -webkit-border-radius: inherit;
     -moz-border-radius: inherit;
     border-radius: inherit;
@@ -167,7 +184,7 @@ a:focus {
 .modal-body a {
     background-color: rgb(255, 168, 52);
     color: white;
-    font-size: 2rem;
+    font-size: 1.5rem;
     padding-top: 20px;
     padding-bottom: 20px;
     margin: 20px 0px 20px 0;
@@ -215,7 +232,7 @@ ________________________________________________________________________________
 
 #banniere h1 {
     margin-top: 40px;
-    font-size: 3rem;
+    font-size: 2rem;
     padding-left: 50px;
     text-align: left;
 }
@@ -245,7 +262,7 @@ ________________________________________________________________________________
 .follow a {
     background-color: rgb(255, 168, 52)!important;
     color: white;
-    font-size: 2rem;
+    font-size: 1.5rem;
     padding: 10px 20px 10px 20px;
     display: block;
     width: 200px;
@@ -299,7 +316,7 @@ footer {
 
 footer a, footer span {
     font-weight: bold;
-    font-size: 1.75rem;
+    font-size: 1rem;
     text-align: center;
     margin-top: 35px;
     color: white;
@@ -317,7 +334,7 @@ footer a:hover, footer a:focus {
     background-color: rgb(35, 35, 35);
     text-align: right;
     padding: 20px 20px 0px 0px;
-    font-size: 2.5rem;
+    font-size: 2rem;
     color: white;
     height: 70px;
     border-bottom: 5px solid rgb(255, 168, 52);
@@ -326,7 +343,6 @@ footer a:hover, footer a:focus {
 .modal-footer {
     background-color: rgb(35, 35, 35);
     text-align: right;
-    font-size: 2rem;
     color: white;
     height: 70px;
     border-top: 5px solid rgb(255, 168, 52);
@@ -337,7 +353,7 @@ footer a:hover, footer a:focus {
 .modal-footer a {
     background-color: rgb(255, 168, 52);
     color: white;
-    font-size: 2rem;
+    font-size: 1rem;
     padding: 10px 20px 10px 20px;
     margin: 20px 0px 20px 0;
     text-align: right;
@@ -357,12 +373,12 @@ footer a:hover, footer a:focus {
     color: rgb(255, 168, 52);
 }
 
-footer .modal-content {
+#modal-credit .modal-content, #modal-CGU .modal-content {
     -webkit-border-radius: inherit;
     -moz-border-radius: inherit;
     border-radius: inherit;
     top: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
 }
 
 .modal-body {
@@ -386,13 +402,13 @@ footer .modal-content {
 }
 
 .card a {
-    background-color: inherit;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    font-size: 1.75rem;
-    margin: 0px;
-    font-weight: 500;
-    color: inherit;
+  background-color: inherit;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 1.25rem;
+  margin: 0px;
+  font-weight: 500;
+  color: inherit;
 }
 
 .card a:hover {
@@ -405,8 +421,8 @@ footer .modal-content {
 }
 
 .card i {
-    margin-right: 10px;
-    font-size: 2rem;
+  margin-right: 10px;
+  font-size: 1.5rem;
 }
 
 .card h3 {
@@ -554,7 +570,7 @@ footer .modal-content {
 .followMore a {
     background-color: rgb(255, 168, 52)!important;
     color: white;
-    font-size: 2rem;
+    font-size: 1.5rem;
     padding: 10px 20px 10px 20px;
     display: block;
     width: 200px;
@@ -667,24 +683,24 @@ footer .modal-content {
 }
 
 #edit-btn {
-    position: absolute;
-    top: 0px;
-    right: 30px;
-    color: white;
-    font-size: 2rem;
+  position: absolute;
+  top:0px;
+  right: 30px;
+  color: white;
+  font-size: 1.25rem;
 }
 
 #edit-btn i {
-    font-size: 2.5rem;
-    margin-right: 5px;
+  font-size: 1.5rem;
+  margin-right: 5px;
 }
 
 #stat-section {
-    background-color: #232323;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    color: white;
-    font-size: 1.75rem;
+  background-color: #232323;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: white;
+  font-size: 1.25rem;
 }
 
 #stat-section th, #stat-section td {
@@ -745,10 +761,10 @@ footer .modal-content {
 }
 
 #tag-section {
-    background-color: #EBEBEB;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    font-size: 1.75rem;
+  background-color: #EBEBEB;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 1rem;
 }
 
 .tag-container {
@@ -771,15 +787,15 @@ footer .modal-content {
 }
 
 #tag-section i {
-    color: #606060;
-    font-size: 2.5rem;
-    margin-right: 5px;
+  color: #606060;
+  font-size: 1.5rem;
+  margin-right: 5px;
 }
 
 #voir-plus {
-    font-size: 2.25rem;
-    font-weight: 500;
-    margin-top: 20px;
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-top: 20px;
 }
 
 @media screen and (max-width: 430px) {
@@ -791,12 +807,9 @@ footer .modal-content {
         display: none;
     }
 }
-
-
-/* --- Inscription Page --- */
-
-#inscription-page, #connexion-page {
-    background-color: #F7F6F6;
+/* --- Inscription & Connexion Page --- */
+#inscription-page, #connexion-page, #inscription-page2, #resultats-page {
+  background-color: #F7F6F6;
 }
 
 .no-pad {
@@ -804,14 +817,15 @@ footer .modal-content {
 }
 
 .container-h1 {
-    background-color: rgb(255, 168, 52);
-    padding: 40px 0px;
-    color: white;
-    text-align: center;
+  background-color: rgb(255,168,52);
+  padding: 40px 0px;
+  margin-bottom: 40px;
+  color: white;
+  text-align: center;
 }
 
 #inscription-page form, #connexion-page form {
-    padding: 40px 10px 10px 10px;
+  padding: 0px 10px 10px 10px;
 }
 
 #inscription-page .form-control, #connexion-page .form-control {
@@ -836,18 +850,19 @@ footer .modal-content {
 }
 
 .help-block {
-    font-size: 1rem;
+ font-size: 0.75rem;
 }
 
 .btn-orange {
-    background-color: rgb(255, 168, 52);
-    border: 2px solid rgb(255, 168, 52);
-    padding: 10px 20px 10px 20px;
-    color: white;
-    font-size: 2rem;
-    display: block;
-    width: 200px;
-    text-transform: uppercase;
+  background-color: rgb(255,168,52);
+  border: 2px solid rgb(255,168,52);
+  padding: 10px 20px 10px 20px;
+  color: white;
+  font-size: 1.25rem;
+  display: block;
+  width: 200px;
+  text-transform: uppercase;
+  border-radius: inherit;
 }
 
 .btn-orange:hover, .btn-orange:focus {
@@ -869,17 +884,17 @@ hr {
 }
 
 .form-social button {
-    text-align: center;
-    display: inline-block;
-    border-radius: 2px;
-    color: white;
-    border: 0;
-    box-shadow: 2px 2px 4px 0 #aaaaaa;
-    padding: 10px 20px 10px 20px;
-    cursor: pointer;
-    width: 200px;
-    font-size: 2rem;
-    margin-bottom: 15px;
+  text-align: center;
+  display: inline-block;
+  border-radius: 2px;
+  color: white;
+  border: 0;
+  box-shadow: 2px 2px 4px 0 #aaaaaa;
+  padding: 10px 20px 10px 20px;
+  cursor: pointer;
+  width: 200px;
+  font-size: 1.25rem;
+  margin-bottom: 15px;
 }
 
 .form-social button:hover {
@@ -908,4 +923,54 @@ hr {
 
 .twitter-button:hover, .twitter-button:focus {
     background-color: #39F;
+}
+#inscription-page2 i {
+  font-size: 1.75rem;
+  color: #606060;
+  margin-right: 5px;
+}
+#inscription-page2 .serie-card {
+  padding-bottom: 0px;
+}
+#inscription-page2 .glyphicon-star {
+  top: 9px;
+  color: #606060;
+  font-size: 1.5rem;
+  right: 5px;
+  cursor: pointer;
+}
+#inscription-page2 h4 {
+  font-size: 1rem;
+}
+.text-form {
+  font-size: 1.125rem;
+}
+
+/* --- Results Page --- */
+.btn-filter {
+  color: white;
+  font-size: 1.25rem;
+  background-color: #606060;
+  border-radius: inherit;
+}
+.btn-filter i {
+  margin-right: 5px;
+}
+
+.search input {
+    position: relative;
+}
+.search {
+  margin-bottom: 30px;
+}
+.resultats {
+  font-size: 1.25rem;
+  font-weight: 500;
+  padding-bottom: 10px;
+  border-bottom: 3px solid rgb(255,168,52);
+}
+#resultats-options {
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-bottom: 20px;
 }

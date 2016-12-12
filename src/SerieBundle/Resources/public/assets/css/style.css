@@ -260,6 +260,7 @@ a:focus {
     padding-top: 25px;
     margin-bottom: 20px;
     text-align: center;
+    display: inline;
 }
 
 .saison li {

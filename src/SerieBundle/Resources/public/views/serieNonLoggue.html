@@ -1,14 +1,14 @@
 <div class="container serieNL">
     <div class="row">
-        <div class="banniere">
-        <div class="menuNL">
-            <h1>The flash</h1>
+        <div class="col-lg-12 banniere">
+        <div class="col-lg-12 menuNL">
+            <h1>{{ vm.sheetSerie.name }}</h1>
             <ul>
-                <li>Saison 3</li>
-                <li>Episodes 86</li>
-                <li>Durée 60min</li>
-                <li>Statut En cours</li>
-                <li>Followers 54 872</li>
+                <li>Saison {{vm.sheetSerie.number_of_seasons}}</li>
+                <li>Episodes {{vm.sheetSerie.number_of_episodes}}</li>
+                <li>Durée {{vm.sheetSerie.episode_run_time[0]}} min</li>
+                <li>Statut {{vm.sheetSerie.status}}</li>
+                <li>Followers {{vm.sheetSerie.popularity}}</li>
             </ul>
         </div>
       </div>
@@ -23,13 +23,11 @@
 <div id="resume">
     <h1>Résumé</h1>
     <p>
-        Jeune expert de la police scientifique de Central City, Barry Allen se retrouve doté d'une vitesse extraordinaire après avoir été frappé par la foudre. Sous le costume de Flash, il utilise ses nouveaux pouvoirs pour combattre le crime.
+        {{vm.sheetSerie.overview}}
     </p>
 </div>
 <div class="saison">
-  <ul>
-    <li><a href="#" prevent>Saison 1</a></li>
-    <li><a href="#" prevent>Saison 2</a></li>
-    <li><a href="#" prevent>Saison 3</a></li>
+  <ul ng-repeat="season in vm.sheetSerie.seasons">
+    <li><a href="{{season.id}}" prevent>Saison {{season.season_number}}</a></li>
   </ul>
 </div>

@@ -5,21 +5,10 @@ function hpController(tmdbService) {
     this.load = () => {
         this.tmdbService.popular().then((response) => {
             this.results = response.data.results;
-            this.slickCurrentIndex = 0;
             this.slickConfig = {
-              // dots: true,
-              // initialSlide: 0,
+              initialSlide: 0,
               slidesToShow: 3,
-              // infinite: true,
-              // centerMode: true,
-              // variableWidth: true,
-              // method: {},
-              event: {
-                afterChange: function(event, slick, currentSlide, nextSlide) {
-                  this.slickCurrentIndex = currentSlide;
-                  console.log(this.slickCurrentIndex);
-                }
-              }
+              variableWidth: true
             };
         });
     };

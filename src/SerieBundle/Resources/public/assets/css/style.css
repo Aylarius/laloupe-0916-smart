@@ -119,18 +119,22 @@ a:focus {
 }
 
 #search input {
-    height: 50px;
+    height: 45px;
     margin-top: 25px;
     padding-left: 10px;
-    width: 90%;
     font-size: 1.25rem;
+    position: absolute;
+    left: 0;
+    border-radius: inherit;
 }
 
 #search input:focus {
     outline: inherit;
+    box-shadow: inherit;
+    border: 1px solid #ccc;
 }
 
-#search .glyphicon-search {
+/*#search .glyphicon-search {
     font-size: 2rem;
     color: white;
     background-color: rgb(255, 168, 52);
@@ -139,8 +143,19 @@ a:focus {
     height: 50px;
     line-height: 45px;
     margin-left: -5px;
-}
+}*/
 
+.btn-search {
+  background-color: rgb(255,168,52);
+border: 2px solid rgb(255,168,52);
+color: white;
+font-size: 1.25rem;
+border-radius: inherit;
+position: absolute;
+right: 0;
+height: 45px;
+top: 25px;
+}
 
 /**********Modal***********/
 
@@ -865,6 +880,7 @@ footer a:hover, footer a:focus {
   text-transform: uppercase;
   border-radius: inherit;
 }
+
 .btn-orange:hover, .btn-orange:focus {
   background-color: white;
   color: rgb(255,168,52);

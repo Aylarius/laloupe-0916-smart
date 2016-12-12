@@ -23,6 +23,9 @@ const routes = ($routeProvider, $httpProvider) => {
         .when('/inscription', {
             templateUrl: 'bundles/serie/views/inscription.html'
         })
+        .when('/inscriptionbis', {
+            templateUrl: 'bundles/serie/views/inscriptionbis.html'
+        })
         .when('/connexion', {
             templateUrl: 'bundles/serie/views/connexion.html'
         })

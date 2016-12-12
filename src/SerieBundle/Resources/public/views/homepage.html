@@ -1,4 +1,4 @@
-<div class="container-fluid" ng-controller="hpController as vm">
+<div class="container-fluid">
 
     <!-- Bandeau en-tête -->
     <div class="row hpnl-band">
@@ -54,18 +54,17 @@
 
     <!-- Séries les plus populaires -->
     <div class="row hp-band-pop">
-      <h2 class="hp-title-band">SERIES LES PLUS POPULAIRES</h2>
+        <h2 class="hp-title-band">SERIES LES PLUS POPULAIRES</h2>
         <section class="center slider">
-            <div ng-controller="hpController as vm">
+            <div>
                 <slick class="slider" settings="vm.slickConfig">
                     <div class="repeat" ng-repeat="result in vm.results">
-                        <img ng-src="https://image.tmdb.org/t/p/w500{{result.backdrop_path}}" alt=""/>
-                        <div class="card">
+                        <div class="card" ng-click='vm.toggleMore($index)' ng-mouseleave="show = false" ng-mouseenter="show = true">
+                            <img ng-src="https://image.tmdb.org/t/p/w500{{result.backdrop_path}}" alt=""/>
                             <img href="#1" class="img-fluid" ng-src="{{ tvShow.img }}">
                             <div class="card-block" ng-show="show">
                                 <h4 class="card-title">{{ tvShow.id }}</h4>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary" prevent>Boink!</a>
+                                <p class="card-text">{{ result.name }}</p>
                             </div>
                         </div>
                     </div>
@@ -105,20 +104,21 @@
         </div> -->
 
     </div>
-    <div id="more" class="row" ng-show='vm.isToggled1'>
-        <div class="col-xs-12 col-sm-6 col-md-8 followMore">
+    <div id="more" class="row" ng-repeat="result in vm.results">
+
+
+        <div class="col-xs-12 col-sm-6 col-md-8 followMore" ng-show='vm.isToggled1'>
             <a id="btn-follow" ng-click='vm.toggleFollow()' prevent>
                 <span id="star-empty" class="glyphicon glyphicon-star-empty"></span>
                 <span id="star" class="glyphicon glyphicon-star"></span>
                 Suivre la série</a>
+
+
             <div class="contenu">
-                <h2>Teen Wolf</h2>
-                <h3>6 saisons - 81 épisodes</h3>
+                <h2>{{ result.name }}</h2>
+                <h3>{{ sheetSerie.number_of_seasons }} saisons - 81 épisodes</h3>
                 <h3>54098 followers</h3>
-                <p>
-                    Scott McCall est un adolescent tout ce qu'il y a de plus ordinaire. Il n'est pas le plus populaire de son lycée, il n'en est pas la risée non plus... Un soir, son meilleur ami Stiles le convainc de suivre en cachette les recherches de la police pour
-                    retrouver un corps dans les bois alentours. Au cours de cette expédition, il se retrouve nez à nez avec une bête étrange et particulièrement féroce...
-                </p>
+                <p>{{ result.overview }}</p>
                 <a id="btn-see" class="center-block" href="#" prevent>Voir la série</a>
             </div>
         </div>

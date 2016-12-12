@@ -7,19 +7,14 @@ function hpController(tmdbService) {
             this.results = response.data.results;
             this.slickCurrentIndex = 0;
             this.slickConfig = {
-              // dots: true,
-              // initialSlide: 0,
-              slidesToShow: 3,
-              // infinite: true,
-              // centerMode: true,
-              // variableWidth: true,
-              // method: {},
-              event: {
-                afterChange: function(event, slick, currentSlide, nextSlide) {
-                  this.slickCurrentIndex = currentSlide;
-                  console.log(this.slickCurrentIndex);
-                }
-              }
+                // dots: true,
+                // initialSlide: 0,
+                slidesToShow: 3,
+                //infinite: true,
+                //centerMode: true,
+                // variableWidth: true,
+                // method: {},
+                autoplay : true
             };
         });
     };
@@ -28,13 +23,11 @@ function hpController(tmdbService) {
 
     this.show = false;
 
-    this.isToggled1 = false;
-    this.toggleMore = () => {
-        this.isToggled1 = !this.isToggled1;
+    this.toggleMore = (index) => {
+      console.log(
+        index
+      );
     };
-    if (this.isToggled1 === true) {
-        $('.card-block').show = true;
-    }
 
     this.isToggled = false;
     $('#star').hide();

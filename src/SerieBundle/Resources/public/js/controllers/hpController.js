@@ -26,6 +26,7 @@ function hpController(tmdbService) {
       });
     };
 
+
     this.show = false;
 
     this.isToggled1 = false;

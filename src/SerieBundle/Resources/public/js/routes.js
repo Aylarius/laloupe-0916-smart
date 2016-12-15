@@ -26,14 +26,16 @@ const routes = ($routeProvider, $httpProvider) => {
         .when('/inscriptionbis', {
             templateUrl: 'bundles/serie/views/inscriptionbis.html'
         })
-        .when('/resultats', {
-            templateUrl: 'bundles/serie/views/resultats.html'
+        .when('/resultats/:query', {
+            templateUrl: 'bundles/serie/views/resultats.html',
+            controller: 'searchController',
+            controllerAs: 'vm'
         })
         .when('/connexion', {
             templateUrl: 'bundles/serie/views/connexion.html'
         })
         .otherwise({
             redirectTo: ''
-        })
+        });
 
-}
+};

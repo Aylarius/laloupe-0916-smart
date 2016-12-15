@@ -21,52 +21,10 @@
     <div class="col-xs-12">
       <div class="row">
 
-        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3" id="serie-container">
+        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3" id="serie-container" ng-repeat="result in vm.search.results">
           <div id="serie-card">
-            <img src="bundles/serie/assets/img/téléchargement.jpeg" alt="Flash" class="img-responsive center-block">
-            <h4>The Flash</h4>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3" id="serie-container">
-          <div id="serie-card">
-            <img src="bundles/serie/assets/img/arrow.jpg" alt="Arrow" class="img-responsive center-block">
-            <h4>Arrow</h4>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3" id="serie-container">
-          <div id="serie-card">
-            <img src="bundles/serie/assets/img/dexter.jpg" alt="Dexter" class="img-responsive center-block">
-            <h4>Dexter</h4>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3" id="serie-container">
-          <div id="serie-card">
-            <img src="bundles/serie/assets/img/bigbang.jpg" alt="The Big Bang Theory" class="img-responsive center-block">
-            <h4>The Big Bang Theory</h4>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3" id="serie-container">
-          <div id="serie-card">
-            <img src="bundles/serie/assets/img/Breaking-Bad.jpg" alt="Breaking Bad" class="img-responsive center-block">
-            <h4>Breaking Bad</h4>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3" id="serie-container">
-          <div id="serie-card">
-            <img src="bundles/serie/assets/img/got.jpg" alt="Game of Thrones" class="img-responsive center-block">
-            <h4>Game of Thrones</h4>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3" id="serie-container">
-          <div id="serie-card">
-            <img src="bundles/serie/assets/img/hannibal.jpg" alt="Hannibal" class="img-responsive center-block">
-            <h4>Hannibal</h4>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3" id="serie-container">
-          <div id="serie-card">
-            <img src="bundles/serie/assets/img/walking-dead-ddotomen.jpeg" alt="The Walking Dead" class="img-responsive center-block">
-            <h4>The Walking Dead</h4>
+            <img ng-src="{{!result.backdrop_path ? 'bundles/serie/assets/img/flash2.jpg' : 'https://image.tmdb.org/t/p/w300'+result.backdrop_path}}" alt="Flash" class="img-responsive center-block">
+            <h4>{{result.original_name}}</h4>
           </div>
         </div>
       </div>

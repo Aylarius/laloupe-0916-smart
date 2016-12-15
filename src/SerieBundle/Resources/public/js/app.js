@@ -2,6 +2,7 @@ angular.module('app', ['ngRoute','slickCarousel'])
     .service('tmdbService', tmdbService)
     .controller('navbarController', navbarController)
     .controller('serieController', serieController)
+    .controller('searchController', searchController)
     .controller('hpController', hpController)
     .directive('a', function() {
         return {

@@ -1,4 +1,10 @@
-function navbarController() {
+function navbarController(tmdbService, $location) {
+
+    this.tmdbService = tmdbService;
+    this.$location = $location;
+
+    this.searchView = (query) => $location.path("/resultats/"+query);
+
     //modal connexion
     $('#myModal').on('shown.bs.modal', function() {
         $('#myInput').focus();

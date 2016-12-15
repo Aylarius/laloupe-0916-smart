@@ -1,6 +1,8 @@
-function serieController(tmdbService) {
+function serieController(tmdbService, $routeParams, $location) {
 
     this.tmdbService = tmdbService;
+    this.$routeParams = $routeParams;
+    this.$location = $location;
 
     this.load = () => {
       this.tmdbService.sheetSerie().then((response) => {

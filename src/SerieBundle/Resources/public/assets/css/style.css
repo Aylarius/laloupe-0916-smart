@@ -189,12 +189,16 @@ a:focus {
     padding: 0;
 }
 
-.banniere {
-    background: url("../img/flash.jpg") center center;
-    height: 500px;
+.sheetSerie_ban {
+    padding: 0;
+}
+
+.sheetSerie_img {
+    /*background: url("../img/flash.jpg") center center;
+    height: 500px;*/
     width: 100%;
-    position: relative;
-    background-size: cover;
+    /*position: relative;
+    background-size: cover;*/
 }
 
 .menuNL {
@@ -205,12 +209,7 @@ a:focus {
     color: white;
 }
 
-.menuNL h1 {
-    margin-top: 40px;
-    font-size: 3rem;
-    padding-left: 50px;
-    text-align: left;
-}
+
 
 .menuNL ul {
     margin-top: 20px;

@@ -3,13 +3,15 @@
     <div class="col-xs-12">
       <div class="row">
         <div class="search col-xs-12 no-pad">
-          <input type="text" class="form-control" placeholder="Rechercher" />
-          <button type="submit" class="btn btn-search"><span class="glyphicon glyphicon-search"></span></button>
+          <form ng-submit="vm.getSearch(query)">
+            <input type="text" class="form-control" placeholder="Rechercher" ng-model="query"/>
+            <button type="submit" class="btn btn-search"><span class="glyphicon glyphicon-search"></span></button>
+          </form>
         </div>
       </div>
       <div class="row">
         <div class="col-xs-10 no-pad">
-          <p class="resultats">86 résultats correspondent à votre recherche "the"</p>
+          <p class="resultats">{{vm.search.total_results}} résultats correspondent à votre recherche "{{vm.$routeParams.query}}"</p>
         </div>
         <div class="col-xs-2 no-pad text-right">
           <button class="btn btn-filter"><i class="fa fa-filter" aria-hidden="true"></i>Filtrer</button>
@@ -23,7 +25,7 @@
 
         <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3" id="serie-container" ng-repeat="result in vm.search.results">
           <div id="serie-card">
-            <img ng-src="{{!result.backdrop_path ? 'bundles/serie/assets/img/flash2.jpg' : 'https://image.tmdb.org/t/p/w300'+result.backdrop_path}}" alt="Flash" class="img-responsive center-block">
+            <img ng-src="{{!result.backdrop_path ? 'bundles/serie/assets/img/img-default.png' : 'https://image.tmdb.org/t/p/w300'+result.backdrop_path}}" alt="Flash" class="img-responsive center-block">
             <h4>{{result.original_name}}</h4>
           </div>
         </div>

@@ -19,7 +19,7 @@ function tmdbService($http) {
       return this.$http.get("https://api.themoviedb.org/3/tv/60735/season/1?api_key=fc533e12b849e49e74ab5d046165bcc7&language=fr-FR");
     };
 
-    this.search = (query) => {
-      return this.$http.get("https://api.themoviedb.org/3/search/tv?api_key=fc533e12b849e49e74ab5d046165bcc7&language=fr-FR&query="+ query +"&page=1");
+    this.search = (query, page) => {
+      return this.$http.get("https://api.themoviedb.org/3/search/tv?api_key=fc533e12b849e49e74ab5d046165bcc7&language=fr-FR&query="+ query +"&page="+ page);
     };
 }

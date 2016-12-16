@@ -213,15 +213,16 @@ ________________________________________________________________________________
     padding: 0;
 }
 
+.sheetSerie_ban {
+    padding: 0;
+}
 
-/*header*/
-
-#banniere {
-    background: url("../img/flash.jpg") center center;
-    height: 500px;
+.sheetSerie_img {
+    /*background: url("../img/flash.jpg") center center;
+    height: 500px;*/
     width: 100%;
-    position: relative;
-    background-size: cover;
+    /*position: relative;
+    background-size: cover;*/
 }
 
 #stat-serie {
@@ -233,12 +234,7 @@ ________________________________________________________________________________
     color: white;
 }
 
-#banniere h1 {
-    margin-top: 40px;
-    font-size: 2rem;
-    padding-left: 50px;
-    text-align: left;
-}
+
 
 #banniere th, #banniere td {
     padding-right: 10px;

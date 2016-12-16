@@ -1,4 +1,13 @@
-function navbarController() {
+function navbarController(tmdbService, $location) {
+
+    this.tmdbService = tmdbService;
+    this.$location = $location;
+
+    this.searchView = (query) => {
+      $location.path("/resultats/"+query);
+      this.isToggled = false;
+    };
+
     //modal connexion
     $('#myModal').on('shown.bs.modal', function() {
         $('#myInput').focus();
@@ -19,5 +28,5 @@ function navbarController() {
         } else {
             $('#searchHide').show();
         }
-    }
+    };
 }

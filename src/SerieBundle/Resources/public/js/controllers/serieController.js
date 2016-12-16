@@ -1,6 +1,8 @@
-function serieController(tmdbService) {
+function serieController(tmdbService, $routeParams, $location) {
 
     this.tmdbService = tmdbService;
+    this.$routeParams = $routeParams;
+    this.$location = $location;
 
     this.load = () => {
       this.tmdbService.sheetSerie().then((response) => {
@@ -9,6 +11,23 @@ function serieController(tmdbService) {
     };
 
     this.load();
+
+    this.getPeople = () => {
+      this.tmdbService.people().then((response) => {
+        this.people = response.data;
+      });
+    };
+
+    this.getPeople();
+
+    this.getSeasons = () => {
+      this.tmdbService.seasons().then((response) => {
+        this.seasons = response.data;
+      });
+    };
+
+    this.getSeasons();
+
 
     this.isToggled = false;
     $('#star').hide();

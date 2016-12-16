@@ -34,6 +34,7 @@ function hpController(tmdbService) {
         });
     };
 
+
     this.show = false;
 
     this.togglePane = false;

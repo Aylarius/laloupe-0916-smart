@@ -37,227 +37,101 @@
         <div class="col-md-6 hpnl-band-right">
             <div class="row">
                 <div class="col-xs-10 col-xs-offset-1">
-                    <h1 class="hpnl-title text-center">WhatiWatch</h1>
+                    <h1 class="hpnl-title text-center">What I Watch</h1>
                     <p class="hpnl-text text-center">
                         Suivez toutes vos séries et ne manquez plus un seul épisode !
                     </p>
-                      <button class="btn btn-orange center-block">S'inscrire</button>
+                    <button class="btn btn-orange center-block">S'inscrire</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Séries les plus populaires -->
-    <div class="row hp-band-pop">
+    <!-- Slider séries les plus populaires -->
+    <div id="hp-band-pop" class="row">
         <h2 class="hp-title-band">SERIES LES PLUS POPULAIRES</h2>
         <section class="center slider">
             <div>
                 <slick class="slider" settings="vm.slickConfig">
                     <div class="repeat" ng-repeat="result in vm.results">
-                        <div class="card" ng-click='vm.toggleMore(result.id)' ng-mouseleave="show = false" ng-mouseenter="show = true">
+                        <div class="card" ng-click="vm.togglePane = result.i">
                             <img ng-src="https://image.tmdb.org/t/p/w500{{result.backdrop_path}}" alt=""/>
                             <img href="#1" class="img-fluid" ng-src="{{ tvShow.img }}">
-                            <div class="card-block" ng-show="show">
-                                <h4 class="card-title">{{ tvShow.id }}</h4>
-                                <p class="card-text">{{ result.name }}</p>
-                            </div>
                         </div>
                     </div>
                 </slick>
             </div>
         </section>
-        <!-- <div class="col-lg-12">
-            <h2 class="hp-title-band">SERIES LES PLUS POPULAIRES</h2>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="carousel multi-item-carousel1 slide" id="eventCarousel" data-interval="0">
-                        <div class="carousel-inner onebyone-carosel">
-                            <div class="item" ng-class="{active:$index == 0}" ng-repeat="tvShow in vm.tvShows">
-                                <div class="col-xs-4" ng-click='vm.toggleMore()' ng-mouseleave="show = false" ng-mouseenter="show = true">
-                                    <div class="card">
-                                        <img href="#1" class="img-fluid" ng-src="{{ tvShow.img }}">
-                                        <div class="card-block" ng-show="show">
-                                            <h4 class="card-title">{{ tvShow.id }}</h4>
-                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                            <a href="#" class="btn btn-primary" prevent>Boink!</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <a class="left carousel-control" href="#eventCarousel" data-slide="prev" prevent>
-                            <i class="glyphicon glyphicon-chevron-left"></i>
-                        </a>
-                        <a class="right carousel-control" href="#eventCarousel" data-slide="next" prevent>
-                            <i class="glyphicon glyphicon-chevron-right"></i>
-                        </a>
-                    </div>
-                </div>
-
-            </div>
-        </div> -->
-
     </div>
 
-    <div id="more" class="row" ng-show='vm.isToggled1'>
+    <!-- visualisation de la fiche série "Séries les plus populaires" -->
+    <div id="more" class="row" ng-repeat="result in vm.results" ng-show="vm.togglePane == result.i">
 
-
-        <div class="col-xs-12 col-sm-6 col-md-8 followMore">
-            <a id="btn-follow" ng-click='vm.toggleFollow()' prevent>
+        <div class="col-xs-12 col-sm-6 col-md-2">
+            <img ng-src="https://image.tmdb.org/t/p/w342{{result.poster_path}}" alt="{{ result.name }}"/>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-10 followMore">
+            <a id="btn-follow" ng-click='vm.toggleFollow(result.id)' prevent>
                 <span id="star-empty" class="glyphicon glyphicon-star-empty"></span>
                 <span id="star" class="glyphicon glyphicon-star"></span>
                 Suivre la série</a>
 
-
             <div class="contenu">
-                <h2>{{ vm.resultSerie.name }}</h2>
-                <h3>{{ vm.resultSerie.number_of_seasons }} saisons - {{vm.resultSerie.number_of_episodes }} épisodes</h3>
+                <h2>{{ result.name }}</h2>
+                <h3>{{ result.number_of_seasons }}
+                    saisons -
+                    {{result.number_of_episodes }}
+                    épisodes</h3>
                 <h3>54098 followers</h3>
-                <p>{{ vm.resultSerie.overview }}</p>
-                <a id="btn-see" class="center-block" href="#" prevent>Voir la série</a>
+                <p>{{ result.overview | limitTo: 600 }}{{result.overview.length > 600 ? '...' : ''}}</p>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                    <a id="btn-see" href="#" prevent>Voir la série</a>
+                </div>
+                <div class="col-xs-6">
+                    <div id="info">
+                        <p>
+                            <strong>Catégorie :</strong>
+                        </p>
+                        <ul ng-repeat="genre in result.genres">
+                            <li>{{ genre.name }}</li>
+                        </ul>
+                        <p>
+                            <strong>Réseau :</strong>
+                            {{ result.networks[0].name}}
+                        </p>
+                    </div>
+                </div>
+
             </div>
         </div>
-        <div class="col-xs-12 col-sm-6 col-md-4">
-            <img ng-src="https://image.tmdb.org/t/p/w500{{vm.resultSerie.backdrop_path}}" alt=""/>
-            <div id="info">
-                <p>
-                    <strong>Catégories :</strong>
-                    {{ vm.resultSerie.genres.name }}</p>
-                <p>
-                    <strong>Réseau :</strong>
-                    ABC</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- visualisation de la fiche série "Séries les plus populaires" -->
-
-    <div class="row">
-        <div class="col-lg-12"></div>
 
     </div>
 
     <!-- Derniers épisodes -->
-
-    <div class="row hp-band-last">
-        <div class="col-lg-12">
-            <h2 class="hp-title-band">DERNIERS EPISODES</h2>
-
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="carousel slide multi-item-carousel2" id="theCarousel2">
-                        <div class="carousel-inner">
-                            <div class="item active">
-                                <div class="col-xs-4">
-                                    <a href="#1"><img src="bundles/serie/assets/img/2176.png" class="img-responsive" prevent></a>
-                                    <p class="text-center hp-band-last-text">
-                                        Nom de série
-                                        <br>
-                                        Episode X - Saison X
-                                    </p>
-                                    <p class="text-center hp-band-last-text-date">
-                                        Date de sortie
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="col-xs-4">
-                                    <a href="#1"><img src="bundles/serie/assets/img/68455929-dexter-wallpapers (1).jpg" class="img-responsive" prevent></a>
-                                    <p class="text-center hp-band-last-text">
-                                        Nom de série
-                                        <br>
-                                        Episode X - Saison X
-                                    </p>
-                                    <p class="text-center hp-band-last-text-date">
-                                        Date de sortie
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="col-xs-4">
-                                    <a href="#1"><img src="bundles/serie/assets/img/Breaking-Bad.jpg" class="img-responsive" prevent></a>
-                                    <p class="text-center hp-band-last-text">
-                                        Nom de série
-                                        <br>
-                                        Episode X - Saison X
-                                    </p>
-                                    <p class="text-center hp-band-last-text-date">
-                                        Date de sortie
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="col-xs-4">
-                                    <a href="#1"><img src="bundles/serie/assets/img/hannibal.jpg" class="img-responsive" prevent></a>
-                                    <p class="text-center hp-band-last-text">
-                                        Nom de série
-                                        <br>
-                                        Episode X - Saison X
-                                    </p>
-                                    <p class="text-center hp-band-last-text-date">
-                                        Date de sortie
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="col-xs-4">
-                                    <a href="#1"><img src="bundles/serie/assets/img/maxresdefault-1.jpg" class="img-responsive" prevent></a>
-                                    <p class="text-center hp-band-last-text">
-                                        Nom de série
-                                        <br>
-                                        Episode X - Saison X
-                                    </p>
-                                    <p class="text-center hp-band-last-text-date">
-                                        Date de sortie
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="col-xs-4">
-                                    <a href="#1"><img src="bundles/serie/assets/img/walking-dead-ddotomen.jpeg" class="img-responsive" prevent></a>
-                                    <p class="text-center hp-band-last-text">
-                                        Nom de série
-                                        <br>
-                                        Episode X - Saison X
-                                    </p>
-                                    <p class="text-center hp-band-last-text-date">
-                                        Date de sortie
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="col-xs-4">
-                                    <a href="#1"><img src="bundles/serie/assets/img/the-big-bang-theory.jpg" class="img-responsive" prevent></a>
-                                    <p class="text-center hp-band-last-text">
-                                        Nom de série
-                                        <br>
-                                        Episode X - Saison X
-                                    </p>
-                                    <p class="text-center hp-band-last-text-date">
-                                        Date de sortie
-                                    </p>
-                                </div>
-                            </div>
-
+    <div id="hp-band-last" class="row" ng-controller="carouselController as vm">
+        <h2 class="hp-title-band">DERNIERS EPISODES</h2>
+        <section class="center slider">
+            <div>
+                <slick class="slider" settings="vm.slickConfig">
+                    <div class="repeat" ng-repeat="result in vm.results">
+                        <div class="card">
+                            <img ng-src="{{!result.backdrop_path ? 'bundles/serie/assets/img/img-default2.png' : 'https://image.tmdb.org/t/p/w500'+result.backdrop_path}}" alt="{{ result.name }}"/>
+                            <img href="#1" class="img-fluid" ng-src="{{ tvShow.img }}">
                         </div>
-                        <a class="left carousel-control" href="#theCarousel2" data-slide="prev" prevent>
-                            <i class="glyphicon glyphicon-chevron-left"></i>
-                        </a>
-                        <a class="right carousel-control" href="#theCarousel2" data-slide="next" prevent>
-                            <i class="glyphicon glyphicon-chevron-right"></i>
-                        </a>
+                        <div class="bob">
+                          <p id="hp-band-last-text" class="text-center">
+                              {{ result.name }}
+                              <br>
+                              Dernier épisode - Dernière saison
+                          </p>
+                          <p id="hp-band-last-text-date" class="text-center">
+                              Date de sortie : {{ result.first_air_date }}
+                          </p>
+                        </div>
                     </div>
-                </div>
+                </slick>
             </div>
-
-        </div>
+        </section>
     </div>
-
-    <!-- visualisation de la fiche série "Derniers épisodes" -->
-
-    <div class="row">
-        <div class="col-lg-12"></div>
-
-    </div>
-</div>

@@ -3,6 +3,7 @@ angular.module('app', ['ngRoute','slickCarousel'])
     .controller('navbarController', navbarController)
     .controller('serieController', serieController)
     .controller('hpController', hpController)
+    .controller('carouselController', carouselController)
     .directive('a', function() {
         return {
             restrict: 'E',

@@ -51,7 +51,7 @@
 <div class="saison">
     <ul>
         <li ng-repeat="season in vm.sheetSerie.seasons">
-            <a href="" prevent>Saison
+            <a href="" ng-click="vm.getSeasons(vm.sheetSerie.id, season.season_number)" prevent>Saison
                 {{season.season_number}}</a>
         </li>
     </ul>

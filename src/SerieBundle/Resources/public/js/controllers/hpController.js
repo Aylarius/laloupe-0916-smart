@@ -1,6 +1,7 @@
-function hpController(tmdbService) {
+function hpController(tmdbService, $location) {
 
     this.tmdbService = tmdbService;
+    this.$location = $location;
 
     //CAROUSEL POPULAIRE
     this.load = () => {
@@ -39,6 +40,10 @@ function hpController(tmdbService) {
 
     this.togglePane = false;
 
+
+    this.tvShowView = (id) => {
+        $location.path("/serie/" + id);
+    };
 
     //BOUTON SUIVRE
     $('#star').hide();

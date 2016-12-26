@@ -4,24 +4,25 @@ function serieController(tmdbService, $routeParams, $location) {
     this.$routeParams = $routeParams;
     this.$location = $location;
 
-    this.load = () => {
-      this.tmdbService.sheetSerie().then((response) => {
+    this.getSheetSerie = (id) => {
+      this.tmdbService.sheetSerie(id).then((response) => {
         this.sheetSerie = response.data;
+        console.log(response.data);
       });
     };
 
-    this.load();
+    this.getSheetSerie($routeParams.id);
 
-    this.getPeople = () => {
-      this.tmdbService.people().then((response) => {
+    this.getPeople = (id) => {
+      this.tmdbService.people(id).then((response) => {
         this.people = response.data;
       });
     };
 
-    this.getPeople();
+    this.getPeople($routeParams.id);
 
-    this.getSeasons = () => {
-      this.tmdbService.seasons().then((response) => {
+    this.getSeasons = (id, season) => {
+      this.tmdbService.seasons(id, season).then((response) => {
         this.seasons = response.data;
       });
     };

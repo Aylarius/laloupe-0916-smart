@@ -16,4 +16,7 @@ function searchController(tmdbService, $routeParams, $location) {
 
     this.getSearch($routeParams.query);
 
+    this.tvShowView = (id) => {
+        $location.path("/serie/" + id);
+    };
 }

@@ -6,7 +6,7 @@ const routes = ($routeProvider, $httpProvider) => {
             controller: 'hpController',
             controllerAs: 'vm'
         })
-        .when('/serie', {
+        .when('/serie/:id', {
             templateUrl: 'bundles/serie/views/serie.html',
             controller: 'serieController',
             controllerAs: 'vm'

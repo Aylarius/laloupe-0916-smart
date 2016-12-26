@@ -8,13 +8,32 @@ function searchController(tmdbService, $routeParams, $location) {
 
     this.getSearch = (query) => {
         $location.path("/resultats/" + query);
-        this.tmdbService.search(query).then((response) => {
-            this.search = response.data;
-            console.log(response.data);
+        var page = 1;
+        this.search = [];
+        this.tmdbService.search(query, page).then((res) => {
+            this.total_results = res.data.total_results;
+            console.log(this.total_results);
+            this.total_pages = res.data.total_pages;
+            console.log(this.total_pages);
+            if (this.total_pages == 1) {
+                tmdbService.search(query, this.total_pages).then((res) => {
+                    this.search = res.data.results;
+                });
+            } else {
+                for (var page = 1; page <= this.total_pages; page++) {
+                    tmdbService.search(query, page).then((res) => {
+                        this.search = this.search.concat(res.data.results);
+                    });
+                }
+            }
+
         });
+
     };
 
     this.getSearch($routeParams.query);
+
+
 
     this.tvShowView = (id) => {
         $location.path("/serie/" + id);

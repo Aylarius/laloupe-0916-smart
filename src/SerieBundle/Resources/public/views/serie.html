@@ -50,7 +50,7 @@
 </div>
 <div class="saison">
     <ul>
-        <li ng-repeat="season in vm.sheetSerie.seasons">
+        <li ng-repeat="season in vm.sheetSerie.seasons" ng-hide="season.season_number == 0">
             <a href="" ng-click="vm.getSeasons(vm.sheetSerie.id, season.season_number)" prevent>Saison
                 {{season.season_number}}</a>
         </li>
@@ -59,7 +59,7 @@
 <div class="list_episode">
     <ul>
         <li ng-repeat="episode in vm.seasons.episodes">
-            <div class="card_episode">
+            <div class="card_episode" ng-href="">
                 <img ng-src="https://image.tmdb.org/t/p/w300{{episode.still_path}}" alt=""/>
                 <p>Saison
                     {{episode.season_number}}

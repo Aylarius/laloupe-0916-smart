@@ -9,6 +9,11 @@ function serieController(tmdbService, $routeParams, $location) {
         this.sheetSerie = response.data;
         console.log(response.data);
       });
+      this.tmdbService.seasons(id, 1).then((response) => {
+        this.seasons = response.data;
+        console.log(this.seasons);
+
+      });
     };
 
     this.getSheetSerie($routeParams.id);
@@ -26,8 +31,6 @@ function serieController(tmdbService, $routeParams, $location) {
         this.seasons = response.data;
       });
     };
-
-    this.getSeasons();
 
 
     this.isToggled = false;

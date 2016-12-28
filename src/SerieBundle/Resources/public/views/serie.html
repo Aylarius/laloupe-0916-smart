@@ -1,72 +1,73 @@
-<div class="container serieNL">
-    <div class="row">
-        <div class="col-lg-12 sheetSerie_ban">
-            <img class="sheetSerie_img" ng-src="https://image.tmdb.org/t/p/w1280{{vm.sheetSerie.backdrop_path}}" alt=""/>
-            <div class="col-lg-12 menuNL">
-                <h1>{{ vm.sheetSerie.name }}</h1>
-                <ul class="text-center">
-                    <li>Saison<br>
-                        {{vm.sheetSerie.number_of_seasons}}</li>
-                    <li>Episodes<br>
-                        {{vm.sheetSerie.number_of_episodes}}</li>
-                    <li>Durée<br>
-                        {{vm.sheetSerie.episode_run_time[0]}}
-                        min</li>
-                    <li>Statut<br>
-                        {{vm.sheetSerie.in_production}}</li>
-                    <li>Followers<br>
-                        {{vm.sheetSerie.popularity}}</li>
-                </ul>
+<div class="container-fluid serie">
+    <div class="row serieNL">
+        <div class="col-xs-12 sheetSerie_ban">
+            <img class="sheetSerie_img img-responsive center-block" ng-src="https://image.tmdb.org/t/p/w1280{{vm.sheetSerie.backdrop_path}}" alt=""/>
+            <div class="row">
+                <div id="stat-serie" class="col-xs-12 menuNL center-block">
+                    <div class="row">
+                        <div class="col-xs-10 col-xs-offset-1">
+                            <h1>{{ vm.sheetSerie.name }}</h1>
+                        </div>
+                    </div>
+                    <div class="row text-center">
+                        <div class="col-xs-2 col-xs-offset-1">Saison<br>
+                            {{vm.sheetSerie.number_of_seasons}}</div>
+                        <div class="col-xs-2">Episodes<br>
+                            {{vm.sheetSerie.number_of_episodes}}</div>
+                        <div class="col-xs-2">Durée<br>
+                            {{vm.sheetSerie.episode_run_time[0]}}
+                            min</div>
+                        <div class="col-xs-2">Statut<br>
+                            {{vm.sheetSerie.in_production}}</div>
+                        <div class="col-xs-2">Followers<br>
+                            {{vm.sheetSerie.popularity}}</div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<div class="follow">
-    <a href="#" ng-click='vm.toggleFollow()' prevent>
-        <span id="star-empty" class="glyphicon glyphicon-star-empty"></span>
-        <span id="star" class="glyphicon glyphicon-star"></span>
-        Suivre la série</a>
-</div>
-<div id="resume">
-    <h1>Résumé</h1>
-    <p>
-        {{vm.sheetSerie.overview}}
-    </p>
-</div>
-<div class="categorie">
-    <h2>Genre :</h2>
-    <ul>
-        <li ng-repeat="genre in vm.sheetSerie.genres">{{genre.name}}</li>
-    </ul>
-    <h2>Réseau</h2>
-    <p>{{vm.sheetSerie.networks[0].name}}</p>
-</div>
-<div class="acteur">
-    <h2>Acteurs</h2>
-    <ul>
-        <li ng-repeat="actor in vm.people.cast"><img ng-src="https://image.tmdb.org/t/p/w185{{actor.profile_path}}" alt=""/>
-            {{actor.name}}</li>
-    </ul>
-</div>
-<div class="saison">
-    <ul>
-        <li ng-repeat="season in vm.sheetSerie.seasons" ng-hide="season.season_number == 0">
-            <a href="" ng-click="vm.getSeasons(vm.sheetSerie.id, season.season_number)" prevent>Saison
-                {{season.season_number}}</a>
-        </li>
-    </ul>
-</div>
-<div class="list_episode">
-    <ul>
-        <li ng-repeat="episode in vm.seasons.episodes">
-            <div class="card_episode" ng-href="">
-                <img ng-src="https://image.tmdb.org/t/p/w300{{episode.still_path}}" alt=""/>
-                <p>Saison
-                    {{episode.season_number}}
-                    - Episode
-                    {{episode.episode_number}}</p>
-                <p ng-bind="'{{episode.air_date.replace('-','')+'T00:00:00'}}' | date:'dd MMMM yyyy'"></p>
-            </div>
-        </li>
-    </ul>
+    <div class="follow">
+        <a href="#" ng-click='vm.toggleFollow()' prevent>
+            <span id="star-empty" class="glyphicon glyphicon-star-empty"></span>
+            <span id="star" class="glyphicon glyphicon-star"></span>
+            Suivre la série</a>
+    </div>
+    <div class="row">
+        <div class="col-xs-10 col-xs-offset-1" id="resume">
+            <h1>Résumé</h1>
+            <p>
+                {{vm.sheetSerie.overview}}
+            </p>
+        </div>
+    </div>
+    <div class="row categorie">
+        <div class="col-xs-5 col-xs-offset-1">
+            <h2>Genre :</h2>
+            <ul>
+                <li ng-repeat="genre in vm.sheetSerie.genres">{{genre.name}}</li>
+            </ul>
+        </div>
+        <div class="col-xs-6">
+            <h2>Réseau</h2>
+            <p>{{vm.sheetSerie.networks[0].name}}</p>
+        </div>
+    </div>
+    <div class="row acteur">
+        <div class="col-xs-10 col-xs-offset-1">
+            <h2>Acteurs</h2>
+            <ul class="row">
+                <li class="col-xs-2" ng-repeat="actor in vm.people.cast"><img class="img-responsive" id="acteur-img" ng-src="https://image.tmdb.org/t/p/w185{{actor.profile_path}}" alt=""/>
+                    {{actor.name}}</li>
+            </ul>
+        </div>
+    </div>
+    <div class="saison">
+        <ul class="row">
+            <li class="col-xs-1" ng-repeat="season in vm.sheetSerie.seasons" ng-hide="season.season_number == 0">
+                <a href="" ng-click="vm.getSeasons(vm.sheetSerie.id, season.season_number)" prevent>Saison
+                    {{season.season_number}}</a>
+            </li>
+        </ul>
+    </div>
+    <season></season>
 </div>

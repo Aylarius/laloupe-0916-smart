@@ -207,10 +207,15 @@ ________________________________________________________________________________
 
 /*global*/
 
-#serieNL-page {
+.serie li {
+    list-style: none;
+}
+
+.serieNL {
     width: 100%;
     margin: 0;
     padding: 0;
+    background-color: rgb(214, 214, 214);
 }
 
 .sheetSerie_ban {
@@ -218,39 +223,32 @@ ________________________________________________________________________________
 }
 
 .sheetSerie_img {
-    /*background: url("../img/flash.jpg") center center;
-    height: 500px;*/
-    width: 100%;
-    /*position: relative;
-    background-size: cover;*/
+    position: relative;
 }
 
 #stat-serie {
     background-color: rgba(0, 0, 0, 0.5);
     position: absolute;
-    width: 100%;
     bottom: 0px;
-    left: 0px;
     color: white;
+    font-weight: bolder;
+    padding-bottom: 10px;
+    font-size: 1em;
 }
 
 
-
-#banniere th, #banniere td {
+/*#banniere th, #banniere td {
     padding-right: 10px;
     padding-left: 10px;
     padding-bottom: 5px;
     text-align: center;
-}
+}*/
 
-#stat-serie table {
+
+/*#stat-serie table {
     display: inline-table;
     margin-left: 40px;
-}
-
-#stat-serie {
-    text-align: left;
-}
+}*/
 
 .follow {
     background-color: rgb(50, 50, 50);
@@ -261,7 +259,7 @@ ________________________________________________________________________________
 .follow a {
     background-color: rgb(255, 168, 52)!important;
     color: white;
-    font-size: 1.5rem;
+    font-size: 1.5em;
     padding: 10px 20px 10px 20px;
     display: block;
     width: 200px;
@@ -275,13 +273,20 @@ ________________________________________________________________________________
     text-decoration: none;
 }
 
+#acteur-img {
+    border-radius: 50%;
+    border: 5px solid rgb(255, 168, 52);
+    margin: 10px;
+}
+
 
 /*résumé de la série*/
 
 
 /*Onglet saison*/
 
-#tab-saison {
+
+/*#tab-saison {
     background-color: rgb(50, 50, 50);
     height: 60px;
     position: relative;
@@ -298,7 +303,7 @@ ________________________________________________________________________________
 
 #tab-saison a:hover {
     text-decoration: none;
-}
+}*/
 
 
 /*___Footer___________________________________________________________________________________________________

@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="col-xs-10 col-xs-offset-1">
+        <div class="row list_episode">
+            <ul class="col-xs-12">
+                <li class="col-xs-4" ng-repeat="episode in vm.seasons.episodes">
+                    <div class="card_episode" ng-href="">
+                        <img class="img-responsive" ng-src="https://image.tmdb.org/t/p/w300{{episode.still_path}}" alt=""/>
+                        <p>Saison
+                            {{episode.season_number}}
+                            - Episode
+                            {{episode.episode_number}}</p>
+                        <p ng-bind="'{{episode.air_date.replace('-','')+'T00:00:00'}}' | date:'dd MMMM yyyy'"></p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

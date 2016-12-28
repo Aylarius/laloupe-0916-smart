@@ -17,5 +17,6 @@ angular.module('app', ['ngRoute','slickCarousel'])
             }
         };
     })
+    .directive('season', season)
     .config(routes)
 ;

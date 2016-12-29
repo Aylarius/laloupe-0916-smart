@@ -1,5 +1,5 @@
 function season() {
-        if ( 1 + 1 == 3) {
+        if ( 1 + 1 == 2) {
             return {
                 restrict: 'E',
                 templateUrl: 'bundles/serie/views/season/season_log.html'

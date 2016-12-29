@@ -1,10 +1,11 @@
 <div class="row padding0">
     <div class="col-xs-10 col-xs-offset-1 padding0">
+        <a href="#">Marquer toute la saison comme vue</a>
         <div class="row list_episode padding0">
             <ul class="col-xs-12 padding0">
                 <li class="col-xs-4" ng-repeat="episode in vm.seasons.episodes">
                     <div class="card_episode" ng-href="">
-                        <img class="img-responsive episode_img" ng-src="https://image.tmdb.org/t/p/w300{{episode.still_path}}" alt=""/>
+                        <img class="img-responsive episode_img" ng-src="{{!episode.still_path ? 'bundles/serie/assets/img/img-default.png' : 'https://image.tmdb.org/t/p/w300'+episode.still_path}}" alt=""/>
                         <p>Saison
                             {{episode.season_number}}
                             - Episode

@@ -68,7 +68,7 @@
     <div id="more" class="row" ng-repeat="result in vm.results" ng-show="vm.togglePane == result.i">
 
         <div class="col-xs-12 col-sm-6 col-md-2">
-            <img ng-src="https://image.tmdb.org/t/p/w342{{result.poster_path}}" alt="{{ result.name }}"/>
+            <img ng-src="https://image.tmdb.org/t/p/w342{{ result.poster_path }}" alt="{{ result.name }}"/>
         </div>
         <div class="col-xs-12 col-sm-6 col-md-10 followMore">
             <a id="btn-follow" ng-click='vm.toggleFollow(result.id)' prevent>
@@ -80,10 +80,10 @@
                 <h2>{{ result.name }}</h2>
                 <h3>{{ result.number_of_seasons }}
                     saisons -
-                    {{result.number_of_episodes }}
+                    {{ result.number_of_episodes }}
                     épisodes</h3>
                 <h3>54098 followers</h3>
-                <p>{{ result.overview | limitTo: 600 }}{{result.overview.length > 600 ? '...' : ''}}</p>
+                <p>{{ result.overview | limitTo: 600 }}{{ result.overview.length > 600 ? '...' : ''}}</p>
             </div>
             <div class="row">
                 <div class="col-xs-6">
@@ -109,9 +109,9 @@
 
     </div>
 
-    <!-- Derniers épisodes -->
-    <div id="hp-band-last" class="row" ng-controller="carouselController as vm">
-        <h2 class="hp-title-band">DERNIERS EPISODES</h2>
+    <!-- Séries random -->
+    <div id="hp-band-last" class="row no-pad" ng-controller="carouselController as vm">
+        <h2 class="hp-title-band">SERIES QUE VOUS POUVEZ AIMER</h2>
         <section class="center slider">
             <div>
                 <slick class="slider" settings="vm.slickConfig">
@@ -120,15 +120,11 @@
                             <img ng-src="{{!result.backdrop_path ? 'bundles/serie/assets/img/img-default2.png' : 'https://image.tmdb.org/t/p/w500'+result.backdrop_path}}" alt="{{ result.name }}"/>
                             <img href="#1" class="img-fluid" ng-src="{{ tvShow.img }}">
                         </div>
-                        <div class="bob">
-                          <p id="hp-band-last-text" class="text-center">
-                              {{ result.name }}
-                              <br>
-                              Dernier épisode - Dernière saison
-                          </p>
-                          <p id="hp-band-last-text-date" class="text-center">
-                              Date de sortie : {{ result.first_air_date }}
-                          </p>
+                        <div class="random">
+                            <p id="hp-band-last-text" class="text-center">
+                                {{ result.name }}
+                            </p>
+                            <a href="#" class="center-block" ng-click="vm.tvShowView(result.id)" prevent>Voir la série</a>
                         </div>
                     </div>
                 </slick>

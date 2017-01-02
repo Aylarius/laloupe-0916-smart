@@ -3,6 +3,21 @@ function hpController(tmdbService, $location) {
     this.tmdbService = tmdbService;
     this.$location = $location;
 
+    //BOUTON SUIVRE
+    this.isToggled = false;
+    $('#star').hide();
+    this.toggleFollow = () => {
+        this.isToggled = !this.isToggled;
+        console.log(this.isToggled);
+        if (this.isToggled === false) {
+            $('#star').hide();
+            $('#star-empty').show();
+        } else {
+            $('#star-empty').hide();
+            $('#star').show();
+        }
+    };
+
     //CAROUSEL POPULAIRE
     this.load = () => {
         this.tmdbService.popular().then((response) => {
@@ -45,18 +60,5 @@ function hpController(tmdbService, $location) {
         $location.path("/serie/" + id);
     };
 
-    //BOUTON SUIVRE
-    $('#star').hide();
-    this.isToggled = false;
-    this.toggleFollow = () => {
-        this.isToggled = !this.isToggled;
-        console.log(this.isToggled);
-        if (this.isToggled === false) {
-            $('#star').hide();
-            $('#star-empty').show();
-        } else {
-            $('#star-empty').hide();
-            $('#star').show();
-        }
-    };
+
 }

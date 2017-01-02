@@ -213,6 +213,7 @@ ________________________________________________________________________________
 
 .serieNL {
     width: 100%;
+    height: 500px;
     margin: 0;
     padding: 0;
     background-color: rgb(214, 214, 214);
@@ -223,7 +224,11 @@ ________________________________________________________________________________
 }
 
 .sheetSerie_img {
-    position: relative;
+    width: 100%;
+    height: 500px;
+    background-size: cover;
+    background-position: center;
+    display: inline-block;
 }
 
 #stat-serie {
@@ -267,8 +272,7 @@ ________________________________________________________________________________
     display: block;
     width: 200px;
     text-align: left;
-    position: absolute;
-    margin-top: 15px;
+    margin-top: 10px;
 }
 
 .follow a:hover {
@@ -294,33 +298,29 @@ ________________________________________________________________________________
     line-height: 3;
     position: relative;
 }
-
+.saison li {
+    display: inline-block;
+}
 .saison a {
     color: white;
     font-size: 1.5em;
-    display: block;
-    width: 200px;
     text-align: left;
-    position: absolute;
+    position: relative;
+    margin-right: 15px;
 }
 #season-section .btn-orange {
   width: auto;
   margin-top: 10px;
   margin-bottom: 10px;
-  margin-right: 15px;
+  margin-right: 5px;
   text-transform: inherit;
-}
-.episode_img {
-    width: 100%;
-}
-
-.card_episode {
-    border: 3px solid rgb(214, 214, 214);
-    margin-bottom: 7px;
-    background-color: rgb(214, 214, 214);
 }
 .categorie {
   margin-bottom: 12px;
+}
+#section-progression h4 {
+  margin-top: 30px;
+  margin-bottom: 15px;
 }
 
 /*résumé de la série*/
@@ -778,19 +778,31 @@ footer a:hover, footer a:focus {
     margin-bottom: 20px;
 }
 
-#serie-card {
+#serie-card, #episode-card {
     background-color: #EBEBEB;
     margin-bottom: 10px;
     margin-left: 5px;
     margin-right: 5px;
     padding-bottom: 10px;
 }
+#episode-card p {
+    margin-top: 5px;
+    margin-bottom: 0px;
+    margin-left: 5px;
+}
+#episode-card .glyphicon-ok-sign {
+    top: 14px;
+    color: #929292;
+    font-size: 2rem;
+    right: 5px;
+    cursor: pointer;
+}
 
-#serie-container {
+#serie-container, #episode-container {
     padding: 0px;
 }
 
-#serie-container img {
+#serie-container img, #episode-container img {
     width: 100%;
 }
 

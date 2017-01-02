@@ -1,22 +1,31 @@
 <div class="row no-pad">
-    <div class="col-xs-10 col-xs-offset-1 no-pad">
+    <div class="col-xs-12">
           <button class="btn btn-orange pull-right">
             <span class="glyphicon glyphicon-ok"></span>
              Marquer toute la saison comme vue
           </button>
           <div class="row list_episode no-pad">
-            <ul class="col-xs-12 no-pad">
-                <li class="col-xs-4" ng-repeat="episode in vm.seasons.episodes">
-                    <div class="card_episode" ng-href="">
-                        <img class="img-responsive episode_img" ng-src="{{!episode.still_path ? 'bundles/serie/assets/img/img-default.png' : 'https://image.tmdb.org/t/p/w300'+episode.still_path}}" alt=""/>
+            <div class="col-xs-12">
+              <div class="row">
+                <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4" id="episode-container"  ng-repeat="episode in vm.seasons.episodes">
+                  <div id="episode-card">
+                    <img ng-src="{{!episode.still_path ? 'bundles/serie/assets/img/img-default.png' : 'https://image.tmdb.org/t/p/original'+episode.still_path}}" alt="" class="img-responsive center-block">
+                    <div class="row no-pad">
+                      <div class="col-xs-10 text-left no-pad">
                         <p>Saison
                             {{episode.season_number}}
                             - Episode
                             {{episode.episode_number}}</p>
                         <p ng-bind="'{{episode.air_date.replace('-','')+'T00:00:00'}}' | date:'dd MMMM yyyy'"></p>
+                      </div>
+                      <div class="col-xs-2 text-right no-pad">
+                        <span id="star" class="glyphicon glyphicon-ok-sign"></span>
+                      </div>
                     </div>
-                </li>
-            </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
         </div>
     </div>
 </div>

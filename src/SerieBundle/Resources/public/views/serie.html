@@ -1,7 +1,7 @@
 <div class="container-fluid no-pad serie">
     <div class="row no-pad serieNL">
         <div class="col-xs-12 sheetSerie_ban">
-            <img class="sheetSerie_img img-responsive center-block" ng-src="https://image.tmdb.org/t/p/w1280{{vm.sheetSerie.backdrop_path}}" alt=""/>
+          <div class="sheetSerie_img" style="background-image: url(https://image.tmdb.org/t/p/original{{vm.sheetSerie.backdrop_path}})"></div>
             <div class="row">
                 <div id="stat-serie" class="col-xs-12 menuNL center-block">
                     <div class="row">
@@ -70,8 +70,8 @@
         </div>
     </div>
     <div class="saison">
-        <ul class="row">
-            <li class="col-xs-1 saison-num" ng-repeat="season in vm.sheetSerie.seasons" ng-hide="season.season_number == 0">
+        <ul>
+            <li class="saison-num" ng-repeat="season in vm.sheetSerie.seasons" ng-hide="season.season_number == 0">
                 <a href="" ng-click="vm.getSeasons(vm.sheetSerie.id, season.season_number)" prevent>Saison
                     {{season.season_number}}</a>
             </li>

@@ -46,8 +46,8 @@ function hpController(tmdbService, $location) {
     };
 
     //BOUTON SUIVRE
-    $('#star').hide();
     this.isToggled = false;
+    $('#star').hide();
     this.toggleFollow = () => {
         this.isToggled = !this.isToggled;
         console.log(this.isToggled);

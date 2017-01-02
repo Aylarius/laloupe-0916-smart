@@ -213,6 +213,7 @@ ________________________________________________________________________________
 
 .serieNL {
     width: 100%;
+    height: 500px;
     margin: 0;
     padding: 0;
     background-color: rgb(214, 214, 214);
@@ -223,7 +224,11 @@ ________________________________________________________________________________
 }
 
 .sheetSerie_img {
-    position: relative;
+    width: 100%;
+    height: 500px;
+    background-size: cover;
+    background-position: center;
+    display: inline-block;
 }
 
 #stat-serie {
@@ -231,12 +236,15 @@ ________________________________________________________________________________
     position: absolute;
     bottom: 0px;
     color: white;
-    font-weight: bolder;
     padding-bottom: 10px;
-    font-size: 1em;
 }
-
-
+#resume {
+  text-align: justify;
+}
+.title-section-serie {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
 /*#banniere th, #banniere td {
     padding-right: 10px;
     padding-left: 10px;
@@ -264,50 +272,56 @@ ________________________________________________________________________________
     display: block;
     width: 200px;
     text-align: left;
-    position: absolute;
-    margin-top: 15px;
-    margin-left: 50px;
+    margin-top: 10px;
 }
 
 .follow a:hover {
     text-decoration: none;
 }
 
-#acteur-img {
+.acteur {
+  margin-bottom: 20px;
+}
+
+.acteur-img {
     border-radius: 50%;
     border: 5px solid rgb(255, 168, 52);
-    margin: 10px;
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+    background-position: center;
+    display: inline-block;
 }
-
 .saison {
     background-color: rgb(50, 50, 50);
-    height: 3em;
+    height: 70px;
+    line-height: 3;
     position: relative;
 }
-
+.saison li {
+    display: inline-block;
+}
 .saison a {
     color: white;
     font-size: 1.5em;
-    display: block;
-    width: 200px;
     text-align: left;
-    position: absolute;
+    position: relative;
+    margin-right: 15px;
 }
-
-.padding0 {
-    padding: 0;
+#season-section .btn-orange {
+  width: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 5px;
+  text-transform: inherit;
 }
-
-.episode_img {
-    width: 100%;
+.categorie {
+  margin-bottom: 12px;
 }
-
-.card_episode {
-    border: 3px solid rgb(214, 214, 214);
-    margin-bottom: 7px;
-    background-color: rgb(214, 214, 214);
+#section-progression h4 {
+  margin-top: 30px;
+  margin-bottom: 15px;
 }
-
 
 /*résumé de la série*/
 
@@ -744,14 +758,15 @@ footer a:hover, footer a:focus {
     font-size: 1.25rem;
 }
 
-#stat-section th, #stat-section td {
+#stat-container th, #stat-container td {
     padding-right: 10px;
     padding-left: 10px;
     padding-bottom: 5px;
     text-align: center;
+    font-size: 1.25rem;
 }
 
-#stat-container {
+#stat-section #stat-container {
     text-align: center;
 }
 
@@ -768,19 +783,31 @@ footer a:hover, footer a:focus {
     margin-bottom: 20px;
 }
 
-#serie-card {
+#serie-card, #episode-card {
     background-color: #EBEBEB;
     margin-bottom: 10px;
     margin-left: 5px;
     margin-right: 5px;
     padding-bottom: 10px;
 }
+#episode-card p {
+    margin-top: 5px;
+    margin-bottom: 0px;
+    margin-left: 5px;
+}
+#episode-card .glyphicon-ok-sign {
+    top: 14px;
+    color: #929292;
+    font-size: 2rem;
+    right: 5px;
+    cursor: pointer;
+}
 
-#serie-container {
+#serie-container, #episode-container {
     padding: 0px;
 }
 
-#serie-container img {
+#serie-container img, #episode-container img {
     width: 100%;
 }
 
@@ -822,7 +849,10 @@ footer a:hover, footer a:focus {
     border-radius: 20px;
     display: inline-block;
 }
-
+.serie .tag {
+  background-color: #606060;
+  color: white;
+}
 .tag.active {
     background-color: rgb(255, 168, 52);
 }
@@ -908,6 +938,8 @@ footer a:hover, footer a:focus {
     text-transform: uppercase;
     border-radius: inherit;
 }
+
+
 
 .btn-orange:hover, .btn-orange:focus {
     background-color: white;

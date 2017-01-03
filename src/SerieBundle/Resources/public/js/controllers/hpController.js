@@ -1,7 +1,14 @@
-function hpController(tmdbService, $location) {
+function hpController(tmdbService, $location, userService, sessionFactory) {
 
     this.tmdbService = tmdbService;
     this.$location = $location;
+    this.userService = userService;
+    this.sessionFactory = sessionFactory;
+
+
+    console.log(this.sessionFactory.user);
+
+
 
     //CAROUSEL POPULAIRE
     this.load = () => {

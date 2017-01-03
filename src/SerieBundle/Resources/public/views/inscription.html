@@ -1,4 +1,4 @@
-<div class="container-fluid no-pad" id="inscription-page">
+<div class="container-fluid no-pad" id="inscription-page" ng-controller='loginController as vm'>
   <div class="row">
     <div class="col-xs-12 no-pad">
       <div class="row container-h1">
@@ -6,30 +6,30 @@
       </div>
       <div class="row">
         <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2" id="inscription-form">
-          <form class="form-horizontal">
+          <form name="registerForm" class="form-horizontal">
             <em class="text-center center-block text-form">Merci de remplir les champs suivants :</em><br>
             <div class="form-group">
-              <label for="pseudo" class="col-sm-4 control-label">Pseudo* :</label>
+              <label for="username" class="col-sm-4 control-label">Pseudo* :</label>
               <div class="col-sm-8">
-                <input type="text" class="form-control" id="pseudo" placeholder="Pseudo">
+                <input type="text" class="form-control" id="username" placeholder="Identifiant" ng-model='vm.username' ng-required='true'>
               </div>
             </div>
             <div class="form-group">
               <label for="email" class="col-sm-4 control-label">Email* :</label>
               <div class="col-sm-8">
-                <input type="email" class="form-control" id="email" placeholder="Email">
+                <input type="email" class="form-control" id="email" placeholder="Email" ng-model='vm.email' ng-required='true'>
               </div>
             </div>
             <div class="form-group">
               <label for="password" class="col-sm-4 control-label">Mot de passe* :</label>
               <div class="col-sm-8">
-                <input type="password" class="form-control" id="password" placeholder="Mot de passe">
+                <input type="password" class="form-control" id="password" placeholder="Mot de passe" ng-model='vm.password' ng-required='true'>
               </div>
             </div>
             <div class="form-group">
               <label for="password-conf" class="col-sm-4 control-label">Confirmer* :</label>
               <div class="col-sm-8">
-                <input type="password" class="form-control" id="password-conf" placeholder="Confirmer">
+                <input type="password" class="form-control" id="password-conf" placeholder="Confirmer"  ng-model='vm.passwordConf' ng-required='true' match="vm.password">
               </div>
             </div>
             <div class="form-group">
@@ -56,12 +56,16 @@
             <div class="form-group">
               <div class="col-xs-12 text-center">
                 <br>
-                <button type="submit" class="btn btn-orange center-block">S'inscrire</button>
+                <button ng-click='vm.createAccount()' ng-disabled="registerForm.$invalid" class="btn btn-orange center-block">S'inscrire</button>
                 <br>
                 <a href="" class="form-link" prevent>Déjà un compte ?</a>
               </div>
             </div>
           </form>
+          <div ng-show="(vm.loginMessage)" class="alert" ng-class="{'alert-danger': vm.loginMessage.type == 'error', 'alert-success': vm.loginMessage.type == 'success', 'alert-info': vm.loginMessage.type == 'info'}">
+            <h4><span class="glyphicon glyphicon-exclamation-sign pull-left"></span>&nbsp;{{vm.loginMessage.title}}</h4>
+            <p>{{vm.loginMessage.message}}</p>
+          </div>
         </div>
       </div>
     </div>

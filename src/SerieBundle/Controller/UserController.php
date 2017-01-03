@@ -20,14 +20,15 @@ class UserController extends Controller
 {
     public function registerAction(Request $request)
     {
-        // Get data and decode JSON
-        $data = json_decode(json_encode($request->request->all()), true);
+        $test = $request->request->all();
+        $data = json_decode(key($test), true);
+        $email = str_replace("_", ".", $data['email']);
 
         // Create new album entity
         $user = new User();
 
         $user->setUsername($data['username']);
-        $user->setEmail($data['email']);
+        $user->setEmail($email);
 
         // Encode the password
         $password = $this->get('security.password_encoder')
@@ -41,7 +42,7 @@ class UserController extends Controller
 
         // Return as JSON
         $serializer = $this->get('serializer');
-        $response = $serializer->serialize($data, 'json');
+        $response = $serializer->serialize($user, 'json');
         return new JsonResponse(json_decode($response));
 
     }
@@ -49,7 +50,6 @@ class UserController extends Controller
     public function loginAction(Request $request)
     {
         $test = $request->request->all();
-        reset($test);
         $data = json_decode(key($test), true);
 
         $username = $data['username'];
@@ -71,8 +71,10 @@ class UserController extends Controller
         $token = $this->get('lexik_jwt_authentication.encoder')
             ->encode(['username' => $user->getUsername()]);
 
+        $user = json_decode($this->get('serializer')->serialize($user, 'json'));
+
         // Return generated token
-        return new JsonResponse(['token' => 'Bearer '.$token]);
+        return new JsonResponse(['token' => 'Bearer '.$token, 'user' => $user]);
 
     }
 
@@ -91,7 +93,6 @@ class UserController extends Controller
         return $response;
 
     }
-
 
     public function getAllAction()
     {

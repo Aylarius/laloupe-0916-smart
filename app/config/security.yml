@@ -47,4 +47,7 @@ security:
         - { path: ^/user/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/user, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/inscription, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/profil, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/profiledit, roles: IS_AUTHENTICATED_FULLY }
 

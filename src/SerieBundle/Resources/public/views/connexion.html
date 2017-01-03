@@ -6,7 +6,7 @@
       </div>
       <div class="row">
         <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2" id="inscription-form">
-          <form class="form-horizontal">
+          <form name="connectForm" class="form-horizontal">
             <em class="text-center center-block text-form">Merci de remplir les champs suivants :</em><br>
             <div class="form-group">
               <label for="username" class="col-sm-4 control-label">Identifiant :</label>
@@ -32,7 +32,7 @@
             <div class="form-group">
               <div class="col-xs-12 text-center">
                 <br>
-                <button ng-click='vm.login()' ng-disabled="formConnect.$invalid" class="btn btn-orange center-block">Se connecter</button>
+                <button ng-click='vm.login()' ng-disabled="connectForm.$invalid" class="btn btn-orange center-block">Se connecter</button>
                 <br>
                 <a href="" class="form-link" prevent>Pas encore de compte ?</a>
               </div>

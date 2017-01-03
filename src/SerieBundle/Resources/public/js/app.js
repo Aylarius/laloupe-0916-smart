@@ -1,10 +1,13 @@
 angular.module('app', ['ngRoute','slickCarousel'])
+    .factory('sessionFactory', sessionFactory)
     .service('tmdbService', tmdbService)
+    .service('userService', userService)
     .controller('navbarController', navbarController)
     .controller('serieController', serieController)
     .controller('searchController', searchController)
     .controller('hpController', hpController)
     .controller('carouselController', carouselController)
+    .controller('loginController', loginController)
     .directive('a', function() {
         return {
             restrict: 'E',
@@ -19,4 +22,9 @@ angular.module('app', ['ngRoute','slickCarousel'])
     })
     .directive('season', season)
     .config(routes)
+    .config(function ($httpProvider) {
+        $httpProvider.defaults.headers.put['Content-Type'] = 'application/x-www-form-urlencoded';
+        $httpProvider.defaults.headers.post['Content-Type'] =  'application/x-www-form-urlencoded';
+    })
+    .run(loginStatus)
 ;

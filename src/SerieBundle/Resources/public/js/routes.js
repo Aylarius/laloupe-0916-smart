@@ -48,6 +48,8 @@ const routes = ($routeProvider, $httpProvider, $locationProvider) => {
                 config.headers = config.headers || {};
                 if ($window.localStorage.token && !((config.url.match(/api\.themoviedb\.org/) || []).length > 0)) {
                     sessionFactory.token = $window.localStorage.token
+                    sessionFactory.user.id = $window.localStorage.id
+                    sessionFactory.user.username = $window.localStorage.username
                     config.headers.authorization = $window.localStorage.token
                 }
                 return config
@@ -64,9 +66,10 @@ const routes = ($routeProvider, $httpProvider, $locationProvider) => {
 }
 
 const loginStatus = ($rootScope, $window, sessionFactory) => {
-
     $rootScope.$on('loginStatusChanged', (event, isLogged) => {
         $window.localStorage.token = sessionFactory.token;
+        $window.localStorage.id = sessionFactory.user.id;
+        $window.localStorage.username = sessionFactory.user.username;
     sessionFactory.isLogged = isLogged;
 })
 
@@ -81,6 +84,7 @@ const checkIsConnected = ($q, $http, $location, $window, $rootScope) => {
     deferred.resolve()
 }).error(() => {
         $window.localStorage.removeItem('token');
+    $window.localStorage.removeItem('id');
     $rootScope.$emit('loginStatusChanged', false);
     // Not Authenticated
     deferred.reject()

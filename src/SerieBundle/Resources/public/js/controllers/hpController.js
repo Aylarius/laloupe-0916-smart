@@ -1,4 +1,4 @@
-function hpController(tmdbService, $location, userService, sessionFactory) {
+function hpController(tmdbService, $location, $window, userService, sessionFactory) {
 
     this.tmdbService = tmdbService;
     this.$location = $location;
@@ -6,8 +6,8 @@ function hpController(tmdbService, $location, userService, sessionFactory) {
     this.sessionFactory = sessionFactory;
 
 
-    console.log(this.sessionFactory.user);
-
+    console.log($window.localStorage.id);
+    console.log($window.localStorage.username);
 
 
     //CAROUSEL POPULAIRE

@@ -11,7 +11,7 @@ function tmdbService($http) {
         return this.$http.get("https://api.themoviedb.org/3/tv/"+ id +"?api_key=fc533e12b849e49e74ab5d046165bcc7&language=fr-FR");
     };
 
-    this.lastEpisode = () => {
+    this.randomEpisode = () => {
         return this.$http.get("https://api.themoviedb.org/3/tv/top_rated?api_key=fc533e12b849e49e74ab5d046165bcc7&language=en-US&page=1");
     };
 

@@ -18,7 +18,9 @@ const routes = ($routeProvider, $httpProvider) => {
             templateUrl: 'bundles/serie/views/profiledit.html'
         })
         .when('/profil', {
-            templateUrl: 'bundles/serie/views/profile.html'
+            templateUrl: 'bundles/serie/views/profile.html',
+            controller: 'profileController',
+            controllerAs: 'vm'
         })
         .when('/inscription', {
             templateUrl: 'bundles/serie/views/inscription.html'

@@ -1,31 +1,47 @@
 <div class="container-fluid" id="profile-page">
-  <div class="row" id="img-section">
-    <div class="col-xs-12">
-      <img src="http://placehold.it/250x250" class="img-responsive center-block">
-      <h2>Avatar3228</h2>
-      <div id="edit-btn"><i class="fa fa-pencil" aria-hidden="true"></i>
-        <span>Editer</span>
-      </div>
+    <div class="row" id="img-section">
+        <div class="col-xs-12">
+            <img src="http://placehold.it/250x250" class="img-responsive center-block">
+            <h2>Avatar3228</h2>
+            <div id="edit-btn">
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+                <span>Editer</span>
+            </div>
+        </div>
     </div>
-  </div>
-  <div class="row center-block" id="stat-section">
-    <div class="col-xs-12" id="stat-container">
-      <table>
-        <th>Séries suivies</th>
-        <th>Episodes vus</th>
-        <th><i class="fa fa-hourglass-end" aria-hidden="true"></i> Durée de visionnage</th>
-        <tr>
-          <td>32</td>
-          <td>186</td>
-          <td>2 jours, 127 heures, 11 minutes</td>
-        </tr>
-      </table>
+    <div class="row center-block" id="stat-section">
+        <div class="col-xs-12" id="stat-container">
+            <table>
+                <th>Séries suivies</th>
+                <th>Episodes vus</th>
+                <th>
+                    <i class="fa fa-hourglass-end" aria-hidden="true"></i>
+                    Durée de visionnage</th>
+                <tr>
+                    <td>{{ vm.users.user.nb_series }}</td>
+                    <td>{{ vm.users.user.nb_episodes_vus }}</td>
+                    <td>{{ vm.users.user.duree_visionnage }}</td>
+                </tr>
+            </table>
+        </div>
     </div>
-  </div>
-  <div class="row" id="serie-section">
-    <div class="col-xs-12">
-      <h2>Mes Séries</h2>
-      <div class="row">
+    <div class="row" id="serie-section">
+        <div class="col-xs-12">
+            <h2>Mes Séries</h2>
+
+            <div class="row">
+                <div id="serie-container" class="col-xs-12 col-sm-4 col-md-3 col-lg-3" ng-repeat="series in vm.users">
+                    <div id="serie-card">
+                        <img ng-src="https://image.tmdb.org/t/p/w500{{ result.backdrop_path }}" alt="{{ result.name }}" class="img-responsive center-block">
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" data-percent={{ vm.users.user.series.percent }}></div>
+                        </div>
+                        <h4>{{ vm.users.user.series.name }}</h4>
+                    </div>
+                </div>
+            </div>
+
+            <!--<div class="row">
         <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3" id="serie-container">
           <div id="serie-card">
             <img src="bundles/serie/assets/img/téléchargement.jpeg" alt="Flash" class="img-responsive center-block">
@@ -98,44 +114,22 @@
             <h4>The Walking Dead</h4>
           </div>
         </div>
-      </div>
+      </div>-->
+        </div>
     </div>
-  </div>
-  <div class="row" id="tag-section">
-    <div class="col-xs-12">
-      <h2>Mes Préférences Tags</h2>
-      <div class="tag-container">
-        <span class="tag">Fantastique</span>
-        <span class="tag active">Science Fiction</span>
-        <span class="tag">Comédie</span>
-        <span class="tag active">Romance</span>
-        <span class="tag active">Drame</span>
-        <span class="tag">Musical</span>
-        <span class="tag">Horreur</span>
-        <span class="tag">Biographie</span>
-        <span class="tag">Animation</span>
-        <span class="tag">Aventure</span>
-        <span class="tag">Documentaire</span>
-        <span class="tag">Famille</span>
-        <span class="tag">Crime</span>
-        <span class="tag">Thriller</span>
-        <span class="tag">Western</span>
-        <span class="tag">Guerre</span>
-      </div>
-      <div class="row" id="voir-plus">
-          <div class="col-xs-12 text-center">
-              <i class="fa fa-plus-circle" id="plus"></i><span>Voir plus de tags</span>
-          </div>
-      </div>
+    <div class="row" id="tag-section">
+        <div class="col-xs-12">
+            <h2>Mes Préférences Tags</h2>
+            <div class="tag-container">
+                <span class="tag" ng-repeat="tag in vm.genres">{{ tag.name }}</span>
+            </div>
+            <div class="row" id="voir-plus">
+                <div class="col-xs-12 text-center">
+                    <i class="fa fa-plus-circle" id="plus"></i>
+                    <span>Voir plus de tags</span>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 
 </div>
-
-<script type="text/javascript">
-	$('.progress-bar').each(function(){
-		$(this).animate({
-			width:$(this).attr('data-percent')
-		}, 3000);
-	});
-</script>

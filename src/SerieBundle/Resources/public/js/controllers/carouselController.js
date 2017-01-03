@@ -1,10 +1,11 @@
-function carouselController(tmdbService) {
+function carouselController(tmdbService, $location) {
 
     this.tmdbService = tmdbService;
+    this.$location = $location;
 
     //CAROUSEL DERNIERS EPISODES
-    this.loadLastEpisode = () => {
-        this.tmdbService.lastEpisode().then((response) => {
+    this.loadrandomEpisode = () => {
+        this.tmdbService.randomEpisode().then((response) => {
             this.results = response.data.results;
             let count = 0;
             this.results.forEach((result, indexEpisode) => {
@@ -19,7 +20,8 @@ function carouselController(tmdbService) {
                 // dots: true,
                 // initialSlide: 0,
                 slidesToShow: 3,
-                //infinite: true,
+                infinite: true,
+                autoplay: true,
                 //centerMode: true,
                 // variableWidth: true,
                 // method: {},
@@ -27,5 +29,9 @@ function carouselController(tmdbService) {
         });
     };
 
-    this.loadLastEpisode();
+    this.loadrandomEpisode();
+
+    this.tvShowView = (id) => {
+        $location.path("/serie/" + id);
+    };
 }

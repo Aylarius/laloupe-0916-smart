@@ -5,6 +5,7 @@ angular.module('app', ['ngRoute','slickCarousel'])
     .controller('searchController', searchController)
     .controller('hpController', hpController)
     .controller('carouselController', carouselController)
+    .controller('profileController', profileController)
     .directive('a', function() {
         return {
             restrict: 'E',

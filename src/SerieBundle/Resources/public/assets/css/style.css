@@ -627,13 +627,13 @@ footer a:hover, footer a:focus {
     text-align: center;
 }
 
+.random a:hover{
+    text-decoration: none;
+}
+
 #btn-see {
     text-align: center;
     margin: 25% 0 5% 86%;
-}
-
-#btn-see2{
-
 }
 
 #btn-follow {

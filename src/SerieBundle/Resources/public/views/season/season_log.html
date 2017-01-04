@@ -19,7 +19,7 @@
                           - Episode
                           {{episode.episode_number}}
                       </p>
-                      <p ng-bind="'{{episode.air_date.replace('-','')+'T00:00:00'}}' | date:'dd MMMM yyyy'"></p>
+                      <p>{{episode.air_date.replace(vm.underscoreReg,'')+'T00:00:00' | date:'dd MMMM yyyy'}}</p>
                     </div>
                     <div ng-click="vm.check(episode.id)" class="col-xs-2 text-right no-pad">
                       <span id="sign" style="color: #929292" class="glyphicon glyphicon-ok-sign" ng-hide='vm.episodeTrack[episode.id]'></span>
@@ -43,7 +43,7 @@
                             - Episode
                             {{episode.episode_number}}
                         </p>
-                        <p ng-bind="'{{episode.air_date.replace('-','')+'T00:00:00'}}' | date:'dd MMMM yyyy'"></p>
+                        <p>{{episode.air_date.replace(vm.underscoreReg,'')+'T00:00:00' | date:'dd MMMM yyyy'}}</p>
                         <p>
                           {{episode.name}}
                           {{episode.overview}}
@@ -79,7 +79,7 @@
                 {{vm.seasons.episodes[0].season_number}}
                 - Episode
                 {{vm.seasons.episodes[0].episode_number}}</p>
-            <p ng-bind="'{{vm.seasons.episodes[0].air_date.replace('-','')+'T00:00:00'}}' | date:'dd MMMM yyyy'"></p>
+            <p>{{vm.seasons.episodes[0].air_date.replace(vm.underscoreReg,'')+'T00:00:00' | date:'dd MMMM yyyy'}}</p>
         </div>
         <h4>EPISODE A VENIR</h4>
         <div class="card_episode" ng-href="">
@@ -88,7 +88,7 @@
                 {{vm.sheetSerie.seasons[vm.sheetSerie.seasons.length-1].season_number}}
                 - Episode
                 {{vm.sheetSerie.seasons[vm.sheetSerie.seasons.length-1].episode_count}}</p>
-            <p ng-bind="'{{vm.sheetSerie.last_air_date.replace('-','')+'T00:00:00'}}' | date:'dd MMMM yyyy'"></p>
+                <p>{{vm.sheetSerie.last_air_date.replace(vm.underscoreReg,'')+'T00:00:00' | date:'dd MMMM yyyy'}}</p>
         </div>
     </div>
 </div>

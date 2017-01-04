@@ -4,6 +4,8 @@ function serieController(tmdbService, $routeParams, $location) {
     this.$routeParams = $routeParams;
     this.$location = $location;
 
+    this.underscoreReg = new RegExp('-','g');
+
     this.getSheetSerie = (id) => {
         this.tmdbService.sheetSerie(id).then((response) => {
             this.sheetSerie = response.data;
@@ -52,6 +54,6 @@ function serieController(tmdbService, $routeParams, $location) {
     this.pourcentage = 50;
     this.circle = "c100 p" + this.pourcentage + " orange";
 
-
+}
 
 }

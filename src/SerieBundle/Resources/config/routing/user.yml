@@ -1,0 +1,38 @@
+user_index:
+    path:     /
+    defaults: { _controller: "SerieBundle:User:getAll" }
+    methods:  GET
+
+user_show:
+    path:     /show/{id}
+    defaults: { _controller: "SerieBundle:User:getOne" }
+    methods:  GET
+
+user_edit:
+    path:     /edit/{id}
+    defaults: { _controller: "SerieBundle:User:edit" }
+    methods:  PUT
+
+user_delete:
+    path:     /delete/{id}
+    defaults: { _controller: "SerieBundle:User:delete" }
+    methods:  DELETE
+
+user_registration:
+    path:     /register
+    defaults: { _controller: "SerieBundle:User:register" }
+    methods:  POST
+
+user_login:
+    path:     /login
+    defaults: { _controller: "SerieBundle:User:login" }
+    methods:  POST
+
+user_loggedin:
+    path:     /loggedin
+    defaults: { _controller: "SerieBundle:User:loggedin" }
+    methods:  GET
+
+user_logout:
+    path:     /logout
+    defaults: { _controller: "SerieBundle:User:logout" }

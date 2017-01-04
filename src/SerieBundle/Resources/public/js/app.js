@@ -4,7 +4,8 @@ angular.module('app', ['ngRoute','slickCarousel'])
     .controller('serieController', serieController)
     .controller('searchController', searchController)
     .controller('hpController', hpController)
-    .controller('carouselController', carouselController)
+    .controller('carousel1Controller', carousel1Controller)
+    .controller('carousel3Controller', carousel3Controller)
     .controller('profileController', profileController)
     .directive('a', function() {
         return {

@@ -6,7 +6,7 @@ function hpController(tmdbService, $location) {
     //CAROUSEL POPULAIRE
     this.load = () => {
         this.tmdbService.popular().then((response) => {
-            this.results = response.data.results;
+            this.results = response.data.results.slice(10, 19);
             let count = 0;
             this.results.forEach((result, indexSerie) => {
                 this.results[indexSerie].i = count;
@@ -22,6 +22,7 @@ function hpController(tmdbService, $location) {
                 slidesToShow: 3,
                 infinite: true,
                 autoplay: true,
+                responsive: true,
                 //centerMode: true,
                 // variableWidth: true,
                 // method: {},
@@ -52,5 +53,6 @@ function hpController(tmdbService, $location) {
             this.series[id] = false;
         }
         this.series[id] = !this.series[id];
+        console.log(this.series);
     };
 }

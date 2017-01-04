@@ -6,8 +6,7 @@ function hpController(tmdbService, $location, $window, userService, sessionFacto
     this.sessionFactory = sessionFactory;
 
 
-    console.log($window.localStorage.id);
-    console.log($window.localStorage.username);
+    console.log(sessionFactory.user.id);
 
 
     //CAROUSEL POPULAIRE

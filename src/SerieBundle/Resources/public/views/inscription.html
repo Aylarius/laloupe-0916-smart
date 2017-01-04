@@ -29,7 +29,7 @@
             <div class="form-group">
               <label for="password-conf" class="col-sm-4 control-label">Confirmer* :</label>
               <div class="col-sm-8">
-                <input type="password" class="form-control" id="password-conf" placeholder="Confirmer"  ng-model='vm.passwordConf' ng-required='true' match="vm.password">
+                <input type="password" class="form-control" id="password-conf" placeholder="Confirmer"  ng-model='vm.passwordConf' ng-required='true'>
               </div>
             </div>
             <div class="form-group">
@@ -48,7 +48,7 @@
               <div class="col-sm-12">
                 <div class="checkbox text-center">
                   <label>
-                    <input type="checkbox">J'accepte les conditions générales d'utilisation
+                    <input type="checkbox" ng-model='vm.conditions'>J'accepte les conditions générales d'utilisation
                   </label>
                 </div>
               </div>
@@ -58,7 +58,7 @@
                 <br>
                 <button ng-click='vm.createAccount()' ng-disabled="registerForm.$invalid" class="btn btn-orange center-block">S'inscrire</button>
                 <br>
-                <a href="" class="form-link" prevent>Déjà un compte ?</a>
+                <a ng-href="/#/connexion" class="form-link">Déjà un compte ?</a>
               </div>
             </div>
           </form>

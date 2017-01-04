@@ -24,6 +24,13 @@ class UserController extends Controller
         $data = json_decode(key($test), true);
         $email = str_replace("_", ".", $data['email']);
 
+        if ($data['password'] != $data['passwordConf']) {
+            $data = 'Les mots de passe doivent être identiques.';
+            $response = new JsonResponse($data);
+            $response->setStatusCode(JsonResponse::HTTP_EXPECTATION_FAILED);;
+            return $response;
+        }
+        if ($data['password'] == $data['passwordConf'] && $data['conditions'] == true) {
         // Create new album entity
         $user = new User();
 
@@ -45,6 +52,12 @@ class UserController extends Controller
         $response = $serializer->serialize($user, 'json');
         return new JsonResponse(json_decode($response));
 
+        } else {
+            $data = 'Si tu ne coches pas la case, un bébé chaton sera sacrifié... Alors coche la case !';
+            $response = new JsonResponse($data);
+            $response->setStatusCode(JsonResponse::HTTP_EXPECTATION_FAILED);;
+            return $response;
+        }
     }
 
     public function loginAction(Request $request)
@@ -84,14 +97,12 @@ class UserController extends Controller
 
     }
 
-
     public function logoutAction()
     {
         $this->container->get('security.token_storage')->setToken(null);
         $response = new JsonResponse();
         $response->setStatusCode(JsonResponse::HTTP_OK);;
         return $response;
-
     }
 
     public function getAllAction()
@@ -151,7 +162,5 @@ class UserController extends Controller
         $user = $this->get('serializer')->serialize($user, 'json');
         return new JsonResponse(json_decode($user));
     }
-
-
 
 }

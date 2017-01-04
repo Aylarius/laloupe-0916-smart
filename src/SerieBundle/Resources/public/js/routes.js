@@ -48,8 +48,7 @@ const routes = ($routeProvider, $httpProvider, $locationProvider) => {
                 config.headers = config.headers || {};
                 if ($window.localStorage.token && !((config.url.match(/api\.themoviedb\.org/) || []).length > 0)) {
                     sessionFactory.token = $window.localStorage.token
-                    sessionFactory.user.id = $window.localStorage.id
-                    sessionFactory.user.username = $window.localStorage.username
+                    sessionFactory.user = JSON.parse($window.localStorage.getItem('currentUser'));
                     config.headers.authorization = $window.localStorage.token
                 }
                 return config
@@ -66,13 +65,16 @@ const routes = ($routeProvider, $httpProvider, $locationProvider) => {
 }
 
 const loginStatus = ($rootScope, $window, sessionFactory) => {
-    $rootScope.$on('loginStatusChanged', (event, isLogged) => {
-        $window.localStorage.token = sessionFactory.token;
-        $window.localStorage.id = sessionFactory.user.id;
-        $window.localStorage.username = sessionFactory.user.username;
-    sessionFactory.isLogged = isLogged;
-})
 
+    if ($window.localStorage.currentUser) {
+        sessionFactory.user = JSON.parse($window.localStorage.getItem('currentUser'));
+    }
+
+    $rootScope.$on('loginStatusChanged', (event, isLogged) => {
+        $window.localStorage.setItem('currentUser', JSON.stringify(sessionFactory.user));
+        $window.localStorage.token = sessionFactory.token;
+        sessionFactory.isLogged = isLogged;
+    })
 }
 
 const checkIsConnected = ($q, $http, $location, $window, $rootScope) => {
@@ -83,8 +85,8 @@ const checkIsConnected = ($q, $http, $location, $window, $rootScope) => {
     // Authenticated
     deferred.resolve()
 }).error(() => {
-        $window.localStorage.removeItem('token');
-    $window.localStorage.removeItem('id');
+    $window.localStorage.removeItem('token');
+    $window.localStorage.removeItem('currentUser');
     $rootScope.$emit('loginStatusChanged', false);
     // Not Authenticated
     deferred.reject()

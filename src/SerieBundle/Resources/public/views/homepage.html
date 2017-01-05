@@ -4,37 +4,20 @@
     <div class="row hpnl-band">
 
         <!-- Slider -->
-        <div class="col-md-6 hpnl-band-left">
-            <div class="row">
-                <div class="col-xs-10 col-xs-offset-1">
-                    <div id="carousel-bandeau-generic" class="carousel slide" data-ride="carousel">
-
-                        <!-- Wrapper for slides -->
-                        <div class="carousel-inner">
-                            <div class="item active">
-                                <img src="bundles/serie/assets/img/téléchargement.jpeg" alt="Flash">
-                            </div>
-                            <div class="item">
-                                <img src="bundles/serie/assets/img/Breaking-Bad.jpg" alt="Breaking-Bad">
-                            </div>
-                            <div class="item">
-                                <img src="bundles/serie/assets/img/hannibal.jpg" alt="hannibal">
+        <div class="col-md-offset-1 col-md-4 hpnl-band-left" ng-controller="carousel1Controller as vm">
+            <section class="center slider">
+                <div>
+                    <slick class="slider" settings="vm.slickConfig">
+                        <div class="repeat" ng-repeat="result in vm.results">
+                            <div class="card" ng-click="vm.togglePane = result.i">
+                                <img class="img-responsive" ng-src="https://image.tmdb.org/t/p/w500{{result.backdrop_path}}" alt="{{ result.name }}"/>
                             </div>
                         </div>
-
-                        <!-- Controls -->
-                        <a class="left carousel-control" href="#carousel-bandeau-generic" role="button" data-slide="prev" prevent>
-                            <span class="glyphicon glyphicon-chevron-left"></span>
-                        </a>
-                        <a class="right carousel-control" href="#carousel-bandeau-generic" role="button" data-slide="next" prevent>
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                        </a>
-                    </div>
-
+                    </slick>
                 </div>
-            </div>
+            </section>
         </div>
-        <div class="col-md-6 hpnl-band-right">
+        <div class="col-md-offset-1 col-md-6 hpnl-band-right">
             <div class="row">
                 <div class="col-xs-10 col-xs-offset-1">
                     <h1 class="hpnl-title text-center">What I Watch</h1>
@@ -55,8 +38,7 @@
                 <slick class="slider" settings="vm.slickConfig">
                     <div class="repeat" ng-repeat="result in vm.results">
                         <div class="card" ng-click="vm.togglePane = result.i">
-                            <img ng-src="https://image.tmdb.org/t/p/w500{{result.backdrop_path}}" alt=""/>
-                            <img href="#1" class="img-fluid" ng-src="{{ tvShow.img }}">
+                            <img class="img-responsive" ng-src="https://image.tmdb.org/t/p/w500{{result.backdrop_path}}" alt="{{ result.name }}"/>
                         </div>
                     </div>
                 </slick>
@@ -68,22 +50,22 @@
     <div id="more" class="row" ng-repeat="result in vm.results" ng-show="vm.togglePane == result.i">
 
         <div class="col-xs-12 col-sm-6 col-md-2">
-            <img ng-src="https://image.tmdb.org/t/p/w342{{result.poster_path}}" alt="{{ result.name }}"/>
+            <img ng-src="https://image.tmdb.org/t/p/w342{{ result.poster_path }}" alt="{{ result.name }}"/>
         </div>
         <div class="col-xs-12 col-sm-6 col-md-10 followMore">
             <a id="btn-follow" ng-click='vm.toggleFollow(result.id)' prevent>
-                <span id="star-empty" class="glyphicon glyphicon-star-empty"></span>
-                <span id="star" class="glyphicon glyphicon-star"></span>
+                <span id="star-empty" class="glyphicon glyphicon-star-empty" ng-hide='vm.series[result.id]'></span>
+                <span id="star" class="glyphicon glyphicon-star" ng-show='vm.series[result.id]'></span>
                 Suivre la série</a>
 
             <div class="contenu">
                 <h2>{{ result.name }}</h2>
                 <h3>{{ result.number_of_seasons }}
                     saisons -
-                    {{result.number_of_episodes }}
+                    {{ result.number_of_episodes }}
                     épisodes</h3>
                 <h3>54098 followers</h3>
-                <p>{{ result.overview | limitTo: 600 }}{{result.overview.length > 600 ? '...' : ''}}</p>
+                <p>{{ result.overview | limitTo: 600 }}{{ result.overview.length > 600 ? '...' : ''}}</p>
             </div>
             <div class="row">
                 <div class="col-xs-6">
@@ -109,26 +91,21 @@
 
     </div>
 
-    <!-- Derniers épisodes -->
-    <div id="hp-band-last" class="row" ng-controller="carouselController as vm">
-        <h2 class="hp-title-band">DERNIERS EPISODES</h2>
+    <!-- Séries random -->
+    <div id="hp-band-last" class="row no-pad" ng-controller="carousel3Controller as vm">
+        <h2 class="hp-title-band">SERIES QUE VOUS POUVEZ AIMER</h2>
         <section class="center slider">
             <div>
                 <slick class="slider" settings="vm.slickConfig">
                     <div class="repeat" ng-repeat="result in vm.results">
                         <div class="card">
-                            <img ng-src="{{!result.backdrop_path ? 'bundles/serie/assets/img/img-default2.png' : 'https://image.tmdb.org/t/p/w500'+result.backdrop_path}}" alt="{{ result.name }}"/>
-                            <img href="#1" class="img-fluid" ng-src="{{ tvShow.img }}">
+                            <img class="img-responsive" ng-src="{{!result.backdrop_path ? 'bundles/serie/assets/img/img-default2.png' : 'https://image.tmdb.org/t/p/w500'+result.backdrop_path}}" alt="{{ result.name }}"/>                            
                         </div>
-                        <div class="bob">
-                          <p id="hp-band-last-text" class="text-center">
-                              {{ result.name }}
-                              <br>
-                              Dernier épisode - Dernière saison
-                          </p>
-                          <p id="hp-band-last-text-date" class="text-center">
-                              Date de sortie : {{ result.first_air_date }}
-                          </p>
+                        <div class="random">
+                            <p id="hp-band-last-text" class="text-center">
+                                {{ result.name }}
+                            </p>
+                            <a href="#" class="center-block" ng-click="vm.tvShowView(result.id)" prevent>Voir la série</a>
                         </div>
                     </div>
                 </slick>

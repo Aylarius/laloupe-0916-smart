@@ -1,3 +1,7 @@
 serie_homepage:
     path:     /
     defaults: { _controller: SerieBundle:Default:index }
+
+serie_user:
+    resource: "@SerieBundle/Resources/config/routing/user.yml"
+    prefix:   /user

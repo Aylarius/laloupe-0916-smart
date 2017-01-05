@@ -1,7 +1,10 @@
-function navbarController(tmdbService, $location) {
+function navbarController(tmdbService, $location, sessionFactory, $rootScope) {
 
     this.tmdbService = tmdbService;
     this.$location = $location;
+    this.isLogged = sessionFactory.isLogged;
+    this.sessionFactory = sessionFactory;
+    this.$rootScope = $rootScope;
 
     this.searchView = (query) => {
       $location.path("/resultats/"+query);
@@ -29,4 +32,18 @@ function navbarController(tmdbService, $location) {
             $('#searchHide').show();
         }
     };
+
+    //Logout
+    this.logout = () => {
+        this.sessionFactory.isLogged = false;
+        this.sessionFactory.user = {};
+        this.sessionFactory.token = null;
+        this.$window.localStorage.token = null;
+        this.$window.localStorage.id = {};
+        this.$window.localStorage.username = {};
+        this.$rootScope.$emit('loginStatusChanged', false);
+        this.isLogged = false;
+        this.$location.path('/login');
+    };
+
 }

@@ -1,10 +1,13 @@
-const routes = ($routeProvider, $httpProvider) => {
-
+const routes = ($routeProvider, $httpProvider, $locationProvider) => {
+    $locationProvider.html5Mode(false).hashPrefix('');
     $routeProvider
         .when('/', {
             templateUrl: 'bundles/serie/views/homepage.html',
             controller: 'hpController',
-            controllerAs: 'vm'
+            controllerAs: 'vm',
+            resolve: {
+                connected: checkIsConnected
+            }
         })
         .when('/serie/:id', {
             templateUrl: 'bundles/serie/views/serie.html',
@@ -18,7 +21,9 @@ const routes = ($routeProvider, $httpProvider) => {
             templateUrl: 'bundles/serie/views/profiledit.html'
         })
         .when('/profil', {
-            templateUrl: 'bundles/serie/views/profile.html'
+            templateUrl: 'bundles/serie/views/profile.html',
+            controller: 'profileController',
+            controllerAs: 'vm'
         })
         .when('/inscription', {
             templateUrl: 'bundles/serie/views/inscription.html'
@@ -38,4 +43,57 @@ const routes = ($routeProvider, $httpProvider) => {
             redirectTo: ''
         });
 
-};
+
+    $httpProvider.interceptors.push(($q, $location, $rootScope, $window, sessionFactory) => {
+        return {
+            request(config) {
+                config.headers = config.headers || {};
+                if ($window.localStorage.token && !((config.url.match(/api\.themoviedb\.org/) || []).length > 0)) {
+                    sessionFactory.token = $window.localStorage.token
+                    sessionFactory.user = JSON.parse($window.localStorage.getItem('currentUser'));
+                    config.headers.authorization = $window.localStorage.token
+                }
+                return config
+            },
+            responseError(response) {
+                if (response.status === 401 || response.status === 403) {
+                    $rootScope.$emit('loginStatusChanged', false);
+                    $location.path('app_dev.php/user/login')
+                }
+                return $q.reject(response)
+            }
+        }
+    })
+}
+
+const loginStatus = ($rootScope, $window, sessionFactory) => {
+
+    if ($window.localStorage.currentUser) {
+        sessionFactory.user = JSON.parse($window.localStorage.getItem('currentUser'));
+    }
+
+    $rootScope.$on('loginStatusChanged', (event, isLogged) => {
+        $window.localStorage.setItem('currentUser', JSON.stringify(sessionFactory.user));
+        $window.localStorage.token = sessionFactory.token;
+        sessionFactory.isLogged = isLogged;
+    })
+}
+
+const checkIsConnected = ($q, $http, $location, $window, $rootScope) => {
+    let deferred = $q.defer()
+
+    $http.get('app_dev.php/user/loggedin').success(() => {
+        $rootScope.$emit('loginStatusChanged', true);
+    // Authenticated
+    deferred.resolve()
+}).error(() => {
+    $window.localStorage.removeItem('token');
+    $window.localStorage.removeItem('currentUser');
+    $rootScope.$emit('loginStatusChanged', false);
+    // Not Authenticated
+    deferred.reject()
+    $location.url('/connexion')
+})
+
+    return deferred.promise
+}

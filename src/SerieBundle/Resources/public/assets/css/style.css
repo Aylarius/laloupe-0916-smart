@@ -323,31 +323,6 @@ ________________________________________________________________________________
   margin-bottom: 15px;
 }
 
-/*résumé de la série*/
-
-
-/*Onglet saison*/
-
-
-/*#tab-saison {
-    background-color: rgb(50, 50, 50);
-    height: 60px;
-    position: relative;
-    color: white;
-    padding-top: 20px;
-}
-
-#tab-saison a {
-    color: white;
-    font-size: 1.75rem;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-#tab-saison a:hover {
-    text-decoration: none;
-}*/
-
 
 /*___Footer___________________________________________________________________________________________________
 ____________________________________________________________________________________________________________*/
@@ -614,7 +589,7 @@ footer a:hover, footer a:focus {
     position: relative;
 }
 
-.followMore a {
+.followMore a, .random a {
     background-color: rgb(255, 168, 52)!important;
     color: white;
     font-size: 1.5rem;
@@ -624,6 +599,11 @@ footer a:hover, footer a:focus {
     text-align: left;
     position: relative;
     margin-top: 15px;
+    text-align: center;
+}
+
+.random a:hover{
+    text-decoration: none;
 }
 
 #btn-see {
@@ -792,7 +772,7 @@ footer a:hover, footer a:focus {
 }
 #episode-card .glyphicon-ok-sign {
     top: 14px;
-    color: #929292;
+    /*color: #929292;*/
     font-size: 2rem;
     right: 5px;
     cursor: pointer;

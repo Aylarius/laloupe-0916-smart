@@ -16,11 +16,17 @@ function loginController(userService, sessionFactory, $timeout, $routeParams, $l
             this.sessionFactory.user = res.data.user;
             this.sessionFactory.isLogged = true;
             this.$rootScope.$emit('loginStatusChanged', true);
+            $rootScope.$emit('loginStatusChangedNavbar');
+            $rootScope.$emit('loginStatusChangedHomepage');
+
             this.loginMessage = null;
             this.$location.path('/');
         }).catch(() => {
             this.sessionFactory.isLogged = false;
             this.$rootScope.$emit('loginStatusChanged', false);
+            $rootScope.$emit('loginStatusChangedNavbar');
+            $rootScope.$emit('loginStatusChangedHomepage');
+
             this.loginMessage = {};
             this.loginMessage.type = "error";
             this.loginMessage.title = "Erreur de connexion";
@@ -37,20 +43,24 @@ function loginController(userService, sessionFactory, $timeout, $routeParams, $l
             email: this.email,
             conditions: this.conditions
         }).then((res) => {
-        this.loginMessage = {};
-        this.loginMessage.type = "success";
-        this.loginMessage.title = "Votre compte a bien été créé !";
-        this.loginMessage.message = "En cours de redirection...";
-        this.$timeout(() => {
-            this.loginMessage = null;
-            this.$location.path('/connexion');
-        }, 200);
-    }).catch((res) => {
-        this.loginMessage = {};
-        this.loginMessage.type = "error";
-        this.loginMessage.title = "Erreur lors de l'inscription";
-        this.loginMessage.message = res.data;
-    });
+            this.loginMessage = {};
+            this.loginMessage.type = "success";
+            this.loginMessage.title = "Votre compte a bien été créé !";
+            this.loginMessage.message = "En cours de redirection...";
+            this.$timeout(() => {
+                this.loginMessage = null;
+                this.$rootScope.$emit('loginStatusChanged', true);
+                $rootScope.$emit('loginStatusChangedNavbar');
+                $rootScope.$emit('loginStatusChangedHomepage');
+
+                this.$location.path('/connexion');
+            }, 200);
+        }).catch((res) => {
+            this.loginMessage = {};
+            this.loginMessage.type = "error";
+            this.loginMessage.title = "Erreur lors de l'inscription";
+            this.loginMessage.message = res.data;
+        });
     };
 
 }

@@ -47,7 +47,7 @@ class JwtAuthenticator extends AbstractGuardAuthenticator
         $token = $extractor->extract($request);
 
         if(!$token) {
-            return;
+            return new JsonResponse;
         }
 
         return $token;

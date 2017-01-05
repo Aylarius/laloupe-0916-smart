@@ -1,15 +1,8 @@
-function profileController(Bouchonnage_profile, $location) {
+function profileController($location, userService, sessionFactory) {
 
-    this.Bouchonnage_profile = Bouchonnage_profile;
     this.$location = $location;
-
-    this.profile = (id) => {
-        this.Bouchonnage_profile.utilisateur(id).then((response) =>{
-          this.utilisateur = reponse.data;
-          console.log(response.data);
-        });
-    };
-
+    this.userService = userService;
+    this.sessionFactory = sessionFactory;
 
     $('.progress-bar').each(function() {
         $(this).animate({

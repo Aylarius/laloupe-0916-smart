@@ -20,11 +20,14 @@
         <div class="col-md-offset-1 col-md-6 hpnl-band-right">
             <div class="row">
                 <div class="col-xs-10 col-xs-offset-1">
-                    <h1 class="hpnl-title text-center">What I Watch</h1>
-                    <p class="hpnl-text text-center">
+                    <h1 class="hpnl-title text-center" ng-hide='vm.isLogged'>What I Watch</h1>
+                    <p class="hpnl-text text-center" ng-hide='vm.isLogged'>
                         Suivez toutes vos séries et ne manquez plus un seul épisode !
                     </p>
-                    <button class="btn btn-orange center-block">S'inscrire</button>
+                    <h1 class="hpnl-title text-center" ng-show='vm.isLogged'>
+                      Bonjour {{vm.sessionFactory.user.username}} !
+                    </h1>
+                    <button class="btn btn-orange center-block" ng-hide='vm.isLogged'>S'inscrire</button>
                 </div>
             </div>
         </div>
@@ -99,7 +102,7 @@
                 <slick class="slider" settings="vm.slickConfig">
                     <div class="repeat" ng-repeat="result in vm.results">
                         <div class="card">
-                            <img class="img-responsive" ng-src="{{!result.backdrop_path ? 'bundles/serie/assets/img/img-default2.png' : 'https://image.tmdb.org/t/p/w500'+result.backdrop_path}}" alt="{{ result.name }}"/>                            
+                            <img class="img-responsive" ng-src="{{!result.backdrop_path ? 'bundles/serie/assets/img/img-default2.png' : 'https://image.tmdb.org/t/p/w500'+result.backdrop_path}}" alt="{{ result.name }}"/>
                         </div>
                         <div class="random">
                             <p id="hp-band-last-text" class="text-center">

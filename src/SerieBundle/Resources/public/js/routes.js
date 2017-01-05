@@ -18,7 +18,9 @@ const routes = ($routeProvider, $httpProvider, $locationProvider) => {
             templateUrl: 'bundles/serie/views/calendrier.html'
         })
         .when('/profiledit', {
-            templateUrl: 'bundles/serie/views/profiledit.html'
+            templateUrl: 'bundles/serie/views/profiledit.html',
+            controller: 'profileController',
+            controllerAs: 'vm'
         })
         .when('/profil', {
             templateUrl: 'bundles/serie/views/profile.html',
@@ -58,6 +60,8 @@ const routes = ($routeProvider, $httpProvider, $locationProvider) => {
             responseError(response) {
                 if (response.status === 401 || response.status === 403) {
                     $rootScope.$emit('loginStatusChanged', false);
+                    $rootScope.$emit('loginStatusChangedNavbar');
+                    $rootScope.$emit('loginStatusChangedHomepage');
                     $location.path('app_dev.php/user/login')
                 }
                 return $q.reject(response)
@@ -84,16 +88,22 @@ const checkIsConnected = ($q, $http, $location, $window, $rootScope) => {
 
     $http.get('app_dev.php/user/loggedin').success(() => {
         $rootScope.$emit('loginStatusChanged', true);
-    // Authenticated
-    deferred.resolve()
-}).error(() => {
-    $window.localStorage.removeItem('token');
-    $window.localStorage.removeItem('currentUser');
-    $rootScope.$emit('loginStatusChanged', false);
-    // Not Authenticated
-    deferred.reject()
-    $location.url('/connexion')
-})
+        $rootScope.$emit('loginStatusChangedNavbar');
+        $rootScope.$emit('loginStatusChangedHomepage');
+
+        // Authenticated
+        deferred.resolve()
+    }).error(() => {
+        $window.localStorage.removeItem('token');
+        $window.localStorage.removeItem('currentUser');
+        $rootScope.$emit('loginStatusChanged', false);
+        $rootScope.$emit('loginStatusChangedNavbar');
+        $rootScope.$emit('loginStatusChangedHomepage');
+
+        // Not Authenticated
+        deferred.reject()
+        $location.url('/connexion')
+    })
 
     return deferred.promise
 }

@@ -10,14 +10,14 @@
             <div class="form-group">
               <label for="pseudo" class="col-sm-4 control-label">Pseudo :</label>
               <div class="col-sm-8">
-                <span>Avatar3228</span><i class="fa fa-pencil" aria-hidden="true"></i>
+                <span>{{ vm.sessionFactory.user.username }}</span><i class="fa fa-pencil" aria-hidden="true"></i>
                 <input type="text" class="form-control" id="pseudo" placeholder="Pseudo">
               </div>
             </div>
             <div class="form-group">
               <label for="email" class="col-sm-4 control-label">Email :</label>
               <div class="col-sm-8">
-                <span>avatar3228@gmail.com</span><i class="fa fa-pencil" aria-hidden="true"></i>
+                <span>{{ vm.sessionFactory.user.email }}</span><i class="fa fa-pencil" aria-hidden="true"></i>
                 <input type="email" class="form-control" id="email" placeholder="Email">
               </div>
             </div>

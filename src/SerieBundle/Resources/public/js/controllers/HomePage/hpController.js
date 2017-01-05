@@ -1,12 +1,14 @@
-function hpController(tmdbService, $location, $window, userService, sessionFactory) {
+function hpController(tmdbService, $location, $window, userService, sessionFactory, $rootScope) {
 
     this.tmdbService = tmdbService;
     this.$location = $location;
     this.userService = userService;
+    this.isLogged = sessionFactory.isLogged;
     this.sessionFactory = sessionFactory;
+    this.$rootScope = $rootScope;
 
 
-    console.log(sessionFactory.user.id);
+    console.log(sessionFactory.user);
 
 
     //CAROUSEL POPULAIRE
@@ -42,6 +44,12 @@ function hpController(tmdbService, $location, $window, userService, sessionFacto
             this.sheetSerie = response.data;
         });
     };
+    console.log(sessionFactory.isLogged);
+
+    $rootScope.$on('loginStatusChangedHomepage', (event) => {
+            this.isLogged = sessionFactory.isLogged;
+      })
+        console.log(this.isLogged);
 
 
     this.show = false;

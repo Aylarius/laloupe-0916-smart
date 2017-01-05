@@ -213,7 +213,7 @@ ________________________________________________________________________________
 
 .serieNL {
     width: 100%;
-    height: 500px;
+    height: 600px;
     margin: 0;
     padding: 0;
     background-color: rgb(214, 214, 214);
@@ -225,7 +225,7 @@ ________________________________________________________________________________
 
 .sheetSerie_img {
     width: 100%;
-    height: 500px;
+    height: 600px;
     background-size: cover;
     background-position: center;
     display: inline-block;
@@ -240,6 +240,7 @@ ________________________________________________________________________________
 }
 #resume {
   text-align: justify;
+  font-size: 1.125rem;
 }
 .title-section-serie {
   font-size: 1.25rem;
@@ -335,12 +336,17 @@ ________________________________________________________________________________
 }
 .categorie {
   margin-bottom: 12px;
+  font-size: 1rem;
 }
+
 #section-progression h4 {
   margin-top: 30px;
   margin-bottom: 15px;
 }
 
+.episode-info {
+  font-size: 1rem;
+}
 
 /*___Footer___________________________________________________________________________________________________
 ____________________________________________________________________________________________________________*/
@@ -785,6 +791,7 @@ footer a:hover, footer a:focus {
     margin-left: 5px;
     margin-right: 5px;
     padding-bottom: 10px;
+    display: inline-block;
 }
 #episode-card p {
     margin-top: 5px;
@@ -809,6 +816,7 @@ footer a:hover, footer a:focus {
 
 #serie-container h4 {
     margin-left: 10px;
+    height: 35px;
 }
 
 #serie-container .progress {
@@ -1128,4 +1136,8 @@ hr {
 
 :focus {
     outline: 0px;
+}
+
+.acteur-nom {
+  height: 45px;
 }

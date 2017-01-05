@@ -1,65 +1,65 @@
 <div class="row" id="season-section">
-  <div class="col-xs-12">
-    <div class="row">
-    <div class="col-xs-9">
-      <div class="row">
-        <button class="btn btn-orange pull-right">
-          <span class="glyphicon glyphicon-ok"></span>
-          Marquer toute la saison comme vue
-        </button>
-      </div>
-        <div class="row list_episode no-pad">
-              <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4" id="episode-container"  ng-repeat="episode in vm.seasons.episodes">
-                <div id="episode-card">
-                  <img ng-src="{{!episode.still_path ? 'bundles/serie/assets/img/img-default.png' : 'https://image.tmdb.org/t/p/original'+episode.still_path}}" alt="" class="img-responsive center-block">
-                  <div class="row no-pad">
-                    <div class="col-xs-10 text-left no-pad">
-                      <p>Saison
-                          {{episode.season_number}}
-                          - Episode
-                          {{episode.episode_number}}</p>
-                      <p ng-bind="'{{episode.air_date.replace('-','')+'T00:00:00'}}' | date:'dd MMMM yyyy'"></p>
-                    </div>
-                    <div class="col-xs-2 text-right no-pad">
-                      <span id="star" class="glyphicon glyphicon-ok-sign"></span>
-                    </div>
-                  </div>
+    <div class="col-xs-12">
+        <div class="row">
+            <div class="col-xs-9">
+                <div class="row">
+                    <button class="btn btn-orange pull-right">
+                        <span class="glyphicon glyphicon-ok"></span>
+                        Marquer toute la saison comme vue
+                    </button>
                 </div>
-              </div>
-      </div>
-    </div>
-    <div class="col-xs-3 text-center" id="section-progression">
-        <h4>VOTRE PROGRESSION</h4>
-        <div class="c100 p25 orange">
-            <span>25%</span>
-            <div class="slice">
-                <div class="bar"></div>
-                <div class="fill"></div>
+                <div class="row list_episode no-pad">
+                    <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4" id="episode-container" ng-repeat="episode in vm.seasons.episodes">
+                        <div id="episode-card">
+                            <img ng-src="{{!episode.still_path ? 'bundles/serie/assets/img/img-default.png' : 'https://image.tmdb.org/t/p/original'+episode.still_path}}" alt="" class="img-responsive center-block">
+                            <div class="row no-pad">
+                                <div class="col-xs-10 text-left no-pad">
+                                    <p>Saison
+                                        {{episode.season_number}}
+                                        - Episode
+                                        {{episode.episode_number}}</p>
+                                    <p ng-bind="'{{episode.air_date.replace('-','')+'T00:00:00'}}' | date:'dd MMMM yyyy'"></p>
+                                </div>
+                                <div class="col-xs-2 text-right no-pad">
+                                    <span id="star" class="glyphicon glyphicon-ok-sign"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-3 text-center" id="section-progression">
+                <h4>VOTRE PROGRESSION</h4>
+                <div class="c100 p25 orange">
+                    <span>25%</span>
+                    <div class="slice">
+                        <div class="bar"></div>
+                        <div class="fill"></div>
+                    </div>
+                </div>
+                <h4>DERNIER EPISODE VU</h4>
+                <p>
+                    Saison 3 - Episode 8
+                </p>
+                <h4>PROCHAIN EPISODE</h4>
+                <div class="card_episode" ng-href="">
+                    <img class="img-responsive episode_img" ng-src="https://image.tmdb.org/t/p/original{{vm.seasons.episodes[0].still_path}}" alt=""/>
+                    <p>Saison
+                        {{vm.seasons.episodes[0].season_number}}
+                        - Episode
+                        {{vm.seasons.episodes[0].episode_number}}</p>
+                    <p ng-bind="'{{vm.seasons.episodes[0].air_date.replace('-','')+'T00:00:00'}}' | date:'dd MMMM yyyy'"></p>
+                </div>
+                <h4>EPISODE A VENIR</h4>
+                <div class="card_episode" ng-href="">
+                    <img class="img-responsive episode_img" ng-src="https://image.tmdb.org/t/p/original{{vm.seasons.episodes[0].still_path}}" alt=""/>
+                    <p>Saison
+                        {{vm.seasons.episodes[0].season_number}}
+                        - Episode
+                        {{vm.seasons.episodes[0].episode_number}}</p>
+                    <p ng-bind="'{{vm.seasons.episodes[0].air_date.replace('-','')+'T00:00:00'}}' | date:'dd MMMM yyyy'"></p>
+                </div>
             </div>
         </div>
-        <h4>DERNIER EPISODE VU</h4>
-        <p>
-            Saison 3 - Episode 8
-        </p>
-        <h4>PROCHAIN EPISODE</h4>
-        <div class="card_episode" ng-href="">
-            <img class="img-responsive episode_img" ng-src="https://image.tmdb.org/t/p/original{{vm.seasons.episodes[0].still_path}}" alt=""/>
-            <p>Saison
-                {{vm.seasons.episodes[0].season_number}}
-                - Episode
-                {{vm.seasons.episodes[0].episode_number}}</p>
-            <p ng-bind="'{{vm.seasons.episodes[0].air_date.replace('-','')+'T00:00:00'}}' | date:'dd MMMM yyyy'"></p>
-        </div>
-        <h4>EPISODE A VENIR</h4>
-        <div class="card_episode" ng-href="">
-            <img class="img-responsive episode_img" ng-src="https://image.tmdb.org/t/p/original{{vm.seasons.episodes[0].still_path}}" alt=""/>
-            <p>Saison
-                {{vm.seasons.episodes[0].season_number}}
-                - Episode
-                {{vm.seasons.episodes[0].episode_number}}</p>
-            <p ng-bind="'{{vm.seasons.episodes[0].air_date.replace('-','')+'T00:00:00'}}' | date:'dd MMMM yyyy'"></p>
-        </div>
     </div>
-</div>
-</div>
 </div>

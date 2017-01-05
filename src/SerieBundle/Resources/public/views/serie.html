@@ -75,9 +75,8 @@
     </div>
     <div class="saison">
         <ul>
-            <li class="saison-num" ng-repeat="season in vm.sheetSerie.seasons" ng-hide="season.season_number == 0">
-                <a href="" ng-click="vm.getSeasons(vm.sheetSerie.id, season.season_number)" prevent>Saison
-                    {{season.season_number}}</a>
+            <li class="saison-num" ng-repeat="season in vm.sheetSerie.seasons">
+                <a href="" ng-click="vm.getSeasons(vm.sheetSerie.id, season.season_number)" prevent>{{season.season_number == 0 ? 'Bonus' : 'Saison '+season.season_number}}</a>
             </li>
         </ul>
     </div>

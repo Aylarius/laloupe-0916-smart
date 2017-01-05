@@ -7,8 +7,8 @@ function navbarController(tmdbService, $location, sessionFactory, $rootScope) {
     this.$rootScope = $rootScope;
 
     this.searchView = (query) => {
-      $location.path("/resultats/"+query);
-      this.isToggled = false;
+        $location.path("/resultats/" + query);
+        this.isToggled = false;
     };
 
     //modal connexion
@@ -33,17 +33,25 @@ function navbarController(tmdbService, $location, sessionFactory, $rootScope) {
         }
     };
 
+
+
+      console.log(this.sessionFactory.token);
+        if (this.sessionFactory.token !== undefined || this.sessionFactory.token !== null) {
+          this.isLogged = true;
+        }
+        else {
+          this.isLogged = false;
+        }
+
+
     //Logout
     this.logout = () => {
         this.sessionFactory.isLogged = false;
         this.sessionFactory.user = {};
         this.sessionFactory.token = null;
-        this.$window.localStorage.token = null;
-        this.$window.localStorage.id = {};
-        this.$window.localStorage.username = {};
         this.$rootScope.$emit('loginStatusChanged', false);
         this.isLogged = false;
-        this.$location.path('/login');
+        this.$location.path('/connexion');
     };
 
 }

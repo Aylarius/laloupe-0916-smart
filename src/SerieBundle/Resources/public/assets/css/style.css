@@ -1,4 +1,5 @@
-/**********Global*********/
+/*___Global_______________________________________________________________________________________________________
+________________________________________________________________________________________________________________*/
 
 html {
     font-size: 16px;
@@ -17,7 +18,8 @@ a:focus {
 }
 
 
-/********* NAVBAR ********/
+/*___Navbar_______________________________________________________________________________________________________
+________________________________________________________________________________________________________________*/
 
 .container-fluid>.navbar-collapse, .container-fluid>.navbar-header, .container>.navbar-collapse, .container>.navbar-header {
     margin: 0;
@@ -160,170 +162,6 @@ a:focus {
 }
 
 
-/**********Modal***********/
-
-.modal-header {
-    text-align: right;
-    border-bottom: 0;
-    padding: 20px 20px 0px 0px;
-    font-size: 1.25rem;
-}
-
-.glyphicon-remove {
-    cursor: pointer;
-}
-
-#myModal .modal-content {
-    -webkit-border-radius: inherit;
-    -moz-border-radius: inherit;
-    border-radius: inherit;
-    top: 100px;
-}
-
-.modal-body {
-    text-align: center;
-}
-
-.modal-body a {
-    background-color: rgb(255, 168, 52);
-    color: white;
-    font-size: 1.5rem;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    margin: 20px 0px 20px 0;
-    display: block;
-    text-align: center!important;
-    text-transform: uppercase;
-}
-
-.modal-body a:hover {
-    text-decoration: none;
-}
-
-
-/*___Page série Non Loggué _______________________________________________________________________________________
-________________________________________________________________________________________________________________*/
-
-
-/*global*/
-
-.serie li {
-    list-style: none;
-}
-
-.serieNL {
-    width: 100%;
-    height: 500px;
-    margin: 0;
-    padding: 0;
-    background-color: rgb(214, 214, 214);
-}
-
-.sheetSerie_ban {
-    padding: 0;
-}
-
-.sheetSerie_img {
-    width: 100%;
-    height: 500px;
-    background-size: cover;
-    background-position: center;
-    display: inline-block;
-}
-
-#stat-serie {
-    background-color: rgba(0, 0, 0, 0.5);
-    position: absolute;
-    bottom: 0px;
-    color: white;
-    padding-bottom: 10px;
-}
-#resume {
-  text-align: justify;
-}
-.title-section-serie {
-  font-size: 1.25rem;
-  font-weight: 500;
-}
-/*#banniere th, #banniere td {
-    padding-right: 10px;
-    padding-left: 10px;
-    padding-bottom: 5px;
-    text-align: center;
-}*/
-
-
-/*#stat-serie table {
-    display: inline-table;
-    margin-left: 40px;
-}*/
-
-.follow {
-    background-color: rgb(50, 50, 50);
-    height: 80px;
-    position: relative;
-}
-
-.follow a {
-    background-color: rgb(255, 168, 52)!important;
-    color: white;
-    font-size: 1.5em;
-    padding: 10px 20px 10px 20px;
-    display: block;
-    width: 200px;
-    text-align: left;
-    margin-top: 10px;
-}
-
-.follow a:hover {
-    text-decoration: none;
-}
-
-.acteur {
-  margin-bottom: 20px;
-}
-
-.acteur-img {
-    border-radius: 50%;
-    border: 5px solid rgb(255, 168, 52);
-    width: 100px;
-    height: 100px;
-    background-size: cover;
-    background-position: center;
-    display: inline-block;
-}
-.saison {
-    background-color: rgb(50, 50, 50);
-    height: 70px;
-    line-height: 3;
-    position: relative;
-}
-.saison li {
-    display: inline-block;
-}
-.saison a {
-    color: white;
-    font-size: 1.5em;
-    text-align: left;
-    position: relative;
-    margin-right: 15px;
-}
-#season-section .btn-orange {
-  width: auto;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  margin-right: 5px;
-  text-transform: inherit;
-}
-.categorie {
-  margin-bottom: 12px;
-}
-#section-progression h4 {
-  margin-top: 30px;
-  margin-bottom: 15px;
-}
-
-
 /*___Footer___________________________________________________________________________________________________
 ____________________________________________________________________________________________________________*/
 
@@ -350,7 +188,54 @@ footer a:hover, footer a:focus {
 }
 
 
-/***********Modal CGU FOOTER *************/
+/*___Modal________________________________________________________________________________________________________
+________________________________________________________________________________________________________________*/
+
+.modal-header {
+    text-align: right;
+    border-bottom: 0;
+    padding: 20px 20px 0px 0px;
+    font-size: 1.25rem;
+}
+
+.glyphicon-remove {
+    cursor: pointer;
+}
+
+#myModal .modal-content {
+    -webkit-border-radius: inherit;
+    -moz-border-radius: inherit;
+    border-radius: inherit;
+    top: 100px;
+}
+
+.modal-body h5 {
+    text-align: center;
+}
+
+.modal-body {
+    text-align: center;
+}
+
+.modal-body a {
+    background-color: rgb(255, 168, 52);
+    color: white;
+    font-size: 1.5rem;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin: 20px 0px 20px 0;
+    display: block;
+    text-align: center!important;
+    text-transform: uppercase;
+}
+
+.modal-body a:hover {
+    text-decoration: none;
+}
+
+
+/*___Modal CGU & crédit_______________________________________________________________________________________
+____________________________________________________________________________________________________________*/
 
 .modal-header {
     background-color: rgb(35, 35, 35);
@@ -503,7 +388,139 @@ footer a:hover, footer a:focus {
 }
 
 
-/*bandeau en-tête*/
+/*___Page série Non Loggué _______________________________________________________________________________________
+________________________________________________________________________________________________________________*/
+
+
+.serie li {
+    list-style: none;
+}
+
+.serieNL {
+    width: 100%;
+    height: 500px;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(214, 214, 214);
+}
+
+.sheetSerie_ban {
+    padding: 0;
+}
+
+.sheetSerie_img {
+    width: 100%;
+    height: 500px;
+    background-size: cover;
+    background-position: center;
+    display: inline-block;
+}
+
+#stat-serie {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    bottom: 0px;
+    color: white;
+    padding-bottom: 10px;
+}
+
+#resume {
+    text-align: justify;
+}
+
+.title-section-serie {
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+
+/*#banniere th, #banniere td {
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom: 5px;
+    text-align: center;
+}*/
+
+
+/*#stat-serie table {
+    display: inline-table;
+    margin-left: 40px;
+}*/
+
+.follow {
+    background-color: rgb(50, 50, 50);
+    height: 80px;
+    position: relative;
+}
+
+.follow a {
+    background-color: rgb(255, 168, 52)!important;
+    color: white;
+    font-size: 1.5em;
+    padding: 10px 20px 10px 20px;
+    display: block;
+    width: 200px;
+    text-align: left;
+    margin-top: 10px;
+}
+
+.follow a:hover {
+    text-decoration: none;
+}
+
+.acteur {
+    margin-bottom: 20px;
+}
+
+.acteur-img {
+    border-radius: 50%;
+    border: 5px solid rgb(255, 168, 52);
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+    background-position: center;
+    display: inline-block;
+}
+
+.saison {
+    background-color: rgb(50, 50, 50);
+    height: 70px;
+    line-height: 3;
+    position: relative;
+}
+
+.saison li {
+    display: inline-block;
+}
+
+.saison a {
+    color: white;
+    font-size: 1.5em;
+    text-align: left;
+    position: relative;
+    margin-right: 15px;
+}
+
+#season-section .btn-orange {
+    width: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 5px;
+    text-transform: inherit;
+}
+
+.categorie {
+    margin-bottom: 12px;
+}
+
+#section-progression h4 {
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+
+/*___bandeau en-tête__________________________________________________________________________________________
+____________________________________________________________________________________________________________*/
 
 .hpnl-band {
     margin-top: 4%;
@@ -550,7 +567,8 @@ footer a:hover, footer a:focus {
 }
 
 
-/*row hp-band-pop*/
+/*___row hp-band-pop__________________________________________________________________________________________
+____________________________________________________________________________________________________________*/
 
 #hp-band-pop {
     background-color: #606060;
@@ -578,7 +596,8 @@ footer a:hover, footer a:focus {
 }
 
 
-/*********Carousel div open click **********/
+/*___Fiche plus d'info carousel pop___________________________________________________________________________
+____________________________________________________________________________________________________________*/
 
 #more {
     background-color: rgb(214, 214, 214);
@@ -602,7 +621,7 @@ footer a:hover, footer a:focus {
     text-align: center;
 }
 
-.random a:hover{
+.random a:hover {
     text-decoration: none;
 }
 
@@ -652,47 +671,8 @@ footer a:hover, footer a:focus {
     padding: inherit;
 }
 
-
-/*CSS slider carousel "Derniers épisodes"*/
-
-.multi-item-carousel2 .carousel-inner>.item {
-    -webkit-transition: 500ms ease-in-out left;
-    transition: 500ms ease-in-out left;
-}
-
-.multi-item-carousel2 .carousel-inner .active.left {
-    left: -33%;
-}
-
-.multi-item-carousel2 .carousel-inner .active.right {
-    left: 33%;
-}
-
-.multi-item-carousel2 .carousel-inner .next {
-    left: 33%;
-}
-
-.multi-item-carousel2 .carousel-inner .prev {
-    left: -33%;
-}
-
-@media all and (transform-3d), (-webkit-transform-3d) {
-    .multi-item-carousel2 .carousel-inner>.item {
-        -webkit-transition: 500ms ease-in-out all;
-        transition: 500ms ease-in-out all;
-        -webkit-backface-visibility: visible;
-        backface-visibility: visible;
-        -webkit-transform: none!important;
-        transform: none!important;
-    }
-}
-
-.multi-item-carousel2 .carouse-control.left, .multi-item-carousel2 .carouse-control.right {
-    background-image: none;
-}
-
-
-/* --- Profile Page --- */
+/*___Profile Page_____________________________________________________________________________________________
+____________________________________________________________________________________________________________*/
 
 #profile-page {
     padding: 0px;
@@ -765,11 +745,13 @@ footer a:hover, footer a:focus {
     margin-right: 5px;
     padding-bottom: 10px;
 }
+
 #episode-card p {
     margin-top: 5px;
     margin-bottom: 0px;
     margin-left: 5px;
 }
+
 #episode-card .glyphicon-ok-sign {
     top: 14px;
     /*color: #929292;*/
@@ -824,10 +806,12 @@ footer a:hover, footer a:focus {
     border-radius: 20px;
     display: inline-block;
 }
+
 .serie .tag {
-  background-color: #606060;
-  color: white;
+    background-color: #606060;
+    color: white;
 }
+
 .tag.active {
     background-color: rgb(255, 168, 52);
 }
@@ -855,7 +839,8 @@ footer a:hover, footer a:focus {
 }
 
 
-/* --- Inscription & Connexion Page --- */
+/*___Inscription & Connexion Page_____________________________________________________________________________
+____________________________________________________________________________________________________________*/
 
 #inscription-page, #connexion-page, #inscription-page2, #resultats-page {
     background-color: #F7F6F6;
@@ -913,8 +898,6 @@ footer a:hover, footer a:focus {
     text-transform: uppercase;
     border-radius: inherit;
 }
-
-
 
 .btn-orange:hover, .btn-orange:focus {
     background-color: white;
@@ -1003,7 +986,8 @@ hr {
 }
 
 
-/* --- Results Page --- */
+/*___Results Page_____________________________________________________________________________________________
+____________________________________________________________________________________________________________*/
 
 .btn-filter {
     color: white;

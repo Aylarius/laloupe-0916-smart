@@ -36,8 +36,8 @@ function navbarController(tmdbService, $location, sessionFactory, $rootScope) {
     //Logout
     this.logout = () => {
         this.sessionFactory.isLogged = false;
-        this.sessionFactory.user = {};
-        this.sessionFactory.token = null;
+        this.sessionFactory.removeItem('token');
+        this.sessionFactory.removeItem('currentUser');
         this.$window.localStorage.token = null;
         this.$window.localStorage.id = {};
         this.$window.localStorage.username = {};

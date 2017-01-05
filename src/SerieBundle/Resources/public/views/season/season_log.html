@@ -1,12 +1,31 @@
 <div class="row" id="season-section">
-    <div class="col-xs-12">
-        <div class="row">
-            <div class="col-xs-9">
-                <div class="row">
-                    <button class="btn btn-orange pull-right">
-                        <span class="glyphicon glyphicon-ok"></span>
-                        Marquer toute la saison comme vue
-                    </button>
+  <div class="col-xs-12">
+    <div class="row">
+    <div class="col-xs-9">
+      <div class="row">
+        <button class="btn btn-orange pull-right">
+          <span class="glyphicon glyphicon-ok"></span>
+          Marquer toute la saison comme vue
+        </button>
+      </div>
+        <div class="row list_episode no-pad">
+              <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4" id="episode-container"  ng-repeat="episode in vm.seasons.episodes">
+                <div id="episode-card">
+                  <img data-toggle="modal" data-target="#{{episode.id}}" ng-src="{{!episode.still_path ? 'bundles/serie/assets/img/img-default-episode.png' : 'https://image.tmdb.org/t/p/original'+episode.still_path}}" alt="" class="img-responsive center-block">
+                  <div class="row no-pad">
+                    <div class="col-xs-10 text-left no-pad episode-info">
+                      <p>
+                          {{episode.season_number == 0 ? 'Bonus' : 'Saison '+episode.season_number}}
+                          - Episode
+                          {{episode.episode_number}}
+                      </p>
+                      <p>{{episode.air_date.replace(vm.underscoreReg,'')+'T00:00:00' | date:'dd MMMM yyyy'}}</p>
+                    </div>
+                    <div ng-click="vm.check(episode.id)" class="col-xs-2 text-right no-pad">
+                      <span id="sign" style="color: #929292" class="glyphicon glyphicon-ok-sign" ng-hide='vm.episodeTrack[episode.id]'></span>
+                      <span id="sign" style="color: rgb(255, 168, 52)" class="glyphicon glyphicon-ok-sign" ng-show='vm.episodeTrack[episode.id]'></span>
+                    </div>
+                  </div>
                 </div>
                 <div class="row list_episode no-pad">
                     <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4" id="episode-container" ng-repeat="episode in vm.seasons.episodes">
@@ -36,7 +55,7 @@
                                             <h4 class="modal-title">{{ vm.sheetSerie.name }}</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <img ng-src="{{!episode.still_path ? 'bundles/serie/assets/img/img-default.png' : 'https://image.tmdb.org/t/p/original'+episode.still_path}}" alt="" class="img-responsive center-block">
+                                            <img ng-src="{{!episode.still_path ? 'bundles/serie/assets/img/img-default-episode-lg.png' : 'https://image.tmdb.org/t/p/original'+episode.still_path}}" alt="" class="img-responsive center-block">
                                             <h4>
                                                 {{episode.season_number == 0 ? 'Bonus' : 'Saison '+episode.season_number}}
                                                 - Episode

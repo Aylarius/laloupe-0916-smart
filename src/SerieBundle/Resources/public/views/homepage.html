@@ -1,16 +1,16 @@
-<div class="container-fluid">
+<div class="container-fluid no-pad" id="homepage">
 
     <!-- Bandeau en-tête -->
     <div class="row hpnl-band">
 
         <!-- Slider -->
         <div class="col-md-offset-1 col-md-4 hpnl-band-left" ng-controller="carousel1Controller as vm">
-            <section class="center slider">
+            <section class="center-block slider">
                 <div>
                     <slick class="slider" settings="vm.slickConfig">
                         <div class="repeat" ng-repeat="result in vm.results">
                             <div class="card" ng-click="vm.togglePane = result.i">
-                                <img class="img-responsive" ng-src="https://image.tmdb.org/t/p/w500{{result.backdrop_path}}" alt="{{ result.name }}"/>
+                                <img class="img-responsive center-block" ng-src="https://image.tmdb.org/t/p/w500{{result.backdrop_path}}" alt="{{ result.name }}"/>
                             </div>
                         </div>
                     </slick>
@@ -35,13 +35,13 @@
 
     <!-- Slider séries les plus populaires -->
     <div id="hp-band-pop" class="row">
-        <h2 class="hp-title-band">SERIES LES PLUS POPULAIRES</h2>
+        <h2 class="hp-title-band">LES PLUS POPULAIRES</h2>
         <section class="center slider">
             <div>
                 <slick class="slider" settings="vm.slickConfig">
                     <div class="repeat" ng-repeat="result in vm.results">
-                        <div class="card" ng-click="vm.togglePane = result.i">
-                            <img class="img-responsive" ng-src="https://image.tmdb.org/t/p/w500{{result.backdrop_path}}" alt="{{ result.name }}"/>
+                        <div class="card center-block" ng-click="vm.togglePane = result.i">
+                            <img class="img-responsive center-block" ng-src="https://image.tmdb.org/t/p/w500{{result.backdrop_path}}" alt="{{ result.name }}"/>
                         </div>
                     </div>
                 </slick>
@@ -52,10 +52,10 @@
     <!-- visualisation de la fiche série "Séries les plus populaires" -->
     <div id="more" class="row" ng-repeat="result in vm.results" ng-show="vm.togglePane == result.i">
 
-        <div class="col-xs-12 col-sm-6 col-md-2">
-            <img ng-src="https://image.tmdb.org/t/p/w342{{ result.poster_path }}" alt="{{ result.name }}"/>
+        <div class="col-xs-12 col-sm-3 col-md-4 no-pad">
+            <img id="more-img" class="img-responsive center-block" ng-src="https://image.tmdb.org/t/p/w342{{ result.poster_path }}" alt="{{ result.name }}"/>
         </div>
-        <div class="col-xs-12 col-sm-6 col-md-10 followMore">
+        <div class="col-xs-12 col-sm-9 col-md-8 followMore">
             <a id="btn-follow" ng-click='vm.toggleFollow(result.id)' prevent>
                 <span id="star-empty" class="glyphicon glyphicon-star-empty" ng-hide='vm.series[result.id]'></span>
                 <span id="star" class="glyphicon glyphicon-star" ng-show='vm.series[result.id]'></span>
@@ -67,28 +67,19 @@
                     saisons -
                     {{ result.number_of_episodes }}
                     épisodes</h3>
-                <h3>54098 followers</h3>
+                <h3>{{result.popularity}} followers</h3>
                 <p>{{ result.overview | limitTo: 600 }}{{ result.overview.length > 600 ? '...' : ''}}</p>
-            </div>
-            <div class="row">
-                <div class="col-xs-6">
-                    <a id="btn-see" href="#" ng-click="vm.tvShowView(result.id)" prevent>Voir la série</a>
-                </div>
-                <div class="col-xs-6">
-                    <div id="info">
-                        <p>
-                            <strong>Catégorie :</strong>
-                        </p>
-                        <ul ng-repeat="genre in result.genres">
-                            <li>{{ genre.name }}</li>
-                        </ul>
-                        <p>
-                            <strong>Réseau :</strong>
-                            {{ result.networks[0].name}}
-                        </p>
-                    </div>
-                </div>
-
+<div class="text-left">
+  <span class="title-section-serie">Genre :
+  </span>
+  <span ng-repeat="genre in result.genres" class="tag">{{genre.name}}</span>
+<br>
+  <span class="title-section-serie">Réseau :
+  </span>
+  <span>{{ result.networks[0].name}}</span>
+</div>
+                  <br>
+                  <a class="btn-see center-block" href="#" ng-click="vm.tvShowView(result.id)" prevent>Voir la série</a>
             </div>
         </div>
 
@@ -96,19 +87,19 @@
 
     <!-- Séries random -->
     <div id="hp-band-last" class="row no-pad" ng-controller="carousel3Controller as vm">
-        <h2 class="hp-title-band">SERIES QUE VOUS POUVEZ AIMER</h2>
+        <h2 class="hp-title-band">SUGGESTIONS</h2>
         <section class="center slider">
             <div>
                 <slick class="slider" settings="vm.slickConfig">
                     <div class="repeat" ng-repeat="result in vm.results">
                         <div class="card">
-                            <img class="img-responsive" ng-src="{{!result.backdrop_path ? 'bundles/serie/assets/img/img-default2.png' : 'https://image.tmdb.org/t/p/w500'+result.backdrop_path}}" alt="{{ result.name }}"/>
+                            <img class="img-responsive center-block" ng-src="{{!result.backdrop_path ? 'bundles/serie/assets/img/img-default2.png' : 'https://image.tmdb.org/t/p/w500'+result.backdrop_path}}" alt="{{ result.name }}"/>
                         </div>
                         <div class="random">
-                            <p id="hp-band-last-text" class="text-center">
+                            <p class="text-center">
                                 {{ result.name }}
                             </p>
-                            <a href="#" class="center-block" ng-click="vm.tvShowView(result.id)" prevent>Voir la série</a>
+                            <a href="#" class="btn-see center-block" ng-click="vm.tvShowView(result.id)" prevent>Voir la série</a>
                         </div>
                     </div>
                 </slick>

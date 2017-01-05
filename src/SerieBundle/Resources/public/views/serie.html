@@ -23,7 +23,7 @@
                                     <td>{{vm.sheetSerie.number_of_seasons}}</td>
                                     <td>{{vm.sheetSerie.number_of_episodes}}</td>
                                     <td>{{vm.sheetSerie.episode_run_time[0]}}</td>
-                                    <td>{{vm.sheetSerie.in_production}}</td>
+                                    <td>{{vm.sheetSerie.in_production===true ? "En cours" : "Terminée"}}</td>
                                     <td>{{vm.sheetSerie.popularity}}</td>
                                 </tr>
                             </table>
@@ -65,20 +65,27 @@
         <div class="col-xs-10 col-xs-offset-1">
             <p class="title-section-serie">Acteurs :</p>
             <ul class="row no-pad">
-                <li class="col-xs-2 text-center no-pad" ng-repeat="actor in vm.people.cast">
-                    <div class="acteur-img" style="background-image: url(https://image.tmdb.org/t/p/w185{{actor.profile_path}})"></div>
+                <li class="col-xs-6 col-sm-3 col-md-2 col-lg-1 text-center no-pad" ng-repeat="actor in vm.people.cast">
+                    <div class="acteur-img" style="background-image: url({{!actor.profile_path ? 'bundles/serie/assets/img/img-default-acteur2.png' : 'https://image.tmdb.org/t/p/w185'+actor.profile_path}})"></div>
                     <br>
-                    {{actor.name}}
+                    <div class="acteur-nom">
+                      {{actor.name}}
+                    </div>
                 </li>
             </ul>
         </div>
     </div>
-    <div class="saison">
-        <ul>
+    <div class='horizon-swiper saison'>
+        <ul class='horizon-item '>
             <li class="saison-num" ng-repeat="season in vm.sheetSerie.seasons">
-                <a href="" ng-click="vm.getSeasons(vm.sheetSerie.id, season.season_number)" prevent>{{season.season_number == 0 ? 'Bonus' : 'Saison '+season.season_number}}</a>
+                <a href="" class="" ng-click="vm.getSeasons(vm.sheetSerie.id, season.season_number)" prevent>{{season.season_number == 0 ? 'Bonus' : 'Saison '+season.season_number}}</a>
             </li>
         </ul>
     </div>
     <season></season>
 </div>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('.horizon-swiper').horizonSwiper({dots: true});
+  })
+</script>

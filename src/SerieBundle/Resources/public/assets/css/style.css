@@ -234,7 +234,154 @@ ________________________________________________________________________________
 }
 
 
-/*___Modal CGU & crédit_______________________________________________________________________________________
+/*___Page série Non Loggué _______________________________________________________________________________________
+________________________________________________________________________________________________________________*/
+
+
+/*global*/
+
+.serie li {
+    list-style: none;
+}
+
+.serieNL {
+    width: 100%;
+    height: 600px;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(214, 214, 214);
+}
+
+.sheetSerie_ban {
+    padding: 0;
+}
+
+.sheetSerie_img {
+    width: 100%;
+    height: 600px;
+    background-size: cover;
+    background-position: center;
+    display: inline-block;
+}
+
+#stat-serie {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    bottom: 0px;
+    color: white;
+    padding-bottom: 10px;
+}
+#resume {
+  text-align: justify;
+  font-size: 1.125rem;
+}
+.title-section-serie {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+/*#banniere th, #banniere td {
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom: 5px;
+    text-align: center;
+}*/
+
+
+/*#stat-serie table {
+    display: inline-table;
+    margin-left: 40px;
+}*/
+
+.follow {
+    background-color: rgb(50, 50, 50);
+    height: 80px;
+    position: relative;
+}
+
+.follow a {
+    background-color: rgb(255, 168, 52)!important;
+    color: white;
+    font-size: 1.5em;
+    padding: 10px 20px 10px 20px;
+    display: block;
+    width: 200px;
+    text-align: left;
+    margin-top: 10px;
+}
+
+.follow a:hover {
+    text-decoration: none;
+}
+
+.acteur {
+  margin-bottom: 20px;
+}
+
+.acteur-img {
+    border-radius: 50%;
+    border: 5px solid rgb(255, 168, 52);
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+    background-position: center;
+    display: inline-block;
+}
+/*1*/
+
+.swipe {
+  overflow: hidden;
+  visibility: hidden;
+  position: relative;
+}
+.swipe-wrap {
+  overflow: hidden;
+  position: relative;
+}
+.swipe-wrap > div {
+  float:left;
+  width:100%;
+  position: relative;
+}
+
+/*1*/
+.saison {
+    background-color: rgb(50, 50, 50);
+    height: 70px;
+    line-height: 3;
+    position: relative;
+}
+.saison li {
+    display: inline-block;
+}
+.saison a {
+    color: white;
+    font-size: 1.5em;
+    text-align: left;
+    position: relative;
+    margin-right: 15px;
+}
+#season-section .btn-orange {
+  width: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 5px;
+  text-transform: inherit;
+}
+.categorie {
+  margin-bottom: 12px;
+  font-size: 1rem;
+}
+
+#section-progression h4 {
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+.episode-info {
+  font-size: 1rem;
+}
+
+/*___Footer___________________________________________________________________________________________________
 ____________________________________________________________________________________________________________*/
 
 .modal-header {
@@ -562,10 +709,12 @@ ________________________________________________________________________________
     background-image: none !important;
 }
 
-.card img, .card-block {
+.card img {
     margin-left: 50px;
 }
-
+#modal-credit .card img, #homepage .card img {
+    margin-left: auto;
+}
 
 /*___row hp-band-pop__________________________________________________________________________________________
 ____________________________________________________________________________________________________________*/
@@ -573,7 +722,7 @@ ________________________________________________________________________________
 #hp-band-pop {
     background-color: #606060;
     color: #ffffff;
-    padding-bottom: 30px;
+    padding-bottom: 15px;
 }
 
 
@@ -584,17 +733,6 @@ ________________________________________________________________________________
     padding-bottom: 30px;
 }
 
-#hp-band-last-text {
-    margin-top: 4%;
-    font-size: 1.3em;
-}
-
-#hp-band-last-text-date {
-    margin-top: 4%;
-    font-size: 1.3em;
-    font-style: italic;
-}
-
 
 /*___Fiche plus d'info carousel pop___________________________________________________________________________
 ____________________________________________________________________________________________________________*/
@@ -602,13 +740,14 @@ ________________________________________________________________________________
 #more {
     background-color: rgb(214, 214, 214);
     height: 100%;
+    font-size: 1.125rem;
 }
 
 .followMore {
     position: relative;
 }
 
-.followMore a, .random a {
+.followMore a {
     background-color: rgb(255, 168, 52)!important;
     color: white;
     font-size: 1.5rem;
@@ -621,13 +760,21 @@ ________________________________________________________________________________
     text-align: center;
 }
 
-.random a:hover {
+.followMore a:hover{
     text-decoration: none;
 }
 
-#btn-see {
-    text-align: center;
-    margin: 25% 0 5% 86%;
+.btn-see {
+      background-color: rgb(255, 168, 52)!important;
+      color: white;
+      font-size: 1.25rem;
+      padding: 10px 20px 10px 20px;
+      display: block;
+      width: 160px;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      background-color: rgb(255, 168, 52)!important;
+      text-align: center;
 }
 
 #btn-follow {
@@ -639,37 +786,40 @@ ________________________________________________________________________________
     text-align: center;
 }
 
-#btn-see:hover, #btn-follow:hover {
+.btn-see:hover, #btn-follow:hover {
     text-decoration: none;
+    color: white;
 }
 
 .contenu {
     text-align: center;
-    padding-top: 40px;
+    padding-top: 50px;
+    padding-left: 5%;
+    padding-right: 5%;
 }
+@media screen and (max-width: 576px) {
+  #more img {
+      width: auto !important;
+      margin: 20px auto !important;
+  }
+}
+  #more img {
+      margin: 20px;
+      width: 100%;
+  }
 
-#more img {
-    margin: 20px 0 20px 10px;
-}
 
 #more p {
-    font-size: 20px;
+    font-size: 1.25rem;
     text-align: justify;
 }
 
 .contenu p {
     padding-top: 20px;
     padding-bottom: 10px;
-    padding-left: 5%;
-    padding-right: 5%;
 }
 
-#info {
-    position: absolute;
-    margin-top: 20px;
-    right: 0;
-    padding: inherit;
-}
+
 
 /*___Profile Page_____________________________________________________________________________________________
 ____________________________________________________________________________________________________________*/
@@ -744,6 +894,7 @@ ________________________________________________________________________________
     margin-left: 5px;
     margin-right: 5px;
     padding-bottom: 10px;
+    display: inline-block;
 }
 
 #episode-card p {
@@ -770,6 +921,7 @@ ________________________________________________________________________________
 
 #serie-container h4 {
     margin-left: 10px;
+    height: 35px;
 }
 
 #serie-container .progress {
@@ -1019,4 +1171,80 @@ ________________________________________________________________________________
     padding-left: 30px;
     padding-right: 30px;
     margin-bottom: 20px;
+}
+
+#homepage h2 {
+  padding-left: 40px;
+}
+
+@media (max-width: 768px) and (min-width: 576px) {
+  .col-sm-3 {
+    width: 25%;
+  }
+  .col-sm-9 {
+    width: 75%;
+  }
+}
+
+#homepage .card {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.slick-dotted.slick-slider {
+  margin-bottom: 0px;
+}
+
+.slick-dots {
+    position: relative;
+    bottom: inherit;
+    margin-top: 15px;
+}
+.slick-next {
+    right: 50px;
+}
+.slick-prev {
+    left: 30px;
+}
+.slick-prev:before, .slick-next:before {
+    font-family: 'slick';
+    font-size: 40px;
+    line-height: 1;
+    opacity: .85;
+    color: white;
+  }
+
+.hpnl-band .slick-prev, .hpnl-band .slick-next {
+  display: none !important;
+}
+
+.slick-prev, .slick-next {
+      font-size: 0;
+      line-height: 0;
+      position: absolute;
+      top: calc(50% - 20px);
+      display: block;
+      padding: 0;
+      cursor: pointer;
+      color: transparent;
+      border: none;
+      outline: none;
+      background: transparent;
+      z-index: 10000;
+}
+#hp-band-last .slick-prev, #hp-band-last .slick-next {
+  top: calc(50% - 60px);
+}
+
+#hp-band-last p {
+      margin-top: 10px;
+      font-size: 1rem;
+}
+
+:focus {
+    outline: 0px;
+}
+
+.acteur-nom {
+  height: 45px;
 }

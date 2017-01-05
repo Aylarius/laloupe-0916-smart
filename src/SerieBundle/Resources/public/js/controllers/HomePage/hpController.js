@@ -29,9 +29,27 @@ function hpController(tmdbService, $location, $window, userService, sessionFacto
                 // initialSlide: 0,
                 slidesToShow: 3,
                 infinite: true,
+                dots: true,
                 autoplay: true,
-                responsive: true,
-                //centerMode: true,
+                responsive: [{
+                        breakpoint: 992,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 1
+                        }
+                    }, {
+                        breakpoint: 768,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 1
+                        }
+                    }, {
+                        breakpoint: 576,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1
+                        }
+                    }]                //centerMode: true,
                 // variableWidth: true,
                 // method: {},
             };
@@ -50,7 +68,6 @@ function hpController(tmdbService, $location, $window, userService, sessionFacto
             this.isLogged = sessionFactory.isLogged;
       })
         console.log(this.isLogged);
-
 
     this.show = false;
 

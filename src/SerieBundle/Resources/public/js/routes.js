@@ -4,10 +4,7 @@ const routes = ($routeProvider, $httpProvider, $locationProvider) => {
         .when('/', {
             templateUrl: 'bundles/serie/views/homepage.html',
             controller: 'hpController',
-            controllerAs: 'vm',
-            resolve: {
-                connected: checkIsConnected
-            }
+            controllerAs: 'vm'
         })
         .when('/serie/:id', {
             templateUrl: 'bundles/serie/views/serie.html',
@@ -18,12 +15,18 @@ const routes = ($routeProvider, $httpProvider, $locationProvider) => {
             templateUrl: 'bundles/serie/views/calendrier.html'
         })
         .when('/profiledit', {
-            templateUrl: 'bundles/serie/views/profiledit.html'
+            templateUrl: 'bundles/serie/views/profiledit.html',
+            resolve: {
+                connected: checkIsConnected
+            }
         })
         .when('/profil', {
             templateUrl: 'bundles/serie/views/profile.html',
             controller: 'profileController',
-            controllerAs: 'vm'
+            controllerAs: 'vm',
+            resolve: {
+                connected: checkIsConnected
+            }
         })
         .when('/inscription', {
             templateUrl: 'bundles/serie/views/inscription.html'

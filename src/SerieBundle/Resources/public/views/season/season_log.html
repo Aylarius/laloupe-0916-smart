@@ -11,7 +11,7 @@
         <div class="row list_episode no-pad">
               <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4" id="episode-container"  ng-repeat="episode in vm.seasons.episodes">
                 <div id="episode-card">
-                  <img data-toggle="modal" data-target="#{{episode.id}}" ng-src="{{!episode.still_path ? 'bundles/serie/assets/img/img-default.png' : 'https://image.tmdb.org/t/p/original'+episode.still_path}}" alt="" class="img-responsive center-block">
+                  <img data-toggle="modal" data-target="#{{episode.id}}" ng-src="{{!episode.still_path ? 'bundles/serie/assets/img/img-default-episode.png' : 'https://image.tmdb.org/t/p/original'+episode.still_path}}" alt="" class="img-responsive center-block">
                   <div class="row no-pad">
                     <div class="col-xs-10 text-left no-pad">
                       <p>
@@ -37,7 +37,7 @@
                         <h4 class="modal-title"></h4>
                       </div>
                       <div class="modal-body">
-                        <img ng-src="{{!episode.still_path ? 'bundles/serie/assets/img/img-default.png' : 'https://image.tmdb.org/t/p/original'+episode.still_path}}" alt="" class="img-responsive center-block">
+                        <img ng-src="{{!episode.still_path ? 'bundles/serie/assets/img/img-default-episode-lg.png' : 'https://image.tmdb.org/t/p/original'+episode.still_path}}" alt="" class="img-responsive center-block">
                         <p>
                             {{episode.season_number == 0 ? 'Bonus' : 'Saison '+episode.season_number}}
                             - Episode

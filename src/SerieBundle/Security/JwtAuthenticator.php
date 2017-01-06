@@ -36,7 +36,7 @@ class JwtAuthenticator extends AbstractGuardAuthenticator
     {
 
         if(!$request->headers->has('authorization')) {
-            throw new AuthenticationException('Prout');
+            throw new AuthenticationException('Auth header required');
         }
 
         $extractor = new AuthorizationHeaderTokenExtractor(

@@ -31,7 +31,9 @@ const routes = ($routeProvider, $httpProvider, $locationProvider) => {
             }
         })
         .when('/inscription', {
-            templateUrl: 'bundles/serie/views/inscription.html'
+            templateUrl: 'bundles/serie/views/inscription.html',
+            controller: 'registerController',
+            controllerAs: 'vm'
         })
         .when('/inscriptionbis', {
             templateUrl: 'bundles/serie/views/inscriptionbis.html'
@@ -42,7 +44,9 @@ const routes = ($routeProvider, $httpProvider, $locationProvider) => {
             controllerAs: 'vm'
         })
         .when('/connexion', {
-            templateUrl: 'bundles/serie/views/connexion.html'
+            templateUrl: 'bundles/serie/views/connexion.html',
+            controller: 'loginController',
+            controllerAs: 'vm'
         })
         .otherwise({
             redirectTo: ''
@@ -61,7 +65,7 @@ const routes = ($routeProvider, $httpProvider, $locationProvider) => {
                 return config;
             },
             responseError(response) {
-                if (response.status === 401 || response.status === 403) {
+                if (response.status === 401 || response.status === 403 || response.status == 500) {
                     $rootScope.$emit('loginStatusChanged', false);
                     $rootScope.$emit('loginStatusChangedNavbar');
                     $rootScope.$emit('loginStatusChangedHomepage');

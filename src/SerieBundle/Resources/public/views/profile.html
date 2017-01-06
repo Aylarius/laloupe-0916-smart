@@ -1,7 +1,8 @@
 <div class="container-fluid" id="profile-page">
     <div class="row" id="img-section">
         <div class="col-xs-12">
-            <img src="http://placehold.it/250x250" class="img-responsive center-block">
+            <img ng-src="{{'bundles/serie/uploads/'+vm.sessionFactory.user.picture}}" alt="" class="img-responsive center-block">
+
             <h2>{{ vm.sessionFactory.user.username }}</h2>
             <a href="#/profiledit" id="edit-btn">
                 <i class="fa fa-pencil" aria-hidden="true"></i>

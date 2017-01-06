@@ -25,9 +25,13 @@
                         Suivez toutes vos séries et ne manquez plus un seul épisode !
                     </p>
                     <h1 class="hpnl-title text-center" ng-show='vm.isLogged'>
-                      Bonjour {{vm.sessionFactory.user.username}} !
+                        Bonjour
+                        {{vm.sessionFactory.user.username}}
+                        !
                     </h1>
-                    <a href="#/inscription"><button class="btn btn-orange center-block" ng-hide='vm.isLogged'>S'inscrire</button></a>
+                    <a href="#/inscription">
+                        <button class="btn btn-orange center-block" ng-hide='vm.isLogged'>S'inscrire</button>
+                    </a>
                 </div>
             </div>
         </div>
@@ -67,19 +71,20 @@
                     saisons -
                     {{ result.number_of_episodes }}
                     épisodes</h3>
-                <h3>{{result.popularity}} followers</h3>
+                <h3>{{result.popularity}}
+                    followers</h3>
                 <p>{{ result.overview | limitTo: 600 }}{{ result.overview.length > 600 ? '...' : ''}}</p>
-<div class="text-left">
-  <span class="title-section-serie">Genre :
-  </span>
-  <span ng-repeat="genre in result.genres" class="tag">{{genre.name}}</span>
-<br>
-  <span class="title-section-serie">Réseau :
-  </span>
-  <span>{{ result.networks[0].name}}</span>
-</div>
-                  <br>
-                  <a class="btn-see center-block" href="#" ng-click="vm.tvShowView(result.id)" prevent>Voir la série</a>
+                <div class="text-left">
+                    <span class="title-section-serie">Genre :
+                    </span>
+                    <span ng-repeat="genre in result.genres" class="tag">{{genre.name}}</span>
+                    <br>
+                    <span class="title-section-serie">Réseau :
+                    </span>
+                    <span>{{ result.networks[0].name}}</span>
+                </div>
+                <br>
+                <a class="btn-see center-block" href="#" ng-click="vm.tvShowView(result.id)" prevent>Voir la série</a>
             </div>
         </div>
 
@@ -106,3 +111,22 @@
             </div>
         </section>
     </div>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="glyphicon glyphicon-remove" data-dismiss="modal"></span>
+                </div>
+                <div class="modal-body">
+                    <h3>Vous devez être connecté pour pouvoir accéder aux pages des séries et suivre des séries.</h3>
+                    <a href="#">Se connecter</a>
+                    <a href="#">S'inscrire</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -31,14 +31,23 @@ class UserController extends Controller
             $response->setStatusCode(JsonResponse::HTTP_EXPECTATION_FAILED);;
             return $response;
         }
-        if ($data['password'] == $data['passwordConf'] && $data['conditions'] == true) {
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository('SerieBundle:User')->findOneBy(array('email' => $email));
+
+        if ($user) {
+            $data = 'Cette adresse email est déjà utilisée.';
+            $response = new JsonResponse($data);
+            $response->setStatusCode(JsonResponse::HTTP_EXPECTATION_FAILED);;
+            return $response;
+        }
+        if (!$user && $data['password'] == $data['passwordConf'] && $data['conditions'] == true) {
         // Create new album entity
         $user = new User();
 
         $user->setUsername($data['username']);
-            $user->setPicture($picture);
+        $user->setPicture($picture);
 
-            $user->setEmail($email);
+        $user->setEmail($email);
 
         // Encode the password
         $password = $this->get('security.password_encoder')
@@ -127,20 +136,30 @@ class UserController extends Controller
     }
 
 
-    public function editAction(Request $request, User $user)
+    public function editAction(Request $request)
     {
         // Get data and decode JSON
-        $data = json_decode(json_encode($request->request->all()), true);
+        $test = $request->request->all();
+        $data = json_decode(key($test), true);
+        $id = $data['id'];
+
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository('SerieBundle:User')->findOneBy(array('id' => $id));
 
         // Update data
         if (isset($data['username'])) {
             $user->setUsername($data['username']);
         }
-        if (isset($data['password'])) {
+        if (isset($data['password']) && isset($data['passwordConf']) && $data['password'] == $data['passwordConf']) {
             $user->setPassword($data['password']);
         }
         if (isset($data['email'])) {
-            $user->setEmail($data['email']);
+            $email = str_replace("_", ".", $data['email']);
+            $user->setEmail($email);
+        }
+        if (isset($data['picture'])) {
+            $picture = str_replace("_", ".", $data['picture']);
+            $user->setPicture($picture);
         }
 
         // Get all data as JSON

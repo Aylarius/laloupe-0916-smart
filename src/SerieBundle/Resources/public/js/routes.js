@@ -16,7 +16,7 @@ const routes = ($routeProvider, $httpProvider, $locationProvider) => {
         })
         .when('/profiledit', {
             templateUrl: 'bundles/serie/views/profiledit.html',
-            controller: 'profileController',
+            controller: 'editController',
             controllerAs: 'vm',
             resolve: {
                 connected: checkIsConnected

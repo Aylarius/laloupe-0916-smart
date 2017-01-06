@@ -36,7 +36,7 @@ class JwtAuthenticator extends AbstractGuardAuthenticator
     {
 
         if(!$request->headers->has('authorization')) {
-            return;
+            throw new AuthenticationException('Prout');
         }
 
         $extractor = new AuthorizationHeaderTokenExtractor(
@@ -47,7 +47,7 @@ class JwtAuthenticator extends AbstractGuardAuthenticator
         $token = $extractor->extract($request);
 
         if(!$token) {
-            return new JsonResponse;
+          return new Response;
         }
 
         return $token;
@@ -58,7 +58,7 @@ class JwtAuthenticator extends AbstractGuardAuthenticator
         $data = $this->jwtEncoder->decode($credentials);
 
         if(!$data){
-            return;
+          return new Response;
         }
 
         $username = $data['username'];
@@ -67,7 +67,7 @@ class JwtAuthenticator extends AbstractGuardAuthenticator
             ->findOneBy(['username' => $username]);
 
         if(!$user){
-            return;
+          return new Response;
         }
 
         return $user;

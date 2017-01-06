@@ -12,6 +12,8 @@ function hpController(tmdbService, $location, $window, userService, sessionFacto
 
 
     //CAROUSEL POPULAIRE
+
+
     this.load = () => {
         this.tmdbService.popular().then((response) => {
             this.results = response.data.results.slice(10, 19);
@@ -49,9 +51,9 @@ function hpController(tmdbService, $location, $window, userService, sessionFacto
                             slidesToShow: 1,
                             slidesToScroll: 1
                         }
-                    }]                //centerMode: true,
-                // variableWidth: true,
-                // method: {},
+                    }] //centerMode: true,
+                    // variableWidth: true,
+                    // method: {},
             };
         });
     };
@@ -65,9 +67,9 @@ function hpController(tmdbService, $location, $window, userService, sessionFacto
     console.log(sessionFactory.isLogged);
 
     $rootScope.$on('loginStatusChangedHomepage', (event) => {
-            this.isLogged = sessionFactory.isLogged;
-      })
-        console.log(this.isLogged);
+        this.isLogged = sessionFactory.isLogged;
+    })
+    console.log(this.isLogged);
 
     this.show = false;
 

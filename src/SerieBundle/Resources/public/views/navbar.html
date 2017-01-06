@@ -24,13 +24,17 @@
                         <a href="#/calendrier">
                             <span class="glyphicon glyphicon-calendar"></span>Calendrier</a>
                     </li>
+                    <li id="navProfile" ng-show='vm.isLogged'>
+                        <a href="#/profil">
+                            <span class="glyphicon glyphicon-user"></span>Profile</a>
+                    </li>
                     <li id="navLogin" ng-hide='vm.isLogged'>
                         <a href="#/connexion">
                             <span class="glyphicon glyphicon-user"></span>Se connecter</a>
                     </li>
                     <li id="navLogout" ng-show='vm.isLogged'>
                         <a href="" ng-click='vm.logout()'>
-                            <span class="glyphicon glyphicon-user"></span>Se déconnecter</a>
+                            <span class="glyphicon glyphicon-log-out"></span>Se déconnecter</a>
                     </li>
                 </ul>
             </div>

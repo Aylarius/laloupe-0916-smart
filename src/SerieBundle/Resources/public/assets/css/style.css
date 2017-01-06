@@ -108,7 +108,7 @@ ________________________________________________________________________________
     outline: inherit;
 }
 
-.glyphicon-search:before, .glyphicon-user:before, .glyphicon-calendar:before {
+.glyphicon-search:before, .glyphicon-user:before, .glyphicon-calendar:before, .glyphicon-log-out:before {
     margin-right: 10px;
 }
 

@@ -4,7 +4,7 @@ const routes = ($routeProvider, $httpProvider, $locationProvider) => {
         .when('/', {
             templateUrl: 'bundles/serie/views/homepage.html',
             controller: 'hpController',
-            controllerAs: 'vm'
+            controllerAs: 'vm',
         })
         .when('/serie/:id', {
             templateUrl: 'bundles/serie/views/serie.html',
@@ -84,6 +84,9 @@ const loginStatus = ($rootScope, $window, sessionFactory) => {
         $window.localStorage.token = sessionFactory.token;
         sessionFactory.isLogged = isLogged;
     })
+      $rootScope.$emit('loginStatusChanged', true);
+      $rootScope.$emit('loginStatusChangedNavbar');
+      $rootScope.$emit('loginStatusChangedHomepage');
 }
 
 const checkIsConnected = ($q, $http, $location, $window, $rootScope) => {

@@ -917,7 +917,10 @@ ________________________________________________________________________________
 #serie-container, #episode-container {
     padding: 0px;
 }
-
+#episode-img {
+  max-height: 190px;
+  overflow: hidden;
+}
 #serie-container img, #episode-container img {
     width: 100%;
 }

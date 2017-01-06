@@ -11,7 +11,9 @@
                 <div class="row list_episode no-pad">
                     <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4" id="episode-container" ng-repeat="episode in vm.seasons.episodes">
                         <div id="episode-card">
+                          <div id="episode-img">
                             <img data-toggle="modal" data-target="#{{episode.id}}" ng-src="{{!episode.still_path ? 'bundles/serie/assets/img/img-default.png' : 'https://image.tmdb.org/t/p/original'+episode.still_path}}" alt="" class="img-responsive center-block">
+                          </div>
                             <div class="row no-pad">
                                 <div class="col-xs-10 text-left no-pad episode-info">
                                     <p>

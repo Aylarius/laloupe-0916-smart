@@ -60,10 +60,14 @@
             <img id="more-img" class="img-responsive center-block" ng-src="https://image.tmdb.org/t/p/w342{{ result.poster_path }}" alt="{{ result.name }}"/>
         </div>
         <div class="col-xs-12 col-sm-9 col-md-8 followMore">
-            <a id="btn-follow" ng-click='vm.toggleFollow(result.id)' prevent>
+            <a id="btn-follow" ng-click='vm.toggleFollow(result.id)' ng-hide='vm.isLogged' prevent>
                 <span id="star-empty" class="glyphicon glyphicon-star-empty" ng-hide='vm.series[result.id]'></span>
                 <span id="star" class="glyphicon glyphicon-star" ng-show='vm.series[result.id]'></span>
                 Suivre la série</a>
+            <!--<a id="btn-follow" ng-show='vm.isLogged' href="#myModal" data-toggle="modal" data-target="#myModal" prevent>
+                <span id="star-empty" class="glyphicon glyphicon-star-empty" ng-hide='vm.series[result.id]'></span>
+                <span id="star" class="glyphicon glyphicon-star" ng-show='vm.series[result.id]'></span>
+                Suivre la série</a>-->
 
             <div class="contenu">
                 <h2>{{ result.name }}</h2>
@@ -71,7 +75,7 @@
                     saisons -
                     {{ result.number_of_episodes }}
                     épisodes</h3>
-                <h3>{{result.popularity}}
+                <h3>{{ result.popularity }}
                     followers</h3>
                 <p>{{ result.overview | limitTo: 600 }}{{ result.overview.length > 600 ? '...' : ''}}</p>
                 <div class="text-left">

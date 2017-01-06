@@ -58,35 +58,37 @@ const routes = ($routeProvider, $httpProvider, $locationProvider) => {
                     sessionFactory.user = JSON.parse($window.localStorage.getItem('currentUser'));
                     config.headers.authorization = $window.localStorage.token
                 }
-                return config
+                return config;
             },
             responseError(response) {
                 if (response.status === 401 || response.status === 403) {
                     $rootScope.$emit('loginStatusChanged', false);
                     $rootScope.$emit('loginStatusChangedNavbar');
                     $rootScope.$emit('loginStatusChangedHomepage');
-                    $location.path('app_dev.php/user/login')
+                    $location.path('/connexion');
                 }
-                return $q.reject(response)
+                return $q.reject(response);
             }
-        }
-    })
-}
+        };
+    });
+};
 
-const loginStatus = ($rootScope, $window, sessionFactory) => {
+const loginStatus = ($http, $rootScope, $window, sessionFactory) => {
 
-    if ($window.localStorage.currentUser) {
+    if ($window.localStorage.token) {
+        sessionFactory.token = $window.localStorage.token
         sessionFactory.user = JSON.parse($window.localStorage.getItem('currentUser'));
     }
-
     $rootScope.$on('loginStatusChanged', (event, isLogged) => {
-        $window.localStorage.setItem('currentUser', JSON.stringify(sessionFactory.user));
-        $window.localStorage.token = sessionFactory.token;
-        sessionFactory.isLogged = isLogged;
+        if (sessionFactory.token) {
+            $window.localStorage.setItem('currentUser', JSON.stringify(sessionFactory.user));
+            $window.localStorage.token = sessionFactory.token;
+            sessionFactory.isLogged = isLogged;
+        }
     })
-      $rootScope.$emit('loginStatusChanged', true);
-      $rootScope.$emit('loginStatusChangedNavbar');
-      $rootScope.$emit('loginStatusChangedHomepage');
+    $rootScope.$emit('loginStatusChanged', true);
+    $rootScope.$emit('loginStatusChangedNavbar');
+    $rootScope.$emit('loginStatusChangedHomepage');
 }
 
 const checkIsConnected = ($q, $http, $location, $window, $rootScope) => {

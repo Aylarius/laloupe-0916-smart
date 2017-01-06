@@ -1,4 +1,4 @@
-function navbarController(tmdbService, $location, sessionFactory, $rootScope) {
+function navbarController(tmdbService, $location, sessionFactory, $rootScope, $window) {
 
     this.tmdbService = tmdbService;
     this.$location = $location;
@@ -34,19 +34,21 @@ function navbarController(tmdbService, $location, sessionFactory, $rootScope) {
     };
 
     $rootScope.$on('loginStatusChangedNavbar', (event) => {
-            this.isLogged = sessionFactory.isLogged;
-        })
+        this.isLogged = sessionFactory.isLogged;
+    })
 
-        //Logout
-        this.logout = () => {
-            this.sessionFactory.isLogged = false;
-            this.sessionFactory.user = {};
-            this.sessionFactory.token = null;
-            this.$rootScope.$emit('loginStatusChanged', false);
-            $rootScope.$emit('loginStatusChangedNavbar');
-            $rootScope.$emit('loginStatusChangedHomepage');
-            this.isLogged = false;
-            this.$location.path('/connexion');
-        };
+    //Logout
+    this.logout = () => {
+        this.sessionFactory.isLogged = false;
+        $window.localStorage.removeItem('token');
+        $window.localStorage.removeItem('currentUser');
+        this.sessionFactory.user = {};
+        this.sessionFactory.token = null;
+        this.$rootScope.$emit('loginStatusChanged', false);
+        $rootScope.$emit('loginStatusChangedNavbar');
+        $rootScope.$emit('loginStatusChangedHomepage');
+        this.isLogged = false;
+        this.$location.path('/connexion');
+    };
 
-    }
+}

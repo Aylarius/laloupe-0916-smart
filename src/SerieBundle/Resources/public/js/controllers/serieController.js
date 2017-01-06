@@ -1,8 +1,10 @@
-function serieController(tmdbService, $routeParams, $location) {
+function serieController(tmdbService, $routeParams, $location, $rootScope) {
 
     this.tmdbService = tmdbService;
     this.$routeParams = $routeParams;
     this.$location = $location;
+    this.$rootScope = $rootScope;
+
 
     this.underscoreReg = new RegExp('-', 'g');
 
@@ -15,8 +17,8 @@ function serieController(tmdbService, $routeParams, $location) {
         this.tmdbService.seasons(id, 1).then((response) => {
             this.seasons = response.data;
             console.log(this.seasons);
-            
         });
+
     };
 
     this.getSheetSerie($routeParams.id);
@@ -59,8 +61,5 @@ function serieController(tmdbService, $routeParams, $location) {
     // barre de progression circulaire
     this.pourcentage = 75;
     this.circle = "c100 p" + this.pourcentage + " orange";
-
-    // Barre de navigation saison
-    // $('.horizon-swiper').horizonSwiper();
 
 }

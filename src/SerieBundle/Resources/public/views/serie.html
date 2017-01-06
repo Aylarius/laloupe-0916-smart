@@ -74,16 +74,15 @@
         </div>
     </div>
     <div class='horizon-swiper saison'>
-        <ul class='horizon-item '>
-            <li class="saison-num" ng-repeat="season in vm.sheetSerie.seasons">
-                <a href="" class="" ng-click="vm.getSeasons(vm.sheetSerie.id, season.season_number)" prevent>{{season.season_number == 0 ? 'Bonus' : 'Saison '+season.season_number}}</a>
+        <ul>
+            <li class="saison-num horizon-item" ng-repeat="season in vm.sheetSerie.seasons">
+                <a href="" ng-click="vm.getSeasons(vm.sheetSerie.id, season.season_number)" prevent>{{season.season_number == 0 ? 'Bonus' : 'Saison '+season.season_number}}</a>
             </li>
         </ul>
     </div>
     <season></season>
 </div>
+
 <script type="text/javascript">
-  $(document).ready(function() {
-    $('.horizon-swiper').horizonSwiper({dots: true});
-  })
+    setTimeout(function(){ $('.horizon-swiper').horizonSwiper(); }, 500);
 </script>

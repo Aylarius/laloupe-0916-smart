@@ -23,6 +23,7 @@ class UserController extends Controller
         $test = $request->request->all();
         $data = json_decode(key($test), true);
         $email = str_replace("_", ".", $data['email']);
+        $picture = str_replace("_", ".", $data['picture']);
 
         if ($data['password'] != $data['passwordConf']) {
             $data = 'Les mots de passe doivent être identiques.';
@@ -35,7 +36,9 @@ class UserController extends Controller
         $user = new User();
 
         $user->setUsername($data['username']);
-        $user->setEmail($email);
+            $user->setPicture($picture);
+
+            $user->setEmail($email);
 
         // Encode the password
         $password = $this->get('security.password_encoder')
@@ -161,6 +164,24 @@ class UserController extends Controller
         // Return as JSON
         $user = $this->get('serializer')->serialize($user, 'json');
         return new JsonResponse(json_decode($user));
+    }
+
+    public function retrieveAction(Request $request){
+        // retrieve the file with the name given in the form.
+        // do var_dump($request->files->all()); if you need to know if the file is being uploaded.
+        $file = $request->files->get('picture');
+        $status = array('status' => "success","fileUploaded" => false);
+
+        // If a file was uploaded
+        if(!is_null($file)){
+            // generate a random name for the file but keep the extension
+            $filename = uniqid().".".$file->getClientOriginalExtension();
+            $path = "./bundles/serie/uploads";
+            $file->move($path,$filename); // move the file to a path
+            $status = array('status' => "success","fileUploaded" => $filename);
+        }
+
+        return new JsonResponse($status);
     }
 
 }

@@ -9,7 +9,7 @@ user_show:
     methods:  GET
 
 user_edit:
-    path:     /edit/{id}
+    path:     /edit
     defaults: { _controller: "SerieBundle:User:edit" }
     methods:  PUT
 
@@ -21,6 +21,11 @@ user_delete:
 user_registration:
     path:     /register
     defaults: { _controller: "SerieBundle:User:register" }
+    methods:  POST
+
+user_image:
+    path:     /picture
+    defaults: { _controller: "SerieBundle:User:retrieve" }
     methods:  POST
 
 user_login:

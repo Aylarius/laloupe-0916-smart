@@ -10,6 +10,8 @@ angular.module('app', ['ngRoute','slickCarousel'])
     .controller('carousel3Controller', carousel3Controller)
     .controller('profileController', profileController)
     .controller('loginController', loginController)
+    .controller('registerController', registerController)
+    .controller('editController', editController)
     .directive('a', function() {
         return {
             restrict: 'E',

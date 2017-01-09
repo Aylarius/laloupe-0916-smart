@@ -843,6 +843,10 @@ ________________________________________________________________________________
     border-radius: 50%;
     border: 5px solid rgb(255, 168, 52);
     margin-bottom: 20px;
+    width: auto;
+    height: auto;
+    max-width: 200px;
+    max-height: 200px;
 }
 
 #edit-btn {
@@ -917,7 +921,10 @@ ________________________________________________________________________________
 #serie-container, #episode-container {
     padding: 0px;
 }
-
+#episode-img {
+  max-height: 190px;
+  overflow: hidden;
+}
 #serie-container img, #episode-container img {
     width: 100%;
 }

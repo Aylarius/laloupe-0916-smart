@@ -19,6 +19,9 @@ SerieBundle\Entity\User:
             type: string
             length: 60
             unique: true
+        picture:
+            type: string
+            nullable: TRUE
         isActive:
             name: is_active
             type: boolean

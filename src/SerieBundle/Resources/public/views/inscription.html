@@ -1,4 +1,4 @@
-<div class="container-fluid no-pad" id="inscription-page" ng-controller='loginController as vm'>
+<div class="container-fluid no-pad" id="inscription-page">
   <div class="row">
     <div class="col-xs-12 no-pad">
       <div class="row container-h1">
@@ -35,7 +35,7 @@
             <div class="form-group">
               <label for="photo" class="col-sm-4 control-label">Photo de profil :</label>
               <div class="col-sm-8">
-                <input type="file" id="photo">
+                <input file-upload type="file" id="uploadImage" name="file">
                 <p class="help-block">Format : png, jpg</p>
               </div>
             </div>

@@ -45,8 +45,9 @@ security:
     access_control:
         - { path: ^/user/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/user/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/user/picture, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/user/loggedin, roles: IS_AUTHENTICATED_FULLY }
-        - { path: ^/user, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/user, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/inscription, roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/profil, roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/profiledit, roles: IS_AUTHENTICATED_FULLY }

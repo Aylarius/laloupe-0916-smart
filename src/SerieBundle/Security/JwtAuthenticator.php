@@ -36,7 +36,7 @@ class JwtAuthenticator extends AbstractGuardAuthenticator
     {
 
         if(!$request->headers->has('authorization')) {
-            throw new AuthenticationException('Prout');
+            throw new AuthenticationException('Auth header required');
         }
 
         $extractor = new AuthorizationHeaderTokenExtractor(
@@ -66,9 +66,6 @@ class JwtAuthenticator extends AbstractGuardAuthenticator
         $user = $this->em->getRepository('SerieBundle:User')
             ->findOneBy(['username' => $username]);
 
-        if(!$user){
-          return new Response;
-        }
 
         return $user;
     }

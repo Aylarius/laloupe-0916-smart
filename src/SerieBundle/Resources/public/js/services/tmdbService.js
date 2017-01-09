@@ -13,7 +13,7 @@ function tmdbService($http) {
     };
     //slider aléatoire
     this.randomEpisode = () => {
-      return this.$http.get("https://api.themoviedb.org/3/discover/tv?api_key=fc533e12b849e49e74ab5d046165bcc7&language=fr-FR&sort_by=vote_average.desc&page=1&timezone=France/PARIS&include_null_first_air_dates=false&with_original_language=en&fr");
+      return this.$http.get("https://api.themoviedb.org/3/tv/popular?api_key=fc533e12b849e49e74ab5d046165bcc7&language=fr-FR&page=1");
     };
 
 

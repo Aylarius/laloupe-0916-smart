@@ -22,7 +22,7 @@
     </head>
     <body>
         <ng-include src="'{{ asset('bundles/serie/views/navbar.html') }}'"></ng-include>
-        <ng-view></ng-view>
+        <ng-view autoscroll="true"></ng-view>
         <ng-include src="'{{ asset('bundles/serie/views/footer.html') }}'"></ng-include>
 
         <script src="{{ asset('bundles/serie/vendor/jquery/dist/jquery.min.js') }}"></script>

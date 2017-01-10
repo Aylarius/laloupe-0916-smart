@@ -66,9 +66,6 @@ class JwtAuthenticator extends AbstractGuardAuthenticator
         $user = $this->em->getRepository('SerieBundle:User')
             ->findOneBy(['username' => $username]);
 
-        if(!$user){
-          return new Response;
-        }
 
         return $user;
     }

@@ -35,9 +35,9 @@
     </div>
     <div class="follow row">
         <div class="col-xs-11 col-xs-offset-1">
-            <a href="#" ng-click='vm.toggleFollow(result.id)' prevent>
-                <span id="star-empty" class="glyphicon glyphicon-star-empty" ng-hide='vm.series[result.id]'></span>
-                <span id="star" class="glyphicon glyphicon-star" ng-show='vm.series[result.id]'></span>
+            <a href="#" ng-click='vm.follow(vm.sheetSerie.id)' prevent>
+                <span id="star-empty" class="glyphicon glyphicon-star-empty" ng-hide='vm.series'></span>
+                <span id="star" class="glyphicon glyphicon-star" ng-show='vm.series'></span>
                 Suivre la série</a>
         </div>
     </div>

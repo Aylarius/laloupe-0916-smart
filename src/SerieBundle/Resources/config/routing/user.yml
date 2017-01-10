@@ -9,7 +9,7 @@ user_show:
     methods:  GET
 
 user_edit:
-    path:     /edit/{id}
+    path:     /edit
     defaults: { _controller: "SerieBundle:User:edit" }
     methods:  PUT
 

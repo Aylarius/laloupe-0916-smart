@@ -1,0 +1,29 @@
+serie_index:
+    path:     /{id}
+    defaults: { _controller: "SerieBundle:Serie:getAll" }
+    methods:  GET
+
+serie_show:
+    path:     /show/{id}
+    defaults: { _controller: "SerieBundle:Serie:getOne" }
+    methods:  GET
+
+serie_edit:
+    path:     /edit
+    defaults: { _controller: "SerieBundle:Serie:edit" }
+    methods:  PUT
+
+serie_delete:
+    path:     /delete/{id}
+    defaults: { _controller: "SerieBundle:Serie:delete" }
+    methods:  DELETE
+
+serie_follow:
+    path:     /follow
+    defaults: { _controller: "SerieBundle:Serie:follow" }
+    methods:  POST
+
+serie_doifollow:
+    path:     /doifollow/{id}/{data}
+    defaults: { _controller: "SerieBundle:Serie:doifollow" }
+    methods:  GET

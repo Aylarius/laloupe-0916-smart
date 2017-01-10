@@ -1,10 +1,11 @@
-function serieController(tmdbService, $routeParams, $location, $rootScope) {
+function serieController(serieService, sessionFactory, tmdbService, $routeParams, $location, $rootScope) {
 
     this.tmdbService = tmdbService;
     this.$routeParams = $routeParams;
     this.$location = $location;
     this.$rootScope = $rootScope;
-
+    this.serieService = serieService;
+    this.sessionFactory = sessionFactory;
 
     this.underscoreReg = new RegExp('-', 'g');
 
@@ -12,7 +13,7 @@ function serieController(tmdbService, $routeParams, $location, $rootScope) {
     this.getSheetSerie = (id) => {
         this.tmdbService.sheetSerie(id).then((response) => {
             this.sheetSerie = response.data;
-            console.log(response.data);
+            console.log(response.data.id);
         });
         this.tmdbService.seasons(id, 1).then((response) => {
             this.seasons = response.data;
@@ -39,16 +40,8 @@ function serieController(tmdbService, $routeParams, $location, $rootScope) {
         });
     };
 
-    // marquage des séries
-    this.series = [];
-    this.toggleFollow = (id) => {
-        if (!this.series[id]) {
-            this.series[id] = false;
-        }
-        this.series[id] = !this.series[id];
-    };
 
-    // marquage des séries
+    // marquage des épisodes
     this.episodeTrack = [];
     this.check = (id) => {
         if (!this.episodeTrack[id]) {
@@ -61,5 +54,36 @@ function serieController(tmdbService, $routeParams, $location, $rootScope) {
     // barre de progression circulaire
     this.pourcentage = 75;
     this.circle = "c100 p" + this.pourcentage + " orange";
+
+
+    this.follow = (id) => {
+        this.serieService.follow({
+            id: id,
+            user_id: this.sessionFactory.user.id
+        }).then((res) => {
+            this.loginMessage = {};
+        this.loginMessage.type = "success";
+        this.loginMessage.title = "Vous avez bien ajouté cette série à vos séries favorites !";
+        this.loginMessage.message = "En cours de redirection...";
+        this.getFollow($routeParams.id, this.sessionFactory.user.id);
+        this.$timeout(() => {
+            this.loginMessage = null;
+    }, 200);
+    }).catch((res) => {
+        this.loginMessage = {};
+        this.loginMessage.type = "error";
+        this.loginMessage.title = "Erreur lors du suivi";
+        this.loginMessage.message = res.data;
+        this.getFollow($routeParams.id, this.sessionFactory.user.id);
+    });
+    };
+
+    this.getFollow = (id, data) => {
+        this.serieService.doIFollow(id,data).then((res) => {
+            this.series = res.data.followed;
+    });
+    };
+
+    this.getFollow($routeParams.id, this.sessionFactory.user.id);
 
 }

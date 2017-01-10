@@ -1,0 +1,20 @@
+SerieBundle\Entity\Serie:
+    type: entity
+    table: null
+    repositoryClass: SerieBundle\Repository\SerieRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        serieId:
+            type: integer
+    manyToOne:
+        userId:
+            targetEntity: SerieBundle\Entity\User
+            inversedBy: id
+            joinColumn:
+                onDelete: CASCADE
+    lifecycleCallbacks: {  }

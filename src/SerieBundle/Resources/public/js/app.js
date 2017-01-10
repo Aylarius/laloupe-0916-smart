@@ -2,6 +2,8 @@ angular.module('app', ['ngRoute','slickCarousel'])
     .factory('sessionFactory', sessionFactory)
     .service('tmdbService', tmdbService)
     .service('userService', userService)
+    .service('serieService', serieService)
+    .service('episodeService', episodeService)
     .controller('navbarController', navbarController)
     .controller('serieController', serieController)
     .controller('searchController', searchController)
@@ -11,6 +13,7 @@ angular.module('app', ['ngRoute','slickCarousel'])
     .controller('profileController', profileController)
     .controller('loginController', loginController)
     .controller('registerController', registerController)
+    .controller('editController', editController)
     .directive('a', function() {
         return {
             restrict: 'E',

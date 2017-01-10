@@ -10,5 +10,4 @@ function profileController($location, userService, sessionFactory) {
         }, 3000);
     });
 
-
 }

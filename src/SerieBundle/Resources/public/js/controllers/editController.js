@@ -7,7 +7,7 @@ function editController(userService, sessionFactory, $timeout, $routeParams, $lo
     this.$rootScope = $rootScope;
     this.$routeParams = $routeParams;
 
-console.log(this.picture);
+    console.log(this.picture);
     this.editAccount = () => {
         this.userService.update({
             id: this.sessionFactory.user.id,
@@ -37,29 +37,42 @@ console.log(this.picture);
         });
     };
 
-const that = this;
-function uploadFile(file) {
-    var url = '/user/picture';
-    var xhr = new XMLHttpRequest();
-    var fd = new FormData();
-    xhr.open("POST", url, true);
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            // Every thing ok, file uploaded
-            that.picture = (JSON.parse(xhr.responseText).fileUploaded); // handle response.
-        }
-    };
-    fd.append("picture", file);
-    xhr.send(fd);
-}
+    const that = this;
 
-var uploadfiles = document.querySelector('#uploadImage');
-uploadfiles.addEventListener('change', function() {
-    var files = this.files;
-    for (var i = 0; i < files.length; i++) {
-        uploadFile(this.files[i]); // call the function to upload the file
+    function uploadFile(file) {
+        var url = '/user/picture';
+        var xhr = new XMLHttpRequest();
+        var fd = new FormData();
+        xhr.open("POST", url, true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                // Every thing ok, file uploaded
+                that.picture = (JSON.parse(xhr.responseText).fileUploaded); // handle response.
+            }
+        };
+        fd.append("picture", file);
+        xhr.send(fd);
     }
-}, false);
 
+    var uploadfiles = document.querySelector('#uploadImage');
+    uploadfiles.addEventListener('change', function() {
+        var files = this.files;
+        for (var i = 0; i < files.length; i++) {
+            uploadFile(this.files[i]); // call the function to upload the file
+        }
+    }, false);
+
+    this.isToggledPseudo = false;
+    this.isToggledEmail = false;
+    this.isToggledPassword = false;
+    this.toggleInputOne = () => {
+        this.isToggledPseudo = !this.isToggledPseudo;
+    };
+    this.toggleInputTwo = () => {
+        this.isToggledEmail = !this.isToggledEmail;
+    };
+    this.toggleInputThree = () => {
+        this.isToggledPassword = !this.isToggledPassword;
+    };
 
 }

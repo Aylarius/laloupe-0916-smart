@@ -1,13 +1,17 @@
-function season() {
-        if ( 1 + 1 == 2) {
-            return {
-                restrict: 'E',
-                templateUrl: 'bundles/serie/views/season/season_log.html'
+function season(sessionFactory, $rootScope) {
+
+    return {
+        restrict: 'E',
+        link: function(scope, element, attrs) {
+            scope.getContentUrl = function() {
+                if (sessionFactory.isLogged === true) {
+                    return 'bundles/serie/views/season/season_log.html';
+                } else {
+                    return 'bundles/serie/views/season/season_nonlog.html';
+                }
             };
-        } else {
-            return {
-                restrict: 'E',
-                templateUrl: 'bundles/serie/views/season/season_nonlog.html'
-            };
-        }
-    }
+        },
+        template: '<div ng-include="getContentUrl()"></div>'
+    };
+
+}

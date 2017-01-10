@@ -151,7 +151,10 @@ class UserController extends Controller
             $user->setUsername($data['username']);
         }
         if (isset($data['password']) && isset($data['passwordConf']) && $data['password'] == $data['passwordConf']) {
-            $user->setPassword($data['password']);
+            $password = $data['password'];
+            $password = $this->get('security.password_encoder')
+                ->encodePassword($user, $data['password']);
+            $user->setPassword($password);
         }
         if (isset($data['email'])) {
             $email = str_replace("_", ".", $data['email']);

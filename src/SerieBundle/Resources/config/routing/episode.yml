@@ -1,0 +1,29 @@
+episode_index:
+    path:     /
+    defaults: { _controller: "SerieBundle:Episode:getAll" }
+    methods:  GET
+
+episode_show:
+    path:     /show/{id}
+    defaults: { _controller: "SerieBundle:Episode:getOne" }
+    methods:  GET
+
+episode_edit:
+    path:     /edit
+    defaults: { _controller: "SerieBundle:Episode:edit" }
+    methods:  PUT
+
+episode_delete:
+    path:     /delete/{id}
+    defaults: { _controller: "SerieBundle:Episode:delete" }
+    methods:  DELETE
+
+episode_seen:
+    path:     /seen
+    defaults: { _controller: "SerieBundle:Episode:seen" }
+    methods:  POST
+
+episode_unsee:
+    path:     /unsee
+    defaults: { _controller: "SerieBundle:Episode:unsee" }
+    methods:  POST

@@ -22,12 +22,6 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
-        series:
-            pattern: ^/serie/
-            guard:
-                authenticators:
-                    - app.jwt_token_authenticator
-
         loggedin:
             pattern: ^/user/loggedin
             guard:

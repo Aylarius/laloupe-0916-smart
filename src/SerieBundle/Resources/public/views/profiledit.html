@@ -1,71 +1,86 @@
 <div class="container-fluid no-pad" id="inscription-page">
-  <div class="row">
-    <div class="col-xs-12 no-pad">
-      <div class="row container-h1">
-        <h1>Modifier mon profil</h1>
-      </div>
-      <div class="row">
-        <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2" id="inscription-form">
-          <form name="editForm" class="form-horizontal">
-            <div class="form-group">
-              <label for="pseudo" class="col-sm-4 control-label">Pseudo :</label>
-              <div class="col-sm-8">
-                <span>{{ vm.sessionFactory.user.username }}</span><i class="fa fa-pencil" aria-hidden="true"></i>
-                <input type="text" class="form-control" id="pseudo" placeholder="Pseudo" ng-model='vm.username'>
-              </div>
+    <div class="row">
+        <div class="col-xs-12 no-pad">
+            <div class="row container-h1">
+                <h1>Modifier mon profil</h1>
             </div>
-            <div class="form-group">
-              <label for="email" class="col-sm-4 control-label">Email :</label>
-              <div class="col-sm-8">
-                <span>{{ vm.sessionFactory.user.email }}</span><i class="fa fa-pencil" aria-hidden="true"></i>
-                <input type="email" class="form-control" id="email" placeholder="Email" ng-model='vm.email'>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="password" class="col-sm-4 control-label">Mot de passe :</label>
-              <div class="col-sm-8">
-                <span>********</span><i class="fa fa-pencil" aria-hidden="true"></i>
-                <input type="password" class="form-control" id="password" placeholder="Mot de passe" ng-model='vm.password'>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="password-conf" class="col-sm-4 control-label">Confirmer :</label>
-              <div class="col-sm-8">
-                <span>********</span><i class="fa fa-pencil" aria-hidden="true"></i>
-                <input type="password" class="form-control" id="password-conf" placeholder="Confirmer"  ng-model='vm.passwordConf'>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="photo" class="col-sm-4 control-label">Photo de profil :</label>
-              <div class="col-sm-8">
-                <input file-upload type="file" id="uploadImage" name="file">
-                <p class="help-block">Format : png, jpg</p>
-                <img ng-src="{{'bundles/serie/uploads/'+vm.sessionFactory.user.picture}}" alt="" width="100px" class="img-responsive">
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="col-sm-12">
-                <div class="checkbox text-center">
-                  <label>
-                    <input type="checkbox">Recevoir des alertes par mail
-                    <p class="help-block">Vous ne recevrez que des alertes pour les épisodes à venir de vos séries favorites.</p>
-                  </label>
+            <div class="row">
+                <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2" id="inscription-form">
+                    <form name="editForm" class="form-horizontal">
+                        <div class="form-group">
+                            <label for="pseudo" class="col-sm-4 control-label">Pseudo :</label>
+                            <div id="profil-actu" class="col-sm-8">
+                                <span id="pseudo" ng-hide='vm.isToggledPseudo'>{{ vm.sessionFactory.user.username }}</span>
+                                <i class="fa fa-pencil" aria-hidden="true" ng-click='vm.toggleInputOne()' ng-hide='vm.isToggledPseudo'></i>
+                            </div>
+                            <div id="profil-modif" class="col-sm-8">
+                                <input type="text" class="form-control" id="pseudo" placeholder="Pseudo" ng-model='vm.username' ng-show='vm.isToggledPseudo'>
+                                <i class="fa fa-times" aria-hidden="true" ng-click='vm.toggleInputOne()' ng-show='vm.isToggledPseudo'></i>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="col-sm-4 control-label">Email :</label>
+                            <div id="profil-actu" class="col-sm-8">
+                                <span ng-hide='vm.isToggledEmail'>{{ vm.sessionFactory.user.email }}</span>
+                                <i class="fa fa-pencil" aria-hidden="true" ng-click='vm.toggleInputTwo()' ng-hide='vm.isToggledEmail'></i>
+                            </div>
+                            <div id="profil-modif" class="col-sm-8">
+                                <input type="email" class="form-control" id="email" placeholder="Email" ng-model='vm.email' ng-show='vm.isToggledEmail'>
+                                <i class="fa fa-times" aria-hidden="true" ng-click='vm.toggleInputTwo()' ng-show='vm.isToggledEmail'></i>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="col-sm-4 control-label">Mot de passe :</label>
+                            <div id="profil-actu" class="col-sm-8">
+                                <span ng-hide='vm.isToggledPassword'>********</span>
+                                <i class="fa fa-pencil" aria-hidden="true" ng-click='vm.toggleInputThree()' ng-hide='vm.isToggledPassword'></i>
+                            </div>
+                            <div id="profil-modif" class="col-sm-8">
+                                <input type="password" class="form-control" id="password" placeholder="Mot de passe" ng-model='vm.password' ng-show='vm.isToggledPassword'>
+                                <i class="fa fa-times" aria-hidden="true" ng-click='vm.toggleInputThree()' ng-show='vm.isToggledPassword'></i>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password-conf" class="col-sm-4 control-label">Confirmer :</label>
+                            <div id="profil-actu" class="col-sm-8">
+                                <span ng-hide='vm.isToggledPassword'>********</span>
+                            </div>
+                            <div id="profil-modif" class="col-sm-8">
+                                <input type="password" class="form-control" id="password-conf" placeholder="Confirmer" ng-model='vm.passwordConf' ng-show='vm.isToggledPassword'>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="photo" class="col-sm-4 control-label">Photo de profil :</label>
+                            <div class="col-sm-8">
+                                <input file-upload type="file" id="uploadImage" name="file">
+                                <p class="help-block">Format : png, jpg</p>
+                                <img ng-show='vm.sessionFactory.user.picture' ng-src="{{ 'bundles/serie/uploads/'+vm.sessionFactory.user.picture }}" alt="" width="100px" class="img-responsive">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <div class="checkbox text-center">
+                                    <label>
+                                        <input type="checkbox">Recevoir des alertes par mail
+                                        <p class="help-block">Vous ne recevrez que des alertes pour les épisodes à venir de vos séries favorites.</p>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12 text-center">
+                                <br>
+                                <button ng-click='vm.editAccount()' ng-disabled="editForm.$invalid" class="btn btn-orange center-block">Valider</button>
+                            </div>
+                        </div>
+                    </form>
+                    <div ng-show="(vm.loginMessage)" class="alert" ng-class="{'alert-danger': vm.loginMessage.type == 'error', 'alert-success': vm.loginMessage.type == 'success', 'alert-info': vm.loginMessage.type == 'info'}">
+                        <h4>
+                            <span class="glyphicon glyphicon-exclamation-sign pull-left"></span>&nbsp;{{vm.loginMessage.title}}</h4>
+                        <p>{{vm.loginMessage.message}}</p>
+                    </div>
                 </div>
-              </div>
             </div>
-            <div class="form-group">
-              <div class="col-xs-12 text-center">
-                <br>
-                <button ng-click='vm.editAccount()' ng-disabled="editForm.$invalid" class="btn btn-orange center-block">Valider</button>
-              </div>
-            </div>
-          </form>
-          <div ng-show="(vm.loginMessage)" class="alert" ng-class="{'alert-danger': vm.loginMessage.type == 'error', 'alert-success': vm.loginMessage.type == 'success', 'alert-info': vm.loginMessage.type == 'info'}">
-            <h4><span class="glyphicon glyphicon-exclamation-sign pull-left"></span>&nbsp;{{vm.loginMessage.title}}</h4>
-            <p>{{vm.loginMessage.message}}</p>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>

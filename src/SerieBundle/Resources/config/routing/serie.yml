@@ -1,8 +1,3 @@
-serie_index:
-    path:     /{id}
-    defaults: { _controller: "SerieBundle:Serie:getAll" }
-    methods:  GET
-
 serie_show:
     path:     /show/{id}
     defaults: { _controller: "SerieBundle:Serie:getOne" }
@@ -17,6 +12,11 @@ serie_delete:
     path:     /delete/{id}
     defaults: { _controller: "SerieBundle:Serie:delete" }
     methods:  DELETE
+
+serie_index:
+    path:     /{id}
+    defaults: { _controller: "SerieBundle:Serie:getAll" }
+    methods:  GET
 
 serie_follow:
     path:     /follow

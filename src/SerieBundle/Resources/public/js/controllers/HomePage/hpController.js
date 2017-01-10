@@ -16,7 +16,7 @@ function hpController($timeout, tmdbService, $location, $window, userService, se
 
     this.load = () => {
         this.tmdbService.popular().then((response) => {
-            this.results = response.data.results.slice(10, 19);
+            this.results = response.data.results.slice(0, 10);
             let count = 0;
             this.results.forEach((result, indexSerie) => {
                 this.results[indexSerie].i = count;

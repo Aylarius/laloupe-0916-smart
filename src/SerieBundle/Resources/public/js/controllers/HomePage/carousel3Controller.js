@@ -6,7 +6,7 @@ function carousel3Controller($timeout, tmdbService, $location) {
     //CAROUSEL DERNIERS EPISODES
     this.loadrandomEpisode = () => {
         this.tmdbService.randomEpisode().then((response) => {
-            this.results = response.data.results.slice(0, 10);
+            this.results = response.data.results.slice(10, 19);
             let count = 0;
             this.results.forEach((result, indexEpisode) => {
                 this.results[indexEpisode].i = count;

@@ -11,6 +11,7 @@
                         <div class="repeat" ng-repeat="result in vm.results">
                             <div class="card" ng-click="vm.togglePane = result.i">
                                 <img class="img-responsive center-block" ng-src="https://image.tmdb.org/t/p/w500{{result.backdrop_path}}" alt="{{ result.name }}"/>
+                                <h2>{{ result.name }}</h2>
                             </div>
                         </div>
                     </slick>

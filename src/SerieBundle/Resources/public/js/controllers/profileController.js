@@ -1,7 +1,9 @@
-function profileController($location, userService, sessionFactory) {
+function profileController($location, userService, tmdbService, serieService, sessionFactory) {
 
     this.$location = $location;
     this.userService = userService;
+    this.serieService = serieService;
+    this.tmdbService = tmdbService;
     this.sessionFactory = sessionFactory;
 
     $('.progress-bar').each(function() {
@@ -9,6 +11,14 @@ function profileController($location, userService, sessionFactory) {
             width: $(this).attr('data-percent')
         }, 3000);
     });
+
+    this.getAllFollowed = (id) => {
+        this.serieService.getAllFollowed(id).then((res) => {
+            this.series = res.data;
+        });
+    };
+
+    this.getAllFollowed(this.sessionFactory.user.id);
 
 
 }

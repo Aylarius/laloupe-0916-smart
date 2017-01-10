@@ -1,0 +1,25 @@
+SerieBundle\Entity\Episode:
+    type: entity
+    table: null
+    repositoryClass: SerieBundle\Repository\EpisodeRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        episodeId:
+            type: integer
+    manyToOne:
+        userId:
+            targetEntity: SerieBundle\Entity\User
+            inversedBy: id
+            joinColumn:
+                onDelete: CASCADE
+        serieId:
+            targetEntity: SerieBundle\Entity\Serie
+            inversedBy: id
+            joinColumn:
+                onDelete: CASCADE
+    lifecycleCallbacks: {  }

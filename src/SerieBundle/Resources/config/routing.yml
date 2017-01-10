@@ -5,3 +5,11 @@ serie_homepage:
 serie_user:
     resource: "@SerieBundle/Resources/config/routing/user.yml"
     prefix:   /user
+
+serie_serie:
+    resource: "@SerieBundle/Resources/config/routing/serie.yml"
+    prefix:   /serie
+
+serie_episode:
+    resource: "@SerieBundle/Resources/config/routing/episode.yml"
+    prefix:   /episode

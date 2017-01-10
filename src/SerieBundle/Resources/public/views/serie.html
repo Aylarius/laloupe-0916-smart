@@ -15,8 +15,8 @@
                                 <th>Saison</th>
                                 <th>Episodes</th>
                                 <th>
-                                    <i class="fa fa-hourglass-end" aria-hidden="true"></i>
-                                    Durée</th>
+                                    <i class="fa fa-hourglass-end" aria-hidden="true"></i> Durée
+                                </th>
                                 <th>Statut</th>
                                 <th>Followers</th>
                                 <tr>
@@ -35,10 +35,9 @@
     </div>
     <div class="follow row">
         <div class="col-xs-11 col-xs-offset-1">
-            <a href="#" ng-click='vm.toggleFollow(result.id)' prevent>
-                <span id="star-empty" class="glyphicon glyphicon-star-empty" ng-hide='vm.series[result.id]'></span>
-                <span id="star" class="glyphicon glyphicon-star" ng-show='vm.series[result.id]'></span>
-                Suivre la série</a>
+            <a href="#" ng-click='vm.toggleFollow(vm.sheetSerie.id)' prevent>
+                <span id="star-empty" class="glyphicon glyphicon-star-empty" ng-hide='vm.series[vm.sheetSerie.id]'></span>
+                <span id="star" class="glyphicon glyphicon-star" ng-show='vm.series[vm.sheetSerie.id]'></span> Suivre la série</a>
         </div>
     </div>
     <div class="row">
@@ -69,7 +68,7 @@
                     <div class="acteur-img" style="background-image: url({{!actor.profile_path ? 'bundles/serie/assets/img/img-default-acteur2.png' : 'https://image.tmdb.org/t/p/w185'+actor.profile_path}})"></div>
                     <br>
                     <div class="acteur-nom">
-                      {{actor.name}}
+                        {{actor.name}}
                     </div>
                 </li>
             </ul>
@@ -86,5 +85,7 @@
 </div>
 
 <script type="text/javascript">
-    setTimeout(function(){ $('.horizon-swiper').horizonSwiper(); }, 500);
+    setTimeout(function() {
+        $('.horizon-swiper').horizonSwiper();
+    }, 500);
 </script>

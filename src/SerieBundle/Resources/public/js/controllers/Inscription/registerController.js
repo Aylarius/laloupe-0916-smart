@@ -9,7 +9,6 @@ function registerController(userService, sessionFactory, $timeout, $routeParams,
 
     this.conditions = false;
     this.createAccount = () => {
-      console.log(this.picture);
         this.userService.create({
             username: this.username,
             password: this.password,
@@ -18,6 +17,12 @@ function registerController(userService, sessionFactory, $timeout, $routeParams,
             picture: this.picture,
             conditions: this.conditions
         }).then((res) => {
+          this.sessionFactory.token = res.data.token;
+          this.sessionFactory.user = res.data.user;
+          this.sessionFactory.isLogged = true;
+          this.$rootScope.$emit('loginStatusChanged', true);
+          $rootScope.$emit('loginStatusChangedNavbar');
+          $rootScope.$emit('loginStatusChangedHomepage');
             this.loginMessage = {};
             this.loginMessage.type = "success";
             this.loginMessage.title = "Votre compte a bien été créé !";
@@ -28,9 +33,15 @@ function registerController(userService, sessionFactory, $timeout, $routeParams,
                 $rootScope.$emit('loginStatusChangedNavbar');
                 $rootScope.$emit('loginStatusChangedHomepage');
 
-                this.$location.path('/connexion');
+                this.$location.path('/inscriptionbis');
             }, 200);
         }).catch((res) => {
+          this.sessionFactory.isLogged = false;
+          this.$rootScope.$emit('loginStatusChanged', false);
+          $rootScope.$emit('loginStatusChangedNavbar');
+          $rootScope.$emit('loginStatusChangedHomepage');
+
+
             this.loginMessage = {};
             this.loginMessage.type = "error";
             this.loginMessage.title = "Erreur lors de l'inscription";

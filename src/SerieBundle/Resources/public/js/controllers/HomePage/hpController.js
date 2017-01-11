@@ -1,4 +1,4 @@
-function hpController(tmdbService, $location, $window, userService, sessionFactory, $rootScope) {
+function hpController($timeout, tmdbService, $location, $window, userService, sessionFactory, $rootScope) {
 
     this.tmdbService = tmdbService;
     this.$location = $location;
@@ -16,7 +16,7 @@ function hpController(tmdbService, $location, $window, userService, sessionFacto
 
     this.load = () => {
         this.tmdbService.popular().then((response) => {
-            this.results = response.data.results.slice(10, 19);
+            this.results = response.data.results.slice(0, 10);
             let count = 0;
             this.results.forEach((result, indexSerie) => {
                 this.results[indexSerie].i = count;
@@ -27,13 +27,37 @@ function hpController(tmdbService, $location, $window, userService, sessionFacto
             });
             this.slickCurrentIndex = 0;
             this.slickConfig = {
-                // dots: true,
-                // initialSlide: 0,
                 slidesToShow: 3,
                 infinite: true,
                 dots: true,
-                autoplay: true,
+                autoplay: false,
                 responsive: [{
+                    breakpoint: 992,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1
+                    }
+                }, {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1
+                    }
+                }, {
+                    breakpoint: 576,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }]
+            };
+            $timeout(() => {
+                this.slickConfig = {
+                    slidesToShow: 3,
+                    infinite: true,
+                    dots: true,
+                    autoplay: true,
+                    responsive: [{
                         breakpoint: 992,
                         settings: {
                             slidesToShow: 3,
@@ -51,10 +75,9 @@ function hpController(tmdbService, $location, $window, userService, sessionFacto
                             slidesToShow: 1,
                             slidesToScroll: 1
                         }
-                    }] //centerMode: true,
-                    // variableWidth: true,
-                    // method: {},
-            };
+                    }]
+                };
+            }, 2000);
         });
     };
     this.load();
@@ -68,7 +91,7 @@ function hpController(tmdbService, $location, $window, userService, sessionFacto
 
     $rootScope.$on('loginStatusChangedHomepage', (event) => {
         this.isLogged = sessionFactory.isLogged;
-    })
+    });
     console.log(this.isLogged);
 
     this.show = false;

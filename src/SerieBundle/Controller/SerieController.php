@@ -101,4 +101,34 @@ class SerieController extends Controller
         }
     }
 
+    public function followinscAction(Request $request, $id)
+    {
+        // Get data and decode JSON
+        $userId = $id;
+
+        $em = $this->getDoctrine()->getManager();
+        $serielist = $em->getRepository('SerieBundle:Serie')->findBy(array('userId' => $userId));
+
+        if (!$serielist){
+            // Return as JSON
+            $data = 'Vous ne suivez pas de série.';
+            $response = new JsonResponse($data);
+            $response->setStatusCode(JsonResponse::HTTP_EXPECTATION_FAILED);;
+            return $response;
+        }
+        elseif (count($serielist) >= 3) {
+            // Return as JSON
+            $serializer = $this->get('serializer');
+            $response = $serializer->serialize($serielist, 'json');
+            return new JsonResponse(json_decode($response));
+        }
+        else {
+          $data = 'Vous devez marquer au moins 3 séries.';
+          $response = new JsonResponse($data);
+          $response->setStatusCode(JsonResponse::HTTP_EXPECTATION_FAILED);;
+          return $response;
+
+        }
+    }
+
 }

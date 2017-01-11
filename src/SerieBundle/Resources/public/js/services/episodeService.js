@@ -3,15 +3,16 @@ function episodeService($http, sessionFactory) {
     this.$http = $http;
     this.sessionFactory = sessionFactory;
 
-    this.seen = (data) => {
-        return this.$http.post('app_dev.php/episode/seen', data)
+    this.watch = (data, id) => {
+        return this.$http.post('app_dev.php/episode/watch', data, id)
     }
 
-    this.unsee = (data) => {
-        return this.$http.post('app_dev.php/episode/unsee', data)
+    this.didIWatch = (id, episode, user) => {
+        return this.$http.get('app_dev.php/episode/didiwatch/'+ id + '/' + episode + '/' + user)
     }
 
-    this.getAllSeen = () => {
-        return this.$http.get('app_dev.php/episode/')
+    this.getAllWatched = (id, user) => {
+        return this.$http.get('app_dev.php/episode/'+ id + '/' + user)
     }
+
 }

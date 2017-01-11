@@ -1,8 +1,3 @@
-episode_index:
-    path:     /
-    defaults: { _controller: "SerieBundle:Episode:getAll" }
-    methods:  GET
-
 episode_show:
     path:     /show/{id}
     defaults: { _controller: "SerieBundle:Episode:getOne" }
@@ -18,12 +13,17 @@ episode_delete:
     defaults: { _controller: "SerieBundle:Episode:delete" }
     methods:  DELETE
 
-episode_seen:
-    path:     /seen
-    defaults: { _controller: "SerieBundle:Episode:seen" }
+episode_watched:
+    path:     /watch
+    defaults: { _controller: "SerieBundle:Episode:watch" }
     methods:  POST
 
-episode_unsee:
-    path:     /unsee
-    defaults: { _controller: "SerieBundle:Episode:unsee" }
-    methods:  POST
+episode_didiwatch:
+    path:     /didiwatch/{id}/{episode}/{user}
+    defaults: { _controller: "SerieBundle:Episode:didiwatch" }
+    methods:  GET
+
+episode_index:
+    path:     /{id}/{user}
+    defaults: { _controller: "SerieBundle:Episode:getAll" }
+    methods:  GET

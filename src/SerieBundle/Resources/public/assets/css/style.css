@@ -16,10 +16,12 @@ a:focus, button:focus {
     outline: inherit !important;
     text-decoration: none !important;
 }
+
 a:hover {
-  text-decoration: none;
-  color: inherit;
+    text-decoration: none;
+    color: inherit;
 }
+
 
 /*___Navbar_______________________________________________________________________________________________________
 ________________________________________________________________________________________________________________*/
@@ -55,6 +57,33 @@ ________________________________________________________________________________
     margin-right: 20px;
 }
 
+@media all and (max-width: 948px) {
+    .navbar-default .navbar-nav>li>a {
+        font-size: 1rem;
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-top: 24px;
+        margin-right: 18px;
+    }
+}
+
+@media all and (max-width: 800px) {
+    .navbar-brand>img {
+        width: 35px;
+    }
+}
+
+@media all and (max-width: 767px) {
+    .navbar-default .navbar-nav>li>a {
+        font-size: 1.25rem;
+        margin-left: 20px;
+    }
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #FFF;
+}
+
 .navbar-default .navbar-collapse {
     background-color: rgb(35, 35, 35);
     z-index: 10000;
@@ -86,9 +115,14 @@ ________________________________________________________________________________
     color: white!important;
     font-weight: bold;
     line-height: 35px;
-    margin-left: 80px!important;
+    margin-left: 20px!important;
     position: relative;
     z-index: 20000;
+}
+
+.navbar-brand>img {
+    display: inline-block;
+    margin-right: 10px;
 }
 
 .navbar-toggle {
@@ -159,9 +193,13 @@ ________________________________________________________________________________
     font-size: 1.25rem;
     border-radius: inherit;
     position: absolute;
-    right: 0;
     height: 45px;
     top: 25px;
+    vertical-align: inherit;
+}
+
+.navbar .btn-search {
+    right: 16px;
 }
 
 
@@ -274,14 +312,18 @@ ________________________________________________________________________________
     color: white;
     padding-bottom: 10px;
 }
+
 #resume {
-  text-align: justify;
-  font-size: 1.125rem;
+    text-align: justify;
+    font-size: 1.125rem;
 }
+
 .title-section-serie {
-  font-size: 1.25rem;
-  font-weight: 500;
+    font-size: 1.25rem;
+    font-weight: 500;
 }
+
+
 /*#banniere th, #banniere td {
     padding-right: 10px;
     padding-left: 10px;
@@ -317,7 +359,7 @@ ________________________________________________________________________________
 }
 
 .acteur {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 .acteur-img {
@@ -329,33 +371,41 @@ ________________________________________________________________________________
     background-position: center;
     display: inline-block;
 }
+
+
 /*1*/
 
 .swipe {
-  overflow: hidden;
-  visibility: hidden;
-  position: relative;
-}
-.swipe-wrap {
-  overflow: hidden;
-  position: relative;
-}
-.swipe-wrap > div {
-  float:left;
-  width:100%;
-  position: relative;
+    overflow: hidden;
+    visibility: hidden;
+    position: relative;
 }
 
+.swipe-wrap {
+    overflow: hidden;
+    position: relative;
+}
+
+.swipe-wrap>div {
+    float: left;
+    width: 100%;
+    position: relative;
+}
+
+
 /*1*/
+
 .saison {
     background-color: rgb(50, 50, 50);
     height: 70px;
     line-height: 3;
     position: relative;
 }
+
 .saison li {
     display: inline-block;
 }
+
 .saison a {
     color: white;
     font-size: 1.5em;
@@ -363,26 +413,29 @@ ________________________________________________________________________________
     position: relative;
     margin-right: 15px;
 }
+
 #season-section .btn-orange {
-  width: auto;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  margin-right: 5px;
-  text-transform: inherit;
+    width: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 5px;
+    text-transform: inherit;
 }
+
 .categorie {
-  margin-bottom: 12px;
-  font-size: 1rem;
+    margin-bottom: 12px;
+    font-size: 1rem;
 }
 
 #section-progression h4 {
-  margin-top: 30px;
-  margin-bottom: 15px;
+    margin-top: 30px;
+    margin-bottom: 15px;
 }
 
 .episode-info {
-  font-size: 1rem;
+    font-size: 1rem;
 }
+
 
 /*___Footer___________________________________________________________________________________________________
 ____________________________________________________________________________________________________________*/
@@ -541,7 +594,6 @@ ________________________________________________________________________________
 /*___Page série Non Loggué _______________________________________________________________________________________
 ________________________________________________________________________________________________________________*/
 
-
 .serie li {
     list-style: none;
 }
@@ -655,7 +707,7 @@ ________________________________________________________________________________
     width: auto;
     margin-top: 10px;
     margin-bottom: 10px;
-    margin-right: 5px;
+    margin-right: 0px;
     text-transform: inherit;
 }
 
@@ -715,9 +767,11 @@ ________________________________________________________________________________
 .card img {
     margin-left: 50px;
 }
+
 #modal-credit .card img, #homepage .card img {
     margin-left: auto;
 }
+
 
 /*___row hp-band-pop__________________________________________________________________________________________
 ____________________________________________________________________________________________________________*/
@@ -763,21 +817,21 @@ ________________________________________________________________________________
     text-align: center;
 }
 
-.followMore a:hover{
+.followMore a:hover {
     text-decoration: none;
 }
 
 .btn-see {
-      background-color: rgb(255, 168, 52)!important;
-      color: white;
-      font-size: 1.25rem;
-      padding: 10px 20px 10px 20px;
-      display: block;
-      width: 160px;
-      margin-top: 10px;
-      margin-bottom: 20px;
-      background-color: rgb(255, 168, 52)!important;
-      text-align: center;
+    background-color: rgb(255, 168, 52)!important;
+    color: white;
+    font-size: 1.25rem;
+    padding: 10px 20px 10px 20px;
+    display: block;
+    width: 160px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    background-color: rgb(255, 168, 52)!important;
+    text-align: center;
 }
 
 #btn-follow {
@@ -800,17 +854,18 @@ ________________________________________________________________________________
     padding-left: 5%;
     padding-right: 5%;
 }
-@media screen and (max-width: 576px) {
-  #more img {
-      width: auto !important;
-      margin: 20px auto !important;
-  }
-}
-  #more img {
-      margin: 20px;
-      width: 100%;
-  }
 
+@media screen and (max-width: 576px) {
+    #more img {
+        width: auto !important;
+        margin: 20px auto !important;
+    }
+}
+
+#more img {
+    margin: 20px;
+    width: 100%;
+}
 
 #more p {
     font-size: 1.25rem;
@@ -821,7 +876,6 @@ ________________________________________________________________________________
     padding-top: 20px;
     padding-bottom: 10px;
 }
-
 
 
 /*___Profile Page_____________________________________________________________________________________________
@@ -902,6 +956,7 @@ ________________________________________________________________________________
     margin-right: 5px;
     padding-bottom: 10px;
     display: inline-block;
+    width: 100%;
 }
 
 #episode-card p {
@@ -919,12 +974,14 @@ ________________________________________________________________________________
 }
 
 #serie-container, #episode-container {
-    padding: 0px;
+    padding: 5px;
 }
+
 #episode-img {
-  max-height: 190px;
-  overflow: hidden;
+    max-height: 190px;
+    overflow: hidden;
 }
+
 #serie-container img, #episode-container img {
     width: 100%;
 }
@@ -1000,6 +1057,29 @@ ________________________________________________________________________________
     }
 }
 
+.fa-pencil:before, .fa-times:before {
+    margin-left: 5px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.fa-times:before {
+    font-size: 30px;
+}
+
+.fa-times {
+    position: absolute;
+    margin-left: 5px;
+}
+
+#profil-actu {
+    margin-top: 5px;
+}
+
+#profil-modif {
+    margin-top: -7px;
+}
+
 
 /*___Inscription & Connexion Page_____________________________________________________________________________
 ____________________________________________________________________________________________________________*/
@@ -1030,6 +1110,11 @@ ________________________________________________________________________________
     box-shadow: 3px 3px 8px 2px rgba(0, 0, 0, 0.24);
     border-radius: inherit;
     border: inherit;
+}
+
+.form-control {
+    display: inline-block;
+    width: 90%;
 }
 
 .form-control:focus {
@@ -1147,6 +1232,14 @@ hr {
     font-size: 1.125rem;
 }
 
+#btn-followinsc {
+    font-size: 30px;
+}
+
+#btn-followinsc:hover {
+    cursor: pointer;
+}
+
 
 /*___Results Page_____________________________________________________________________________________________
 ____________________________________________________________________________________________________________*/
@@ -1184,25 +1277,25 @@ ________________________________________________________________________________
 }
 
 #homepage h2 {
-  padding-left: 40px;
+    padding-left: 40px;
 }
 
 @media (max-width: 768px) and (min-width: 576px) {
-  .col-sm-3 {
-    width: 25%;
-  }
-  .col-sm-9 {
-    width: 75%;
-  }
+    .col-sm-3 {
+        width: 25%;
+    }
+    .col-sm-9 {
+        width: 75%;
+    }
 }
 
 #homepage .card {
-  margin-left: 5px;
-  margin-right: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 .slick-dotted.slick-slider {
-  margin-bottom: 0px;
+    margin-bottom: 0px;
 }
 
 .slick-dots {
@@ -1210,45 +1303,49 @@ ________________________________________________________________________________
     bottom: inherit;
     margin-top: 15px;
 }
+
 .slick-next {
     right: 50px;
 }
+
 .slick-prev {
     left: 30px;
 }
+
 .slick-prev:before, .slick-next:before {
     font-family: 'slick';
     font-size: 40px;
     line-height: 1;
     opacity: .85;
     color: white;
-  }
+}
 
 .hpnl-band .slick-prev, .hpnl-band .slick-next {
-  display: none !important;
+    display: none !important;
 }
 
 .slick-prev, .slick-next {
-      font-size: 0;
-      line-height: 0;
-      position: absolute;
-      top: calc(50% - 20px);
-      display: block;
-      padding: 0;
-      cursor: pointer;
-      color: transparent;
-      border: none;
-      outline: none;
-      background: transparent;
-      z-index: 10000;
+    font-size: 0;
+    line-height: 0;
+    position: absolute;
+    top: calc(50% - 20px);
+    display: block;
+    padding: 0;
+    cursor: pointer;
+    color: transparent;
+    border: none;
+    outline: none;
+    background: transparent;
+    z-index: 10000;
 }
+
 #hp-band-last .slick-prev, #hp-band-last .slick-next {
-  top: calc(50% - 60px);
+    top: calc(50% - 60px);
 }
 
 #hp-band-last p {
-      margin-top: 10px;
-      font-size: 1rem;
+    margin-top: 10px;
+    font-size: 1rem;
 }
 
 :focus {
@@ -1256,5 +1353,14 @@ ________________________________________________________________________________
 }
 
 .acteur-nom {
-  height: 45px;
+    height: 45px;
+}
+
+.hpnl-band-left h3 {
+    color: #FFF;
+    text-align: center;
+    z-index: 20 !important;
+    margin-top: -65px;
+    padding-left: 10px !important;
+    padding-right: 10px;
 }

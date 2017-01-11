@@ -1,8 +1,7 @@
 <div class="container-fluid" id="profile-page">
     <div class="row" id="img-section">
         <div class="col-xs-12">
-            <img ng-src="{{'bundles/serie/uploads/'+vm.sessionFactory.user.picture}}" alt="" class="img-responsive center-block">
-
+            <img ng-show='vm.sessionFactory.user.picture' ng-src="{{'bundles/serie/uploads/'+vm.sessionFactory.user.picture }}" alt="" class="img-responsive center-block">
             <h2>{{ vm.sessionFactory.user.username }}</h2>
             <a href="#/profiledit" id="edit-btn">
                 <i class="fa fa-pencil" aria-hidden="true"></i>
@@ -18,9 +17,9 @@
                 <th>
                     <i class="fa fa-hourglass-end" aria-hidden="true"></i> Durée de visionnage</th>
                 <tr>
-                    <td>{{ vm.user.nb_series }}</td>
-                    <td>{{ vm.user.nb_episodes_vus }}</td>
-                    <td>{{ vm.user.duree_visionnage }}</td>
+                    <td>{{ vm.sessionFactory.user.nb_series }}</td>
+                    <td>{{ vm.sessionFactory.user.nb_episodes_vus }}</td>
+                    <td>{{ vm.sessionFactory.user.duree_visionnage }}</td>
                 </tr>
             </table>
         </div>

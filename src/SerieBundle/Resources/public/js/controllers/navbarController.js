@@ -35,7 +35,7 @@ function navbarController(tmdbService, $location, sessionFactory, $rootScope, $w
 
     $rootScope.$on('loginStatusChangedNavbar', (event) => {
         this.isLogged = sessionFactory.isLogged;
-    })
+    });
 
     //Logout
     this.logout = () => {
@@ -50,5 +50,7 @@ function navbarController(tmdbService, $location, sessionFactory, $rootScope, $w
         this.isLogged = false;
         this.$location.path('/connexion');
     };
+
+
 
 }

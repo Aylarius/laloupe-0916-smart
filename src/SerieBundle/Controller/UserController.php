@@ -59,10 +59,15 @@ class UserController extends Controller
         $em->persist($user);
         $em->flush();
 
-        // Return as JSON
-        $serializer = $this->get('serializer');
-        $response = $serializer->serialize($user, 'json');
-        return new JsonResponse(json_decode($response));
+        // Create JWT token with username
+        $token = $this->get('lexik_jwt_authentication.encoder')
+            ->encode(['username' => $user->getUsername()]);
+
+        $user = json_decode($this->get('serializer')->serialize($user, 'json'));
+
+        // Return generated token
+        return new JsonResponse(['token' => 'Bearer '.$token, 'user' => $user]);
+
 
         } else {
             $data = 'Si tu ne coches pas la case, un bébé chaton sera sacrifié... Alors coche la case !';

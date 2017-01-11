@@ -27,3 +27,8 @@ serie_doifollow:
     path:     /doifollow/{id}/{data}
     defaults: { _controller: "SerieBundle:Serie:doifollow" }
     methods:  GET
+
+serie_followinsc:
+    path:     followinsc/{id}
+    defaults: { _controller: "SerieBundle:Serie:followinsc" }
+    methods:  GET

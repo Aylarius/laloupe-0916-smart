@@ -13,6 +13,7 @@ angular.module('app', ['ngRoute','slickCarousel'])
     .controller('profileController', profileController)
     .controller('loginController', loginController)
     .controller('registerController', registerController)
+    .controller('register2Controller', register2Controller)
     .controller('editController', editController)
     .directive('a', function() {
         return {

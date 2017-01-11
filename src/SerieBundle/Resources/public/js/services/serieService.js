@@ -7,6 +7,10 @@ function serieService($http, sessionFactory) {
         return this.$http.post('app_dev.php/serie/follow', data, id)
     }
 
+    this.followInsc = (id) => {
+        return this.$http.get('app_dev.php/serie/followinsc/' + id)
+    }
+
     this.doIFollow = (id, data) => {
         return this.$http.get('app_dev.php/serie/doifollow/'+ id + '/' + data)
     }

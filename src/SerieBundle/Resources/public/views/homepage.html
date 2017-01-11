@@ -4,21 +4,21 @@
     <div class="row hpnl-band">
 
         <!-- Slider -->
-        <div class="col-md-offset-1 col-md-4 hpnl-band-left" ng-controller="carousel1Controller as vm">
+        <div class="col-xs-12 col-lg-offset-1 col-lg-4 hpnl-band-left" ng-controller="carousel1Controller as vm">
             <section class="center-block slider">
                 <div>
                     <slick class="slider" settings="vm.slickConfig">
                         <div class="repeat" ng-repeat="result in vm.results">
                             <div class="card" ng-click="vm.togglePane = result.i">
                                 <img class="img-responsive center-block" ng-src="https://image.tmdb.org/t/p/w500{{result.backdrop_path}}" alt="{{ result.name }}"/>
-                                <h2>{{ result.name }}</h2>
+                                <h3>{{ result.name }}</h3>
                             </div>
                         </div>
                     </slick>
                 </div>
             </section>
         </div>
-        <div class="col-md-offset-1 col-md-6 hpnl-band-right">
+        <div class="col-xs-12 col-lg-offset-1 col-lg-6 hpnl-band-right">
             <div class="row">
                 <div class="col-xs-10 col-xs-offset-1">
                     <h1 class="hpnl-title text-center" ng-hide='vm.isLogged'>What I Watch</h1>

@@ -32,36 +32,50 @@ class EpisodeController extends Controller
 
         $emEpisode = $this->getDoctrine()->getManager();
         $episodeExist = $emEpisode->getRepository('SerieBundle:Episode')->findOneBy(array('serieId' => $serie, 'userId' => $user, 'episodeId' => $episodeId));
+        if ($user && $serie){
 
-        if (!$episodeExist){
-            // Create new serie entity
-            $episode = new Episode();
-            $episode->setSerieId($serie);
-            $episode->setUserId($user);
-            $episode->setEpisodeId($episodeId);
+          if (!$episodeExist){
+              // Create new serie entity
+              $episode = new Episode();
+              $episode->setSerieId($serie);
+              $episode->setUserId($user);
+              $episode->setEpisodeId($episodeId);
 
-            // Send to database
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($episode);
-            $em->flush();
+              // Send to database
+              $em = $this->getDoctrine()->getManager();
+              $em->persist($episode);
+              $em->flush();
 
-            // Return as JSON
-            $serializer = $this->get('serializer');
-            $response = $serializer->serialize($episode, 'json');
-            return new JsonResponse(json_decode($response));
-        }
-        else {
-            // Delete from database
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($episodeExist);
-            $em->flush();
+              // Return as JSON
+              $serializer = $this->get('serializer');
+              $response = $serializer->serialize($episode, 'json');
+              return new JsonResponse(json_decode($response));
+          }
+          else {
+              // Delete from database
+              $em = $this->getDoctrine()->getManager();
+              $em->remove($episodeExist);
+              $em->flush();
 
-            // Return as JSON
-            $data = 'Vous n\'avez pas vu cet épisode.';
-            $response = new JsonResponse($data);
-            $response->setStatusCode(JsonResponse::HTTP_EXPECTATION_FAILED);;
-            return $response;
-        }
+              // Return as JSON
+              $data = 'Vous n\'avez pas vu cet épisode.';
+              $response = new JsonResponse($data);
+              $response->setStatusCode(JsonResponse::HTTP_EXPECTATION_FAILED);;
+              return $response;
+          }
+      }
+      elseif (!$serie || $serie == NULL) {
+        $data = 'Vous ne suivez pas cette série.';
+        $response = new JsonResponse($data);
+        $response->setStatusCode(JsonResponse::HTTP_EXPECTATION_FAILED);;
+        return $response;
+      }
+      else {
+        $data = 'Vous n\'êtes pas connectés.';
+        $response = new JsonResponse($data);
+        $response->setStatusCode(JsonResponse::HTTP_EXPECTATION_FAILED);;
+        return $response;
+      }
     }
 
     public function didiwatchAction($id, $episode, $user)

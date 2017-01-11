@@ -23,10 +23,10 @@
     <div class="col-xs-12">
       <div class="row">
 
-        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3" id="serie-container" ng-repeat="result in vm.search">
+        <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3" id="serie-container" ng-repeat="result in vm.search">
           <div id="serie-card" ng-click="vm.tvShowView(result.id)">
             <img ng-src="{{ !result.backdrop_path ? 'bundles/serie/assets/img/img-default.png' : 'https://image.tmdb.org/t/p/w300'+result.backdrop_path }}" alt="Flash" class="img-responsive center-block">
-            <h4>{{ result.name | limitTo: 35 }}{{ result.name.length > 35 ? '...' : '' }}</h4>
+            <h4>{{ result.name | limitTo: 30 }}{{ result.name.length > 30 ? '...' : '' }}</h4>
           </div>
         </div>
       </div>

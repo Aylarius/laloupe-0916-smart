@@ -27,7 +27,6 @@ angular.module('app', ['ngRoute','slickCarousel'])
             }
         };
     })
-    .directive('season', season)
     .config(routes)
     .config(function ($httpProvider) {
         $httpProvider.defaults.headers.put['Content-Type'] = 'application/x-www-form-urlencoded';

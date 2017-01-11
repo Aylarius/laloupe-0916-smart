@@ -9,7 +9,6 @@ function registerController(userService, sessionFactory, $timeout, $routeParams,
 
     this.conditions = false;
     this.createAccount = () => {
-      console.log(this.picture);
         this.userService.create({
             username: this.username,
             password: this.password,

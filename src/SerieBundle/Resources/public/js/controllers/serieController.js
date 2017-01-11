@@ -23,6 +23,8 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
 
     };
 
+    console.log(this.sessionFactory.series);
+
     this.getSheetSerie($routeParams.id);
 
     // liste des acteurs

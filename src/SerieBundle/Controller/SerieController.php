@@ -78,7 +78,7 @@ class SerieController extends Controller
         }
     }
 
-    public function getAllAction(Request $request, $id)
+    public function getAllAction($id)
     {
         // Get data and decode JSON
         $userId = $id;

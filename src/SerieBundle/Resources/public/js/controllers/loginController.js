@@ -15,7 +15,8 @@ function loginController(userService, sessionFactory, $timeout, $routeParams, $l
             this.sessionFactory.token = res.data.token;
             this.sessionFactory.user = res.data.user;
             this.sessionFactory.isLogged = true;
-            this.$rootScope.$emit('loginStatusChanged', true);
+            this.sessionFactory.series = res.data.series;
+        this.$rootScope.$emit('loginStatusChanged', true);
             $rootScope.$emit('loginStatusChangedNavbar');
             $rootScope.$emit('loginStatusChangedHomepage');
 

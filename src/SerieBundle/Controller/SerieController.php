@@ -97,7 +97,7 @@ class SerieController extends Controller
             // Return as JSON
             $serializer = $this->get('serializer');
             $response = $serializer->serialize($serielist, 'json');
-            return new JsonResponse($response);
+            return new JsonResponse(json_decode($response));
 
         }
     }

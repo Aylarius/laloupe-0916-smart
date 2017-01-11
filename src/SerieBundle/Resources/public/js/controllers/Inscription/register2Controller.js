@@ -55,6 +55,7 @@ console.log(this.sessionFactory);
       } else {
           this.serieTrack.splice(this.serieTrack.indexOf(id), 1);
       };
+      console.log(this.serieTrack);
 
         this.serieService.follow({
             id: id,

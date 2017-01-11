@@ -61,6 +61,7 @@ const routes = ($routeProvider, $httpProvider, $locationProvider) => {
                 config.headers = config.headers || {};
                 if ($window.localStorage.token && !((config.url.match(/api\.themoviedb\.org/) || []).length > 0)) {
                     sessionFactory.token = $window.localStorage.token
+                    sessionFactory.series = $window.localStorage.series;
                     sessionFactory.user = JSON.parse($window.localStorage.getItem('currentUser'));
                     config.headers.authorization = $window.localStorage.token
                 }
@@ -82,13 +83,15 @@ const routes = ($routeProvider, $httpProvider, $locationProvider) => {
 const loginStatus = ($http, $rootScope, $window, sessionFactory) => {
 
     if ($window.localStorage.token) {
-        sessionFactory.token = $window.localStorage.token
+        sessionFactory.token = $window.localStorage.token;
+        sessionFactory.series = $window.localStorage.series;
         sessionFactory.user = JSON.parse($window.localStorage.getItem('currentUser'));
     }
     $rootScope.$on('loginStatusChanged', (event, isLogged) => {
         if (sessionFactory.token) {
             $window.localStorage.setItem('currentUser', JSON.stringify(sessionFactory.user));
             $window.localStorage.token = sessionFactory.token;
+            $window.localStorage.series = sessionFactory.series;
             sessionFactory.isLogged = isLogged;
         }
     })

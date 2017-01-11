@@ -103,10 +103,27 @@ class UserController extends Controller
         $token = $this->get('lexik_jwt_authentication.encoder')
             ->encode(['username' => $user->getUsername()]);
 
+        $serielist = $em->getRepository('SerieBundle:Serie')->findBy(array('userId' => $user));
+
+        if (!$serielist){
+            // Return as JSON
+            $serie = '';
+        }
+        else {
+            // Return as JSON
+            $serializer = $this->get('serializer');
+            $response = $serializer->serialize($serielist, 'json');
+            $data = json_decode($response, true);
+            $serie = [];
+            foreach($data as $d) {
+                array_push($serie, $d['serieId']);
+            }
+        }
+
         $user = json_decode($this->get('serializer')->serialize($user, 'json'));
 
         // Return generated token
-        return new JsonResponse(['token' => 'Bearer '.$token, 'user' => $user]);
+        return new JsonResponse(['token' => 'Bearer '.$token, 'user' => $user, 'series' => $serie]);
 
     }
 

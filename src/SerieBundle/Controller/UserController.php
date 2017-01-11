@@ -2,6 +2,8 @@
 namespace SerieBundle\Controller;
 
 use SerieBundle\Entity\User;
+use SerieBundle\Entity\Serie;
+use SerieBundle\Entity\Episode;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -209,6 +211,33 @@ class UserController extends Controller
         }
 
         return new JsonResponse($status);
+    }
+
+    public function statsAction($id){
+        // Get data from database
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository('SerieBundle:User')->findOneBy(array('id' => $id));
+        $serieList = $em->getRepository('SerieBundle:Serie')->findBy(array('userId' => $user));
+        $episodeList = $em->getRepository('SerieBundle:Episode')->findBy(array('userId' => $user));
+
+        if ($serieList && $episodeList) {
+            $episode = count($episodeList);
+            $serie = count($serieList);
+            return new JsonResponse(['series' => $serie, 'episodes' => $episode]);
+        }
+        elseif (!$serieList){
+            return new JsonResponse(['series' => 0, 'episodes' => 0]);
+        }
+        elseif (!$episodeList) {
+            $serie = count($serieList);
+            return new JsonResponse(['series' => $serie, 'episodes' => 0]);
+        }
+        else {
+            $data = 'Erreur.';
+            $response = new JsonResponse($data);
+            $response->setStatusCode(JsonResponse::HTTP_EXPECTATION_FAILED);;
+            return $response;
+        }
     }
 
 }

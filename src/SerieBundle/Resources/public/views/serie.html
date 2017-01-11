@@ -38,7 +38,9 @@
             <a href="#" ng-click='vm.follow(vm.sheetSerie.id)' prevent>
                 <span id="star-empty" class="glyphicon glyphicon-star-empty" ng-hide='vm.series'></span>
                 <span id="star" class="glyphicon glyphicon-star" ng-show='vm.series'></span>
-                Suivre la série</a>
+                <span ng-hide='vm.series'>Suivre la série</span>
+                <span ng-show='vm.series'>Série suivie</span>
+            </a>
         </div>
     </div>
     <div class="row">

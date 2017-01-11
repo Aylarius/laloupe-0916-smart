@@ -19,6 +19,10 @@ function userService($http, sessionFactory) {
         return this.$http.get('app_dev.php/user/show/' + id)
     }
 
+    this.getStats = (id) => {
+        return this.$http.get('app_dev.php/user/stats/' + id)
+    }
+
     this.update = (user) => {
         return this.$http.put('app_dev.php/user/edit', user)
     }

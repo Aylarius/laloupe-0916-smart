@@ -41,3 +41,8 @@ user_loggedin:
 user_logout:
     path:     /logout
     defaults: { _controller: "SerieBundle:User:logout" }
+
+user_stats:
+    path:     /stats/{id}
+    defaults: { _controller: "SerieBundle:User:stats" }
+    methods:  GET

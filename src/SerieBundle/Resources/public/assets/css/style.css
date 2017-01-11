@@ -57,6 +57,30 @@ ________________________________________________________________________________
     margin-right: 20px;
 }
 
+@media all and (max-width: 948px){
+  .navbar-default .navbar-nav>li>a {
+    font-size: 1rem;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 24px;
+    margin-right: 18px;
+  }
+}
+@media all and (max-width: 800px){
+  .navbar-brand>img {
+    width: 35px;
+  }
+}
+@media all and (max-width: 767px){
+  .navbar-default .navbar-nav>li>a {
+    font-size: 1.25rem;
+    margin-left: 20px;
+  }
+}
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #FFF;
+}
+
 .navbar-default .navbar-collapse {
     background-color: rgb(35, 35, 35);
     z-index: 10000;
@@ -166,11 +190,13 @@ ________________________________________________________________________________
     font-size: 1.25rem;
     border-radius: inherit;
     position: absolute;
-    right: 0;
     height: 45px;
     top: 25px;
+    vertical-align: inherit;
 }
-
+.navbar .btn-search {
+  right: 16px;
+}
 
 /*___Footer___________________________________________________________________________________________________
 ____________________________________________________________________________________________________________*/
@@ -676,7 +702,7 @@ ________________________________________________________________________________
     width: auto;
     margin-top: 10px;
     margin-bottom: 10px;
-    margin-right: 5px;
+    margin-right: 0px;
     text-transform: inherit;
 }
 
@@ -925,6 +951,7 @@ ________________________________________________________________________________
     margin-right: 5px;
     padding-bottom: 10px;
     display: inline-block;
+    width: 100%;
 }
 
 #episode-card p {
@@ -942,7 +969,7 @@ ________________________________________________________________________________
 }
 
 #serie-container, #episode-container {
-    padding: 0px;
+    padding: 5px;
 }
 
 #episode-img {
@@ -1314,4 +1341,13 @@ ________________________________________________________________________________
 
 .acteur-nom {
     height: 45px;
+}
+
+.hpnl-band-left h3 {
+      color: #FFF;
+      text-align: center;
+      z-index: 20 !important;
+      margin-top: -65px;
+      padding-left: 10px !important;
+      padding-right: 10px;
 }

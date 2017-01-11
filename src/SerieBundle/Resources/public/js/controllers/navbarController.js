@@ -51,4 +51,6 @@ function navbarController(tmdbService, $location, sessionFactory, $rootScope, $w
         this.$location.path('/connexion');
     };
 
+
+
 }

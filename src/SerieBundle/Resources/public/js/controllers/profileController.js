@@ -15,10 +15,19 @@ function profileController($location, userService, tmdbService, serieService, se
     this.getAllFollowed = (id) => {
         this.serieService.getAllFollowed(id).then((res) => {
             this.series = res.data;
+            this.arraySeries = [];
+            for (let obj of this.series) {
+                this.tmdbService.sheetSerie(obj.serieId).then((response) => {
+                    this.sheetSerie = response.data;
+                    this.arraySeries.push(this.sheetSerie);
+                });
+            }
         });
     };
 
     this.getAllFollowed(this.sessionFactory.user.id);
 
-
+    this.tvShowView = (id) => {
+        $location.path("/serie/" + id);
+    };
 }

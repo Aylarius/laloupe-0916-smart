@@ -66,9 +66,6 @@ function serieController(serieService, sessionFactory, tmdbService, $routeParams
         this.loginMessage.title = "Vous avez bien ajouté cette série à vos séries favorites !";
         this.loginMessage.message = "En cours de redirection...";
         this.getFollow($routeParams.id, this.sessionFactory.user.id);
-        this.$timeout(() => {
-            this.loginMessage = null;
-    }, 200);
     }).catch((res) => {
         this.loginMessage = {};
         this.loginMessage.type = "error";

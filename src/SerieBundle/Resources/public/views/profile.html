@@ -16,8 +16,7 @@
                 <th>Séries suivies</th>
                 <th>Episodes vus</th>
                 <th>
-                    <i class="fa fa-hourglass-end" aria-hidden="true"></i>
-                    Durée de visionnage</th>
+                    <i class="fa fa-hourglass-end" aria-hidden="true"></i> Durée de visionnage</th>
                 <tr>
                     <td>{{ vm.user.nb_series }}</td>
                     <td>{{ vm.user.nb_episodes_vus }}</td>
@@ -31,93 +30,16 @@
             <h2>Mes Séries</h2>
 
             <div class="row">
-                <div id="serie-container" class="col-xs-12 col-sm-4 col-md-3 col-lg-3" ng-repeat="serie in vm.series">
-                    <div id="serie-card">
-                        <img ng-src="https://image.tmdb.org/t/p/w500{{ serie.backdrop_path }}" alt="{{ serie.name }}" class="img-responsive center-block">
+                <div id="serie-container" class="col-xs-12 col-sm-4 col-md-3 col-lg-3" ng-repeat="sheetSerie in vm.arraySeries">
+                    <div id="serie-card" ng-click="vm.tvShowView(sheetSerie.id)">
+                        <img ng-src="https://image.tmdb.org/t/p/w500{{ sheetSerie.backdrop_path }}" alt="{{ sheetSerie.name }}" class="img-responsive center-block">
                         <div class="progress">
                             <div class="progress-bar" role="progressbar" data-percent={{ vm.users.user.series.percent }}></div>
                         </div>
-                        <h4>{{ serie.serieId }}</h4>
-                        <h4>{{ serie.name }}</h4>
-
+                        <h4>{{ sheetSerie.name }}</h4>
                     </div>
                 </div>
             </div>
-
-            <!--<div class="row">
-        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3" id="serie-container">
-          <div id="serie-card">
-            <img src="bundles/serie/assets/img/téléchargement.jpeg" alt="Flash" class="img-responsive center-block">
-            <div class="progress">
-                <div class="progress-bar" role="progressbar" data-percent="90%"></div>
-            </div>
-            <h4>The Flash</h4>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3" id="serie-container">
-          <div id="serie-card">
-            <img src="bundles/serie/assets/img/arrow.jpg" alt="Arrow" class="img-responsive center-block">
-            <div class="progress">
-                <div class="progress-bar" role="progressbar" data-percent="20%"></div>
-            </div>
-            <h4>Arrow</h4>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3" id="serie-container">
-          <div id="serie-card">
-            <img src="bundles/serie/assets/img/dexter.jpg" alt="Dexter" class="img-responsive center-block">
-            <div class="progress">
-                <div class="progress-bar" role="progressbar" data-percent="60%"></div>
-            </div>
-            <h4>Dexter</h4>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3" id="serie-container">
-          <div id="serie-card">
-            <img src="bundles/serie/assets/img/bigbang.jpg" alt="The Big Bang Theory" class="img-responsive center-block">
-            <div class="progress">
-                <div class="progress-bar" role="progressbar" data-percent="50%"></div>
-            </div>
-            <h4>The Big Bang Theory</h4>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3" id="serie-container">
-          <div id="serie-card">
-            <img src="bundles/serie/assets/img/Breaking-Bad.jpg" alt="Breaking Bad" class="img-responsive center-block">
-            <div class="progress">
-                <div class="progress-bar" role="progressbar" data-percent="10%"></div>
-            </div>
-            <h4>Breaking Bad</h4>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3" id="serie-container">
-          <div id="serie-card">
-            <img src="bundles/serie/assets/img/got.jpg" alt="Game of Thrones" class="img-responsive center-block">
-            <div class="progress">
-                <div class="progress-bar" role="progressbar" data-percent="80%"></div>
-            </div>
-            <h4>Game of Thrones</h4>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3" id="serie-container">
-          <div id="serie-card">
-            <img src="bundles/serie/assets/img/hannibal.jpg" alt="Hannibal" class="img-responsive center-block">
-            <div class="progress">
-                <div class="progress-bar" role="progressbar" data-percent="70%"></div>
-            </div>
-            <h4>Hannibal</h4>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3" id="serie-container">
-          <div id="serie-card">
-            <img src="bundles/serie/assets/img/walking-dead-ddotomen.jpeg" alt="The Walking Dead" class="img-responsive center-block">
-            <div class="progress">
-                <div class="progress-bar" role="progressbar" data-percent="30%"></div>
-            </div>
-            <h4>The Walking Dead</h4>
-          </div>
-        </div>
-      </div>-->
         </div>
     </div>
     <div class="row" id="tag-section">

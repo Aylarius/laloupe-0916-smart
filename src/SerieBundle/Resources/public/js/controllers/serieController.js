@@ -42,15 +42,7 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
     };
 
 
-    // marquage des épisodes
-    this.episodeTrack = [];
-    this.check = (id) => {
-        if (!this.episodeTrack[id]) {
-            this.episodeTrack[id] = false;
-        }
-        this.episodeTrack[id] = !this.episodeTrack[id];
-        console.log(this.episodeTrack);
-    };
+
 
     // barre de progression circulaire
     this.pourcentage = 75;
@@ -97,11 +89,13 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
         this.loginMessage.type = "success";
         this.loginMessage.title = "Vous avez bien ajouté cette série à vos séries favorites !";
         this.loginMessage.message = "En cours de redirection...";
+        this.getAllWatched($routeParams.id, this.sessionFactory.user.id);
     }).catch((res) => {
             this.loginMessage = {};
         this.loginMessage.type = "error";
         this.loginMessage.title = "Erreur lors du suivi";
         this.loginMessage.message = res.data;
+        this.getAllWatched($routeParams.id, this.sessionFactory.user.id);
     });
     };
 
@@ -111,16 +105,26 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
     });
     };
     this.getDidIWatch(vm.sheetSerie.id, episode.id, vm.sessionFactory.user.id)*/
+    this.serieTrack = [];
 
     this.getAllWatched = (id, user) => {
         this.episodeService.getAllWatched(id, user).then((res) => {
-            this.episodes = res.data;
-        console.log(this.episodes);
-
+        this.serieTrack = res.data;
+        console.log(this.serieTrack);
     });
     };
-
     this.getAllWatched($routeParams.id, this.sessionFactory.user.id);
+
+
+    // // marquage des épisodes
+    // this.check = (id) => {
+    //     if (!this.episodeTrack[id]) {
+    //         this.episodeTrack[id] = false;
+    //     }
+    //     this.episodeTrack[id] = !this.episodeTrack[id];
+    //     console.log(this.episodeTrack);
+    // };
+
 
 
 }

@@ -11,10 +11,10 @@ function editController(userService, sessionFactory, $timeout, $routeParams, $lo
     this.editAccount = () => {
         this.userService.update({
             id: this.sessionFactory.user.id,
-            username: this.username,
+            username: this.sessionFactory.user.username,
             password: this.password,
             passwordConf: this.passwordConf,
-            email: this.email,
+            email: this.sessionFactory.user.email,
             picture: this.picture
         }).then((res) => {
             this.loginMessage = {};

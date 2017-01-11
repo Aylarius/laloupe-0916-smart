@@ -27,10 +27,19 @@ function profileController($location, userService, $rootScope, tmdbService, seri
     this.getAllFollowed = (id) => {
         this.serieService.getAllFollowed(id).then((res) => {
             this.series = res.data;
-        console.log(this.series);
-    })
+            this.arraySeries = [];
+            for (let obj of this.series) {
+                this.tmdbService.sheetSerie(obj.serieId).then((response) => {
+                    this.sheetSerie = response.data;
+                    this.arraySeries.push(this.sheetSerie);
+                });
+            }
+        });
     };
 
     this.getAllFollowed(this.sessionFactory.user.id);
 
+    this.tvShowView = (id) => {
+        $location.path("/serie/" + id);
+    };
 }

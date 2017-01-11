@@ -14,7 +14,7 @@
                                 <i class="fa fa-pencil" aria-hidden="true" ng-click='vm.toggleInputOne()' ng-hide='vm.isToggledPseudo'></i>
                             </div>
                             <div id="profil-modif" class="col-sm-8">
-                                <input type="text" class="form-control" id="pseudo" placeholder="Pseudo" ng-model='vm.username' ng-show='vm.isToggledPseudo'>
+                                <input type="text" class="form-control" id="pseudo" ng-model='vm.sessionFactory.user.username' ng-show='vm.isToggledPseudo'>
                                 <i class="fa fa-times" aria-hidden="true" ng-click='vm.toggleInputOne()' ng-show='vm.isToggledPseudo'></i>
                             </div>
                         </div>
@@ -25,7 +25,7 @@
                                 <i class="fa fa-pencil" aria-hidden="true" ng-click='vm.toggleInputTwo()' ng-hide='vm.isToggledEmail'></i>
                             </div>
                             <div id="profil-modif" class="col-sm-8">
-                                <input type="email" class="form-control" id="email" placeholder="Email" ng-model='vm.email' ng-show='vm.isToggledEmail'>
+                                <input type="email" class="form-control" id="email" ng-model='vm.sessionFactory.user.email' ng-show='vm.isToggledEmail'>
                                 <i class="fa fa-times" aria-hidden="true" ng-click='vm.toggleInputTwo()' ng-show='vm.isToggledEmail'></i>
                             </div>
                         </div>
@@ -60,7 +60,7 @@
                         <div class="form-group">
                             <div class="col-xs-12 text-center">
                                 <br>
-                                <button ng-click='vm.editAccount()' ng-disabled="editForm.$invalid" class="btn btn-orange center-block">Valider</button>
+                                <button ng-click='vm.editAccount()' class="btn btn-orange center-block">Valider</button>
                             </div>
                         </div>
                     </form>

@@ -57,28 +57,31 @@ ________________________________________________________________________________
     margin-right: 20px;
 }
 
-@media all and (max-width: 948px){
-  .navbar-default .navbar-nav>li>a {
-    font-size: 1rem;
-    padding-left: 0px;
-    padding-right: 0px;
-    padding-top: 24px;
-    margin-right: 18px;
-  }
+@media all and (max-width: 948px) {
+    .navbar-default .navbar-nav>li>a {
+        font-size: 1rem;
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-top: 24px;
+        margin-right: 18px;
+    }
 }
-@media all and (max-width: 800px){
-  .navbar-brand>img {
-    width: 35px;
-  }
+
+@media all and (max-width: 800px) {
+    .navbar-brand>img {
+        width: 35px;
+    }
 }
-@media all and (max-width: 767px){
-  .navbar-default .navbar-nav>li>a {
-    font-size: 1.25rem;
-    margin-left: 20px;
-  }
+
+@media all and (max-width: 767px) {
+    .navbar-default .navbar-nav>li>a {
+        font-size: 1.25rem;
+        margin-left: 20px;
+    }
 }
+
 .navbar-default .navbar-toggle .icon-bar {
-  background-color: #FFF;
+    background-color: #FFF;
 }
 
 .navbar-default .navbar-collapse {
@@ -194,9 +197,11 @@ ________________________________________________________________________________
     top: 25px;
     vertical-align: inherit;
 }
+
 .navbar .btn-search {
-  right: 16px;
+    right: 16px;
 }
+
 
 /*___Footer___________________________________________________________________________________________________
 ____________________________________________________________________________________________________________*/
@@ -1227,6 +1232,14 @@ hr {
     font-size: 1.125rem;
 }
 
+#btn-followinsc {
+    font-size: 30px;
+}
+
+#btn-followinsc:hover {
+    cursor: pointer;
+}
+
 
 /*___Results Page_____________________________________________________________________________________________
 ____________________________________________________________________________________________________________*/
@@ -1344,10 +1357,10 @@ ________________________________________________________________________________
 }
 
 .hpnl-band-left h3 {
-      color: #FFF;
-      text-align: center;
-      z-index: 20 !important;
-      margin-top: -65px;
-      padding-left: 10px !important;
-      padding-right: 10px;
+    color: #FFF;
+    text-align: center;
+    z-index: 20 !important;
+    margin-top: -65px;
+    padding-left: 10px !important;
+    padding-right: 10px;
 }

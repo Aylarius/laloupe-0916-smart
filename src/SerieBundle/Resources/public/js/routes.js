@@ -36,7 +36,9 @@ const routes = ($routeProvider, $httpProvider, $locationProvider) => {
             controllerAs: 'vm'
         })
         .when('/inscriptionbis', {
-            templateUrl: 'bundles/serie/views/inscriptionbis.html'
+            templateUrl: 'bundles/serie/views/inscriptionbis.html',
+            controller: 'register2Controller',
+            controllerAs: 'vm'
         })
         .when('/resultats/:query', {
             templateUrl: 'bundles/serie/views/resultats.html',

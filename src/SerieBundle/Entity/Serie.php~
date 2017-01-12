@@ -51,5 +51,62 @@ class Serie
     {
         return $this->userId;
     }
-}
+    /**
+     * @var integer
+     */
+    private $serieId;
 
+
+    /**
+     * Set serieId
+     *
+     * @param integer $serieId
+     *
+     * @return Serie
+     */
+    public function setSerieId($serieId)
+    {
+        $this->serieId = $serieId;
+
+        return $this;
+    }
+
+    /**
+     * Get serieId
+     *
+     * @return integer
+     */
+    public function getSerieId()
+    {
+        return $this->serieId;
+    }
+    /**
+     * @var integer
+     */
+    private $duration;
+
+
+    /**
+     * Set duration
+     *
+     * @param integer $duration
+     *
+     * @return Serie
+     */
+    public function setDuration($duration)
+    {
+        $this->duration = $duration;
+
+        return $this;
+    }
+
+    /**
+     * Get duration
+     *
+     * @return integer
+     */
+    public function getDuration()
+    {
+        return $this->duration;
+    }
+}

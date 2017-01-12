@@ -11,6 +11,8 @@ SerieBundle\Entity\Serie:
     fields:
         serieId:
             type: integer
+        duration:
+            type: integer
     manyToOne:
         userId:
             targetEntity: SerieBundle\Entity\User

@@ -109,4 +109,91 @@ class Episode
     {
         return $this->episodeId;
     }
+    /**
+     * @var \DateTime
+     */
+    private $date;
+
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     *
+     * @return Episode
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+    /**
+     * @var integer
+     */
+    private $saison;
+
+
+    /**
+     * Set saison
+     *
+     * @param integer $saison
+     *
+     * @return Episode
+     */
+    public function setSaison($saison)
+    {
+        $this->saison = $saison;
+
+        return $this;
+    }
+
+    /**
+     * Get saison
+     *
+     * @return integer
+     */
+    public function getSaison()
+    {
+        return $this->saison;
+    }
+    /**
+     * @var integer
+     */
+    private $numero;
+
+
+    /**
+     * Set numero
+     *
+     * @param integer $numero
+     *
+     * @return Episode
+     */
+    public function setNumero($numero)
+    {
+        $this->numero = $numero;
+
+        return $this;
+    }
+
+    /**
+     * Get numero
+     *
+     * @return integer
+     */
+    public function getNumero()
+    {
+        return $this->numero;
+    }
 }

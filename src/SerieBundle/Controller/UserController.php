@@ -240,9 +240,17 @@ class UserController extends Controller
         $episodeList = $em->getRepository('SerieBundle:Episode')->findBy(array('userId' => $user));
 
         if ($serieList && $episodeList) {
-            $episode = count($episodeList);
-            $serie = count($serieList);
-            return new JsonResponse(['series' => $serie, 'episodes' => $episode]);
+            $episodes = count($episodeList);
+            $series = count($serieList);
+            $count = 0;
+            foreach ($episodeList as $episode){
+                $serieId = $episode->getSerieId();
+                $serie = $em->getRepository('SerieBundle:Serie')->findOneBy(array('userId' => $user, 'id' => $serieId));
+                $serieDuration = $serie->getDuration();
+                $count += $serieDuration;
+            }
+            return new JsonResponse(['series' => $series, 'episodes' => $episodes, 'duration' => $count]);
+
         }
         elseif (!$serieList){
             return new JsonResponse(['series' => 0, 'episodes' => 0]);

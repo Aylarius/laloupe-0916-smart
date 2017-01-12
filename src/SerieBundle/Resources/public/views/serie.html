@@ -35,7 +35,7 @@
     </div>
     <div class="follow row">
         <div class="col-xs-11 col-xs-offset-1">
-            <a href="#" ng-click='vm.follow(vm.sheetSerie.id)' prevent>
+            <a href="#" ng-click='vm.follow(vm.sheetSerie.id, vm.sheetSerie.episode_run_time[0])' prevent>
                 <span id="star-empty" class="glyphicon glyphicon-star-empty" ng-hide='vm.series'></span>
                 <span id="star" class="glyphicon glyphicon-star" ng-show='vm.series'></span>
                 <span ng-hide='vm.series'>Suivre la série</span>
@@ -147,7 +147,7 @@
                                         </p>
                                         <p>{{episode.air_date.replace(vm.underscoreReg,'')+'T00:00:00' | date:'dd MMMM yyyy'}}</p>
                                     </div>
-                                    <a href="#" ng-click='vm.watch(episode.id, vm.sheetSerie.id)' prevent>
+                                    <a href="#" ng-click='vm.watch(episode.id, vm.sheetSerie.id, episode.air_date, episode.episode_number, episode.season_number)' prevent>
                                         <div class="col-xs-2 text-right no-pad">
                                             <span id="sign" style="color: #929292" class="glyphicon glyphicon-ok-sign" ng-hide='vm.serieTrack.indexOf(episode.id) !== -1'></span>
                                             <span id="sign" style="color: rgb(255, 168, 52)" class="glyphicon glyphicon-ok-sign" ng-show='vm.serieTrack.indexOf(episode.id) !== -1'></span>
@@ -197,9 +197,10 @@
                         </div>
                     </div>
                     <h4>DERNIER EPISODE VU</h4>
-                    <p>
-                        Saison 3 - Episode 8
-                    </p>
+                    <p>Saison
+                        {{vm.episode.season_number}}
+                        - Episode
+                        {{vm.episode.episode_number}}</p>
                     <h4>PROCHAIN EPISODE</h4>
                     <div class="card_episode" ng-href="">
                         <img class="img-responsive episode_img" ng-src="https://image.tmdb.org/t/p/original{{vm.seasons.episodes[0].still_path}}" alt=""/>

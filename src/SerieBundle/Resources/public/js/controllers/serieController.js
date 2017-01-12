@@ -51,9 +51,10 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
     this.circle = "c100 p" + this.pourcentage + " orange";
 
 
-    this.follow = (id) => {
+    this.follow = (id, duration) => {
         this.serieService.follow({
             id: id,
+            duration: duration,
             user_id: this.sessionFactory.user.id
         }).then((res) => {
             this.loginMessage = {};
@@ -78,10 +79,13 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
 
     this.getFollow($routeParams.id, this.sessionFactory.user.id);
 
-    this.watch = (id, serieId) => {
+    this.watch = (id, serieId, date, numero, saison) => {
         this.episodeService.watch({
             episode_id: id,
             serie_id: serieId,
+            date: date,
+            numero: numero,
+            saison : saison,
             user_id: this.sessionFactory.user.id
         }).then((res) => {
             this.loginMessage = {};
@@ -114,6 +118,17 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
     };
     this.getAllWatched($routeParams.id, this.sessionFactory.user.id);
 
+    this.getLastWatched = (id, user) => {
+        this.episodeService.getLastWatched(id, user).then((res) => {
+            this.lastWatched = res.data;
+        this.tmdbService.lastEpisode(this.lastWatched.serieId.serieId, this.lastWatched.saison, this.lastWatched.numero).then((response) => {
+            this.episode = response.data;
+        console.log(this.episode);
+    });
+
+    });
+    };
+    this.getLastWatched($routeParams.id, this.sessionFactory.user.id);
 
     // // marquage des épisodes
     // this.check = (id) => {

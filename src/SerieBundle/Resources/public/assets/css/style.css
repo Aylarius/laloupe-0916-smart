@@ -886,9 +886,9 @@ ________________________________________________________________________________
 }
 
 #img-section {
-    background-color: #606060;
+    background-color: #909090;
     text-align: center;
-    color: white;
+    color: #FFF;
     padding-bottom: 30px;
     padding-top: 30px;
 }
@@ -1238,7 +1238,7 @@ hr {
 #btn-followinsc {
     font-size: 30px;
     padding-top: 5px;
-    padding-right: 5px;
+padding-right: 5px;
 }
 
 #btn-followinsc:hover {

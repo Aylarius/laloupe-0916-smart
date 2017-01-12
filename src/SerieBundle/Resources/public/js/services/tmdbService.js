@@ -26,7 +26,11 @@ function tmdbService($http) {
     };
 
     this.seasons = (id, season) => {
-      return this.$http.get("https://api.themoviedb.org/3/tv/"+ id +"/season/"+ season +"?api_key=fc533e12b849e49e74ab5d046165bcc7&language=fr-FR");
+        return this.$http.get("https://api.themoviedb.org/3/tv/"+ id +"/season/"+ season +"?api_key=fc533e12b849e49e74ab5d046165bcc7&language=fr-FR");
+    };
+
+    this.lastEpisode = (id, season, episode) => {
+        return this.$http.get("https://api.themoviedb.org/3/tv/"+ id +"/season/"+ season + "/episode/" + episode + "?api_key=fc533e12b849e49e74ab5d046165bcc7&language=fr-FR");
     };
 
     this.search = (query, page) => {

@@ -25,7 +25,6 @@ class UserController extends Controller
         $test = $request->request->all();
         $data = json_decode(key($test), true);
         $email = str_replace("_", ".", $data['email']);
-        $picture = str_replace("_", ".", $data['picture']);
 
         if ($data['password'] != $data['passwordConf']) {
             $data = 'Les mots de passe doivent être identiques.';
@@ -44,32 +43,35 @@ class UserController extends Controller
         }
         if (!$user && $data['password'] == $data['passwordConf'] && $data['conditions'] == true) {
         // Create new album entity
-        $user = new User();
+            $user = new User();
+            $user->setUsername($data['username']);
+            $user->setEmail($email);
 
-        $user->setUsername($data['username']);
-        $user->setPicture($picture);
+            if (isset($data['picture'])){
+                $picture = str_replace("_", ".", $data['picture']);
+                $user->setPicture($picture);
+            } else {
+                $user->setPicture('');
+            }
 
-        $user->setEmail($email);
-
-        // Encode the password
-        $password = $this->get('security.password_encoder')
+            // Encode the password
+            $password = $this->get('security.password_encoder')
             ->encodePassword($user, $data['password']);
-        $user->setPassword($password);
+            $user->setPassword($password);
 
-        // Send to database
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($user);
-        $em->flush();
+            // Send to database
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
 
-        // Create JWT token with username
-        $token = $this->get('lexik_jwt_authentication.encoder')
-            ->encode(['username' => $user->getUsername()]);
+            // Create JWT token with username
+            $token = $this->get('lexik_jwt_authentication.encoder')
+                ->encode(['username' => $user->getUsername()]);
 
-        $user = json_decode($this->get('serializer')->serialize($user, 'json'));
+            $user = json_decode($this->get('serializer')->serialize($user, 'json'));
 
-        // Return generated token
-        return new JsonResponse(['token' => 'Bearer '.$token, 'user' => $user]);
-
+            // Return generated token
+            return new JsonResponse(['token' => 'Bearer '.$token, 'user' => $user]);
 
         } else {
             $data = 'Si tu ne coches pas la case, un bébé chaton sera sacrifié... Alors coche la case !';

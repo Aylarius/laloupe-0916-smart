@@ -958,6 +958,9 @@ ________________________________________________________________________________
     display: inline-block;
     width: 100%;
 }
+#inscription-page2 #serie-card {
+  padding-bottom: 0;
+}
 
 #episode-card p {
     margin-top: 5px;
@@ -1234,6 +1237,8 @@ hr {
 
 #btn-followinsc {
     font-size: 30px;
+    padding-top: 5px;
+    padding-right: 5px;
 }
 
 #btn-followinsc:hover {

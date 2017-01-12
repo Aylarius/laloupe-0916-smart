@@ -25,10 +25,10 @@ class EpisodeController extends Controller
         $episodeId = $data['episode_id'];
 
         $em = $this->getDoctrine()->getManager();
-        $serie = $em->getRepository('SerieBundle:Serie')->findOneBy(array('serieId' => $serieId));
+        $user = $em->getRepository('SerieBundle:User')->findOneBy(array('id' => $userId));
 
         $em = $this->getDoctrine()->getManager();
-        $user = $em->getRepository('SerieBundle:User')->findOneBy(array('id' => $userId));
+        $serie = $em->getRepository('SerieBundle:Serie')->findOneBy(array('serieId' => $serieId,  'userId' => $user));
 
         $emEpisode = $this->getDoctrine()->getManager();
         $episodeExist = $emEpisode->getRepository('SerieBundle:Episode')->findOneBy(array('serieId' => $serie, 'userId' => $user, 'episodeId' => $episodeId));

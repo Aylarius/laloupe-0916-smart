@@ -11,11 +11,6 @@ function navbarController(tmdbService, $location, sessionFactory, $rootScope, $w
         this.isToggled = false;
     };
 
-    //modal connexion
-    $('#myModal').on('shown.bs.modal', function() {
-        $('#myInput').focus();
-    });
-
     //modal CGU
     $('#CGU').on('shown.bs.modal', function() {
         $('#myInput').focus();

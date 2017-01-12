@@ -7,7 +7,7 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
     this.serieService = serieService;
     this.episodeService = episodeService;
     this.sessionFactory = sessionFactory;
-
+    console.log(this.sessionFactory.isLogged);
     this.underscoreReg = new RegExp('-', 'g');
 
     // fiche série
@@ -21,6 +21,20 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
             console.log(this.seasons);
         });
 
+    };
+
+    this.modalToConnexion = () => {
+        $('.modal-backdrop').remove();
+        $('.modal-open').removeClass('modal-open');
+        $('body').css({paddingRight:0});
+        this.$location.path('/connexion');
+    };
+
+    this.modalToInscription = () => {
+        $('.modal-backdrop').remove();
+        $('.modal-open').removeClass('modal-open');
+        $('body').css({paddingRight:0});
+        this.$location.path('/inscription');
     };
 
     console.log(this.sessionFactory.series);
@@ -57,23 +71,23 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
             user_id: this.sessionFactory.user.id
         }).then((res) => {
             this.loginMessage = {};
-        this.loginMessage.type = "success";
-        this.loginMessage.title = "Vous avez bien ajouté cette série à vos séries favorites !";
-        this.loginMessage.message = "En cours de redirection...";
-        this.getFollow($routeParams.id, this.sessionFactory.user.id);
-    }).catch((res) => {
-        this.loginMessage = {};
-        this.loginMessage.type = "error";
-        this.loginMessage.title = "Erreur lors du suivi";
-        this.loginMessage.message = res.data;
-        this.getFollow($routeParams.id, this.sessionFactory.user.id);
-    });
+            this.loginMessage.type = "success";
+            this.loginMessage.title = "Vous avez bien ajouté cette série à vos séries favorites !";
+            this.loginMessage.message = "En cours de redirection...";
+            this.getFollow($routeParams.id, this.sessionFactory.user.id);
+        }).catch((res) => {
+            this.loginMessage = {};
+            this.loginMessage.type = "error";
+            this.loginMessage.title = "Erreur lors du suivi";
+            this.loginMessage.message = res.data;
+            this.getFollow($routeParams.id, this.sessionFactory.user.id);
+        });
     };
 
     this.getFollow = (id, data) => {
-        this.serieService.doIFollow(id,data).then((res) => {
+        this.serieService.doIFollow(id, data).then((res) => {
             this.series = res.data.followed;
-    });
+        });
     };
 
     this.getFollow($routeParams.id, this.sessionFactory.user.id);
@@ -85,17 +99,17 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
             user_id: this.sessionFactory.user.id
         }).then((res) => {
             this.loginMessage = {};
-        this.loginMessage.type = "success";
-        this.loginMessage.title = "Vous avez bien ajouté cette série à vos séries favorites !";
-        this.loginMessage.message = "En cours de redirection...";
-        this.getAllWatched($routeParams.id, this.sessionFactory.user.id);
-    }).catch((res) => {
+            this.loginMessage.type = "success";
+            this.loginMessage.title = "Vous avez bien ajouté cette série à vos séries favorites !";
+            this.loginMessage.message = "En cours de redirection...";
+            this.getAllWatched($routeParams.id, this.sessionFactory.user.id);
+        }).catch((res) => {
             this.loginMessage = {};
-        this.loginMessage.type = "error";
-        this.loginMessage.title = "Erreur lors du suivi";
-        this.loginMessage.message = res.data;
-        this.getAllWatched($routeParams.id, this.sessionFactory.user.id);
-    });
+            this.loginMessage.type = "error";
+            this.loginMessage.title = "Erreur lors du suivi";
+            this.loginMessage.message = res.data;
+            this.getAllWatched($routeParams.id, this.sessionFactory.user.id);
+        });
     };
 
     /*this.getDidIWatch = (id, episode, user) => {
@@ -108,9 +122,9 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
 
     this.getAllWatched = (id, user) => {
         this.episodeService.getAllWatched(id, user).then((res) => {
-        this.serieTrack = res.data;
-        console.log(this.serieTrack);
-    });
+            this.serieTrack = res.data;
+            console.log(this.serieTrack);
+        });
     };
     this.getAllWatched($routeParams.id, this.sessionFactory.user.id);
 

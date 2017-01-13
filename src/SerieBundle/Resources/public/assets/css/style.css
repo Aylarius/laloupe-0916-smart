@@ -402,6 +402,10 @@ ________________________________________________________________________________
     position: relative;
 }
 
+.saison ul {
+    padding-left: 0px;
+}
+
 .saison li {
     display: inline-block;
 }

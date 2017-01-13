@@ -23,12 +23,15 @@ class EpisodeController extends Controller
         $userId = $data['user_id'];
         $serieId = $data['serie_id'];
         $episodeId = $data['episode_id'];
-
-        $em = $this->getDoctrine()->getManager();
-        $serie = $em->getRepository('SerieBundle:Serie')->findOneBy(array('serieId' => $serieId));
+        $date = $data['date'];
+        $saison = $data['saison'];
+        $numero = $data['numero'];
 
         $em = $this->getDoctrine()->getManager();
         $user = $em->getRepository('SerieBundle:User')->findOneBy(array('id' => $userId));
+
+        $em = $this->getDoctrine()->getManager();
+        $serie = $em->getRepository('SerieBundle:Serie')->findOneBy(array('serieId' => $serieId,  'userId' => $user));
 
         $emEpisode = $this->getDoctrine()->getManager();
         $episodeExist = $emEpisode->getRepository('SerieBundle:Episode')->findOneBy(array('serieId' => $serie, 'userId' => $user, 'episodeId' => $episodeId));
@@ -40,6 +43,9 @@ class EpisodeController extends Controller
               $episode->setSerieId($serie);
               $episode->setUserId($user);
               $episode->setEpisodeId($episodeId);
+              $episode->setDate(new \DateTime($date));
+              $episode->setSaison($saison);
+              $episode->setNumero($numero);
 
               // Send to database
               $em = $this->getDoctrine()->getManager();
@@ -135,7 +141,39 @@ class EpisodeController extends Controller
             }
         }
         else {
-            $data = 'Vous ne suivez pas de série.';
+            $data = 'Vous ne suivez pas cette série.';
+            $response = new JsonResponse($data);
+            $response->setStatusCode(JsonResponse::HTTP_EXPECTATION_FAILED);;
+            return $response;
+        }
+    }
+    public function getLastWatchedAction($id, $user)
+    {
+        // Get data from database
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository('SerieBundle:User')->findOneBy(array('id' => $user));
+
+        $emSerie = $this->getDoctrine()->getManager();
+        $serie = $emSerie->getRepository('SerieBundle:Serie')->findOneBy(array('serieId' => $id, 'userId' => $user));
+
+        if ($user && $serie){
+            $emEpisode = $this->getDoctrine()->getManager();
+            $lastEpisode = $emEpisode->getRepository('SerieBundle:Episode')->findOneBy(array('serieId' => $serie, 'userId' => $user), array('date' => 'DESC'));
+
+            if (!$lastEpisode){
+                // Return as JSON
+                $data = '';
+                return new JsonResponse($data);
+            }
+            else {
+                // Return as JSON
+                $serializer = $this->get('serializer');
+                $response = $serializer->serialize($lastEpisode, 'json');
+                return new JsonResponse(json_decode($response));
+            }
+        }
+        else {
+            $data = 'Vous ne suivez pas cette série.';
             $response = new JsonResponse($data);
             $response->setStatusCode(JsonResponse::HTTP_EXPECTATION_FAILED);;
             return $response;

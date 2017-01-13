@@ -250,6 +250,14 @@ ________________________________________________________________________________
     top: 100px;
 }
 
+#chat-qui-pleure {
+    padding-top: 30px;
+}
+
+#btn-modal {
+    cursor: pointer;
+}
+
 .modal-body h5 {
     text-align: center;
 }
@@ -724,6 +732,10 @@ ________________________________________________________________________________
     margin-bottom: 15px;
 }
 
+#saison-non-suivie .glyphicon-ok-sign:before {
+    color: #929292;
+}
+
 
 /*___bandeau en-tête__________________________________________________________________________________________
 ____________________________________________________________________________________________________________*/
@@ -890,9 +902,9 @@ ________________________________________________________________________________
 }
 
 #img-section {
-    background-color: #606060;
+    background-color: #909090;
     text-align: center;
-    color: white;
+    color: #FFF;
     padding-bottom: 30px;
     padding-top: 30px;
 }
@@ -961,6 +973,9 @@ ________________________________________________________________________________
     padding-bottom: 10px;
     display: inline-block;
     width: 100%;
+}
+#inscription-page2 #serie-card {
+  padding-bottom: 0;
 }
 
 #episode-card p {
@@ -1049,6 +1064,7 @@ ________________________________________________________________________________
     font-size: 1.25rem;
     font-weight: 500;
     margin-top: 20px;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 430px) {
@@ -1238,6 +1254,8 @@ hr {
 
 #btn-followinsc {
     font-size: 30px;
+    padding-top: 5px;
+padding-right: 5px;
 }
 
 #btn-followinsc:hover {

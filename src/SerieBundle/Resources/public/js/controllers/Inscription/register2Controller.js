@@ -9,15 +9,22 @@ function register2Controller(serieService, userService, sessionFactory, $timeout
     this.tmdbService = tmdbService;
     this.$timeout = $timeout;
 
-console.log(this.sessionFactory);
+    console.log(this.sessionFactory);
     this.getSerieRegister = () => {
         this.tmdbService.popular().then((response) => {
             this.results = response.data.results.slice(0, 9);
+            this.resultsMore = response.data.results.slice(10, 19);
             console.log(response.data.results);
         });
     };
 
     this.getSerieRegister();
+
+    this.isToggled = false;
+    this.toggleMoreInsc = () => {
+        this.isToggled = !this.isToggled;
+        console.log(this.isToggled);
+    };
 
     // marquage des séries
     this.serieTrack = [];
@@ -49,28 +56,36 @@ console.log(this.sessionFactory);
         });
     };
 
+
     this.follow = (id) => {
-      if (this.serieTrack.indexOf(id) === -1) {
-          this.serieTrack.push(id);
-      } else {
-          this.serieTrack.splice(this.serieTrack.indexOf(id), 1);
-      };
-      console.log(this.serieTrack);
+        if (this.serieTrack.indexOf(id) === -1) {
+            this.serieTrack.push(id);
+        } else {
+            this.serieTrack.splice(this.serieTrack.indexOf(id), 1);
+        };
+        console.log(this.serieTrack);
+        this.tmdbService.sheetSerie(id).then((response) => {
+            this.sheetSerie = response.data;
 
         this.serieService.follow({
             id: id,
+            duration: this.sheetSerie.episode_run_time[0],
             user_id: this.sessionFactory.user.id
         }).then((res) => {
             this.loginMessage = {};
-        this.loginMessage.type = "success";
-        this.loginMessage.title = "Vous avez bien ajouté cette série à vos séries favorites !";
-        this.loginMessage.message = "En cours de redirection...";
-    }).catch((res) => {
-        this.loginMessage = {};
-        this.loginMessage.type = "error";
-        this.loginMessage.title = "Erreur lors du suivi";
-        this.loginMessage.message = res.data;
-    });
+            this.loginMessage.type = "success";
+            this.loginMessage.title = "Vous avez bien ajouté cette série à vos séries favorites !";
+            this.loginMessage.message = "En cours de redirection...";
+        }).catch((res) => {
+            this.loginMessage = {};
+            this.loginMessage.type = "error";
+            this.loginMessage.title = "Erreur lors du suivi";
+            this.loginMessage.message = res.data;
+        });
+      });
+
     };
+
+
 
 }

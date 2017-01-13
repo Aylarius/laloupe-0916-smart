@@ -80,4 +80,33 @@ class Serie
     {
         return $this->serieId;
     }
+    /**
+     * @var integer
+     */
+    private $duration;
+
+
+    /**
+     * Set duration
+     *
+     * @param integer $duration
+     *
+     * @return Serie
+     */
+    public function setDuration($duration)
+    {
+        $this->duration = $duration;
+
+        return $this;
+    }
+
+    /**
+     * Get duration
+     *
+     * @return integer
+     */
+    public function getDuration()
+    {
+        return $this->duration;
+    }
 }

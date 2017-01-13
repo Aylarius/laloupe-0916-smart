@@ -728,7 +728,7 @@ ________________________________________________________________________________
     margin-bottom: 15px;
 }
 
-.glyphicon-ok-sign:before {
+#saison-non-suivie .glyphicon-ok-sign:before {
     color: #929292;
 }
 

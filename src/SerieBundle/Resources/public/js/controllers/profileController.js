@@ -17,6 +17,7 @@ function profileController($location, userService, $rootScope, tmdbService, seri
         this.userService.getStats(id).then((res) => {
             this.statsSerie = res.data.series;
             this.statsEpisode = res.data.episodes;
+            this.statsDuration = res.data.duration;
         console.log(res.data);
     });
     };

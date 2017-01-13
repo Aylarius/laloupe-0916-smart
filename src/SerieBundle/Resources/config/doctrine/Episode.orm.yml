@@ -11,6 +11,12 @@ SerieBundle\Entity\Episode:
     fields:
         episodeId:
             type: integer
+        saison:
+            type: integer
+        numero:
+            type: integer
+        date:
+            type: date
     manyToOne:
         userId:
             targetEntity: SerieBundle\Entity\User

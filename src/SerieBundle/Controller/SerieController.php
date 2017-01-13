@@ -34,6 +34,7 @@ class SerieController extends Controller
             $serie = new Serie();
             $serie->setSerieId($serieId);
             $serie->setUserId($user);
+            $serie->setDuration($data['duration']);
 
             // Send to database
             $em = $this->getDoctrine()->getManager();

@@ -21,7 +21,7 @@ SerieBundle\Entity\User:
             unique: true
         picture:
             type: string
-            nullable: TRUE
+            nullable: true
         isActive:
             name: is_active
             type: boolean

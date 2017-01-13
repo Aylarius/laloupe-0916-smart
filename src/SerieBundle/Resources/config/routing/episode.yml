@@ -27,3 +27,8 @@ episode_index:
     path:     /{id}/{user}
     defaults: { _controller: "SerieBundle:Episode:getAll" }
     methods:  GET
+
+episode_getLastWatched:
+    path:     /getlast/{id}/{user}
+    defaults: { _controller: "SerieBundle:Episode:getLastWatched" }
+    methods:  GET

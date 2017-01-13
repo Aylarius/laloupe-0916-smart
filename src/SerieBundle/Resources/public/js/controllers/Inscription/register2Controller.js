@@ -56,6 +56,7 @@ function register2Controller(serieService, userService, sessionFactory, $timeout
         });
     };
 
+
     this.follow = (id) => {
         if (this.serieTrack.indexOf(id) === -1) {
             this.serieTrack.push(id);
@@ -63,9 +64,12 @@ function register2Controller(serieService, userService, sessionFactory, $timeout
             this.serieTrack.splice(this.serieTrack.indexOf(id), 1);
         };
         console.log(this.serieTrack);
+        this.tmdbService.sheetSerie(id).then((response) => {
+            this.sheetSerie = response.data;
 
         this.serieService.follow({
             id: id,
+            duration: this.sheetSerie.episode_run_time[0],
             user_id: this.sessionFactory.user.id
         }).then((res) => {
             this.loginMessage = {};
@@ -78,6 +82,10 @@ function register2Controller(serieService, userService, sessionFactory, $timeout
             this.loginMessage.title = "Erreur lors du suivi";
             this.loginMessage.message = res.data;
         });
+      });
+
     };
+
+
 
 }

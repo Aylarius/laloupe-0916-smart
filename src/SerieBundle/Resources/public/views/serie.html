@@ -80,7 +80,7 @@
     </div>
     <div class='horizon-swiper saison'>
         <ul>
-            <li class="saison-num horizon-item" ng-repeat="season in vm.sheetSerie.seasons">
+            <li class="saison-num horizon-item" ng-repeat="season in vm.sheetSerie.seasons" ng-style="{{$index == vm.sheetSerie.seasons.length-1 && '{\'marginRight\':\'100px\'}'}}">
                 <a href="" ng-click="vm.getSeasons(vm.sheetSerie.id, season.season_number)" prevent>{{season.season_number == 0 ? 'Bonus' : 'Saison '+season.season_number}}</a>
             </li>
         </ul>

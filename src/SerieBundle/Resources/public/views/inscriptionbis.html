@@ -31,7 +31,7 @@
                                     <div class="col-xs-10 text-left no-pad">
                                         <h4>{{ result.name }}</h4>
                                     </div>
-                                    <div id="btn-followinsc" ng-click='vm.follow(result.id, vm.sheetSerie(result.id).episode_run_time[0])' class="col-xs-2 text-right no-pad">
+                                    <div id="btn-followinsc" ng-click='vm.follow(result.id)' class="col-xs-2 text-right no-pad">
                                         <span id="sign" style="color: #929292" class="glyphicon glyphicon-ok-sign" ng-hide='vm.serieTrack.indexOf(result.id) !== -1'></span>
                                         <span id="sign" style="color: rgb(255, 168, 52)" class="glyphicon glyphicon-ok-sign" ng-show='vm.serieTrack.indexOf(result.id) !== -1'></span>
                                     </div>
@@ -59,10 +59,10 @@
                             <br>
                         </div>
                     </div>
-                    <div ng-show="(vm.loginMessage)" class="alert" ng-class="{'alert-danger': vm.loginMessage.type == 'error', 'alert-success': vm.loginMessage.type == 'success', 'alert-info': vm.loginMessage.type == 'info'}">
-                      <h4><span class="glyphicon glyphicon-exclamation-sign pull-left"></span>&nbsp;{{vm.loginMessage.title}}</h4>
-                      <p>{{vm.loginMessage.message}}</p>
-                    </div>
+                </div>
+                <div ng-show="(vm.loginMessage)" class="alert" ng-class="{'alert-danger': vm.loginMessage.type == 'error', 'alert-success': vm.loginMessage.type == 'success', 'alert-info': vm.loginMessage.type == 'info'}">
+                  <h4><span class="glyphicon glyphicon-exclamation-sign pull-left"></span>&nbsp;{{vm.loginMessage.title}}</h4>
+                  <p>{{vm.loginMessage.message}}</p>
                 </div>
             </div>
         </div>

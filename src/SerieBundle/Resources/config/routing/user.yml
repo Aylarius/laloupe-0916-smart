@@ -46,3 +46,13 @@ user_stats:
     path:     /stats/{id}
     defaults: { _controller: "SerieBundle:User:stats" }
     methods:  GET
+
+user_deactivate:
+    path:     /deactivate
+    defaults: { _controller: "SerieBundle:User:deactivate" }
+    methods:  PUT
+
+user_reactivate:
+    path:     /reactivate
+    defaults: { _controller: "SerieBundle:User:reactivate" }
+    methods:  POST

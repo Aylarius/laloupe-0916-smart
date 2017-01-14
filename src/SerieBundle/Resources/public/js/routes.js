@@ -50,6 +50,11 @@ const routes = ($routeProvider, $httpProvider, $locationProvider) => {
             controller: 'loginController',
             controllerAs: 'vm'
         })
+        .when('/reactivation', {
+            templateUrl: 'bundles/serie/views/reactivation.html',
+            controller: 'reactivateController',
+            controllerAs: 'vm'
+        })
         .otherwise({
             redirectTo: ''
         });

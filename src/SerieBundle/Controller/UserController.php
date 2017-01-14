@@ -86,47 +86,46 @@ class UserController extends Controller
         $test = $request->request->all();
         $data = json_decode(key($test), true);
 
-        $username = $data['username'];
+        $email = str_replace("_", ".", $data['email']);
         $password = $data['password'];
 
         $em = $this->getDoctrine()->getManager();
-        $user = $em->getRepository('SerieBundle:User')->findOneBy(array('username' => $username));
+        $user = $em->getRepository('SerieBundle:User')->findOneBy(array('email' => $email));
 
         if (!$user) {
-            throw $this->createNotFoundException();
-        }
+            $data = 'Vous n\'avez pas encore de compte.';
+            $response = new JsonResponse($data);
+            $response->setStatusCode(JsonResponse::HTTP_FORBIDDEN);;
+            return $response;
+        } else {
+            $actif = $user->getIsActive();
 
-        // password check
-        if (!$this->get('security.password_encoder')->isPasswordValid($user, $password)) {
-            throw $this->createAccessDeniedException();
-        }
+            if ($actif === true) {
 
-        // Create JWT token with username
-        $token = $this->get('lexik_jwt_authentication.encoder')
-            ->encode(['username' => $user->getUsername()]);
+                // Check password
+                if (!$this->get('security.password_encoder')->isPasswordValid($user, $password)) {
+                    $data = 'Vous n\'avez pas saisi le bon mot de passe.';
+                    $response = new JsonResponse($data);
+                    $response->setStatusCode(JsonResponse::HTTP_FORBIDDEN);;
+                    return $response;
+                } else {
+                    // Create JWT token with username
+                    $token = $this->get('lexik_jwt_authentication.encoder')
+                        ->encode(['username' => $user->getUsername()]);
 
-        $serielist = $em->getRepository('SerieBundle:Serie')->findBy(array('userId' => $user));
+                    $user = json_decode($this->get('serializer')->serialize($user, 'json'));
 
-        if (!$serielist){
-            // Return as JSON
-            $serie = '';
-        }
-        else {
-            // Return as JSON
-            $serializer = $this->get('serializer');
-            $response = $serializer->serialize($serielist, 'json');
-            $data = json_decode($response, true);
-            $serie = [];
-            foreach($data as $d) {
-                array_push($serie, $d['serieId']);
+                    // Return generated token
+                    return new JsonResponse(['token' => 'Bearer '.$token, 'user' => $user]);
+                }
+
+            } else {
+                $data = 'Votre compte est désactivé.';
+                $response = new JsonResponse($data);
+                $response->setStatusCode(JsonResponse::HTTP_FORBIDDEN);;
+                return $response;
             }
         }
-
-        $user = json_decode($this->get('serializer')->serialize($user, 'json'));
-
-        // Return generated token
-        return new JsonResponse(['token' => 'Bearer '.$token, 'user' => $user, 'series' => $serie]);
-
     }
 
     public function loggedinAction()
@@ -174,14 +173,14 @@ class UserController extends Controller
 
         // Update data
         if (isset($data['username'])) {
+
             $user->setUsername($data['username']);
+
+            // Create JWT token with username
+            $token = $this->get('lexik_jwt_authentication.encoder')
+                ->encode(['username' => $data['username']]);
         }
-        if (isset($data['password']) && isset($data['passwordConf']) && $data['password'] == $data['passwordConf']) {
-            $password = $data['password'];
-            $password = $this->get('security.password_encoder')
-                ->encodePassword($user, $data['password']);
-            $user->setPassword($password);
-        }
+
         if (isset($data['email'])) {
             $email = str_replace("_", ".", $data['email']);
             $user->setEmail($email);
@@ -191,14 +190,45 @@ class UserController extends Controller
             $user->setPicture($picture);
         }
 
-        // Get all data as JSON
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($user);
-        $em->flush();
+        if (isset($data['password']) && isset($data['passwordConf'])){
 
-        // Return as JSON
-        $user = $this->get('serializer')->serialize($user, 'json');
-        return new JsonResponse(json_decode($user));
+            if ($data['password'] == $data['passwordConf']) {
+                $password = $data['password'];
+                $password = $this->get('security.password_encoder')
+                    ->encodePassword($user, $data['password']);
+                $user->setPassword($password);
+            }
+            else {
+                $data = 'Les deux mots de passe saisis ne sont pas identiques.';
+                $response = new JsonResponse($data);
+                $response->setStatusCode(JsonResponse::HTTP_EXPECTATION_FAILED);;
+                return $response;
+            }
+
+        }
+        if ((isset($data['password']) && !isset($data['passwordConf'])) || (!isset($data['password']) && isset($data['passwordConf']))) {
+            $data = 'Vous n\'avez pas saisi deux mots de passe.';
+            $response = new JsonResponse($data);
+            $response->setStatusCode(JsonResponse::HTTP_EXPECTATION_FAILED);;
+            return $response;
+        }
+
+            // Send to database
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+
+            $user = json_decode($this->get('serializer')->serialize($user, 'json'));
+
+        if (isset($token)) {
+            // Return generated token
+            return new JsonResponse(['token' => 'Bearer '.$token, 'user' => $user]);
+
+        } else {
+            // Return as JSON
+            return new JsonResponse(json_decode($user));
+        }
+
     }
 
 
@@ -262,9 +292,106 @@ class UserController extends Controller
         else {
             $data = 'Erreur.';
             $response = new JsonResponse($data);
+            $response->setStatusCode(JsonResponse::HTTP_BAD_REQUEST);;
+            return $response;
+        }
+    }
+
+    public function deactivateAction(Request $request)
+    {
+        // Get data and decode JSON
+        $test = $request->request->all();
+        $data = json_decode(key($test), true);
+        $id = $data['id'];
+
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository('SerieBundle:User')->findOneBy(array('id' => $id));
+
+        if (isset($data['deactivate']) && $data['deactivate'] === true) {
+
+            // Update data
+            $user->setIsActive(false);
+
+            // Send to database
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+
+            // Return as JSON
+            $user = $this->get('serializer')->serialize($user, 'json');
+            $response = new JsonResponse(json_decode($user));
+            $response->setStatusCode(JsonResponse::HTTP_FORBIDDEN);;
+            return $response;
+
+        } else {
+            $data = 'Erreur.';
+            $response = new JsonResponse($data);
             $response->setStatusCode(JsonResponse::HTTP_EXPECTATION_FAILED);;
             return $response;
         }
     }
+
+    public function reactivateAction(Request $request)
+    {
+        $test = $request->request->all();
+        $data = json_decode(key($test), true);
+
+        $email = str_replace("_", ".", $data['email']);
+        $password = $data['password'];
+
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository('SerieBundle:User')->findOneBy(array('email' => $email));
+
+        if (!$user) {
+            $data = 'Vous n\'avez pas encore de compte ou bien vous vous êtes trompés dans votre email.';
+            $response = new JsonResponse($data);
+            $response->setStatusCode(JsonResponse::HTTP_EXPECTATION_FAILED);;
+            return $response;
+        }
+        elseif ($user && isset($data['deactivate']) && $data['deactivate'] === false) {
+
+            $actif = $user->getIsActive();
+
+            if ($actif === false) {
+                // Check password
+                if (!$this->get('security.password_encoder')->isPasswordValid($user, $password)) {
+                    $data = 'Vous n\'avez pas saisi le bon mot de passe.';
+                    $response = new JsonResponse($data);
+                    $response->setStatusCode(JsonResponse::HTTP_EXPECTATION_FAILED);;
+                    return $response;
+                }
+
+                // Reactivate account
+                $user->setIsActive(true);
+
+                // Send to database
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($user);
+                $em->flush();
+
+                // Create JWT token with username
+                $token = $this->get('lexik_jwt_authentication.encoder')
+                    ->encode(['username' => $user->getUsername()]);
+
+                $user = json_decode($this->get('serializer')->serialize($user, 'json'));
+
+                // Return generated token
+                return new JsonResponse(['token' => 'Bearer ' . $token, 'user' => $user]);
+            } else {
+                $data = 'Votre compte n\'est pas désactivé.';
+                $response = new JsonResponse($data);
+                $response->setStatusCode(JsonResponse::HTTP_EXPECTATION_FAILED);;
+                return $response;
+            }
+
+        } else {
+            $data = 'La réactivation a échouée, merci de retenter dans quelques instants.';
+            $response = new JsonResponse($data);
+            return $response;
+        }
+
+
+    }
+
 
 }

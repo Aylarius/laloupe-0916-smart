@@ -249,15 +249,23 @@ ________________________________________________________________________________
 .modal-header {
     background-color: rgb(35, 35, 35);
     text-align: right;
-    padding: 20px 20px 0px 0px;
+    padding: 15px 20px 0px 0px;
     font-size: 1.5rem;
     color: white;
     height: 70px;
     border-bottom: 5px solid rgb(255, 168, 52);
 }
 
+.modal-title {
+  text-align: center;
+  font-size: 1.5rem;
+}
+
 .glyphicon-remove {
     cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 20px;
 }
 
 .glyphicon-remove:hover {
@@ -293,6 +301,7 @@ ________________________________________________________________________________
 
 .modal-body h5 {
     text-align: center;
+    font-size: 1rem;
 }
 
 .modal-body a {
@@ -843,6 +852,9 @@ ________________________________________________________________________________
     margin-bottom: 0px;
     margin-left: 5px;
 }
+.modal #episode-card p {
+    margin-left: 0px;
+}
 
 #episode-card .glyphicon-ok-sign {
     top: 14px;
@@ -854,6 +866,7 @@ ________________________________________________________________________________
 
 #serie-container, #episode-container {
     padding: 5px;
+    display: inline-table;
 }
 
 #episode-img {
@@ -1195,6 +1208,7 @@ footer a:hover, footer a:focus {
 
 #modal-credit .card img {
     margin-left: auto;
+    max-width: 300px;
 }
 
 footer .img-card {

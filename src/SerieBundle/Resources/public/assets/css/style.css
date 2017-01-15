@@ -51,12 +51,22 @@ hr {
     margin-left: 50px;
 }
 
-@media (max-width: 768px) and (min-width: 576px) {
+@media all and (max-width: 768px) and (min-width: 576px) {
     .col-sm-3 {
         width: 25%;
     }
     .col-sm-9 {
         width: 75%;
+    }
+}
+
+@media all and (max-width: 575px) {
+    .col-xxs-12 {
+        width: 100%;
+        margin-left: 0;
+    }
+    .xxs-hidden {
+      display: none;
     }
 }
 
@@ -448,13 +458,6 @@ ________________________________________________________________________________
     padding-right: 5%;
 }
 
-@media screen and (max-width: 576px) {
-    #more img {
-        width: auto !important;
-        margin: 20px auto !important;
-    }
-}
-
 #more img {
     margin: 20px;
     width: 100%;
@@ -470,6 +473,11 @@ ________________________________________________________________________________
     padding-bottom: 10px;
 }
 
+.title-section-serie {
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
 /* LAST SECTION */
 
 #hp-band-last p {
@@ -482,6 +490,43 @@ ________________________________________________________________________________
 }
 
 
+@media all and (max-width: 576px) {
+    .hpnl-text {
+      font-size: 1.25rem;
+    }
+    .hpnl-title {
+      font-size: 3rem;
+    }
+    #homepage h2 {
+      padding-left: 20px;
+      font-size: 1.5rem;
+    }
+    #homepage h3 {
+      font-size: 1.125rem;
+    }
+    #more img {
+        width: auto !important;
+        margin: 10px auto !important;
+    }
+    .contenu {
+        padding-top: 0px;
+    }
+    .contenu p {
+        padding-top: 10px;
+    }
+    #more p, #more {
+        font-size: 1rem;
+    }
+    .title-section-serie {
+      font-size: 1.125rem;
+    }
+    #hp-band-last .btn-see {
+      margin-bottom: 0px;
+    }
+    .followMore a {
+      font-size: 1.25rem;
+    }
+}
 
 /* SLICK SLIDERS */
 
@@ -552,6 +597,11 @@ ________________________________________________________________________________
 
 #inscription-page form, #connexion-page form, #reactivation-page form {
     padding: 0px 10px 10px 10px;
+}
+
+#inscription-page h1, #connexion-page h1, #reactivation-page h1 {
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 #inscription-page .form-control, #connexion-page .form-control, #reactivation-page .form-control {
@@ -681,6 +731,12 @@ ________________________________________________________________________________
 
 #btn-followinsc:hover {
     cursor: pointer;
+}
+
+@media all and (max-width: 575px) {
+  .form-control {
+      width: 100%;
+  }
 }
 
 /*___PROFILE & PROFILE EDIT_____________________________________________________________________________________________
@@ -921,6 +977,13 @@ ________________________________________________________________________________
     margin-bottom: 20px;
 }
 
+@media all and (max-width: 575px) {
+  #resultats-options {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
 /*___PAGE SERIE_______________________________________________________________________________________
 ________________________________________________________________________________________________________________*/
 
@@ -959,11 +1022,6 @@ ________________________________________________________________________________
 #resume {
     text-align: justify;
     font-size: 1.125rem;
-}
-
-.title-section-serie {
-    font-size: 1.25rem;
-    font-weight: 500;
 }
 
 .follow {
@@ -1078,6 +1136,28 @@ ________________________________________________________________________________
 
 #chat-qui-pleure {
     padding-top: 30px;
+}
+
+@media all and (max-width: 576px) {
+    .horizon-swiper {
+      margin-bottom: 20px;
+    }
+    #resume {
+      font-size: 1rem;
+    }
+    .serie h1 {
+      font-size: 1.75rem;
+    }
+    .serie h2 {
+      font-size: 1.5rem;
+    }
+    .serie h3 {
+      font-size: 1.125rem;
+    }
+    #serie-container, #episode-container {
+      padding: 0;
+      margin-left: -5px;
+    }
 }
 
 /*___FOOTER___________________________________________________________________________________________________

@@ -1,0 +1,50 @@
+<div class="container-fluid no-pad" id="reactivation-page">
+    <div class="row">
+        <div class="col-xs-12 no-pad">
+            <div class="row container-h1">
+                <h1>Réactivation</h1>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2" id="inscription-form">
+                    <form name="reactivateForm" class="form-horizontal">
+                        <em class="text-center center-block text-form">Pour réactiver votre compte, merci de remplir les champs suivants :</em><br>
+                        <div class="form-group">
+                            <label for="email" class="col-sm-4 control-label">Email :</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="email" placeholder="Email" ng-model='vm.email' ng-required='true'>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="col-sm-4 control-label">Mot de passe :</label>
+                            <div class="col-sm-8">
+                                <input type="password" class="form-control" id="password" placeholder="Mot de Passe" ng-model='vm.password' ng-required='true'>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12 text-center">
+                                <br>
+                                <button ng-click='vm.reactivate()' ng-disabled="reactivateForm.$invalid" class="btn btn-orange center-block">Réactiver mon <br>compte</button>
+                                <br>
+                                <a ng-href="/#/connexion" class="form-link">Mon compte n'est pas désactivé</a>
+                                <br><br>
+                                <a ng-href="/#/inscription" class="form-link">Pas encore de compte ?</a>
+                            </div>
+                        </div>
+                    </form>
+                    <div ng-show="(vm.reactivateMessage)" class="alert" ng-class="{'alert-danger': vm.reactivateMessage.type == 'error', 'alert-success': vm.reactivateMessage.type == 'success', 'alert-info': vm.reactivateMessage.type == 'info'}">
+                        <h4><span class="glyphicon glyphicon-exclamation-sign pull-left"></span>&nbsp;{{vm.reactivateMessage.title}}</h4>
+                        <p>{{vm.reactivateMessage.message}}</p>
+                    </div>
+                    <hr>
+                    <div class="form-social text-center"><!-- Formulaire de connexion via social media -->
+                        <h2>Se connecter via les réseaux sociaux</h2>
+                        <br>
+                        <button type="button" class="btn google-button">Google</button>
+                        <button type="button" class="btn facebook-button">Facebook</button>
+                        <button type="button" class="btn twitter-button">Twitter</button>
+                    </div><!-- Fin Formulaire de connexion via social media -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

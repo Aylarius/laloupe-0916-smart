@@ -1,9 +1,11 @@
-function serieController(serieService, episodeService, sessionFactory, tmdbService, $routeParams, $location, $rootScope) {
+function serieController(serieService, episodeService, $timeout, $http, sessionFactory, tmdbService, $routeParams, $location, $rootScope) {
 
     this.tmdbService = tmdbService;
     this.$routeParams = $routeParams;
     this.$location = $location;
     this.$rootScope = $rootScope;
+    this.$timeout = $timeout;
+    this.$http = $http;
     this.serieService = serieService;
     this.episodeService = episodeService;
     this.sessionFactory = sessionFactory;
@@ -12,13 +14,17 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
 
     // fiche série
     this.getSheetSerie = (id) => {
+        this.loader = true;
         this.tmdbService.sheetSerie(id).then((response) => {
             this.sheetSerie = response.data;
             console.log(response.data.id);
-        });
-        this.tmdbService.seasons(id, 1).then((response) => {
-            this.seasons = response.data;
-            console.log(this.seasons);
+            this.tmdbService.seasons(id, 1).then((response) => {
+              this.seasons = response.data;
+                $timeout(() => {
+                  this.loader = false;
+                    console.log(this.seasons);
+                }, 10000);
+            });
         });
 
     };
@@ -26,14 +32,18 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
     this.modalToConnexion = () => {
         $('.modal-backdrop').remove();
         $('.modal-open').removeClass('modal-open');
-        $('body').css({paddingRight:0});
+        $('body').css({
+            paddingRight: 0
+        });
         this.$location.path('/connexion');
     };
 
     this.modalToInscription = () => {
         $('.modal-backdrop').remove();
         $('.modal-open').removeClass('modal-open');
-        $('body').css({paddingRight:0});
+        $('body').css({
+            paddingRight: 0
+        });
         this.$location.path('/inscription');
     };
 
@@ -52,8 +62,13 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
 
     // liste des saisons
     this.getSeasons = (id, season) => {
+      this.loader = true;
         this.tmdbService.seasons(id, season).then((response) => {
             this.seasons = response.data;
+            $timeout(() => {
+              this.loader = false;
+                console.log(this.seasons);
+            }, 10000);
         });
     };
 
@@ -99,7 +114,7 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
             serie_id: serieId,
             date: date,
             numero: numero,
-            saison : saison,
+            saison: saison,
             user_id: this.sessionFactory.user.id
         }).then((res) => {
             this.loginMessage = {};
@@ -135,12 +150,12 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
     this.getLastWatched = (id, user) => {
         this.episodeService.getLastWatched(id, user).then((res) => {
             this.lastWatched = res.data;
-        this.tmdbService.lastEpisode(this.lastWatched.serieId.serieId, this.lastWatched.saison, this.lastWatched.numero).then((response) => {
-            this.episode = response.data;
-        console.log(this.episode);
-    });
+            this.tmdbService.lastEpisode(this.lastWatched.serieId.serieId, this.lastWatched.saison, this.lastWatched.numero).then((response) => {
+                this.episode = response.data;
+                console.log(this.episode);
+            });
 
-    });
+        });
     };
     this.getLastWatched($routeParams.id, this.sessionFactory.user.id);
 

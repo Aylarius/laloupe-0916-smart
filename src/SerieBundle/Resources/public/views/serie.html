@@ -96,7 +96,9 @@
                     <div class="row">
                         <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4" id="episode-container" ng-repeat="episode in vm.seasons.episodes" data-toggle="modal" data-target='{{vm.sessionFactory.isLogged ? "#myModal_log" : "#myModal_notlog"}}'>
                             <div id="episode-card">
-                                <img ng-src="{{!episode.still_path ? 'bundles/serie/assets/img/img-default-episode.png' : 'https://image.tmdb.org/t/p/original'+episode.still_path}}" alt="" class="img-responsive center-block">
+                                <div class="loader">
+                                    <img ng-src="{{!episode.still_path ? 'bundles/serie/assets/img/img-default-episode.png' : 'https://image.tmdb.org/t/p/original'+episode.still_path}}" alt="" class="img-responsive center-block">
+                                </div>
                                 <div class="row no-pad">
                                     <div class="col-xs-10 text-left no-pad">
                                         <p>Saison
@@ -116,7 +118,6 @@
             </div>
         </div>
     </div>
-
     <!-- Modal non loggué -->
     <div id="myModal_notlog" class="modal fade" role="dialog">
         <div class="modal-dialog">
@@ -159,6 +160,11 @@
 </div>
 
 <div ng-show='vm.series'>
+  <div id="overlay" ng-show='vm.loader'>
+    <div class="spinner"></div>
+    <br>
+    <h3 class="text-center">En cours de chargement</h3>
+</div>
     <div class="row" id="season-section">
         <div class="col-xs-12">
             <div class="row">

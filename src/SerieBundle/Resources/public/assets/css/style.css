@@ -449,6 +449,43 @@ ________________________________________________________________________________
 }
 
 
+/*loader*/
+
+.spinner {
+    width: 120px;
+    height: 120px;
+    border: 2px solid #ffffff;
+    border-top: 3px solid #929292;
+    border-radius: 100%;
+    position: relative;
+    top: 30px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+#overlay {
+    height: 100%;
+    width: 100%;
+    background: #929292;
+    position: absolute;
+    display: block;
+    z-index: 100000;
+    color: white;
+}
+
+
 /*___Footer___________________________________________________________________________________________________
 ____________________________________________________________________________________________________________*/
 
@@ -974,8 +1011,9 @@ ________________________________________________________________________________
     display: inline-block;
     width: 100%;
 }
+
 #inscription-page2 #serie-card {
-  padding-bottom: 0;
+    padding-bottom: 0;
 }
 
 #episode-card p {
@@ -1255,7 +1293,7 @@ hr {
 #btn-followinsc {
     font-size: 30px;
     padding-top: 5px;
-padding-right: 5px;
+    padding-right: 5px;
 }
 
 #btn-followinsc:hover {

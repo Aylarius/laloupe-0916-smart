@@ -11,29 +11,47 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
     this.underscoreReg = new RegExp('-', 'g');
 
     // fiche série
-    this.getSheetSerie = (id) => {
-        this.tmdbService.sheetSerie(id).then((response) => {
-            this.sheetSerie = response.data;
-            console.log(response.data.id);
-        });
-        this.tmdbService.seasons(id, 1).then((response) => {
-            this.seasons = response.data;
-            console.log(this.seasons);
-        });
 
-    };
+    this.pageDefault = 1;
+    if (this.sessionFactory.isLogged === false) {
+        this.getSheetSerie = (id) => {
+            this.tmdbService.sheetSerie(id).then((response) => {
+                this.sheetSerie = response.data;
+            });
+            this.tmdbService.seasons(id, this.pageDefault).then((response) => {
+                this.seasons = response.data;
+            });
+        };
+    } else {
+        this.getSheetSerie = (id) => {
+            this.tmdbService.sheetSerie(id).then((response) => {
+                this.sheetSerie = response.data;
+            });
+            this.episodeService.getLastWatched($routeParams.id, this.sessionFactory.user.id).then((res) => {
+                this.lastWatched = res.data;
+                this.pageDefault = this.lastWatched.saison;
+                this.tmdbService.seasons(id, this.pageDefault).then((response) => {
+                    this.seasons = response.data;
+                });
+            });
+        };
+    }
 
     this.modalToConnexion = () => {
         $('.modal-backdrop').remove();
         $('.modal-open').removeClass('modal-open');
-        $('body').css({paddingRight:0});
+        $('body').css({
+            paddingRight: 0
+        });
         this.$location.path('/connexion');
     };
 
     this.modalToInscription = () => {
         $('.modal-backdrop').remove();
         $('.modal-open').removeClass('modal-open');
-        $('body').css({paddingRight:0});
+        $('body').css({
+            paddingRight: 0
+        });
         this.$location.path('/inscription');
     };
 
@@ -77,9 +95,8 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
     };
 
 
-
-
     // barre de progression circulaire
+
     this.pourcentage = 75;
     this.circle = "c100 p" + this.pourcentage + " orange";
 
@@ -118,7 +135,7 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
             serie_id: serieId,
             date: date,
             numero: numero,
-            saison : saison,
+            saison: saison,
             user_id: this.sessionFactory.user.id
         }).then((res) => {
             this.loginMessage = {};
@@ -148,7 +165,6 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
     this.getAllWatched = (id, user) => {
         this.episodeService.getAllWatched(id, user).then((res) => {
             this.serieTrack = res.data;
-            console.log(this.serieTrack);
         });
     };
     this.getAllWatched($routeParams.id, this.sessionFactory.user.id);
@@ -156,12 +172,11 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
     this.getLastWatched = (id, user) => {
         this.episodeService.getLastWatched(id, user).then((res) => {
             this.lastWatched = res.data;
-        this.tmdbService.lastEpisode(this.lastWatched.serieId.serieId, this.lastWatched.saison, this.lastWatched.numero).then((response) => {
-            this.episode = response.data;
-        console.log(this.episode);
-    });
+            this.tmdbService.lastEpisode(this.lastWatched.serieId.serieId, this.lastWatched.saison, this.lastWatched.numero).then((response) => {
+                this.episode = response.data;
+            });
 
-    });
+        });
     };
     this.getLastWatched($routeParams.id, this.sessionFactory.user.id);
 

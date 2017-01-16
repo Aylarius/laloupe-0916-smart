@@ -75,8 +75,10 @@ function register2Controller(serieService, userService, sessionFactory, $timeout
             this.loginMessage = {};
             this.loginMessage.type = "success";
             this.loginMessage.title = "Vous avez bien ajouté cette série à vos séries favorites !";
-            this.loginMessage.message = "En cours de redirection...";
-        }).catch((res) => {
+        this.$timeout(() => {
+            this.loginMessage = null;
+    }, 1000);
+    }).catch((res) => {
             this.loginMessage = {};
             this.loginMessage.type = "error";
             this.loginMessage.title = "Erreur lors du suivi";

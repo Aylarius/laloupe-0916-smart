@@ -18,11 +18,21 @@ function profileController($location, userService, $rootScope, tmdbService, seri
             this.statsSerie = res.data.series;
             this.statsEpisode = res.data.episodes;
             this.statsDuration = res.data.duration;
-        console.log(res.data);
-    });
+            var days = Math.floor(this.statsDuration / 1440);
+            var hours = Math.floor((this.statsDuration % 1440) / 60);
+            var mins = Math.floor((this.statsDuration % 1440) % 60);
+            if (days > 1) {
+              this.statsDurationTime = (days+' jours, ') + (hours > 0 ? hours+' heures' : '') + ' et ' + (mins > 1 ? mins+' minutes' : mins+' minute');
+            } else if (days === 1 ) {
+              this.statsDurationTime = (days+' jour, ') + (hours > 0 ? hours+' heures' : '') + ' et ' + (mins > 1 ? mins+' minutes' : mins+' minute');
+            } else {
+              this.statsDurationTime = (hours > 0 ? hours+' heures' : '') + ' et ' + (mins > 1 ? mins+' minutes' : mins+' minute');
+            }
+          });
     };
 
     this.getStats(this.sessionFactory.user.id);
+
 
 
     this.getAllFollowed = (id) => {

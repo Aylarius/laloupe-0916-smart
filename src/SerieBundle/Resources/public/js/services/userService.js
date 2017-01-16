@@ -27,8 +27,13 @@ function userService($http, sessionFactory) {
         return this.$http.put('app_dev.php/user/edit', user)
     }
 
-    this.delete = (id) => {
-        return this.$http.put('app_dev.php/user/delete/' + id)
+    this.deactivate = (user) => {
+        return this.$http.put('app_dev.php/user/deactivate', user)
     }
+
+    this.reactivate = (data) => {
+        return this.$http.post('app_dev.php/user/reactivate', data)
+    }
+
 
 }

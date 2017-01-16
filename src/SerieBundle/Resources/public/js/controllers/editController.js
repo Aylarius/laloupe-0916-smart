@@ -18,7 +18,12 @@ function editController(userService, sessionFactory, $timeout, $routeParams, $lo
             picture: this.picture
         }).then((res) => {
             this.loginMessage = {};
-            this.sessionFactory.user = res.data;
+            if (res.data.token === undefined) {
+                this.sessionFactory.user = res.data;
+            } else {
+                this.sessionFactory.token = res.data.token;
+                this.sessionFactory.user = res.data.user;
+            }
             this.loginMessage.type = "success";
             this.loginMessage.title = "Votre compte a bien été modifié !";
             this.loginMessage.message = "En cours de redirection...";
@@ -74,5 +79,33 @@ function editController(userService, sessionFactory, $timeout, $routeParams, $lo
     this.toggleInputThree = () => {
         this.isToggledPassword = !this.isToggledPassword;
     };
+
+    this.deactivateAccount = () => {
+        this.userService.deactivate({
+            id: this.sessionFactory.user.id,
+            deactivate: true
+        }).then((res) => {
+            this.loginMessage = {};
+        this.loginMessage.type = "success";
+        this.loginMessage.title = "Votre compte a bien été désactivé !";
+        this.loginMessage.message = "En cours de redirection...";
+        this.sessionFactory.isLogged = false;
+        $window.localStorage.removeItem('token');
+        $window.localStorage.removeItem('currentUser');
+        this.sessionFactory.user = {};
+        this.sessionFactory.token = null;
+        this.$rootScope.$emit('loginStatusChanged', false);
+        $rootScope.$emit('loginStatusChangedNavbar');
+        $rootScope.$emit('loginStatusChangedHomepage');
+        this.isLogged = false;
+        this.$location.path('/');
+    }).catch((res) => {
+            this.loginMessage = {};
+        this.loginMessage.type = "error";
+        this.loginMessage.title = "Erreur lors de la désactivation";
+        this.loginMessage.message = res.data;
+    });
+    };
+
 
 }

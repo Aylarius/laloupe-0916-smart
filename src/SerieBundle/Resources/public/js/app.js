@@ -15,6 +15,7 @@ angular.module('app', ['ngRoute','slickCarousel'])
     .controller('registerController', registerController)
     .controller('register2Controller', register2Controller)
     .controller('editController', editController)
+    .controller('reactivateController', reactivateController)
     .directive('a', function() {
         return {
             restrict: 'E',

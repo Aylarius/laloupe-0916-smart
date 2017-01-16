@@ -200,7 +200,7 @@
                                                 <h4 class="modal-title">{{ vm.sheetSerie.name }}</h4>
                                                 <span class="glyphicon glyphicon-remove" data-dismiss="modal"></span>
                                             </div>
-                                            <div class="modal-body">
+                                            <div class="modal-body"  ng-show='vm.serieTrack.indexOf(episode.id) !== -1'>
                                                 <img ng-src="{{!episode.still_path ? 'bundles/serie/assets/img/img-default-episode-lg.png' : 'https://image.tmdb.org/t/p/original'+episode.still_path}}" alt="{{ vm.sheetSerie.name }}" class="img-responsive center-block">
                                                 <h4>
                                                     {{episode.season_number == 0 ? 'Bonus' : 'Saison '+episode.season_number}}
@@ -209,6 +209,22 @@
                                                 </h4>
                                                 <h5>{{episode.air_date.replace(vm.underscoreReg,'')+'T00:00:00' | date:'dd MMMM yyyy'}}</h5>
                                                 <p>
+                                                    {{episode.name}}
+                                                    {{episode.overview}}
+                                                </p>
+                                            </div>
+                                            <div class="modal-body" ng-hide='vm.serieTrack.indexOf(episode.id) !== -1'>
+                                              <img ng-src="{{!episode.still_path ? 'bundles/serie/assets/img/img-default-episode-lg.png' : 'https://image.tmdb.org/t/p/original'+episode.still_path}}" alt="{{ vm.sheetSerie.name }}" class="img-responsive center-block">
+                                              <h4>
+                                                  {{episode.season_number == 0 ? 'Bonus' : 'Saison '+episode.season_number}}
+                                                  - Episode
+                                                  {{episode.episode_number}}
+                                              </h4>
+                                              <h5>{{episode.air_date.replace(vm.underscoreReg,'')+'T00:00:00' | date:'dd MMMM yyyy'}}</h5>
+                                              <br ng-hide='vm.okSpoiler[episode.id]'>
+                                                <h3 ng-hide='vm.okSpoiler[episode.id]'>Cliquez sur le bouton pour afficher le résumé de l'épisode.</h3>
+                                                <a id="btn-modal" ng-click='vm.modalSpoiler(episode.id)' ng-hide='vm.okSpoiler[episode.id]'>Alerte Spoiler</a>
+                                                <p ng-show='vm.okSpoiler[episode.id]'>
                                                     {{episode.name}}
                                                     {{episode.overview}}
                                                 </p>

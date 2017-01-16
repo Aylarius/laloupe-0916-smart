@@ -37,6 +37,25 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
         this.$location.path('/inscription');
     };
 
+    this.okSpoiler = [];
+    this.modalSpoiler = (id) => {
+      if (!this.okSpoiler[id]) {
+          this.okSpoiler[id] = false;
+      }
+      this.okSpoiler[id] = !this.okSpoiler[id];
+      console.log(this.okSpoiler);
+    };
+
+    // marquage des épisodes
+    // this.check = (id) => {
+    //     if (!this.episodeTrack[id]) {
+    //         this.episodeTrack[id] = false;
+    //     }
+    //     this.episodeTrack[id] = !this.episodeTrack[id];
+    //     console.log(this.episodeTrack);
+    // };
+
+
     console.log(this.sessionFactory.series);
 
     this.getSheetSerie($routeParams.id);
@@ -144,14 +163,7 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
     };
     this.getLastWatched($routeParams.id, this.sessionFactory.user.id);
 
-    // // marquage des épisodes
-    // this.check = (id) => {
-    //     if (!this.episodeTrack[id]) {
-    //         this.episodeTrack[id] = false;
-    //     }
-    //     this.episodeTrack[id] = !this.episodeTrack[id];
-    //     console.log(this.episodeTrack);
-    // };
+
 
 
 

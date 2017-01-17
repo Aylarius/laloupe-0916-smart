@@ -17,13 +17,16 @@ function serieController(serieService, episodeService, $timeout, $http, sessionF
         this.loader = true;
         this.tmdbService.sheetSerie(id).then((response) => {
             this.sheetSerie = response.data;
+            $timeout(function() {
+              $('.horizon-swiper').horizonSwiper();
+            }, 0);
             console.log(response.data.id);
             this.tmdbService.seasons(id, 1).then((response) => {
               this.seasons = response.data;
                 $timeout(() => {
                   this.loader = false;
                     console.log(this.seasons);
-                }, 10000);
+                }, 1500);
             });
         });
 
@@ -68,7 +71,7 @@ function serieController(serieService, episodeService, $timeout, $http, sessionF
             $timeout(() => {
               this.loader = false;
                 console.log(this.seasons);
-            }, 10000);
+            }, 1500);
         });
     };
 

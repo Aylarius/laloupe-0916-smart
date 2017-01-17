@@ -1,34 +1,45 @@
 <div class="container-fluid no-pad" id="resultats-page">
-  <div class="row" id="resultats-options">
-    <div class="col-xs-12">
-      <div class="row">
-        <div class="search col-xs-12 no-pad">
-          <form ng-submit="vm.getSearch(query)">
-            <input type="text" class="form-control" placeholder="Rechercher" ng-model="query"/>
-            <button type="submit" class="btn btn-search"><span class="glyphicon glyphicon-search"></span></button>
-          </form>
+    <div class="row" id="resultats-options">
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="search col-xs-12 no-pad">
+                    <form ng-submit="vm.getSearch(query)">
+                        <input type="text" class="form-control" placeholder="Rechercher" ng-model="query"/>
+                        <button type="submit" class="btn btn-search">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xxs-12 col-xs-10 no-pad">
+                    <p class="resultats">{{ (vm.search | filter: {genre_ids: vm.filterTag}:true).length }}
+                        résultats correspondent à votre recherche "{{vm.$routeParams.query}}"</p>
+                </div>
+                <div class="col-xxs-12 col-xs-2 no-pad text-right dropdown">
+                    <button class="btn btn-filter dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        <i class="fa fa-filter" aria-hidden="true"></i>Filtrer
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li ng-repeat="genre in vm.searchByTag">
+                            <a ng-click="vm.comparTag(genre.id)">{{ genre.name }}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-xxs-12 col-xs-10 no-pad">
-          <p class="resultats">{{ vm.total_results }} résultats correspondent à votre recherche "{{vm.$routeParams.query}}"</p>
-        </div>
-        <div class="col-xxs-12 col-xs-2 no-pad text-right">
-          <button class="btn btn-filter"><i class="fa fa-filter" aria-hidden="true"></i>Filtrer</button>
-        </div>
-      </div>
     </div>
-  </div>
-  <div class="row">
+</div>
+<div class="row">
     <div class="col-xs-12">
-      <div class="row">
-
-        <div class="col-xxs-12 col-xs-6 col-sm-4 col-md-3 col-lg-3" id="serie-container" ng-repeat="result in vm.search">
-          <div id="serie-card" ng-click="vm.tvShowView(result.id)">
-            <img ng-src="{{ !result.backdrop_path ? 'bundles/serie/assets/img/img-default.png' : 'https://image.tmdb.org/t/p/w300'+result.backdrop_path }}" alt="Flash" class="img-responsive center-block">
-            <h4>{{ result.name | limitTo: 30 }}{{ result.name.length > 30 ? '...' : '' }}</h4>
-          </div>
+        <div class="row">
+            <div class="col-xxs-12 col-xs-6 col-sm-4 col-md-3 col-lg-3" id="serie-container" ng-repeat="result in vm.search | filter: {genre_ids: vm.filterTag}:true">
+                <div id="serie-card" ng-click="vm.tvShowView(result.id)">
+                    <img ng-src="{{ !result.backdrop_path ? 'bundles/serie/assets/img/img-default.png' : 'https://image.tmdb.org/t/p/w300'+result.backdrop_path }}" alt="Flash" class="img-responsive center-block">
+                    <h4>{{ result.name | limitTo: 30 }}{{ result.name.length > 30 ? '...' : '' }}</h4>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
+</div>

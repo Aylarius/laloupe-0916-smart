@@ -23,7 +23,8 @@
                                 <tr>
                                     <td>{{vm.sheetSerie.number_of_seasons}}</td>
                                     <td>{{vm.sheetSerie.number_of_episodes}}</td>
-                                    <td>{{vm.sheetSerie.episode_run_time[0]}} min</td>
+                                    <td>{{vm.sheetSerie.episode_run_time[0]}}
+                                        min</td>
                                     <td class="xxs-hidden">{{vm.sheetSerie.in_production===true ? "En cours" : "Terminée"}}</td>
                                     <td class="xxs-hidden">{{vm.sheetSerie.popularity}}</td>
                                 </tr>
@@ -88,8 +89,12 @@
 </div>
 
 <div ng-hide='vm.series' id="saison-non-suivie">
-
-    <div class="row no-pad">
+    <div id="overlay" ng-show='vm.loader'>
+        <div class="spinner"></div>
+        <br>
+        <h3 class="text-center">En cours de chargement</h3>
+    </div>
+    <div class="row no-pad" ng-hide='vm.loader'>
         <div class="col-xs-12">
             <div class="row list_episode no-pad">
                 <div class="col-xs-12">
@@ -156,16 +161,15 @@
             </div>
         </div>
     </div>
-
 </div>
 
 <div ng-show='vm.series'>
-  <div id="overlay" ng-show='vm.loader'>
-    <div class="spinner"></div>
-    <br>
-    <h3 class="text-center">En cours de chargement</h3>
-</div>
-    <div class="row" id="season-section">
+    <div id="overlay" ng-show='vm.loader'>
+        <div class="spinner"></div>
+        <br>
+        <h3 class="text-center">En cours de chargement</h3>
+    </div>
+    <div class="row" id="season-section" ng-hide='vm.loader'>
         <div class="col-xs-12">
             <div class="row">
                 <div class="col-xxs-12 col-xs-9">
@@ -223,7 +227,6 @@
                                                 <a data-dismiss="modal">Fermer</a>
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
@@ -265,9 +268,5 @@
                 </div>
             </div>
         </div>
-
-        <script type="text/javascript">
-            setTimeout(function() {
-                $('.horizon-swiper').horizonSwiper();
-            }, 500);
-        </script>
+    </div>
+</div>

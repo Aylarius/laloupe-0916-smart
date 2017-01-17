@@ -57,39 +57,9 @@ function profileController($location, userService, $rootScope, tmdbService, epis
     this.getAllFollowed(this.sessionFactory.user.id);
 
 
-
-
-
-
     this.tvShowView = (id) => {
         $location.path("/serie/" + id);
     };
-
-
-    // var elements = document.querySelectorAll('.progress-bar');
-    // elements.forEach(function(el){
-    //   width = getAttribute('data-percent');
-    // });
-
-    // window.onload = function() {
-    //   var progress = document.getElementByClass('.progress-bar');
-    //   var stickyHeaderTop = body.offsetTop;
-    //
-    //   window.onscroll = function() {
-    //       if (window.pageYOffset > stickyHeaderTop) {
-    //           body.classList.add('scrolled');
-    //       } else {
-    //           body.classList.remove('scrolled');
-    //       }
-    //   };
-    // };​
-    // setTimeout(function(){
-    //   $('.progress-bar').each(function() {
-    //       $(this).animate({
-    //           width: $(this).attr('data-percent')
-    //       }, 3000);
-    //   });
-    //     }, 2000);
 
 
 }

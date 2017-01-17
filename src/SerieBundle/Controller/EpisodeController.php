@@ -147,6 +147,44 @@ class EpisodeController extends Controller
             return $response;
         }
     }
+
+    public function getAllBySeasonAction($id, $user, $saison)
+    {
+        // Get data from database
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository('SerieBundle:User')->findOneBy(array('id' => $user));
+
+        $emSerie = $this->getDoctrine()->getManager();
+        $serie = $emSerie->getRepository('SerieBundle:Serie')->findOneBy(array('serieId' => $id, 'userId' => $user));
+
+        if ($user && $serie){
+            $emEpisode = $this->getDoctrine()->getManager();
+            $episodeList = $emEpisode->getRepository('SerieBundle:Episode')->findBy(array('serieId' => $serie, 'userId' => $user, 'saison' => $saison));
+            if (!$episodeList){
+                // Return as JSON
+                $data = '';
+                return new JsonResponse($data);
+            }
+            else {
+                // Return as JSON
+                $serializer = $this->get('serializer');
+                $response = $serializer->serialize($episodeList, 'json');
+                $data = json_decode($response, true);
+                $res = [];
+                foreach($data as $d) {
+                    array_push($res, $d['episodeId']);
+                }
+                return new JsonResponse($res);
+            }
+        }
+        else {
+            $data = 'Vous ne suivez pas cette série.';
+            $response = new JsonResponse($data);
+            $response->setStatusCode(JsonResponse::HTTP_EXPECTATION_FAILED);;
+            return $response;
+        }
+    }
+
     public function getLastWatchedAction($id, $user)
     {
         // Get data from database

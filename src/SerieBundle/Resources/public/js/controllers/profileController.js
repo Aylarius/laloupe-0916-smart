@@ -38,18 +38,17 @@ function profileController($location, userService, $rootScope, tmdbService, epis
             this.arraySeries = [];
             this.pourcentArray = [];
             for (let obj of this.series) {
-                this.tmdbService.sheetSerie(obj.serieId).then((response) => {
-                    this.sheetSerie = response.data;
-                    this.arraySeries.push(this.sheetSerie);
                     this.episodeService.getAllWatched(obj.serieId, this.sessionFactory.user.id).then((res) => {
-                        this.serieTrack = res.data;
-                        this.calc = Math.round((this.serieTrack.length * 100) / this.sheetSerie.number_of_episodes);
-                        console.log(this.calc);
-                        this.pourcentArray.push(this.calc[obj.serieId]);
+                      this.serieTrack = res.data;
+                      this.tmdbService.sheetSerie(obj.serieId).then((response) => {
+                          this.sheetSerie = response.data;
+                          this.sheetSerie.pourcent = "progress-bar bar" + Math.round((this.serieTrack.length * 100) / this.sheetSerie.number_of_episodes);
+                          console.log(this.sheetSerie);
+                          this.arraySeries.push(this.sheetSerie);
                       });
                 });
             }
-            console.log(this.pourcentArray);
+            console.log(this.arraySeries);
 
         });
     };
@@ -66,9 +65,31 @@ function profileController($location, userService, $rootScope, tmdbService, epis
         $location.path("/serie/" + id);
     };
 
-    $('.progress-bar').each(function() {
-        $(this).animate({
-            width: $(this).attr('data-percent')
-        }, 3000);
-    });
+
+    // var elements = document.querySelectorAll('.progress-bar');
+    // elements.forEach(function(el){
+    //   width = getAttribute('data-percent');
+    // });
+
+    // window.onload = function() {
+    //   var progress = document.getElementByClass('.progress-bar');
+    //   var stickyHeaderTop = body.offsetTop;
+    //
+    //   window.onscroll = function() {
+    //       if (window.pageYOffset > stickyHeaderTop) {
+    //           body.classList.add('scrolled');
+    //       } else {
+    //           body.classList.remove('scrolled');
+    //       }
+    //   };
+    // };​
+    // setTimeout(function(){
+    //   $('.progress-bar').each(function() {
+    //       $(this).animate({
+    //           width: $(this).attr('data-percent')
+    //       }, 3000);
+    //   });
+    //     }, 2000);
+
+
 }

@@ -16,27 +16,27 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
             this.series = res.data.followed;
             this.seasonDefault = 1;
             if (this.series === false) {
-              this.getSheetSerie = (id) => {
-                this.tmdbService.sheetSerie(id).then((response) => {
-                  this.sheetSerie = response.data;
-                });
-                this.tmdbService.seasons(id, this.seasonDefault).then((response) => {
-                  this.seasons = response.data;
-                });
-              };
+                this.getSheetSerie = (id) => {
+                    this.tmdbService.sheetSerie(id).then((response) => {
+                        this.sheetSerie = response.data;
+                    });
+                    this.tmdbService.seasons(id, this.seasonDefault).then((response) => {
+                        this.seasons = response.data;
+                    });
+                };
             } else {
-              this.getSheetSerie = (id) => {
-                this.tmdbService.sheetSerie(id).then((response) => {
-                  this.sheetSerie = response.data;
-                });
-                this.episodeService.getLastWatched($routeParams.id, this.sessionFactory.user.id).then((res) => {
-                  this.lastWatched = res.data;
-                  this.seasonDefault = !this.lastWatched.saison ? this.seasonDefault : this.lastWatched.saison;
-                  this.tmdbService.seasons(id, this.seasonDefault).then((response) => {
-                    this.seasons = response.data;
-                  });
-                });
-              };
+                this.getSheetSerie = (id) => {
+                    this.tmdbService.sheetSerie(id).then((response) => {
+                        this.sheetSerie = response.data;
+                    });
+                    this.episodeService.getLastWatched($routeParams.id, this.sessionFactory.user.id).then((res) => {
+                        this.lastWatched = res.data;
+                        this.seasonDefault = !this.lastWatched.saison ? this.seasonDefault : this.lastWatched.saison;
+                        this.tmdbService.seasons(id, this.seasonDefault).then((response) => {
+                            this.seasons = response.data;
+                        });
+                    });
+                };
             }
 
             this.getSheetSerie($routeParams.id);
@@ -135,17 +135,70 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
             this.loginMessage.title = "Vous avez bien ajouté cette série à vos séries favorites !";
             this.loginMessage.message = "En cours de redirection...";
             this.getAllWatched($routeParams.id, this.sessionFactory.user.id);
-            this.getLastWatched($routeParams.id, this.sessionFactory.user.id);
         }).catch((res) => {
             this.loginMessage = {};
             this.loginMessage.type = "error";
             this.loginMessage.title = "Erreur lors du suivi";
             this.loginMessage.message = res.data;
             this.getAllWatched($routeParams.id, this.sessionFactory.user.id);
-            this.getLastWatched($routeParams.id, this.sessionFactory.user.id);
         });
     };
 
+    this.watchAll = (id, serieId, date, numero, saison) => {
+            this.episodeService.watch({
+                episode_id: id,
+                serie_id: serieId,
+                date: date,
+                numero: numero,
+                saison: saison,
+                user_id: this.sessionFactory.user.id
+            }).then((res) => {
+                this.loginMessage = {};
+                this.loginMessage.type = "success";
+                this.loginMessage.title = "Vous avez bien ajouté cette série à vos séries favorites !";
+                this.loginMessage.message = "En cours de redirection...";
+            }).catch((res) => {
+                this.loginMessage = {};
+                this.loginMessage.type = "error";
+                this.loginMessage.title = "Erreur lors du suivi";
+                this.loginMessage.message = res.data;
+            });
+        };
+
+
+
+    this.watchSeason  = (id) => {
+          this.tmdbService.seasons($routeParams.id, id).then((response) => {
+              this.season = response.data;
+              console.log(this.season);
+              this.episodeService.getAllWatchedBySeason($routeParams.id, this.sessionFactory.user.id, this.season.season_number).then((res) => {
+                  this.serieTrack = res.data;
+                  console.log(this.serieTrack);
+                  for (let episode of this.season.episodes){
+                    if (this.serieTrack.indexOf(episode.id) == -1) {
+                      this.watchAll(episode.id, $routeParams.id, episode.air_date, episode.episode_number, episode.season_number);
+                    }
+                  }
+                  this.getAllWatched($routeParams.id, this.sessionFactory.user.id);
+              });
+          });
+      };
+      this.unwatchSeason  = (id) => {
+            this.tmdbService.seasons($routeParams.id, id).then((response) => {
+                this.season = response.data;
+                console.log(this.season);
+                this.episodeService.getAllWatchedBySeason($routeParams.id, this.sessionFactory.user.id, this.season.season_number).then((res) => {
+                    this.serieTrack = res.data;
+                    console.log(this.serieTrack);
+                    for (let episode of this.season.episodes){
+                      if (this.serieTrack.indexOf(episode.id) !== -1) {
+                        this.watchAll(episode.id, $routeParams.id, episode.air_date, episode.episode_number, episode.season_number);
+                      }
+                    }
+                    this.getAllWatched($routeParams.id, this.sessionFactory.user.id);
+                });
+            });
+        };
 
     this.serieTrack = [];
 
@@ -160,10 +213,17 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
 
                 this.episodeService.getLastWatched(id, user).then((res) => {
                     this.lastWatched = res.data;
-                    this.tmdbService.lastEpisode(this.lastWatched.serieId.serieId, this.lastWatched.saison, this.lastWatched.numero).then((response) => {
-                        this.episode = response.data;
-                        console.log(this.episode);
-                    });
+                    console.log(this.lastWatched);
+                    if (this.lastWatched === "" ){
+                      this.exist = false;
+                    } else {
+                      this.exist = true;
+                      this.tmdbService.lastEpisode(this.lastWatched.serieId.serieId, this.lastWatched.saison, this.lastWatched.numero).then((response) => {
+                          this.episode = response.data;
+                          console.log(this.episode);
+                      });
+                    }
+                    console.log(this.exist);
                 });
             });
 

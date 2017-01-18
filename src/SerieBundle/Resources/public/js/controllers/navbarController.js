@@ -7,8 +7,10 @@ function navbarController(tmdbService, $location, sessionFactory, $rootScope, $w
     this.$rootScope = $rootScope;
 
     this.searchView = (query) => {
-        $location.path("/resultats/" + query);
-        this.isToggled = false;
+        if(query != '') {
+          this.isToggled = false;
+          $location.path("/resultats/" + query);
+        }
     };
 
     //modal CGU

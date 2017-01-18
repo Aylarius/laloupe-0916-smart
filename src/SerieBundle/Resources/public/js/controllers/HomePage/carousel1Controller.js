@@ -6,7 +6,7 @@ function carousel1Controller(tmdbService, $location) {
     //CAROUSEL DERNIERS EPISODES
     this.loadTopRatedEpisode = () => {
         this.tmdbService.topRatedEpisode().then((response) => {
-            this.results = response.data.results.slice(15, 19);
+            this.results = response.data.results.slice(14, 19);
             let count = 0;
             this.results.forEach((result, indexTopRatedEpisode) => {
                 this.results[indexTopRatedEpisode].i = count;

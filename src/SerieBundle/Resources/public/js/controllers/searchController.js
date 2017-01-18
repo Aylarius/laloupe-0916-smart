@@ -4,23 +4,23 @@ function searchController(tmdbService, $routeParams, $location) {
     this.tmdbService = tmdbService;
     this.$location = $location;
 
+    this.newSearch = (query) => {
+        if (query != '') {
+            $location.path("/resultats/" + query);
+        }
+    };
+
     this.getSearch = (query) => {
-        console.log(query);
-        $location.path("/resultats/" + query);
         var page = 1;
         this.search = [];
-        if (query.length < 1) {
-          this.search = 'Ce n\'est pas une recherche valide';
-        } else {
-          this.tmdbService.search(query, page).then((res) => {
-              this.total_pages = res.data.total_pages;
-              for (var page = 1; page <= this.total_pages; page++) {
-                  tmdbService.search(query, page).then((res) => {
-                      this.search = this.search.concat(res.data.results);
-                  });
-              }
-          });
-        }
+        this.tmdbService.search(query, page).then((res) => {
+            this.total_pages = res.data.total_pages;
+            for (var page = 1; page <= this.total_pages; page++) {
+                tmdbService.search(query, page).then((res) => {
+                    this.search = this.search.concat(res.data.results);
+                });
+            }
+        });
     };
 
     this.getSearch($routeParams.query);

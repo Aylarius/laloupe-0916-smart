@@ -1,6 +1,5 @@
+function serieController(serieService, episodeService, sessionFactory, tmdbService, $routeParams, $location, $rootScope) {
 
-<<<<<<< HEAD
-=======
     this.tmdbService = tmdbService;
     this.$routeParams = $routeParams;
     this.$location = $location;
@@ -243,4 +242,3 @@
 
 
 }
->>>>>>> SerieCorrectif

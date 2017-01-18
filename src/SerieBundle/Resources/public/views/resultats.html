@@ -15,28 +15,27 @@
                 <div class="col-xxs-12 col-xs-10 no-pad">
                     <p class="resultats">{{ vm.$routeParams.query == "undefined" ? "Utilisez la barre ci-dessus pour rechercher" : ((vm.search | filter: {genre_ids: vm.filterTag}:true).length +" résultats correspondent à votre recherche \""+vm.$routeParams.query+"\"")}}</p>
                 </div>
-                <div class="col-xxs-12 col-xs-2 no-pad text-right dropdown">
-                    <button class="btn btn-filter dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                <div class="col-xxs-12 col-xs-2 no-pad text-right">
+                    <button class="btn btn-filter" ng-click="vm.filter()">
                         <i class="fa fa-filter" aria-hidden="true"></i>Filtrer
-                        <span class="caret"></span>
                     </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                        <li ng-repeat="genre in vm.searchByTag">
-                            <a ng-click="vm.comparTag(genre.id)">{{ genre.name }}</a>
-                        </li>
-                    </ul>
                 </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12" id="tag-section" ng-show='vm.tags'>
+                <span ng-repeat="genre in vm.searchByTag" ng-click="vm.comparTag(genre.id)" ng-class="{'tag-active': vm.tagActive.indexOf(genre.id) !== -1}" class="tag">{{genre.name}}</span>
+              </div>
             </div>
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-xs-12">
-        <div class="row">
-            <div class="col-xxs-12 col-xs-6 col-sm-4 col-md-3 col-lg-3" id="serie-container" ng-repeat="result in vm.search | filter: {genre_ids: vm.filterTag}:true">
-                <div id="serie-card" ng-click="vm.tvShowView(result.id)">
-                    <img ng-src="{{ !result.backdrop_path ? 'bundles/serie/assets/img/img-default.png' : 'https://image.tmdb.org/t/p/w300'+result.backdrop_path }}" alt="Flash" class="img-responsive center-block">
-                    <h4>{{ result.name | limitTo: 30 }}{{ result.name.length > 30 ? '...' : '' }}</h4>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="col-xxs-12 col-xs-6 col-sm-4 col-md-3 col-lg-3" id="serie-container" ng-repeat="result in vm.search | filter: {genre_ids: vm.filterTag}:true">
+                    <div id="serie-card" ng-click="vm.tvShowView(result.id)">
+                        <img ng-src="{{ !result.backdrop_path ? 'bundles/serie/assets/img/img-default.png' : 'https://image.tmdb.org/t/p/w300'+result.backdrop_path }}" alt="Flash" class="img-responsive center-block">
+                        <h4>{{ result.name | limitTo: 30 }}{{ result.name.length > 30 ? '...' : '' }}</h4>
+                    </div>
                 </div>
             </div>
         </div>

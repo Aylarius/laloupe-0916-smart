@@ -34,7 +34,14 @@ function searchController(tmdbService, $routeParams, $location) {
     this.getSearchByTag();
 
     this.comparTag = (id) => {
+        this.tagActive = [];
         this.filterTag = id;
+            if (this.tagActive.indexOf(id) === -1) {
+                this.tagActive.push(id);
+            } else {
+                this.tagActive.splice(this.tagActive.indexOf(id), 1);
+            }
+        console.log(this.active);
     };
 
     this.comparTag();
@@ -42,4 +49,10 @@ function searchController(tmdbService, $routeParams, $location) {
     this.tvShowView = (id) => {
         $location.path("/serie/" + id);
     };
+
+    this.tags = false;
+    this.filter = () => {
+      this.tags = !this.tags;
+    }
+
 }

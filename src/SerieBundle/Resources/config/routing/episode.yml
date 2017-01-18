@@ -18,6 +18,12 @@ episode_watched:
     defaults: { _controller: "SerieBundle:Episode:watch" }
     methods:  POST
 
+episode_getAllBySeason:
+    path:     /getbyseason/{id}/{user}/{saison}
+    defaults: { _controller: "SerieBundle:Episode:getAllBySeason" }
+    methods:  GET
+
+
 episode_didiwatch:
     path:     /didiwatch/{id}/{episode}/{user}
     defaults: { _controller: "SerieBundle:Episode:didiwatch" }

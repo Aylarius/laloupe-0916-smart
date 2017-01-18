@@ -14,7 +14,7 @@
             <div class="row">
                 <div class="col-xxs-12 col-xs-10 no-pad">
                     <p class="resultats">{{ (vm.search | filter: {genre_ids: vm.filterTag}:true).length }}
-                        résultats correspondent à votre recherche "{{vm.$routeParams.query}}"</p>
+                        résultats correspondent à votre recherche "{{vm.$routeParams.query == "undefined" ? "Ce n'est pas undefined" : vm.$routeParams.query}}"</p>
                 </div>
                 <div class="col-xxs-12 col-xs-2 no-pad text-right dropdown">
                     <button class="btn btn-filter dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">

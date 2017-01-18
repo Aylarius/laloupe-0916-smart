@@ -9,12 +9,10 @@ function register2Controller(serieService, userService, sessionFactory, $timeout
     this.tmdbService = tmdbService;
     this.$timeout = $timeout;
 
-    console.log(this.sessionFactory);
     this.getSerieRegister = () => {
         this.tmdbService.popular().then((response) => {
             this.results = response.data.results.slice(0, 9);
             this.resultsMore = response.data.results.slice(10, 19);
-            console.log(response.data.results);
         });
     };
 
@@ -23,7 +21,6 @@ function register2Controller(serieService, userService, sessionFactory, $timeout
     this.isToggled = false;
     this.toggleMoreInsc = () => {
         this.isToggled = !this.isToggled;
-        console.log(this.isToggled);
     };
 
     // marquage des séries
@@ -34,7 +31,6 @@ function register2Controller(serieService, userService, sessionFactory, $timeout
         } else {
             this.serieTrack.splice(this.serieTrack.indexOf(id), 1);
         }
-        console.log(this.serieTrack);
     };
 
 
@@ -62,8 +58,7 @@ function register2Controller(serieService, userService, sessionFactory, $timeout
             this.serieTrack.push(id);
         } else {
             this.serieTrack.splice(this.serieTrack.indexOf(id), 1);
-        };
-        console.log(this.serieTrack);
+        }
         this.tmdbService.sheetSerie(id).then((response) => {
             this.sheetSerie = response.data;
 

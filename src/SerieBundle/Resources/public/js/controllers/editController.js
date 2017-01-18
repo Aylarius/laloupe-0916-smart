@@ -7,7 +7,6 @@ function editController(userService, sessionFactory, $timeout, $routeParams, $lo
     this.$rootScope = $rootScope;
     this.$routeParams = $routeParams;
 
-    console.log(this.picture);
     this.editAccount = () => {
         this.userService.update({
             id: this.sessionFactory.user.id,

@@ -29,12 +29,13 @@
             <h2>Mes Séries</h2>
 
             <div class="row">
-                <div id="serie-container" class="col-xs-12 col-sm-4 col-md-3 col-lg-3" ng-repeat="sheetSerie in vm.arraySeries">
+                <div id="serie-container" class="col-xxs-12 col-xs-6 col-sm-4 col-md-3 col-lg-3" ng-repeat="sheetSerie in vm.arraySeries">
                     <div id="serie-card" ng-click="vm.tvShowView(sheetSerie.id)">
                         <img ng-src="https://image.tmdb.org/t/p/w500{{ sheetSerie.backdrop_path }}" alt="{{ sheetSerie.name }}" class="img-responsive center-block">
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" data-percent={{ vm.users.user.series.percent }}></div>
-                        </div>
+
+                      <div class="progress">
+                        <div class={{sheetSerie.pourcent}} role="progressbar"></div>
+                      </div>
                         <h4>{{ sheetSerie.name }}</h4>
                     </div>
                 </div>

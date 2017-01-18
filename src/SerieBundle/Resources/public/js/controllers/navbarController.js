@@ -20,7 +20,6 @@ function navbarController(tmdbService, $location, sessionFactory, $rootScope, $w
     this.isToggled = false;
     this.toggleSearch = () => {
         this.isToggled = !this.isToggled;
-        console.log(this.isToggled);
         if (this.isToggled === false) {
             $('#searchHide').hide();
         } else {

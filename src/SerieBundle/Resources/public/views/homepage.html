@@ -61,26 +61,12 @@
             <img id="more-img" class="img-responsive center-block" ng-src="https://image.tmdb.org/t/p/w342{{ result.poster_path }}" alt="{{ result.name }}"/>
         </div>
         <div class="col-xs-12 col-sm-9 col-md-8 followMore">
-            <a id="btn-follow" ng-click='vm.toggleFollow(result.id)' ng-show='vm.isLogged' prevent>
+          
+          <!-- Bouton suivre la série -->
+            <!-- <a id="btn-follow" ng-click='vm.toggleFollow(result.id)' ng-show='vm.isLogged' prevent>
                 <span id="star-empty" class="glyphicon glyphicon-star-empty" ng-hide='vm.series[result.id]'></span>
                 <span id="star" class="glyphicon glyphicon-star" ng-show='vm.series[result.id]'></span>
-                Suivre la série</a>
-
-
-                <!-- <div class="col-xs-11 col-xs-offset-1" ng-show='vm.isLogged'>
-                    <a id="btn-follow" href="#" ng-click='vm.follow(vm.sheetSerie.id)' prevent>
-                        <span id="star-empty" class="glyphicon glyphicon-star-empty" ng-hide='vm.series'></span>
-                        <span id="star" class="glyphicon glyphicon-star" ng-show='vm.series'></span>
-                        <span ng-hide='vm.series'>Suivre la série</span>
-                        <span ng-show='vm.series'>Série suivie</span>
-                    </a>
-                </div> -->
-
-
-            <!--<a id="btn-follow" ng-show='vm.isLogged' href="#myModal" data-toggle="modal" data-target="#myModal" prevent>
-                <span id="star-empty" class="glyphicon glyphicon-star-empty" ng-hide='vm.series[result.id]'></span>
-                <span id="star" class="glyphicon glyphicon-star" ng-show='vm.series[result.id]'></span>
-                Suivre la série</a>-->
+                Suivre la série</a> -->
 
             <div class="contenu">
                 <h2>{{ result.name }}</h2>

@@ -13,11 +13,14 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
     // fiche série
 
     this.seasonDefault = 1;
+    console.log(this.sessionFactory.isLogged);
+
     if (this.sessionFactory.isLogged === false) {
         this.getSheetSerie = (id) => {
             this.tmdbService.sheetSerie(id).then((response) => {
                 this.sheetSerie = response.data;
             });
+            console.log(this.seasonDefault);
             this.tmdbService.seasons(id, this.seasonDefault).then((response) => {
                 this.seasons = response.data;
             });
@@ -64,9 +67,6 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
         console.log(this.okSpoiler);
     };
 
-
-    console.log(this.sessionFactory.series);
-
     this.getSheetSerie($routeParams.id);
 
     // liste des acteurs
@@ -109,6 +109,7 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
     this.getFollow = (id, data) => {
         this.serieService.doIFollow(id, data).then((res) => {
             this.series = res.data.followed;
+            console.log(this.series);
         });
     };
 

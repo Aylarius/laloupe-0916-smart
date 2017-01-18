@@ -217,10 +217,14 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
 
                 this.episodeService.getLastWatched(id, user).then((res) => {
                     this.lastWatched = res.data;
-                    this.tmdbService.lastEpisode(this.lastWatched.serieId.serieId, this.lastWatched.saison, this.lastWatched.numero).then((response) => {
-                        this.episode = response.data;
-                        console.log(this.episode);
-                    });
+                    if (this.lastWatched == "" ){
+                      this.exist = false;
+                    } else {
+                      this.exist = true;
+                      this.tmdbService.lastEpisode(this.lastWatched.serieId.serieId, this.lastWatched.saison, this.lastWatched.numero).then((response) => {
+                          this.episode = response.data;
+                      });
+                    }
                 });
             });
 

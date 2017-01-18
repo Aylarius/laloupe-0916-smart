@@ -36,7 +36,6 @@ function profileController($location, userService, $rootScope, tmdbService, epis
         this.serieService.getAllFollowed(id).then((res) => {
             this.series = res.data;
             this.arraySeries = [];
-            this.pourcentArray = [];
             for (let obj of this.series) {
                     this.episodeService.getAllWatched(obj.serieId, this.sessionFactory.user.id).then((res) => {
                       this.serieTrack = res.data;

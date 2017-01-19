@@ -22,7 +22,7 @@ html {
     font-size: 1rem;
 }
 #homepage, .serie, #profile-page, #inscription-page, #connexion-page, #profil-edit-page, #reactivation-page #inscription-page2, #resultats-page {
-  min-height: 100vh; 
+  min-height: 100vh;
 }
 .row {
     margin: 0;
@@ -902,9 +902,10 @@ ________________________________________________________________________________
     display: inline-table;
 }
 
-#episode-img {
-    max-height: 190px;
-    overflow: hidden;
+#episode-container img {
+    padding-top: 56.33%;
+    background-size: cover;
+    background-position: center;
 }
 
 #serie-container img, #episode-container img {

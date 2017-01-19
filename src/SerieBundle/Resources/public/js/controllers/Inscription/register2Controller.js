@@ -9,6 +9,10 @@ function register2Controller(serieService, userService, sessionFactory, $timeout
     this.tmdbService = tmdbService;
     this.$timeout = $timeout;
 
+    if (this.sessionFactory.isLogged === true){
+      this.loggedin = true;
+    }
+
     this.getSerieRegister = () => {
         this.tmdbService.popular().then((response) => {
             this.results = response.data.results.slice(0, 9);

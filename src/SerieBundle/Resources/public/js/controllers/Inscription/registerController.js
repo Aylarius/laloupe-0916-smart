@@ -7,6 +7,10 @@ function registerController(userService, sessionFactory, $timeout, $routeParams,
     this.$rootScope = $rootScope;
     this.$routeParams = $routeParams;
 
+    if (this.sessionFactory.isLogged === true){
+      this.loggedin = true;
+    }
+
     this.conditions = false;
     this.createAccount = () => {
         this.userService.create({

@@ -21,7 +21,7 @@ html {
     font-size: 16px;
     font-size: 1rem;
 }
-#homepage, .serie, #profile-page, #inscription-page, #connexion-page, #profil-edit-page, #reactivation-page #inscription-page2, #resultats-page {
+#homepage, .serie, #profile-page, #inscription-page, #connexion-page, #profil-edit-page, #reactivation-page, #inscription-page2, #resultats-page {
   min-height: 100vh;
 }
 .row {
@@ -669,7 +669,9 @@ ________________________________________________________________________________
     text-transform: uppercase;
     border-radius: inherit;
 }
-
+.btn-back, .btn-back:focus {
+  font-size: 1.125rem;
+}
 .btn-orange:hover {
     background-color: white;
     color: rgb(255, 168, 52);

@@ -4,10 +4,10 @@
       <div class="row container-h1">
         <h1>Inscription</h1>
       </div>
-      <div class="row">
+      <div class="row" ng-hide='vm.loggedin'>
         <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2" id="inscription-form">
           <form name="registerForm" class="form-horizontal">
-            <em class="text-center center-block text-form">Merci de remplir les champs suivants :</em><br>
+            <p class="text-center center-block text-form">Merci de remplir les champs suivants :</p><br>
             <div class="form-group">
               <label for="username" class="col-sm-4 control-label">Pseudo* :</label>
               <div class="col-sm-8">
@@ -66,6 +66,14 @@
             <h4><span class="glyphicon glyphicon-exclamation-sign pull-left"></span>&nbsp;{{vm.loginMessage.title}}</h4>
             <p>{{vm.loginMessage.message}}</p>
           </div>
+        </div>
+      </div>
+      <div class="row" ng-show='vm.loggedin'>
+        <div class="col-xs-12 text-center">
+          <p class="text-center center-block text-form">Vous êtes déjà inscrits !</p><br>
+          <a href='/#/' class="btn btn-orange btn-back center-block">Retour à la page<br> d'accueil</a>
+          <br>
+          <img src="bundles/serie/assets/img/zombie.gif" alt="" class="img-responsive center-block">
         </div>
       </div>
     </div>

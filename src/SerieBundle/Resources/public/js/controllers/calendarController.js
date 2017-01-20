@@ -1,5 +1,6 @@
 function calendarController($http, tmdbService, serieService, sessionFactory, $timeout) {
 
+
     this.$http = $http;
     this.tmdbService = tmdbService;
     this.serieService = serieService;
@@ -41,7 +42,7 @@ function calendarController($http, tmdbService, serieService, sessionFactory, $t
                 weekStart: 'Mon',
                 events: sampleEvents
               });
-            },1000)
+            },1000);
             console.log(this.episodesList);
         });
     };

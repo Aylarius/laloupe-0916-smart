@@ -44,6 +44,10 @@ function register2Controller(serieService, userService, sessionFactory, $timeout
             this.loginMessage.type = "success";
             this.loginMessage.title = "Vous avez bien ajouté ces séris à vos favoris !";
             this.loginMessage.message = "En cours de redirection...";
+            this.sessionFactory.isLogged = true;
+            this.$rootScope.$emit('loginStatusChanged', true);
+            $rootScope.$emit('loginStatusChangedNavbar');
+            $rootScope.$emit('loginStatusChangedHomepage');
             this.$timeout(() => {
                 this.loginMessage = null;
                 this.$location.path('/');

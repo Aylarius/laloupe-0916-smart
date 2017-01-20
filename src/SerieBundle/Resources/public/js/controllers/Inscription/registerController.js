@@ -23,20 +23,12 @@ function registerController(userService, sessionFactory, $timeout, $routeParams,
         }).then((res) => {
           this.sessionFactory.token = res.data.token;
           this.sessionFactory.user = res.data.user;
-          this.sessionFactory.isLogged = true;
-          this.$rootScope.$emit('loginStatusChanged', true);
-          $rootScope.$emit('loginStatusChangedNavbar');
-          $rootScope.$emit('loginStatusChangedHomepage');
             this.loginMessage = {};
             this.loginMessage.type = "success";
             this.loginMessage.title = "Votre compte a bien été créé !";
             this.loginMessage.message = "En cours de redirection...";
             this.$timeout(() => {
                 this.loginMessage = null;
-                this.$rootScope.$emit('loginStatusChanged', true);
-                $rootScope.$emit('loginStatusChangedNavbar');
-                $rootScope.$emit('loginStatusChangedHomepage');
-
                 this.$location.path('/inscriptionbis');
             }, 200);
         }).catch((res) => {

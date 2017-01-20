@@ -9,39 +9,39 @@
           <form name="registerForm" class="form-horizontal">
             <p class="text-center center-block text-form">Merci de remplir les champs suivants :</p><br>
             <div class="form-group">
-              <label for="username" class="col-sm-4 control-label">Pseudo* :</label>
-              <div class="col-sm-8">
+              <label for="username" class="col-sm-3 control-label">Pseudo* :</label>
+              <div class="col-sm-9">
                 <input type="text" class="form-control" id="username" placeholder="Identifiant" ng-model='vm.username' ng-required='true'>
               </div>
             </div>
             <div class="form-group">
-              <label for="email" class="col-sm-4 control-label">Email* :</label>
-              <div class="col-sm-8">
+              <label for="email" class="col-sm-3 control-label">Email* :</label>
+              <div class="col-sm-9">
                 <input type="email" class="form-control" id="email" placeholder="Email" ng-model='vm.email' ng-required='true'>
               </div>
             </div>
             <div class="form-group">
-              <label for="password" class="col-sm-4 control-label">Mot de passe* :</label>
-              <div class="col-sm-8">
+              <label for="password" class="col-sm-3 control-label">Mot de passe* :</label>
+              <div class="col-sm-9">
                 <input type="password" class="form-control" id="password" placeholder="Mot de passe" ng-model='vm.password' ng-required='true'>
               </div>
             </div>
             <div class="form-group">
-              <label for="password-conf" class="col-sm-4 control-label">Confirmer* :</label>
-              <div class="col-sm-8">
+              <label for="password-conf" class="col-sm-3 control-label">Confirmer* :</label>
+              <div class="col-sm-9">
                 <input type="password" class="form-control" id="password-conf" placeholder="Confirmer"  ng-model='vm.passwordConf' ng-required='true'>
               </div>
             </div>
             <div class="form-group">
-              <label for="uploadImage" class="col-sm-4 control-label">Photo de profil :</label>
-              <div class="col-sm-8">
+              <label for="uploadImage" class="col-sm-3 control-label">Photo de profil :</label>
+              <div class="col-sm-9">
                 <input type="file" id="uploadImage" name="file">
                 <p class="help-block">Format : png, jpg</p>
               </div>
             </div>
             <div class="form-group">
-              <div class="col-xs-12 text-right">
-                <p>* Champs obligatoires</p>
+              <div class="col-xs-12 col-sm-9 pull-right text-left">
+                <p>*Champs obligatoires</p>
               </div>
             </div>
             <div class="form-group">

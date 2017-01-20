@@ -786,17 +786,17 @@ ________________________________________________________________________________
 }
 
 #img-section {
-    background-color: #909090;
+    background-color: #F7F6F6;
     text-align: center;
     color: #FFF;
-    padding-bottom: 30px;
+    padding-bottom: 0px;
     padding-top: 30px;
 }
 
 #img-section img {
     border-radius: 50%;
     border: 5px solid rgb(255, 168, 52);
-    margin-bottom: 20px;
+    margin-bottom: -80px;
     width: auto;
     height: auto;
     max-width: 200px;
@@ -821,11 +821,16 @@ ________________________________________________________________________________
     font-size: 20px;
     cursor: pointer;
 }
-
+#name-container {
+  padding-bottom: 20px;
+  background-color: #232323;
+  padding-top: 80px;
+  color: white;
+}
 #stat-section {
-    background-color: #232323;
-    padding-top: 20px;
+    background-color: #606060;
     padding-bottom: 20px;
+    padding-top: 15px;
     color: white;
     font-size: 1.25rem;
 }

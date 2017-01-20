@@ -12,7 +12,12 @@ const routes = ($routeProvider, $httpProvider, $locationProvider) => {
             controllerAs: 'vm'
         })
         .when('/calendrier', {
-            templateUrl: 'bundles/serie/views/calendrier.html'
+            templateUrl: 'bundles/serie/views/calendrier.html',
+            controller: 'calendarController',
+            controllerAs: 'vm',
+            resolve: {
+                connected: checkIsConnected
+            }
         })
         .when('/profiledit', {
             templateUrl: 'bundles/serie/views/profiledit.html',

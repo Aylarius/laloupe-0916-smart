@@ -1,67 +1,71 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="app">
 
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="shortcut icon" href="{{ asset('bundles/serie/assets/img/wiw2.png') }}">
+    <link rel="shortcut icon" href="{{ asset('bundles/serie/assets/img/wiw2.png') }}">
 
-        <title>What I Watch</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="{{ asset('bundles/serie/vendor/bootstrap/dist/css/bootstrap.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('bundles/serie/vendor/horizon-swiper-111/dist/horizon-swiper.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('bundles/serie/vendor/horizon-swiper-111/dist/horizon-theme.min.css') }}">
+    <title>What I Watch</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ asset('bundles/serie/vendor/bootstrap/dist/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/serie/vendor/horizon-swiper-111/dist/horizon-swiper.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/serie/vendor/horizon-swiper-111/dist/horizon-theme.min.css') }}">
 
-        <link rel="stylesheet" href="{{ asset('bundles/serie/assets/css/style.css') }}">
-        <link rel="stylesheet" href="{{ asset('bundles/serie/assets/css/circle.css') }}">
-        <link rel="stylesheet" href="{{ asset('bundles/serie/assets/css/slick.css') }}">
-        <link rel="stylesheet" href="{{ asset('bundles/serie/assets/css/slick-theme.css') }}">
-        <link rel="stylesheet" href="{{ asset('bundles/serie/assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/serie/assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/serie/assets/css/circle.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/serie/assets/css/monthly.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/serie/assets/css/slick.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/serie/assets/css/slick-theme.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/serie/assets/css/style.css') }}">
 
-    </head>
-    <body>
-        <ng-include src="'{{ asset('bundles/serie/views/navbar.html') }}'"></ng-include>
-        <ng-view autoscroll="true"></ng-view>
-        <ng-include src="'{{ asset('bundles/serie/views/footer.html') }}'"></ng-include>
+</head>
 
-        <script src="{{ asset('bundles/serie/vendor/jquery/dist/jquery.min.js') }}"></script>
-        <script src="{{ asset('bundles/serie/vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+<body>
+    <ng-include src="'{{ asset('bundles/serie/views/navbar.html') }}'"></ng-include>
+    <ng-view autoscroll="true"></ng-view>
+    <ng-include src="'{{ asset('bundles/serie/views/footer.html') }}'"></ng-include>
 
-        <script src="{{ asset('bundles/serie/vendor/angular/angular.min.js') }}"></script>
-        <script src="{{ asset('bundles/serie/vendor/angular-route/angular-route.min.js') }}"></script>
-        <script src="{{ asset('bundles/serie/vendor/angular-i18n/angular-locale_fr-fr.js') }}"></script>
-        <script src="{{ asset('bundles/serie/vendor/horizon-swiper-111/dist/horizon-swiper.js') }}"></script>
-        <!-- <script src="{{ asset('bundles/serie/vendor/horizon-swiper-111/dist/horizon-swiper.min.js') }}"></script> -->
-        <script src="{{ asset('bundles/serie/js/angular-slick/slick.js') }}"></script>
-        <script src="{{ asset('bundles/serie/js/angular-slick/angular-slick.js') }}"></script>
+    <script src="{{ asset('bundles/serie/vendor/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ asset('bundles/serie/vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
 
-        <script src="{{ asset('bundles/serie/js/factories/sessionFactory.js') }}"></script>
+    <script src="{{ asset('bundles/serie/vendor/angular/angular.min.js') }}"></script>
+    <script src="{{ asset('bundles/serie/vendor/angular-route/angular-route.min.js') }}"></script>
+    <script src="{{ asset('bundles/serie/vendor/angular-i18n/angular-locale_fr-fr.js') }}"></script>
+    <script src="{{ asset('bundles/serie/vendor/horizon-swiper-111/dist/horizon-swiper.js') }}"></script>
+    <script src="{{ asset('bundles/serie/js/angular-slick/slick.js') }}"></script>
+    <script src="{{ asset('bundles/serie/js/angular-slick/angular-slick.js') }}"></script>
+    <script src="{{ asset('bundles/serie/js/calendrier/monthly.js') }}"></script>
 
-        <script src="{{ asset('bundles/serie/js/services/userService.js') }}"></script>
-        <script src="{{ asset('bundles/serie/js/services/serieService.js') }}"></script>
-        <script src="{{ asset('bundles/serie/js/services/episodeService.js') }}"></script>
+    <script src="{{ asset('bundles/serie/js/factories/sessionFactory.js') }}"></script>
 
-        <script src="{{ asset('bundles/serie/js/services/tmdbService.js') }}"></script>
+    <script src="{{ asset('bundles/serie/js/services/userService.js') }}"></script>
+    <script src="{{ asset('bundles/serie/js/services/serieService.js') }}"></script>
+    <script src="{{ asset('bundles/serie/js/services/episodeService.js') }}"></script>
 
-        <script src="{{ asset('bundles/serie/js/controllers/navbarController.js') }}"></script>
-        <script src="{{ asset('bundles/serie/js/controllers/HomePage/hpController.js') }}"></script>
-        <script src="{{ asset('bundles/serie/js/controllers/HomePage/carousel1Controller.js') }}"></script>
-        <script src="{{ asset('bundles/serie/js/controllers/HomePage/carousel3Controller.js') }}"></script>
-        <script src="{{ asset('bundles/serie/js/controllers/Inscription/registerController.js') }}"></script>
-        <script src="{{ asset('bundles/serie/js/controllers/Inscription/register2Controller.js') }}"></script>
-        <script src="{{ asset('bundles/serie/js/controllers/serieController.js') }}"></script>
-        <script src="{{ asset('bundles/serie/js/controllers/searchController.js') }}"></script>
-        <script src="{{ asset('bundles/serie/js/controllers/profileController.js') }}"></script>
-        <script src="{{ asset('bundles/serie/js/controllers/loginController.js') }}"></script>
-        <script src="{{ asset('bundles/serie/js/controllers/editController.js') }}"></script>
-        <script src="{{ asset('bundles/serie/js/controllers/reactivateController.js') }}"></script>
+    <script src="{{ asset('bundles/serie/js/services/tmdbService.js') }}"></script>
 
-        <script src="{{ asset('bundles/serie/js/routes.js') }}"></script>
+    <script src="{{ asset('bundles/serie/js/controllers/navbarController.js') }}"></script>
+    <script src="{{ asset('bundles/serie/js/controllers/HomePage/hpController.js') }}"></script>
+    <script src="{{ asset('bundles/serie/js/controllers/HomePage/carousel1Controller.js') }}"></script>
+    <script src="{{ asset('bundles/serie/js/controllers/HomePage/carousel3Controller.js') }}"></script>
+    <script src="{{ asset('bundles/serie/js/controllers/Inscription/registerController.js') }}"></script>
+    <script src="{{ asset('bundles/serie/js/controllers/Inscription/register2Controller.js') }}"></script>
+    <script src="{{ asset('bundles/serie/js/controllers/serieController.js') }}"></script>
+    <script src="{{ asset('bundles/serie/js/controllers/searchController.js') }}"></script>
+    <script src="{{ asset('bundles/serie/js/controllers/calendarController.js') }}"></script>
+    <script src="{{ asset('bundles/serie/js/controllers/profileController.js') }}"></script>
+    <script src="{{ asset('bundles/serie/js/controllers/loginController.js') }}"></script>
+    <script src="{{ asset('bundles/serie/js/controllers/editController.js') }}"></script>
+    <script src="{{ asset('bundles/serie/js/controllers/reactivateController.js') }}"></script>
 
-        <script src="{{ asset('bundles/serie/js/app.js') }}"></script>
+    <script src="{{ asset('bundles/serie/js/routes.js') }}"></script>
+
+    <script src="{{ asset('bundles/serie/js/app.js') }}"></script>
 
 
-    </body>
+</body>
+
 </html>

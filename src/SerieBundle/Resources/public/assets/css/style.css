@@ -98,7 +98,7 @@ ________________________________________________________________________________
 
 .navbar, .navbar-nav>li>a {
     height: 70px!important;
-    font-size: 1.125rem;
+    font-size: 1.25rem;
 }
 
 .navbar-default .navbar-nav>li>a {
@@ -361,6 +361,7 @@ ________________________________________________________________________________
 
 #homepage h2 {
     padding-left: 40px;
+    font-size: 2rem;
 }
 
 #homepage .contenu h2 {
@@ -398,11 +399,11 @@ ________________________________________________________________________________
 }
 
 .hpnl-title {
-    font-size: 5em;
+    font-size: 2rem;
 }
 
 .hpnl-text {
-    font-size: 2em;
+    font-size: 1.5rem;
 }
 
 
@@ -910,6 +911,11 @@ ________________________________________________________________________________
     background-position: center;
 }
 
+#episode-container .modal-dialog img {
+    padding-top: 10px;
+}
+
+
 #serie-container img, #episode-container img {
     width: 100%;
 }
@@ -1279,6 +1285,11 @@ footer a, footer span {
 footer a:hover, footer a:focus {
     text-decoration: none;
     color: rgb(255, 168, 52);
+}
+
+#logo-wcs {
+  padding-bottom: 3px;
+  width: 17px;
 }
 
 #modal-credit .modal-content, #modal-CGU .modal-content {

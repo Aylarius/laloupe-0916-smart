@@ -20,12 +20,45 @@ function profileController($location, userService, $rootScope, tmdbService, epis
             var hours = Math.floor((this.statsDuration % 1440) / 60);
             var mins = Math.floor((this.statsDuration % 1440) % 60);
             if (days > 1) {
-              this.statsDurationTime = (days+' jours, ') + (hours > 0 ? hours+' heures' : '') + ' et ' + (mins > 1 ? mins+' minutes' : mins+' minute');
-            } else if (days === 1 ) {
-              this.statsDurationTime = (days+' jour, ') + (hours > 0 ? hours+' heures' : '') + ' et ' + (mins > 1 ? mins+' minutes' : mins+' minute');
+              this.statsDays = (days+' jours');
+            } else if (days === 1){
+              this.statsDays = (days+' jour');
             } else {
-              this.statsDurationTime = (hours > 0 ? hours+' heures' : '') + ' et ' + (mins > 1 ? mins+' minutes' : mins+' minute');
+              this.statsDays = '';
             }
+            if (hours > 1) {
+              this.statsHours = (hours+' heures');
+            } else if (hours === 1){
+              this.statsHours = (hours+' heure');
+            } else {
+              this.statsHours = '';
+            }
+            if (mins > 1) {
+              this.statsMins = (mins+' minutes');
+            } else if (hours === 1){
+              this.statsMins = (mins+' minute');
+            } else {
+              this.statsMins = '';
+            }
+
+            if (this.statsMins !='' && this.statsHours !='' && this.statsDays !='') {
+              this.statsDurationTime = this.statsDays + ', ' + this.statsHours + ' et ' + this.statsMins;
+            } else if (this.statsMins =='' && this.statsHours !='' && this.statsDays !='' ) {
+              this.statsDurationTime = this.statsDays + ' et ' + this.statsHours;
+            } else if (this.statsMins !='' && this.statsHours !='' && this.statsDays =='' ){
+              this.statsDurationTime = this.statsHours + ' et ' + this.statsMins;
+            } else if (this.statsMins !='' && this.statsHours =='' && this.statsDays !='' ){
+              this.statsDurationTime = this.statsDays + ' et ' + this.statsMins;
+            } else if (this.statsMins !='' && this.statsHours =='' && this.statsDays =='' ){
+              this.statsDurationTime = this.statsMins;
+            } else if (this.statsMins =='' && this.statsHours =='' && this.statsDays !='' ){
+              this.statsDurationTime = this.statsDays;
+            } else if (this.statsMins =='' && this.statsHours !='' && this.statsDays =='' ){
+              this.statsDurationTime = this.statsHours;
+            } else {
+              this.statsDurationTime = "Aucun épisode vu";
+            }
+
           });
     };
 

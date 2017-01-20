@@ -1,58 +1,53 @@
-function calendarController($http) {
+function calendarController($http, tmdbService, serieService, sessionFactory, $timeout) {
 
     this.$http = $http;
+    this.tmdbService = tmdbService;
+    this.serieService = serieService;
+    this.sessionFactory = sessionFactory;
 
-    // var array = [];
-    // this.array = array;
-    this.test = () => {
-        this.$http.get("https://api.themoviedb.org/3/tv/60735?api_key=fc533e12b849e49e74ab5d046165bcc7&language=fr-FR").then((response) => {
-            this.results = response.data.last_air_date;
-            var array = [];
-            array.push({
-                "id": 1,
-                "name": "bfoviugsdvlikhdlhvjezlkdjhfgvzlkjhgrflkj",
-                "startdate": this.results,
-                "color": "#99CCCC"
-            });
-            var sampleEvents = {
-                "monthly": array
-            };
-            console.log(array);
-            console.log(sampleEvents);
+    this.episodesList = [];
 
-            $(window).load(function() {
+    this.showLoader = true;
+
+    this.getAllFollowed = (id) => {
+        this.serieService.getAllFollowed(id).then((res) => {
+            this.series = res.data;
+            for (let serie of this.series) {
+                this.tmdbService.sheetSerie(serie.serieId).then((response) => {
+                    this.sheetSerie = response.data;
+                    this.nameSerie = response.data.name;
+                    this.tmdbService.seasons(serie.serieId, this.sheetSerie.number_of_seasons).then((res) => {
+                        this.episodes = res.data.episodes;
+                        console.log(this.episodes);
+                        for (let episode of this.episodes) {
+                            this.episodeB = {};
+                            this.episodeB.id = episode.id;
+                            this.episodeB.name = this.nameSerie + ' - Saison ' + episode.season_number + ' - Episode ' + episode.episode_number;
+                            this.episodeB.startdate = episode.air_date;
+                            this.episodeB.color = "#ffa834";
+                            this.episodesList.push(this.episodeB);
+                        }
+                    });
+                });
+            }
+            $timeout(() => {
+              this.showLoader = false;
+              var sampleEvents = {
+                "monthly": this.episodesList
+              };
               $('#mycalendar').monthly({
                 mode: 'event',
                 dataType: 'json',
+                weekStart: 'Mon',
                 events: sampleEvents
               });
-            });
+            },1000)
+            console.log(this.episodesList);
         });
     };
-    this.test();
 
-    // 
-    // var sampleEvents = {
-    //     "monthly": [{
-    //             "id": 1,
-    //             "name": "Whole month event",
-    //             "startdate": "2017-01-20",
-    //             // "enddate": "",
-    //             // "starttime": "",
-    //             // "endtime": "",
-    //             "color": "#99CCCC",
-    //             // "url": ""
-    //         },
-    //         {
-    //             "id": 2,
-    //             "name": "Test encompasses month",
-    //             "startdate": "2017-01-25",
-    //             "enddate": "",
-    //             "starttime": "",
-    //             "endtime": "",
-    //             "color": "#CC99CC",
-    //             "url": ""
-    //         }
-    //     ]
-    // };
+    console.log(this.episodesList);
+
+    this.getAllFollowed(this.sessionFactory.user.id);
+
 }

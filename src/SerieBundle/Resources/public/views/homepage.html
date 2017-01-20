@@ -27,8 +27,7 @@
                     </p>
                     <h1 class="hpnl-title text-center" ng-show='vm.isLogged'>
                         Bonjour
-                        {{vm.sessionFactory.user.username}}
-                        !
+                        {{vm.sessionFactory.user.username}}&nbsp;!
                     </h1>
                     <a href="#/inscription">
                         <button class="btn btn-orange center-block" ng-hide='vm.isLogged'>S'inscrire</button>
@@ -61,7 +60,7 @@
             <img id="more-img" class="img-responsive center-block" ng-src="https://image.tmdb.org/t/p/w342{{ result.poster_path }}" alt="{{ result.name }}"/>
         </div>
         <div class="col-xs-12 col-sm-9 col-md-8 followMore">
-          
+
           <!-- Bouton suivre la série -->
             <!-- <a id="btn-follow" ng-click='vm.toggleFollow(result.id)' ng-show='vm.isLogged' prevent>
                 <span id="star-empty" class="glyphicon glyphicon-star-empty" ng-hide='vm.series[result.id]'></span>

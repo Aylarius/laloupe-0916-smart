@@ -16,26 +16,35 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
             this.series = res.data.followed;
             this.seasonDefault = 1;
             this.pourcentage = 0;
+            this.seasonSelect = "selectWhite";
             this.circle = "c100 p" + this.pourcentage + " orange";
             if (this.series === false) {
                 this.getSheetSerie = (id) => {
                     this.tmdbService.sheetSerie(id).then((response) => {
                         this.sheetSerie = response.data;
+                        setTimeout(function() {
+                            $('.horizon-swiper').horizonSwiper();
+                        }, 500);
                     });
                     this.tmdbService.seasons(id, this.seasonDefault).then((response) => {
                         this.seasons = response.data;
+                        this.seasonSelect = "selectOrange";
                     });
                 };
             } else {
                 this.getSheetSerie = (id) => {
                     this.tmdbService.sheetSerie(id).then((response) => {
                         this.sheetSerie = response.data;
+                        setTimeout(function() {
+                            $('.horizon-swiper').horizonSwiper();
+                        }, 500);
                     });
                     this.episodeService.getLastWatched($routeParams.id, this.sessionFactory.user.id).then((res) => {
                         this.lastWatched = res.data;
                         this.seasonDefault = !this.lastWatched.saison ? this.seasonDefault : this.lastWatched.saison;
                         this.tmdbService.seasons(id, this.seasonDefault).then((response) => {
                             this.seasons = response.data;
+                            this.seasonSelect = "selectOrange";
                         });
                     });
                 };
@@ -217,13 +226,13 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
 
                 this.episodeService.getLastWatched(id, user).then((res) => {
                     this.lastWatched = res.data;
-                    if (this.lastWatched == "" ){
-                      this.exist = false;
+                    if (this.lastWatched == "") {
+                        this.exist = false;
                     } else {
-                      this.exist = true;
-                      this.tmdbService.lastEpisode(this.lastWatched.serieId.serieId, this.lastWatched.saison, this.lastWatched.numero).then((response) => {
-                          this.episode = response.data;
-                      });
+                        this.exist = true;
+                        this.tmdbService.lastEpisode(this.lastWatched.serieId.serieId, this.lastWatched.saison, this.lastWatched.numero).then((response) => {
+                            this.episode = response.data;
+                        });
                     }
                 });
             });

@@ -3,8 +3,8 @@ function serieService($http, sessionFactory) {
     this.$http = $http;
     this.sessionFactory = sessionFactory;
 
-    this.follow = (data, id, duration) => {
-        return this.$http.post('app_dev.php/serie/follow', data, id, duration)
+    this.follow = (data, id, name, duration) => {
+        return this.$http.post('app_dev.php/serie/follow', data, id, name, duration)
     }
 
     this.followInsc = (id) => {

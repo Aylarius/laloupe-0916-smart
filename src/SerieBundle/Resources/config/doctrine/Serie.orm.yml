@@ -11,6 +11,9 @@ SerieBundle\Entity\Serie:
     fields:
         serieId:
             type: integer
+        name:
+            type: string
+            length: 255
         duration:
             type: integer
     manyToOne:

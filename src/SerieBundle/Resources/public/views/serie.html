@@ -36,7 +36,7 @@
     </div>
     <div class="follow row" ng-show='vm.sessionFactory.isLogged'>
         <div class="col-xs-11 col-xs-offset-1">
-            <a href="#" ng-click='vm.follow(vm.sheetSerie.id, vm.sheetSerie.episode_run_time[0])' prevent>
+            <a href="#" ng-click='vm.follow(vm.sheetSerie.id, vm.sheetSerie.name, vm.sheetSerie.episode_run_time[0])' prevent>
                 <span id="star-empty" class="glyphicon glyphicon-star-empty" ng-hide='vm.series'></span>
                 <span id="star" class="glyphicon glyphicon-star" ng-show='vm.series'></span>
                 <span ng-hide='vm.series'>Suivre la série</span>

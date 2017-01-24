@@ -36,7 +36,7 @@
     </div>
     <div class="follow row" ng-show='vm.sessionFactory.isLogged'>
         <div class="col-xs-11 col-xs-offset-1">
-            <a href="#" ng-click='vm.follow(vm.sheetSerie.id, vm.sheetSerie.episode_run_time[0])' prevent>
+            <a href="#" ng-click='vm.follow(vm.sheetSerie.id, vm.sheetSerie.name, vm.sheetSerie.episode_run_time[0])' prevent>
                 <span id="star-empty" class="glyphicon glyphicon-star-empty" ng-hide='vm.series'></span>
                 <span id="star" class="glyphicon glyphicon-star" ng-show='vm.series'></span>
                 <span ng-hide='vm.series'>Suivre la série</span>
@@ -69,7 +69,7 @@
             <p class="title-section-serie">Acteurs :</p>
             <ul class="row no-pad">
                 <li class="col-xs-6 col-sm-3 col-md-2 text-center no-pad" ng-repeat="actor in vm.people.cast">
-                    <div class="acteur-img" style="background-image: url({{!actor.profile_path ? 'bundles/serie/assets/img/img-default-acteur2.png' : 'https://image.tmdb.org/t/p/w185'+actor.profile_path}})"></div>
+                    <a class="acteur-img" ng-href='https://fr.wikipedia.org/wiki/{{actor.name}}' target="_blank" style="background-image: url({{!actor.profile_path ? 'bundles/serie/assets/img/img-default-acteur2.png' : 'https://image.tmdb.org/t/p/w185'+actor.profile_path}})"></a>
                     <br>
                     <div class="acteur-nom">
                         {{actor.name}}

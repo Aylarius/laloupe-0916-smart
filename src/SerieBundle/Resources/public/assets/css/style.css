@@ -8,8 +8,8 @@
  * CH07 - PROFILE & PROFILE EDIT
  * CH08 - SEARCH RESULT PAGE
  * CH09 - PAGE SERIE
- * CH07 - FOOTER
- * CH07 - AUTRES
+ * CH010 - FOOTER
+ * CH011 - AUTRES
 
 **/
 
@@ -1006,6 +1006,13 @@ ________________________________________________________________________________
     }
     #stat-container i {
         display: none;
+    }
+    #stat-container p {
+        padding-bottom: 5px;
+        font-size: 1.5rem;
+    }
+    #stat-section {
+        height:auto;
     }
 }
 

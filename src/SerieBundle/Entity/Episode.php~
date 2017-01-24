@@ -167,4 +167,33 @@ class Episode
     {
         return $this->saison;
     }
+    /**
+     * @var integer
+     */
+    private $numero;
+
+
+    /**
+     * Set numero
+     *
+     * @param integer $numero
+     *
+     * @return Episode
+     */
+    public function setNumero($numero)
+    {
+        $this->numero = $numero;
+
+        return $this;
+    }
+
+    /**
+     * Get numero
+     *
+     * @return integer
+     */
+    public function getNumero()
+    {
+        return $this->numero;
+    }
 }

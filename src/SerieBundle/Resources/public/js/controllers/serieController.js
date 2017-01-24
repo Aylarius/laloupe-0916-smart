@@ -112,9 +112,10 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
     };
 
 
-    this.follow = (id, duration) => {
+    this.follow = (id, name, duration) => {
         this.serieService.follow({
             id: id,
+            name: name,
             duration: duration,
             user_id: this.sessionFactory.user.id
         }).then((res) => {

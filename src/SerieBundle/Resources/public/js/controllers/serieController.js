@@ -17,6 +17,7 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
             this.series = res.data.followed;
             this.seasonDefault = 1;
             this.pourcentage = 0;
+            this.seasonSelect = "selectWhite";
             this.circle = "c100 p" + this.pourcentage + " orange";
             if (this.series === false) {
                 this.getSheetSerie = (id) => {
@@ -106,6 +107,11 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
         });
     };
 
+    // selection de la saison
+    this.activeSeason = (id) => {
+      angular.element('.seasonSelect').removeClass('seasonActive');
+      angular.element('#season-' + id).addClass('seasonActive');
+    };
 
     this.follow = (id, name, duration) => {
         this.serieService.follow({
@@ -127,14 +133,6 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
             this.getFollow($routeParams.id, this.sessionFactory.user.id);
         });
     };
-
-    // this.getFollow = (id, data) => {
-    //     this.serieService.doIFollow(id, data).then((res) => {
-    //         this.series = res.data.followed;
-    //     });
-    // };
-    //
-    // this.getFollow($routeParams.id, this.sessionFactory.user.id);
 
     this.watch = (id, serieId, date, numero, saison) => {
         this.episodeService.watch({
@@ -224,7 +222,7 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
 
                 this.episodeService.getLastWatched(id, user).then((res) => {
                     this.lastWatched = res.data;
-                    if (this.lastWatched == "") {
+                    if (this.lastWatched === "") {
                         this.exist = false;
                     } else {
                         this.exist = true;
@@ -259,5 +257,18 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
         });
     };
 
+
+
+
+    // $(".seasonSelect").one("click", function() {
+    //     $(this).css("color", "orange");
+    // });
+
+    // $('.seasonSelect').on('click',
+    //     '.onsale-filter',
+    //     function() {
+    //         $('.highlighted').removeClass('highlighted');
+    //         $('.vacation').filter('.onsale').addClass('highlighted');
+    //     });
 
 }

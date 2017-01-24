@@ -22,6 +22,7 @@ class SerieController extends Controller
 
         $userId = $data['user_id'];
         $serieId = $data['id'];
+        $serieName = $data['name'];
 
         $em = $this->getDoctrine()->getManager();
         $user = $em->getRepository('SerieBundle:User')->findOneBy(array('id' => $userId));
@@ -34,6 +35,7 @@ class SerieController extends Controller
             $serie = new Serie();
             $serie->setSerieId($serieId);
             $serie->setUserId($user);
+            $serie->setName($serieName);
             $serie->setDuration($data['duration']);
 
             // Send to database

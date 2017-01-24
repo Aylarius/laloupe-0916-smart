@@ -1,4 +1,4 @@
-function serieController(serieService, episodeService, sessionFactory, tmdbService, $routeParams, $location, $rootScope) {
+function serieController(serieService, episodeService, sessionFactory, tmdbService, $routeParams, $location, $rootScope, $timeout) {
 
     this.tmdbService = tmdbService;
     this.$routeParams = $routeParams;
@@ -13,6 +13,7 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
     // fiche série
     this.getFollow = (id, data) => {
         this.serieService.doIFollow(id, data).then((res) => {
+            this.loader = true;
             this.series = res.data.followed;
             this.seasonDefault = 1;
             this.pourcentage = 0;
@@ -22,29 +23,33 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
                 this.getSheetSerie = (id) => {
                     this.tmdbService.sheetSerie(id).then((response) => {
                         this.sheetSerie = response.data;
-                        setTimeout(function() {
+                        $timeout(function() {
                             $('.horizon-swiper').horizonSwiper();
-                        }, 500);
+                        }, 0);
                     });
                     this.tmdbService.seasons(id, this.seasonDefault).then((response) => {
                         this.seasons = response.data;
-                        this.seasonSelect = "selectOrange";
+                        $timeout(() => {
+                            this.loader = false;
+                        }, 1500);
                     });
                 };
             } else {
                 this.getSheetSerie = (id) => {
                     this.tmdbService.sheetSerie(id).then((response) => {
                         this.sheetSerie = response.data;
-                        setTimeout(function() {
+                        $timeout(function() {
                             $('.horizon-swiper').horizonSwiper();
-                        }, 500);
+                        }, 0);
                     });
                     this.episodeService.getLastWatched($routeParams.id, this.sessionFactory.user.id).then((res) => {
                         this.lastWatched = res.data;
                         this.seasonDefault = !this.lastWatched.saison ? this.seasonDefault : this.lastWatched.saison;
                         this.tmdbService.seasons(id, this.seasonDefault).then((response) => {
                             this.seasons = response.data;
-                            this.seasonSelect = "selectOrange";
+                            $timeout(() => {
+                                this.loader = false;
+                            }, 1500);
                         });
                     });
                 };
@@ -98,15 +103,25 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
 
     // liste des saisons
     this.getSeasons = (id, season) => {
+        this.loader = true;
         this.tmdbService.seasons(id, season).then((response) => {
             this.seasons = response.data;
+            $timeout(() => {
+                this.loader = false;
+            }, 1500);
         });
     };
 
+    // selection de la saison
+    this.activeSeason = (id) => {
+      angular.element('.seasonSelect').removeClass('seasonActive');
+      angular.element('#season-' + id).addClass('seasonActive');
+    };
 
-    this.follow = (id, duration) => {
+    this.follow = (id, name, duration) => {
         this.serieService.follow({
             id: id,
+            name: name,
             duration: duration,
             user_id: this.sessionFactory.user.id
         }).then((res) => {
@@ -123,14 +138,6 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
             this.getFollow($routeParams.id, this.sessionFactory.user.id);
         });
     };
-
-    // this.getFollow = (id, data) => {
-    //     this.serieService.doIFollow(id, data).then((res) => {
-    //         this.series = res.data.followed;
-    //     });
-    // };
-    //
-    // this.getFollow($routeParams.id, this.sessionFactory.user.id);
 
     this.watch = (id, serieId, date, numero, saison) => {
         this.episodeService.watch({
@@ -199,7 +206,7 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
     this.unwatchSeason = (id) => {
         this.tmdbService.seasons($routeParams.id, id).then((response) => {
             this.season = response.data;
-            console.log(this.season)
+            console.log(this.season);
             this.episodeService.getAllWatchedBySeason($routeParams.id, this.sessionFactory.user.id, this.season.season_number).then((res) => {
                 this.serieTrack = res.data;
                 console.log(this.serieTrack);
@@ -226,7 +233,7 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
 
                 this.episodeService.getLastWatched(id, user).then((res) => {
                     this.lastWatched = res.data;
-                    if (this.lastWatched == "") {
+                    if (this.lastWatched === "") {
                         this.exist = false;
                     } else {
                         this.exist = true;
@@ -252,5 +259,18 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
         });
     };
 
+
+
+
+    // $(".seasonSelect").one("click", function() {
+    //     $(this).css("color", "orange");
+    // });
+
+    // $('.seasonSelect').on('click',
+    //     '.onsale-filter',
+    //     function() {
+    //         $('.highlighted').removeClass('highlighted');
+    //         $('.vacation').filter('.onsale').addClass('highlighted');
+    //     });
 
 }

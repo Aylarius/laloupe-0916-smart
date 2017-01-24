@@ -8,8 +8,8 @@
  * CH07 - PROFILE & PROFILE EDIT
  * CH08 - SEARCH RESULT PAGE
  * CH09 - PAGE SERIE
- * CH07 - FOOTER
- * CH07 - AUTRES
+ * CH010 - FOOTER
+ * CH011 - AUTRES
 
 **/
 
@@ -355,6 +355,15 @@ ________________________________________________________________________________
     text-decoration: none;
 }
 
+#CGU-Insc{
+  color: black;
+}
+
+#CGU-Insc:hover{
+  text-decoration: none;
+  color: rgb(255, 168, 52);
+}
+
 
 /*___HOMEPAGE_____________________________________________________________________________________________
 ____________________________________________________________________________________________________________*/
@@ -399,7 +408,7 @@ ________________________________________________________________________________
 }
 
 .hpnl-title {
-    font-size: 2rem;
+    font-size: 2.5rem;
 }
 
 .hpnl-text {
@@ -786,18 +795,18 @@ ________________________________________________________________________________
 }
 
 #img-section {
-    background-color: #909090;
+    background-color: #F7F6F6;
     text-align: center;
     color: #FFF;
-    padding-bottom: 30px;
-    padding-top: 30px;
+    padding-bottom: 0px;
+    padding-top: 50px;
 }
 
 #img-section img {
     border-radius: 50%;
     border: 5px solid rgb(255, 168, 52);
-    margin-bottom: 20px;
-    width: auto;
+    margin-bottom: -80px;
+    width: 100%;
     height: auto;
     max-width: 200px;
     max-height: 200px;
@@ -805,9 +814,9 @@ ________________________________________________________________________________
 
 #edit-btn {
     position: absolute;
-    top: 0px;
-    right: 30px;
-    color: white;
+    top: -40px;
+    right: 20px;
+    color: black;
     font-size: 1.25rem;
 }
 
@@ -821,13 +830,19 @@ ________________________________________________________________________________
     font-size: 20px;
     cursor: pointer;
 }
-
+#name-container {
+  padding-bottom: 20px;
+  background-color: #232323;
+  padding-top: 80px;
+  color: white;
+}
 #stat-section {
-    background-color: #232323;
-    padding-top: 20px;
+    background-color: #606060;
     padding-bottom: 20px;
+    padding-top: 15px;
     color: white;
     font-size: 1.25rem;
+    height:100vh;
 }
 
 #stat-container th, #stat-container td {
@@ -836,6 +851,17 @@ ________________________________________________________________________________
     padding-bottom: 5px;
     text-align: center;
     font-size: 1.25rem;
+}
+
+#stat-container p {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 500;
+    color : white;
+    padding-bottom: 20px;
+}
+#stat-container h3 {
+  color : rgb(255, 168, 52);
 }
 
 #stat-section #stat-container {
@@ -990,6 +1016,13 @@ ________________________________________________________________________________
     #stat-container i {
         display: none;
     }
+    #stat-container p {
+        padding-bottom: 5px;
+        font-size: 1.5rem;
+    }
+    #stat-section {
+        height:auto;
+    }
 }
 
 #profil-actuel {
@@ -1043,6 +1076,9 @@ ________________________________________________________________________________
     #resultats-options {
         padding-left: 10px;
         padding-right: 10px;
+    }
+    .btn-filter {
+      margin-top: 10px;
     }
 }
 
@@ -1496,3 +1532,10 @@ ________________________________________________________________________________
 .bar98{width:98%;}
 .bar99{width:99%;}
 .bar100{width:100%;}
+
+
+/*test*/
+
+.seasonActive {
+  color : orange !important;
+}

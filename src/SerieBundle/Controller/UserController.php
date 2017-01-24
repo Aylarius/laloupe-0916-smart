@@ -268,8 +268,8 @@ class UserController extends Controller
         $user = $em->getRepository('SerieBundle:User')->findOneBy(array('id' => $id));
         $serieList = $em->getRepository('SerieBundle:Serie')->findBy(array('userId' => $user));
         $episodeList = $em->getRepository('SerieBundle:Episode')->findBy(array('userId' => $user));
-
-        if ($serieList && $episodeList) {
+        
+        if (isset($serieList) && isset($episodeList) && !is_null($serieList) && !is_null($episodeList)) {
             $episodes = count($episodeList);
             $series = count($serieList);
             $count = 0;
@@ -282,10 +282,10 @@ class UserController extends Controller
             return new JsonResponse(['series' => $series, 'episodes' => $episodes, 'duration' => $count]);
 
         }
-        elseif (!$serieList){
+        elseif (!$serieList || is_null($serieList)){
             return new JsonResponse(['series' => 0, 'episodes' => 0]);
         }
-        elseif (!$episodeList) {
+        elseif (!$episodeList || is_null($episodeList)) {
             $serie = count($serieList);
             return new JsonResponse(['series' => $serie, 'episodes' => 0]);
         }

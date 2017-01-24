@@ -22,8 +22,8 @@
                                 <tr>
                                     <td>{{vm.sheetSerie.number_of_seasons}}</td>
                                     <td>{{vm.sheetSerie.number_of_episodes}}</td>
-                                    <td>{{vm.sheetSerie.episode_run_time[0]}}
-                                        min</td>
+                                    <td>{{vm.sheetSerie.episode_run_time[0]}} min
+                                    </td>
                                     <td class="xxs-hidden">{{vm.sheetSerie.in_production===true ? "En cours" : "Terminée"}}</td>
                                     <td class="xxs-hidden">{{vm.sheetSerie.popularity}}</td>
                                 </tr>
@@ -81,7 +81,7 @@
     <div class='horizon-swiper saison'>
         <ul>
             <li class="saison-num horizon-item" ng-repeat="season in vm.sheetSerie.seasons" ng-style="{{$index == vm.sheetSerie.seasons.length-1 && '{\'marginRight\':\'100px\'}'}}">
-                <a href="" ng-click="vm.getSeasons(vm.sheetSerie.id, season.season_number)" prevent>{{season.season_number == 0 ? 'Bonus' : 'Saison '+season.season_number}}</a>
+                <a ng-class="{'seasonActive': vm.lastWatched.saison == season.season_number || vm.seasonDefault == season.season_number}" class="seasonSelect" id='season-{{season.id}}' href="" ng-click="vm.getSeasons(vm.sheetSerie.id, season.season_number); vm.activeSeason(season.id)" prevent>{{season.season_number == 0 ? 'Bonus' : 'Saison '+season.season_number}}</a>
             </li>
         </ul>
     </div>
@@ -102,7 +102,7 @@
                             <div id="episode-card">
                                 <img ng-if="!episode.still_path" ng-style="{'background-image':'url(bundles/serie/assets/img/img-default-episode.png)'}" src="" alt="" class="img-responsive center-block">
                                 <img ng-if="episode.still_path" ng-style="{'background-image':'url(https://image.tmdb.org/t/p/original'+episode.still_path+')'}" src="" alt="" class="img-responsive center-block">
-                                    <div class="row no-pad">
+                                <div class="row no-pad">
                                     <div class="col-xs-10 text-left no-pad">
                                         <p>Saison {{episode.season_number}} - Episode {{episode.episode_number}}
                                         </p>
@@ -183,8 +183,8 @@
                         <div class="col-xxs-12 col-xs-6 col-sm-4 col-md-4 col-lg-4" id="episode-container" ng-repeat="episode in vm.seasons.episodes">
                             <div id="episode-card">
                                 <div>
-                                  <img data-toggle="modal" data-target="#{{episode.id}}" ng-if="!episode.still_path" ng-style="{'background-image':'url(bundles/serie/assets/img/img-default-episode.png)'}" src="" alt="" class="img-responsive center-block">
-                                  <img data-toggle="modal" data-target="#{{episode.id}}" ng-if="episode.still_path" ng-style="{'background-image':'url(https://image.tmdb.org/t/p/original'+episode.still_path+')'}" src="" alt="" class="img-responsive center-block">
+                                    <img data-toggle="modal" data-target="#{{episode.id}}" ng-if="!episode.still_path" ng-style="{'background-image':'url(bundles/serie/assets/img/img-default-episode.png)'}" src="" alt="" class="img-responsive center-block">
+                                    <img data-toggle="modal" data-target="#{{episode.id}}" ng-if="episode.still_path" ng-style="{'background-image':'url(https://image.tmdb.org/t/p/original'+episode.still_path+')'}" src="" alt="" class="img-responsive center-block">
                                 </div>
                                 <div class="row no-pad">
                                     <div class="col-xs-10 text-left no-pad episode-info">
@@ -255,12 +255,12 @@
                             <div class="fill"></div>
                         </div>
                     </div>
-                      <h4 ng-show='vm.exist'>DERNIER EPISODE VU</h4>
-                      <div class="card_episode" ng-href="" ng-show='vm.exist'>
-                          <img class="img-responsive episode_img" ng-src="{{ !vm.episode.still_path ? 'bundles/serie/assets/img/img-default-episode.png' : 'https://image.tmdb.org/t/p/original'+vm.episode.still_path }}" alt="" />
-                          <p>{{vm.episode.season_number ? 'Saison '+vm.episode.season_number+' - Episode '+vm.episode.episode_number : "Prout"}}
-                          </p>
-                      </div>
+                    <h4 ng-show='vm.exist'>DERNIER EPISODE VU</h4>
+                    <div class="card_episode" ng-href="" ng-show='vm.exist'>
+                        <img class="img-responsive episode_img" ng-src="{{ !vm.episode.still_path ? 'bundles/serie/assets/img/img-default-episode.png' : 'https://image.tmdb.org/t/p/original'+vm.episode.still_path }}" alt="" />
+                        <p>{{vm.episode.season_number ? 'Saison '+vm.episode.season_number+' - Episode '+vm.episode.episode_number : "Prout"}}
+                        </p>
+                    </div>
                     <h4>PROCHAIN EPISODE</h4>
                     <div class="card_episode" ng-href="">
                         <img class="img-responsive episode_img" ng-src="{{!vm.seasons.episodes[0].still_path  ? 'bundles/serie/assets/img/img-default-episode.png' : 'https://image.tmdb.org/t/p/original'+vm.seasons.episodes[0].still_path }}" alt="" />

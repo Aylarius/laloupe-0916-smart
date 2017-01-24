@@ -21,21 +21,29 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
                 this.getSheetSerie = (id) => {
                     this.tmdbService.sheetSerie(id).then((response) => {
                         this.sheetSerie = response.data;
+                        setTimeout(function() {
+                            $('.horizon-swiper').horizonSwiper();
+                        }, 500);
                     });
                     this.tmdbService.seasons(id, this.seasonDefault).then((response) => {
                         this.seasons = response.data;
+
                     });
                 };
             } else {
                 this.getSheetSerie = (id) => {
                     this.tmdbService.sheetSerie(id).then((response) => {
                         this.sheetSerie = response.data;
+                        setTimeout(function() {
+                            $('.horizon-swiper').horizonSwiper();
+                        }, 500);
                     });
                     this.episodeService.getLastWatched($routeParams.id, this.sessionFactory.user.id).then((res) => {
                         this.lastWatched = res.data;
                         this.seasonDefault = !this.lastWatched.saison ? this.seasonDefault : this.lastWatched.saison;
                         this.tmdbService.seasons(id, this.seasonDefault).then((response) => {
                             this.seasons = response.data;
+
                         });
                     });
                 };
@@ -91,9 +99,15 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
     this.getSeasons = (id, season) => {
         this.tmdbService.seasons(id, season).then((response) => {
             this.seasons = response.data;
+
         });
     };
 
+    // selection de la saison
+    this.activeSeason = (id) => {
+      angular.element('.seasonSelect').removeClass('seasonActive');
+      angular.element('#season-' + id).addClass('seasonActive');
+    };
 
     this.follow = (id, duration) => {
         this.serieService.follow({
@@ -114,14 +128,6 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
             this.getFollow($routeParams.id, this.sessionFactory.user.id);
         });
     };
-
-    // this.getFollow = (id, data) => {
-    //     this.serieService.doIFollow(id, data).then((res) => {
-    //         this.series = res.data.followed;
-    //     });
-    // };
-    //
-    // this.getFollow($routeParams.id, this.sessionFactory.user.id);
 
     this.watch = (id, serieId, date, numero, saison) => {
         this.episodeService.watch({
@@ -190,7 +196,7 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
     this.unwatchSeason = (id) => {
         this.tmdbService.seasons($routeParams.id, id).then((response) => {
             this.season = response.data;
-            console.log(this.season)
+            console.log(this.season);
             this.episodeService.getAllWatchedBySeason($routeParams.id, this.sessionFactory.user.id, this.season.season_number).then((res) => {
                 this.serieTrack = res.data;
                 console.log(this.serieTrack);
@@ -217,13 +223,13 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
 
                 this.episodeService.getLastWatched(id, user).then((res) => {
                     this.lastWatched = res.data;
-                    if (this.lastWatched == "" ){
-                      this.exist = false;
+                    if (this.lastWatched === "") {
+                        this.exist = false;
                     } else {
-                      this.exist = true;
-                      this.tmdbService.lastEpisode(this.lastWatched.serieId.serieId, this.lastWatched.saison, this.lastWatched.numero).then((response) => {
-                          this.episode = response.data;
-                      });
+                        this.exist = true;
+                        this.tmdbService.lastEpisode(this.lastWatched.serieId.serieId, this.lastWatched.saison, this.lastWatched.numero).then((response) => {
+                            this.episode = response.data;
+                        });
                     }
                 });
             });
@@ -243,5 +249,18 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
         });
     };
 
+
+
+
+    // $(".seasonSelect").one("click", function() {
+    //     $(this).css("color", "orange");
+    // });
+
+    // $('.seasonSelect').on('click',
+    //     '.onsale-filter',
+    //     function() {
+    //         $('.highlighted').removeClass('highlighted');
+    //         $('.vacation').filter('.onsale').addClass('highlighted');
+    //     });
 
 }

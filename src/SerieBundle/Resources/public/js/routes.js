@@ -1,5 +1,5 @@
 const routes = ($routeProvider, $httpProvider, $locationProvider) => {
-    $locationProvider.html5Mode(false).hashPrefix('');
+    $locationProvider.html5Mode(false).hashPrefix('!');
     $routeProvider
         .when('/', {
             templateUrl: 'bundles/serie/views/homepage.html',

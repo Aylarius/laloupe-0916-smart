@@ -1539,3 +1539,50 @@ ________________________________________________________________________________
 .seasonActive {
   color : orange !important;
 }
+.monthly-header-title-date, .monthly-header-title-date:hover {
+  border-radius: unset !important;
+  border: none !important;
+  background-color: white !important;
+  color: rgb(255, 168, 52) !important;
+  padding-top: 2px !important;
+  font-size: 1.25rem;
+}
+.monthly-prev:after, .monthly-next:after {
+    border-color: white;
+}
+.monthly-header-title a:last-of-type {
+  border-radius: unset !important;
+}
+.monthly-header-title a:link, .monthly-header-title a:visited {
+    border: none;
+    color: white;
+    background-color: rgb(255, 168, 52);
+}
+.monthly-header {
+    background: rgb(255, 168, 52) !important;
+    padding-top: 0 !important;
+}
+.monthly-event-list {
+    top: 3em;
+  }
+
+  .monthly-indicator-wrap {
+    margin-top: 10px !important;
+}
+.monthly-day-event > .monthly-day-number {
+    font-size: 1rem;
+}
+.monthly-day-title-wrap {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.monthly-today .monthly-day-number {
+    background: rgb(255,168,52) !important;
+    border-radius: 20px !important;
+    padding: 0px !important;
+    padding-top: 6px !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 2rem !important;
+    height: 2rem !important;
+}

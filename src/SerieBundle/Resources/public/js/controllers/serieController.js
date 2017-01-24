@@ -17,6 +17,7 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
             this.series = res.data.followed;
             this.seasonDefault = 1;
             this.pourcentage = 0;
+            this.seasonSelect = "selectWhite";
             this.circle = "c100 p" + this.pourcentage + " orange";
             if (this.series === false) {
                 this.getSheetSerie = (id) => {
@@ -84,12 +85,7 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
             this.okSpoiler[id] = false;
         }
         this.okSpoiler[id] = !this.okSpoiler[id];
-        console.log(this.okSpoiler);
     };
-
-
-    console.log(this.sessionFactory.series);
-
 
     // liste des acteurs
     this.getPeople = (id) => {
@@ -184,15 +180,11 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
         });
     };
 
-
-
     this.watchSeason = (id) => {
         this.tmdbService.seasons($routeParams.id, id).then((response) => {
             this.season = response.data;
-            console.log(this.season);
             this.episodeService.getAllWatchedBySeason($routeParams.id, this.sessionFactory.user.id, this.season.season_number).then((res) => {
                 this.serieTrack = res.data;
-                console.log(this.serieTrack);
                 for (let episode of this.season.episodes) {
                     if (this.serieTrack.indexOf(episode.id) == -1) {
                         this.watchAll(episode.id, $routeParams.id, episode.air_date, episode.episode_number, episode.season_number);
@@ -205,10 +197,8 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
     this.unwatchSeason = (id) => {
         this.tmdbService.seasons($routeParams.id, id).then((response) => {
             this.season = response.data;
-            console.log(this.season);
             this.episodeService.getAllWatchedBySeason($routeParams.id, this.sessionFactory.user.id, this.season.season_number).then((res) => {
                 this.serieTrack = res.data;
-                console.log(this.serieTrack);
                 for (let episode of this.season.episodes) {
                     if (this.serieTrack.indexOf(episode.id) !== -1) {
                         this.watchAll(episode.id, $routeParams.id, episode.air_date, episode.episode_number, episode.season_number);
@@ -255,6 +245,15 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
                 this.episode = response.data;
                 console.log(this.episode);
             });
+            this.NextWatch = (id, user) => {
+                this.episodeService.getLastWatched(id, user).then((res) => {
+                    this.lastWatched = res.data;
+                    this.tmdbService.lastEpisode(this.lastWatched.serieId.serieId, this.lastWatched.saison, this.lastWatched.numero+1).then((response) => {
+                        this.episode = response.data;
+                        console.log(this.episode);
+                    });
+                });
+            };
         });
     };
 

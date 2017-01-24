@@ -7,9 +7,9 @@ function navbarController(tmdbService, $location, sessionFactory, $rootScope, $w
     this.$rootScope = $rootScope;
 
     this.searchView = (query) => {
-        if(query != '') {
-          this.isToggled = false;
-          $location.path("/resultats/" + query);
+        if (query != '') {
+            this.isToggled = false;
+            $location.path("/resultats/" + query);
         }
     };
 
@@ -47,6 +47,10 @@ function navbarController(tmdbService, $location, sessionFactory, $rootScope, $w
         this.$location.path('/connexion');
     };
 
-
-
+    // Close collapsed navbar on click outside the navbar
+    $(function() {
+        $(document).click(function(event) {
+            $('.navbar-collapse').collapse('hide');
+        });
+    });
 }

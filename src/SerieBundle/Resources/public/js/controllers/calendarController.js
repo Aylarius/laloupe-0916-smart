@@ -25,7 +25,7 @@ function calendarController($http, tmdbService, serieService, sessionFactory, $t
                             this.episodeB.id = episode.id;
                             this.episodeB.name = serie.name + ' - Saison ' + episode.season_number + ' - Episode ' + episode.episode_number;
                             this.episodeB.startdate = episode.air_date;
-                            this.episodeB.url = '#/serie/'+serie.serieId;
+                            this.episodeB.url = '#!/serie/'+serie.serieId;
                             this.episodeB.color = "#ffa834";
                             this.episodesList.push(this.episodeB);
                         }

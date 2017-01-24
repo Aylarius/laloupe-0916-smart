@@ -6,10 +6,13 @@ function navbarController(tmdbService, $location, sessionFactory, $rootScope, $w
     this.sessionFactory = sessionFactory;
     this.$rootScope = $rootScope;
 
+    this.query = "";
+
     this.searchView = (query) => {
         if (query != '') {
             this.isToggled = false;
             $location.path("/resultats/" + query);
+            this.query = "";
         }
     };
 

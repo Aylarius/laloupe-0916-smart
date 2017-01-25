@@ -8,7 +8,6 @@ function serieController(serieService, episodeService, userService, sessionFacto
     this.userService = userService;
     this.episodeService = episodeService;
     this.sessionFactory = sessionFactory;
-    console.log(this.sessionFactory.isLogged);
     this.underscoreReg = new RegExp('-', 'g');
 
     // fiche série

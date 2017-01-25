@@ -105,11 +105,11 @@
                                 <img ng-if="episode.still_path" ng-style="{'background-image':'url(https://image.tmdb.org/t/p/original'+episode.still_path+')'}" class="img-responsive center-block">
                                 <div class="row no-pad">
                                     <div class="col-xs-10 text-left no-pad">
-                                        <p>Saison {{episode.season_number}} - Episode {{episode.episode_number}}
+                                        <p>{{episode.season_number == 0 ? 'Bonus' : 'Saison '+episode.season_number}} - Episode {{episode.episode_number}}
                                         </p>
-                                        <p ng-bind="'{{episode.air_date.replace('-','')+'T00:00:00'}}' | date:'dd MMMM yyyy'"></p>
+                                        <p>{{!episode.air_date ? 'Date non disponible' : episode.air_date.replace(vm.underscoreReg,'')+'T00:00:00' | date:'dd MMMM yyyy' == 'T00:00:00'}}</p>
                                     </div>
-                                    <div class="col-xs-2 text-right no-pad">
+                                    <div class="col-xs-2 text-right no-pad" ng-hide="episode.season_number == 0">
                                         <span id="star" class="glyphicon glyphicon-ok-sign"></span>
                                     </div>
                                 </div>
@@ -217,7 +217,7 @@
                                                     - Episode
                                                     {{episode.episode_number}}
                                                 </h4>
-                                                <h5>{{episode.air_date.replace(vm.underscoreReg,'')+'T00:00:00' | date:'dd MMMM yyyy'}}</h5>
+                                                <h5>{{!episode.air_date ? 'Date non disponible' : episode.air_date.replace(vm.underscoreReg,'')+'T00:00:00' | date:'dd MMMM yyyy' == 'T00:00:00'}}</h5>
                                                 <p>
                                                     {{episode.name}} {{episode.overview}}
                                                 </p>
@@ -229,7 +229,7 @@
                                                   - Episode
                                                   {{episode.episode_number}}
                                               </h4>
-                                                <h5>{{episode.air_date.replace(vm.underscoreReg,'')+'T00:00:00' | date:'dd MMMM yyyy'}}</h5>
+                                                <h5>{{!episode.air_date ? 'Date non disponible' : episode.air_date.replace(vm.underscoreReg,'')+'T00:00:00' | date:'dd MMMM yyyy' == 'T00:00:00'}}</h5>
                                                 <br ng-hide='vm.okSpoiler[episode.id]'>
                                                 <div ng-hide='episode.season_number == 0'>
                                                     <h3 ng-hide='vm.okSpoiler[episode.id]'>Cliquez sur le bouton pour afficher le résumé de l'épisode.</h3>

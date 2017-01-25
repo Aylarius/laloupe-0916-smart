@@ -81,7 +81,8 @@
     <div class='horizon-swiper saison'>
         <ul>
             <li class="saison-num horizon-item" ng-repeat="season in vm.sheetSerie.seasons" ng-style="{{$index == vm.sheetSerie.seasons.length-1 && '{\'marginRight\':\'100px\'}'}}">
-                <a ng-class="{'seasonActive': vm.lastWatched.saison == season.season_number || vm.seasonDefault == season.season_number}" class="seasonSelect" id='season-{{season.id}}' href="" ng-click="vm.getSeasons(vm.sheetSerie.id, season.season_number); vm.activeSeason(season.id)" prevent>{{season.season_number == 0 ? 'Bonus' : 'Saison '+season.season_number}}</a>
+                <a ng-class="{'seasonActive': vm.lastWatched.saison == season.season_number || vm.seasonDefault == season.season_number}" class="seasonSelect" id='season-{{season.id}}' href="" ng-click="vm.getSeasons(vm.sheetSerie.id, season.season_number); vm.activeSeason(season.id)"
+                    prevent>{{season.season_number == 0 ? 'Bonus' : 'Saison '+season.season_number}}</a>
             </li>
         </ul>
     </div>
@@ -100,9 +101,9 @@
                     <div class="row">
                         <div class="col-xxs-12 col-xs-6 col-sm-4 col-md-4 col-lg-4" id="episode-container" ng-repeat="episode in vm.seasons.episodes" data-toggle="modal" data-target='{{vm.sessionFactory.isLogged ? "#myModal_log" : "#myModal_notlog"}}'>
                             <div id="episode-card">
-                                <img ng-if="!episode.still_path" ng-style="{'background-image':'url(bundles/serie/assets/img/img-default-episode.png)'}" alt="Image par défaut" class="img-responsive center-block">
+                                <img ng-if="!episode.still_path" ng-style="{'background-image':'url(bundles/serie/assets/img/img-default-episode.png)'}" alt="" class="img-responsive center-block">
                                 <img ng-if="episode.still_path" ng-style="{'background-image':'url(https://image.tmdb.org/t/p/original'+episode.still_path+')'}" class="img-responsive center-block">
-                                    <div class="row no-pad">
+                                <div class="row no-pad">
                                     <div class="col-xs-10 text-left no-pad">
                                         <p>Saison {{episode.season_number}} - Episode {{episode.episode_number}}
                                         </p>
@@ -183,8 +184,8 @@
                         <div class="col-xxs-12 col-xs-6 col-sm-4 col-md-4 col-lg-4" id="episode-container" ng-repeat="episode in vm.seasons.episodes">
                             <div id="episode-card">
                                 <div>
-                                  <img data-toggle="modal" data-target="#{{episode.id}}" ng-if="!episode.still_path" ng-style="{'background-image':'url(bundles/serie/assets/img/img-default-episode.png)'}" alt="Image par défaut" class="img-responsive center-block">
-                                  <img data-toggle="modal" data-target="#{{episode.id}}" ng-if="episode.still_path" ng-style="{'background-image':'url(https://image.tmdb.org/t/p/original'+episode.still_path+')'}" class="img-responsive center-block">
+                                    <img data-toggle="modal" data-target="#{{episode.id}}" ng-if="!episode.still_path" ng-style="{'background-image':'url(bundles/serie/assets/img/img-default-episode.png)'}" alt="" class="img-responsive center-block">
+                                    <img data-toggle="modal" data-target="#{{episode.id}}" ng-if="episode.still_path" ng-style="{'background-image':'url(https://image.tmdb.org/t/p/original'+episode.still_path+')'}" class="img-responsive center-block">
                                 </div>
                                 <div class="row no-pad">
                                     <div class="col-xs-10 text-left no-pad episode-info">
@@ -193,7 +194,7 @@
                                         </p>
                                         <p>{{episode.air_date.replace(vm.underscoreReg,'')+'T00:00:00' | date:'dd MMMM yyyy'}}</p>
                                     </div>
-                                    <a href="#" ng-click='vm.watch(episode.id, vm.sheetSerie.id, episode.air_date, episode.episode_number, episode.season_number)' prevent>
+                                    <a href="#" ng-click='vm.watch(episode.id, vm.sheetSerie.id, episode.air_date, episode.episode_number, episode.season_number)' ng-hide="episode.season_number == 0" prevent>
                                         <div class="col-xs-2 text-right no-pad">
                                             <span id="sign" style="color: #929292" class="glyphicon glyphicon-ok-sign" ng-hide='vm.serieTrack.indexOf(episode.id) !== -1'></span>
                                             <span id="sign" style="color: rgb(255, 168, 52)" class="glyphicon glyphicon-ok-sign" ng-show='vm.serieTrack.indexOf(episode.id) !== -1'></span>
@@ -230,9 +231,11 @@
                                               </h4>
                                                 <h5>{{episode.air_date.replace(vm.underscoreReg,'')+'T00:00:00' | date:'dd MMMM yyyy'}}</h5>
                                                 <br ng-hide='vm.okSpoiler[episode.id]'>
-                                                <h3 ng-hide='vm.okSpoiler[episode.id]'>Cliquez sur le bouton pour afficher le résumé de l'épisode.</h3>
-                                                <a id="btn-modal" ng-click='vm.modalSpoiler(episode.id)' ng-hide='vm.okSpoiler[episode.id]'>Alerte Spoiler</a>
-                                                <p ng-show='vm.okSpoiler[episode.id]'>
+                                                <div ng-hide='episode.season_number == 0'>
+                                                    <h3 ng-hide='vm.okSpoiler[episode.id]'>Cliquez sur le bouton pour afficher le résumé de l'épisode.</h3>
+                                                    <a id="btn-modal" ng-click='vm.modalSpoiler(episode.id)' ng-hide='vm.okSpoiler[episode.id]'>Alerte Spoiler</a>
+                                                </div>
+                                                <p ng-show='vm.okSpoiler[episode.id] || episode.season_number == 0'>
                                                     {{episode.name}} {{episode.overview}}
                                                 </p>
                                             </div>
@@ -255,12 +258,12 @@
                             <div class="fill"></div>
                         </div>
                     </div>
-                      <h4 ng-show='vm.exist'>DERNIER EPISODE VU</h4>
-                      <div class="card_episode" ng-href="" ng-show='vm.exist'>
-                          <img class="img-responsive episode_img" ng-src="{{ !vm.episode.still_path ? 'bundles/serie/assets/img/img-default-episode.png' : 'https://image.tmdb.org/t/p/original'+vm.episode.still_path }}" alt="{{ vm.sheetSerie.name }}" />
-                          <p>{{vm.episode.season_number ? 'Saison '+vm.episode.season_number+' - Episode '+vm.episode.episode_number : "Prout"}}
-                          </p>
-                      </div>
+                    <h4 ng-show='vm.exist'>DERNIER EPISODE VU</h4>
+                    <div class="card_episode" ng-href="" ng-show='vm.exist'>
+                        <img class="img-responsive episode_img" ng-src="{{ !vm.episode.still_path ? 'bundles/serie/assets/img/img-default-episode.png' : 'https://image.tmdb.org/t/p/original'+vm.episode.still_path }}" alt="{{ vm.sheetSerie.name }}" />
+                        <p>{{vm.episode.season_number ? 'Saison '+vm.episode.season_number+' - Episode '+vm.episode.episode_number : "Prout"}}
+                        </p>
+                    </div>
                     <h4>PROCHAIN EPISODE</h4>
                     <div class="card_episode" ng-href="">
                         <img class="img-responsive episode_img" ng-src="{{!vm.seasons.episodes[0].still_path  ? 'bundles/serie/assets/img/img-default-episode.png' : 'https://image.tmdb.org/t/p/original'+vm.seasons.episodes[0].still_path }}" alt="{{ vm.sheetSerie.name }}" />

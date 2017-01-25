@@ -1,6 +1,6 @@
 WhatiWatch
 ==========
-Projet Symfony2 (version 2.8) et AngularJS (version 1.5) créée pour la mise en place d'un site de suivi des séries TV.
+Projet Symfony2 (version 2.8) et AngularJS (version 1.6) créée pour la mise en place d'un site de suivi des séries TV.
 
 ## Pré-requis
 

@@ -153,6 +153,22 @@ class UserController extends Controller
         return new JsonResponse(json_decode($users));
     }
 
+    public function getAllBySerieAction($id)
+    {
+        // Get data from database
+        $em = $this->getDoctrine()->getManager();
+        $serie = $em->getRepository('SerieBundle:Serie')->findBy(array('serieId' => $id));
+
+        if (isset($serie) && !is_null($serie)) {
+            $followers = count($serie);
+            return new JsonResponse(['followers' => $followers]);
+        }
+        else {
+            return new JsonResponse(['followers' => 0]);
+        }
+    }
+
+
     public function getOneAction(User $user)
     {
         // Return as JSON

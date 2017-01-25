@@ -1,10 +1,11 @@
-function serieController(serieService, episodeService, sessionFactory, tmdbService, $routeParams, $location, $rootScope, $timeout) {
+function serieController(serieService, episodeService, userService, sessionFactory, tmdbService, $routeParams, $location, $rootScope, $timeout) {
 
     this.tmdbService = tmdbService;
     this.$routeParams = $routeParams;
     this.$location = $location;
     this.$rootScope = $rootScope;
     this.serieService = serieService;
+    this.userService = userService;
     this.episodeService = episodeService;
     this.sessionFactory = sessionFactory;
     console.log(this.sessionFactory.isLogged);
@@ -125,13 +126,16 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
             this.loginMessage.title = "Vous avez bien ajouté cette série à vos séries favorites !";
             this.loginMessage.message = "En cours de redirection...";
             this.getFollow($routeParams.id, this.sessionFactory.user.id);
-        }).catch((res) => {
+            this.getFollowers($routeParams.id);
+    }).catch((res) => {
             this.loginMessage = {};
             this.loginMessage.type = "error";
             this.loginMessage.title = "Erreur lors du suivi";
             this.loginMessage.message = res.data;
             this.getFollow($routeParams.id, this.sessionFactory.user.id);
-        });
+            this.getFollowers($routeParams.id);
+
+    });
     };
 
     this.watch = (id, serieId, date, numero, saison) => {
@@ -256,6 +260,13 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
             };
         });
     };
+
+    this.getFollowers = (id) => {
+        this.userService.getAllBySerie(id).then((res) => {
+            this.followers = res.data.followers;
+        })
+    }
+    this.getFollowers($routeParams.id);
 
 
 

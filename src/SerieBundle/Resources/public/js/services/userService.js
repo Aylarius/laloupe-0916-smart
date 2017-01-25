@@ -35,5 +35,9 @@ function userService($http, sessionFactory) {
         return this.$http.post('app_dev.php/user/reactivate', data)
     }
 
+    this.getAllBySerie = (id) => {
+        return this.$http.get('app_dev.php/user/getbyserie/' + id)
+    }
+
 
 }

@@ -187,11 +187,16 @@ function serieController(serieService, episodeService, userService, sessionFacto
             this.loginMessage.type = "success";
             this.loginMessage.title = "Vous avez bien ajouté cette série à vos séries favorites !";
             this.loginMessage.message = "En cours de redirection...";
+            this.getLastWatched($routeParams.id, this.sessionFactory.user.id);
+            this.getAllWatched($routeParams.id, this.sessionFactory.user.id);
         }).catch((res) => {
             this.loginMessage = {};
             this.loginMessage.type = "error";
             this.loginMessage.title = "Erreur lors du suivi";
             this.loginMessage.message = res.data;
+            this.getLastWatched($routeParams.id, this.sessionFactory.user.id);
+            this.getAllWatched($routeParams.id, this.sessionFactory.user.id);
+
         });
     };
 

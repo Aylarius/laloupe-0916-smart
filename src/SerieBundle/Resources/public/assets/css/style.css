@@ -9,7 +9,8 @@
  * CH08 - SEARCH RESULT PAGE
  * CH09 - PAGE SERIE
  * CH010 - FOOTER
- * CH011 - AUTRES
+ * CH011 - CALENDRIER
+ * CH012 - AUTRES
 
 **/
 
@@ -21,7 +22,7 @@ html {
     font-size: 16px;
     font-size: 1rem;
 }
-#homepage, .serie, #profile-page, #inscription-page, #connexion-page, #profil-edit-page, #reactivation-page, #inscription-page2, #resultats-page {
+#homepage, .monthly, .serie, #profile-page, #inscription-page, #connexion-page, #profil-edit-page, #reactivation-page, #inscription-page2, #resultats-page {
   min-height: 100vh;
 }
 .row {
@@ -108,7 +109,7 @@ ________________________________________________________________________________
     margin-right: 20px;
 }
 
-@media all and (max-width: 948px) {
+@media all and (max-width: 982px) {
     .navbar-default .navbar-nav>li>a {
         font-size: 1rem;
         padding-left: 0px;
@@ -1180,6 +1181,10 @@ ________________________________________________________________________________
     margin-right: 15px;
 }
 
+.seasonActive {
+  color : orange !important;
+}
+
 #season-section .btn-orange, #season-section .btn-grey {
     width: auto;
     margin-top: 10px;
@@ -1198,6 +1203,13 @@ ________________________________________________________________________________
     margin-bottom: 15px;
 }
 
+#section-progression p {
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+#section-progression .date {
+    margin-top: 0px;
+}
 .episode-info {
     font-size: 1rem;
 }
@@ -1350,45 +1362,59 @@ footer .img-card {
     -webkit-box-shadow: 1px 1px 3px #333;
     -moz-box-shadow: 1px 1px 3px #333;
     box-shadow: 1px 1px 3px #333;
-    -webkit-transform: scale(1);
-    -moz-transform: scale(1);
-    -ms-transform: scale(1);
-    -o-transform: scale(1);
-    transform: scale(1);
-    animation: rotate 0.5s infinite;
-    -webkit-animation: rotate 0.5s infinite;
-    -moz-animation: rotate 0.5s infinite;
-    -o-animation: rotate 0.5s infinite;
-    animation: rotate 0.5s infinite;
 }
 
-@keyframes rotate {
-    0% {
-        transform: scale(1) rotate(0deg);
-        -webkit-transform: scale(1) rotate(0deg);
-    }
-    100% {
-        transform: scale(1) rotate(720deg);
-        -webkit-transform: scale(1) rotate(720deg);
-    }
-}
 
-@-moz-keyframes rotate {
-    0% {
-        -moz-transform: scale(1) rotate(0deg);
-    }
-    100% {
-        -moz-transform: scale(1) rotate(720deg);
-    }
-}
+/*___CALENDRIER___________________________________________________________________________________________________
+____________________________________________________________________________________________________________*/
 
-@-webkit-keyframes rotate {
-    0% {
-        -webkit-transform: scale(1) rotate(0deg);
-    }
-    100% {
-        -webkit-transform: scale(1) rotate(720deg);
-    }
+
+.monthly-header-title-date, .monthly-header-title-date:hover {
+  border-radius: unset !important;
+  border: none !important;
+  background-color: white !important;
+  color: rgb(255, 168, 52) !important;
+  padding-top: 2px !important;
+  font-size: 1.25rem;
+}
+.monthly-prev:after, .monthly-next:after {
+    border-color: white;
+}
+.monthly-header-title a:last-of-type {
+  border-radius: unset !important;
+}
+.monthly-header-title a:link, .monthly-header-title a:visited {
+    border: none;
+    color: white;
+    background-color: rgb(255, 168, 52);
+}
+.monthly-header {
+    background: rgb(255, 168, 52) !important;
+    padding-top: 0 !important;
+}
+.monthly-event-list {
+    top: 3em;
+  }
+
+  .monthly-indicator-wrap {
+    margin-top: 10px !important;
+}
+.monthly-day-event > .monthly-day-number {
+    font-size: 1rem;
+}
+.monthly-day-title-wrap {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.monthly-today .monthly-day-number {
+    background: rgb(255,168,52) !important;
+    border-radius: 20px !important;
+    padding: 0px !important;
+    padding-top: 6px !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 2rem !important;
+    height: 2rem !important;
 }
 
 
@@ -1504,57 +1530,3 @@ ________________________________________________________________________________
 .bar98{width:98%;}
 .bar99{width:99%;}
 .bar100{width:100%;}
-
-
-/*test*/
-
-.seasonActive {
-  color : orange !important;
-}
-.monthly-header-title-date, .monthly-header-title-date:hover {
-  border-radius: unset !important;
-  border: none !important;
-  background-color: white !important;
-  color: rgb(255, 168, 52) !important;
-  padding-top: 2px !important;
-  font-size: 1.25rem;
-}
-.monthly-prev:after, .monthly-next:after {
-    border-color: white;
-}
-.monthly-header-title a:last-of-type {
-  border-radius: unset !important;
-}
-.monthly-header-title a:link, .monthly-header-title a:visited {
-    border: none;
-    color: white;
-    background-color: rgb(255, 168, 52);
-}
-.monthly-header {
-    background: rgb(255, 168, 52) !important;
-    padding-top: 0 !important;
-}
-.monthly-event-list {
-    top: 3em;
-  }
-
-  .monthly-indicator-wrap {
-    margin-top: 10px !important;
-}
-.monthly-day-event > .monthly-day-number {
-    font-size: 1rem;
-}
-.monthly-day-title-wrap {
-    padding-top: 5px;
-    padding-bottom: 5px;
-}
-.monthly-today .monthly-day-number {
-    background: rgb(255,168,52) !important;
-    border-radius: 20px !important;
-    padding: 0px !important;
-    padding-top: 6px !important;
-    left: 0 !important;
-    top: 0 !important;
-    width: 2rem !important;
-    height: 2rem !important;
-}

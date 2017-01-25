@@ -102,4 +102,6 @@ function hpController($timeout, tmdbService, $location, $window, userService, se
         }
         this.series[id] = !this.series[id];
     };
+
+
 }

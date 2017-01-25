@@ -73,8 +73,7 @@
                     saisons -
                     {{ result.number_of_episodes }}
                     épisodes</h3>
-                <h3>{{ vm.followers }}
-                    followers</h3>
+                    
                 <p>{{ result.overview | limitTo: 600 }}{{ result.overview.length > 600 ? '...' : ''}}</p>
                 <div class="text-left">
                     <span class="title-section-serie">Genre :

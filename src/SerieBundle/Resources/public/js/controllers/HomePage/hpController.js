@@ -110,4 +110,6 @@ function hpController($routeParams, $timeout, tmdbService, $location, $window, u
         }
         this.series[id] = !this.series[id];
     };
+
+
 }

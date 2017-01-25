@@ -277,6 +277,36 @@ function serieController(serieService, episodeService, userService, sessionFacto
         });
     };
 
+this.toAir = (id) => {
+    this.tmdbService.sheetSerie(id).then((response) => {
+        this.sheetSerie = response.data;
+        this.tmdbService.seasons(id, this.sheetSerie.number_of_seasons).then((res) => {
+            this.episodes = res.data.episodes;
+            this.today = new Date();
+            this.arrayEpisodes = [];
+            for (let i = 0; i < this.episodes.length; i++) {
+                this.date = new Date(this.episodes[i].air_date);
+                if (this.date > this.today) {
+                  this.episode = this.episodes[i];
+                  this.arrayEpisodes.push(this.episode);
+                }
+            }
+            if (this.arrayEpisodes.length <= 0) {
+              this.toAirExist = false;
+
+            } else {
+              this.episodeToAir = this.arrayEpisodes[0];
+              this.toAirExist = true;
+
+            }
+            console.log(this.arrayEpisodes.length);
+            console.log(this.toAirExist);
+        });
+    });
+}
+this.toAir($routeParams.id);
+
+
     this.getFollowers = (id) => {
         this.userService.getAllBySerie(id).then((res) => {
             this.followers = res.data.followers;

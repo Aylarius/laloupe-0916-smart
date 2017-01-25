@@ -100,7 +100,7 @@
                     <div class="row">
                         <div class="col-xxs-12 col-xs-6 col-sm-4 col-md-4 col-lg-4" id="episode-container" ng-repeat="episode in vm.seasons.episodes" data-toggle="modal" data-target='{{vm.sessionFactory.isLogged ? "#myModal_log" : "#myModal_notlog"}}'>
                             <div id="episode-card">
-                                <img ng-if="!episode.still_path" ng-style="{'background-image':'url(bundles/serie/assets/img/img-default-episode.png)'}" alt="Image par défaut" class="img-responsive center-block">
+                                <img ng-if="!episode.still_path" ng-style="{'background-image':'url(bundles/serie/assets/img/img-default-episode.png)'}" class="img-responsive center-block">
                                 <img ng-if="episode.still_path" ng-style="{'background-image':'url(https://image.tmdb.org/t/p/original'+episode.still_path+')'}" class="img-responsive center-block">
                                     <div class="row no-pad">
                                     <div class="col-xs-10 text-left no-pad">
@@ -183,7 +183,7 @@
                         <div class="col-xxs-12 col-xs-6 col-sm-4 col-md-4 col-lg-4" id="episode-container" ng-repeat="episode in vm.seasons.episodes">
                             <div id="episode-card">
                                 <div>
-                                  <img data-toggle="modal" data-target="#{{episode.id}}" ng-if="!episode.still_path" ng-style="{'background-image':'url(bundles/serie/assets/img/img-default-episode.png)'}" alt="Image par défaut" class="img-responsive center-block">
+                                  <img data-toggle="modal" data-target="#{{episode.id}}" ng-if="!episode.still_path" ng-style="{'background-image':'url(bundles/serie/assets/img/img-default-episode.png)'}" class="img-responsive center-block">
                                   <img data-toggle="modal" data-target="#{{episode.id}}" ng-if="episode.still_path" ng-style="{'background-image':'url(https://image.tmdb.org/t/p/original'+episode.still_path+')'}" class="img-responsive center-block">
                                 </div>
                                 <div class="row no-pad">
@@ -261,19 +261,19 @@
                           <p>{{vm.episode.season_number ? 'Saison '+vm.episode.season_number+' - Episode '+vm.episode.episode_number : ""}}
                           </p>
                       </div>
-                    <h4>PROCHAIN EPISODE</h4>
-                    <div class="card_episode" ng-href="">
-                        <img class="img-responsive episode_img" ng-src="{{!vm.nextEpisode.still_path  ? 'bundles/serie/assets/img/img-default-episode.png' : 'https://image.tmdb.org/t/p/original'+vm.seasons.episodes[0].still_path }}" alt="{{ vm.sheetSerie.name }}" />
+                    <h4 ng-show='vm.exist'>PROCHAIN EPISODE</h4>
+                    <div class="card_episode" ng-href="" ng-show='vm.exist'>
+                        <img class="img-responsive episode_img" ng-src="{{!vm.nextEpisode.still_path  ? 'bundles/serie/assets/img/img-default-episode.png' : 'https://image.tmdb.org/t/p/original'+vm.nextEpisode.still_path }}" alt="{{ vm.sheetSerie.name }}" />
                         <p>Saison {{vm.nextEpisode.season_number}} - Episode {{vm.nextEpisode.episode_number}}
                         </p>
-                        <p>{{vm.nextEpisode.air_date.replace(vm.underscoreReg,'')+'T00:00:00' | date:'dd MMMM yyyy'}}</p>
+                        <p class="date">{{vm.nextEpisode.air_date.replace(vm.underscoreReg,'')+'T00:00:00' | date:'dd MMMM yyyy'}}</p>
                     </div>
-                    <h4>EPISODE A VENIR</h4>
-                    <div class="card_episode" ng-href="">
-                        <img class="img-responsive episode_img" ng-src="{{!vm.sheetSerie.backdrop_path ? 'bundles/serie/assets/img/img-default-episode.png' : 'https://image.tmdb.org/t/p/original'+vm.sheetSerie.backdrop_path }}" alt="{{ vm.sheetSerie.name }}" />
-                        <p>Saison {{vm.sheetSerie.seasons[vm.sheetSerie.seasons.length-1].season_number}} - Episode {{vm.sheetSerie.seasons[vm.sheetSerie.seasons.length-1].episode_count}}
+                    <h4 ng-show='vm.toAirExist'>EPISODE A VENIR</h4>
+                    <div class="card_episode" ng-href="" ng-show='vm.toAirExist'>
+                        <img class="img-responsive episode_img" ng-src="{{!vm.episodeToAir.still_path ? 'https://image.tmdb.org/t/p/original'+vm.sheetSerie.backdrop_path : 'https://image.tmdb.org/t/p/original'+vm.episodeToAir.still_path }}" alt="{{ vm.sheetSerie.name }}" />
+                        <p>Saison {{vm.episodeToAir.season_number}} - Episode {{vm.episodeToAir.episode_number}}
                         </p>
-                        <p>{{vm.sheetSerie.last_air_date.replace(vm.underscoreReg,'')+'T00:00:00' | date:'dd MMMM yyyy'}}</p>
+                        <p class="date">{{vm.episodeToAir.air_date.replace(vm.underscoreReg,'')+'T00:00:00' | date:'dd MMMM yyyy'}}</p>
                     </div>
                 </div>
             </div>

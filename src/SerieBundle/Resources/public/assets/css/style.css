@@ -22,7 +22,7 @@ html {
     font-size: 16px;
     font-size: 1rem;
 }
-#homepage, .serie, #profile-page, #inscription-page, #connexion-page, #profil-edit-page, #reactivation-page, #inscription-page2, #resultats-page {
+#homepage, .monthly, .serie, #profile-page, #inscription-page, #connexion-page, #profil-edit-page, #reactivation-page, #inscription-page2, #resultats-page {
   min-height: 100vh;
 }
 .row {
@@ -109,7 +109,7 @@ ________________________________________________________________________________
     margin-right: 20px;
 }
 
-@media all and (max-width: 948px) {
+@media all and (max-width: 982px) {
     .navbar-default .navbar-nav>li>a {
         font-size: 1rem;
         padding-left: 0px;
@@ -1203,6 +1203,13 @@ ________________________________________________________________________________
     margin-bottom: 15px;
 }
 
+#section-progression p {
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+#section-progression .date {
+    margin-top: 0px;
+}
 .episode-info {
     font-size: 1rem;
 }
@@ -1355,46 +1362,8 @@ footer .img-card {
     -webkit-box-shadow: 1px 1px 3px #333;
     -moz-box-shadow: 1px 1px 3px #333;
     box-shadow: 1px 1px 3px #333;
-    -webkit-transform: scale(1);
-    -moz-transform: scale(1);
-    -ms-transform: scale(1);
-    -o-transform: scale(1);
-    transform: scale(1);
-    animation: rotate 0.5s infinite;
-    -webkit-animation: rotate 0.5s infinite;
-    -moz-animation: rotate 0.5s infinite;
-    -o-animation: rotate 0.5s infinite;
-    animation: rotate 0.5s infinite;
 }
 
-@keyframes rotate {
-    0% {
-        transform: scale(1) rotate(0deg);
-        -webkit-transform: scale(1) rotate(0deg);
-    }
-    100% {
-        transform: scale(1) rotate(720deg);
-        -webkit-transform: scale(1) rotate(720deg);
-    }
-}
-
-@-moz-keyframes rotate {
-    0% {
-        -moz-transform: scale(1) rotate(0deg);
-    }
-    100% {
-        -moz-transform: scale(1) rotate(720deg);
-    }
-}
-
-@-webkit-keyframes rotate {
-    0% {
-        -webkit-transform: scale(1) rotate(0deg);
-    }
-    100% {
-        -webkit-transform: scale(1) rotate(720deg);
-    }
-}
 
 /*___CALENDRIER___________________________________________________________________________________________________
 ____________________________________________________________________________________________________________*/

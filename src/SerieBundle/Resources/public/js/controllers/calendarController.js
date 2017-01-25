@@ -16,7 +16,6 @@ function calendarController($http, tmdbService, serieService, sessionFactory, $t
             for (let x = 0; x < this.series.length; x++) {
                 this.tmdbService.sheetSerie(this.series[x].serieId).then((response) => {
                     this.sheetSerie = response.data;
-                    this.nameSerie = response.data.name;
                     this.tmdbService.seasons(this.series[x].serieId, this.sheetSerie.number_of_seasons).then((res) => {
                         this.episodes = res.data.episodes;
                         console.log(this.episodes);

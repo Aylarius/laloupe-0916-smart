@@ -45,13 +45,25 @@ function serieController(serieService, episodeService, userService, sessionFacto
                     });
                     this.episodeService.getLastWatched($routeParams.id, this.sessionFactory.user.id).then((res) => {
                         this.lastWatched = res.data;
+                        this.currentNumber = res.data.numero;
                         this.seasonDefault = !this.lastWatched.saison ? this.seasonDefault : this.lastWatched.saison;
                         this.tmdbService.seasons(id, this.seasonDefault).then((response) => {
                             this.seasons = response.data;
+                            this.episodes = response.data.episodes;
+                            this.currentEpisode = this.episodes[this.currentNumber-1];
+                            if (typeof this.episodes[this.currentNumber] !== 'undefined') {
+                              this.nextEpisode = this.episodes[this.currentNumber];
+                            } else if (typeof this.episodes[this.currentNumber] === 'undefined') {
+                              this.tmdbService.seasons(id, this.seasonDefault+1).then((response) => {
+                                  this.episodes = response.data.episodes;
+                                  this.nextEpisode = this.episodes[0];
+                              });
+                            }
                             $timeout(() => {
                                 this.loader = false;
                             }, 1500);
                         });
+
                     });
                 };
             }
@@ -245,19 +257,23 @@ function serieController(serieService, episodeService, userService, sessionFacto
     this.getLastWatched = (id, user) => {
         this.episodeService.getLastWatched(id, user).then((res) => {
             this.lastWatched = res.data;
+            this.currentNumber = res.data.numero;
+            this.currentSeason = res.data.saison;
             this.tmdbService.lastEpisode(this.lastWatched.serieId.serieId, this.lastWatched.saison, this.lastWatched.numero).then((response) => {
                 this.episode = response.data;
-                console.log(this.episode);
             });
-            this.NextWatch = (id, user) => {
-                this.episodeService.getLastWatched(id, user).then((res) => {
-                    this.lastWatched = res.data;
-                    this.tmdbService.lastEpisode(this.lastWatched.serieId.serieId, this.lastWatched.saison, this.lastWatched.numero+1).then((response) => {
-                        this.episode = response.data;
-                        console.log(this.episode);
-                    });
-                });
-            };
+            this.tmdbService.seasons(this.lastWatched.serieId.serieId, this.currentSeason).then((response) => {
+                this.episodes = response.data.episodes;
+                this.currentEpisode = this.episodes[this.currentNumber-1];
+                if (typeof this.episodes[this.currentNumber] !== 'undefined') {
+                  this.nextEpisode = this.episodes[this.currentNumber];
+                } else if (typeof this.episodes[this.currentNumber] === 'undefined') {
+                  this.tmdbService.seasons(this.lastWatched.serieId.serieId, this.currentSeason+1).then((response) => {
+                    this.episodes = response.data.episodes;
+                    this.nextEpisode = this.episodes[0];
+                  });
+                }
+            });
         });
     };
 

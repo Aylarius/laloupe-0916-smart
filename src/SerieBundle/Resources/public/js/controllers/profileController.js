@@ -69,14 +69,14 @@ function profileController($location, userService, $rootScope, tmdbService, epis
         this.serieService.getAllFollowed(id).then((res) => {
             this.series = res.data;
             this.arraySeries = [];
-            for (let obj of this.series) {
-                    this.episodeService.getAllWatched(obj.serieId, this.sessionFactory.user.id).then((res) => {
-                      this.serieTrack = res.data;
-                      this.tmdbService.sheetSerie(obj.serieId).then((response) => {
-                          this.sheetSerie = response.data;
-                          this.sheetSerie.pourcent = "progress-bar bar" + Math.round((this.serieTrack.length * 100) / this.sheetSerie.number_of_episodes);
-                          this.arraySeries.push(this.sheetSerie);
-                      });
+            for (let serie of this.series) {
+                this.episodeService.getAllWatched(serie.serieId, this.sessionFactory.user.id).then((res) => {
+                    this.serieTrack = res.data;
+                    this.tmdbService.sheetSerie(serie.serieId).then((response) => {
+                        this.sheetSerie = response.data;
+                        this.sheetSerie.pourcent = "progress-bar bar" + Math.round((this.serieTrack.length * 100) / this.sheetSerie.number_of_episodes);
+                        this.arraySeries.push(this.sheetSerie);
+                    });
                 });
             }
 

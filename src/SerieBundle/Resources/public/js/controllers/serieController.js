@@ -8,7 +8,6 @@ function serieController(serieService, episodeService, userService, sessionFacto
     this.userService = userService;
     this.episodeService = episodeService;
     this.sessionFactory = sessionFactory;
-    console.log(this.sessionFactory.isLogged);
     this.underscoreReg = new RegExp('-', 'g');
 
     // fiche série
@@ -299,8 +298,6 @@ this.toAir = (id) => {
               this.toAirExist = true;
 
             }
-            console.log(this.arrayEpisodes.length);
-            console.log(this.toAirExist);
         });
     });
 }

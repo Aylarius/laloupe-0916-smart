@@ -18,7 +18,6 @@ function calendarController($http, tmdbService, serieService, sessionFactory, $t
                     this.sheetSerie = response.data;
                     this.tmdbService.seasons(this.series[x].serieId, this.sheetSerie.number_of_seasons).then((res) => {
                         this.episodes = res.data.episodes;
-                        console.log(this.episodes);
                         for (let i = 0; i < this.episodes.length;i++) {
                             this.episodeB = {};
                             this.episodeB.id = this.episodes[i].id;
@@ -46,11 +45,8 @@ function calendarController($http, tmdbService, serieService, sessionFactory, $t
                     events: sampleEvents
                 });
             }, 1000);
-            console.log(this.episodesList);
         });
     };
-
-    console.log(this.episodesList);
 
     this.getAllFollowed(this.sessionFactory.user.id);
 

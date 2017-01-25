@@ -1,6 +1,7 @@
-function hpController($timeout, tmdbService, $location, $window, userService, sessionFactory, $rootScope) {
+function hpController($routeParams, $timeout, tmdbService, $location, $window, userService, sessionFactory, $rootScope) {
 
     this.tmdbService = tmdbService;
+    this.$routeParams = $routeParams;
     this.$location = $location;
     this.userService = userService;
     this.isLogged = sessionFactory.isLogged;
@@ -89,6 +90,13 @@ function hpController($timeout, tmdbService, $location, $window, userService, se
     this.show = false;
 
     this.togglePane = false;
+
+    this.getFollowers = (id) => {
+        this.userService.getAllBySerie(id).then((res) => {
+            this.followers = res.data.followers;
+        });
+    };
+    this.getFollowers($routeParams.id);
 
     this.tvShowView = (id) => {
         $location.path("/serie/" + id);

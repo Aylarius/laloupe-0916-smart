@@ -192,7 +192,7 @@
                                         <p>
                                             {{episode.season_number == 0 ? 'Bonus' : 'Saison '+episode.season_number}} - Episode {{episode.episode_number}}
                                         </p>
-                                        <p>{{episode.air_date.replace(vm.underscoreReg,'')+'T00:00:00' | date:'dd MMMM yyyy'}}</p>
+                                        <p>{{!episode.air_date ? 'Date non disponible' : episode.air_date.replace(vm.underscoreReg,'')+'T00:00:00' | date:'dd MMMM yyyy' == 'T00:00:00'}}</p>
                                     </div>
                                     <a href="#" ng-click='vm.watch(episode.id, vm.sheetSerie.id, episode.air_date, episode.episode_number, episode.season_number)' ng-hide="episode.season_number == 0" prevent>
                                         <div class="col-xs-2 text-right no-pad">

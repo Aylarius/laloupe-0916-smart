@@ -269,14 +269,14 @@
                         <img class="img-responsive episode_img" ng-src="{{!vm.nextEpisode.still_path  ? 'bundles/serie/assets/img/img-default-episode.png' : 'https://image.tmdb.org/t/p/original'+vm.nextEpisode.still_path }}" alt="{{ vm.sheetSerie.name }}" />
                         <p>Saison {{vm.nextEpisode.season_number}} - Episode {{vm.nextEpisode.episode_number}}
                         </p>
-                        <p class="date">{{vm.nextEpisode.air_date.replace(vm.underscoreReg,'')+'T00:00:00' | date:'dd MMMM yyyy'}}</p>
+                        <p class="date">{{!episode.air_date ? 'Date non disponible' : episode.air_date.replace(vm.underscoreReg,'')+'T00:00:00' | date:'dd MMMM yyyy' == 'T00:00:00'}}</p>
                     </div>
                     <h4 ng-show='vm.toAirExist'>EPISODE A VENIR</h4>
                     <div class="card_episode" ng-href="" ng-show='vm.toAirExist'>
                         <img class="img-responsive episode_img" ng-src="{{!vm.episodeToAir.still_path ? 'https://image.tmdb.org/t/p/original'+vm.sheetSerie.backdrop_path : 'https://image.tmdb.org/t/p/original'+vm.episodeToAir.still_path }}" alt="{{ vm.sheetSerie.name }}" />
                         <p>Saison {{vm.episodeToAir.season_number}} - Episode {{vm.episodeToAir.episode_number}}
                         </p>
-                        <p class="date">{{vm.episodeToAir.air_date.replace(vm.underscoreReg,'')+'T00:00:00' | date:'dd MMMM yyyy'}}</p>
+                        <p class="date">{{!episode.air_date ? 'Date non disponible' : episode.air_date.replace(vm.underscoreReg,'')+'T00:00:00' | date:'dd MMMM yyyy' == 'T00:00:00'}}</p>
                     </div>
                 </div>
             </div>

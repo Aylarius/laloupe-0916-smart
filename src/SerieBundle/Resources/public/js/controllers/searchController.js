@@ -4,6 +4,8 @@ function searchController(tmdbService, $routeParams, $location) {
     this.tmdbService = tmdbService;
     this.$location = $location;
 
+    this.query = $routeParams.query;
+
     this.newSearch = (query) => {
         if (query != '') {
             $location.path("/resultats/" + query);
@@ -41,7 +43,6 @@ function searchController(tmdbService, $routeParams, $location) {
             } else {
                 this.tagActive.splice(this.tagActive.indexOf(id), 1);
             }
-        console.log(this.active);
     };
 
     this.comparTag();

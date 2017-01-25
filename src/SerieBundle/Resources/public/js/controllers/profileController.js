@@ -69,17 +69,16 @@ function profileController($location, userService, $rootScope, tmdbService, epis
         this.serieService.getAllFollowed(id).then((res) => {
             this.series = res.data;
             this.arraySeries = [];
-            for (let obj of this.series) {
-                    this.episodeService.getAllWatched(obj.serieId, this.sessionFactory.user.id).then((res) => {
+            for (let i = 0; i < this.series.length;i++) {
+                    this.episodeService.getAllWatched(this.series[i].serieId, this.sessionFactory.user.id).then((res) => {
                       this.serieTrack = res.data;
-                      this.tmdbService.sheetSerie(obj.serieId).then((response) => {
+                      this.tmdbService.sheetSerie(this.series[i].serieId).then((response) => {
                           this.sheetSerie = response.data;
                           this.sheetSerie.pourcent = "progress-bar bar" + Math.round((this.serieTrack.length * 100) / this.sheetSerie.number_of_episodes);
                           this.arraySeries.push(this.sheetSerie);
                       });
                 });
             }
-
         });
     };
 

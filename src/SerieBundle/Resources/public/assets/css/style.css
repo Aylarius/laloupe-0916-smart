@@ -716,34 +716,6 @@ ________________________________________________________________________________
     margin-bottom: 15px;
 }
 
-.form-social button:hover {
-    color: white;
-}
-
-.google-button {
-    background-color: #dd4b39;
-}
-
-.facebook-button {
-    background-color: #3b5998;
-}
-
-.twitter-button {
-    background-color: #00aced;
-}
-
-.google-button:hover, .google-button:focus {
-    background-color: #C00;
-}
-
-.facebook-button:hover, .facebook-button:focus {
-    background-color: #339;
-}
-
-.twitter-button:hover, .twitter-button:focus {
-    background-color: #39F;
-}
-
 #inscription-page2 i {
     font-size: 1.75rem;
     color: #606060;
@@ -780,7 +752,7 @@ ________________________________________________________________________________
     cursor: pointer;
 }
 
-@media all and (max-width: 575px) {
+@media all and (max-width: 768px) {
     .form-control {
         width: 100%;
     }

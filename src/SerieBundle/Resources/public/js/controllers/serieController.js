@@ -7,7 +7,6 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
     this.serieService = serieService;
     this.episodeService = episodeService;
     this.sessionFactory = sessionFactory;
-    console.log(this.sessionFactory.isLogged);
     this.underscoreReg = new RegExp('-', 'g');
 
     // fiche série
@@ -245,15 +244,9 @@ function serieController(serieService, episodeService, sessionFactory, tmdbServi
                 this.episode = response.data;
                 console.log(this.episode);
             });
-            this.NextWatch = (id, user) => {
-                this.episodeService.getLastWatched(id, user).then((res) => {
-                    this.lastWatched = res.data;
-                    this.tmdbService.lastEpisode(this.lastWatched.serieId.serieId, this.lastWatched.saison, this.lastWatched.numero+1).then((response) => {
-                        this.episode = response.data;
-                        console.log(this.episode);
-                    });
-                });
-            };
+            this.tmdbService.sheetSerie(this.lastWatched.serieId.serieId, this.lastWatched.saison, this.lastWatched.numero).then((response) => {
+
+            });
         });
     };
 

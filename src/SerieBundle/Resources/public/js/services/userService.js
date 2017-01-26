@@ -4,37 +4,37 @@ function userService($http, sessionFactory) {
     this.sessionFactory = sessionFactory;
 
     this.connect = (data) => {
-        return this.$http.post('app_dev.php/user/login', data)
+        return this.$http.post('user/login', data)
     }
     this.create = (user) => {
-        return this.$http.post('app_dev.php/user/register', user)
+        return this.$http.post('user/register', user)
     }
     this.getAll = () => {
-        return this.$http.get('app_dev.php/user/')
+        return this.$http.get('user/')
     }
 
     this.getOne = (id) => {
-        return this.$http.get('app_dev.php/user/show/' + id)
+        return this.$http.get('user/show/' + id)
     }
 
     this.getStats = (id) => {
-        return this.$http.get('app_dev.php/user/stats/' + id)
+        return this.$http.get('user/stats/' + id)
     }
 
     this.update = (user) => {
-        return this.$http.put('app_dev.php/user/edit', user)
+        return this.$http.put('user/edit', user)
     }
 
     this.deactivate = (user) => {
-        return this.$http.put('app_dev.php/user/deactivate', user)
+        return this.$http.put('user/deactivate', user)
     }
 
     this.reactivate = (data) => {
-        return this.$http.post('app_dev.php/user/reactivate', data)
+        return this.$http.post('user/reactivate', data)
     }
 
     this.getAllBySerie = (id) => {
-        return this.$http.get('app_dev.php/user/getbyserie/' + id)
+        return this.$http.get('user/getbyserie/' + id)
     }
 
 

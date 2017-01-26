@@ -72,6 +72,7 @@ function register2Controller(serieService, userService, sessionFactory, $timeout
 
         this.serieService.follow({
             id: id,
+            name: this.sheetSerie.name,
             duration: this.sheetSerie.episode_run_time[0],
             user_id: this.sessionFactory.user.id
         }).then((res) => {

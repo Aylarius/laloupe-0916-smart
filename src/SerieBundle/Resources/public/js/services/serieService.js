@@ -4,19 +4,19 @@ function serieService($http, sessionFactory) {
     this.sessionFactory = sessionFactory;
 
     this.follow = (data, id, name, duration) => {
-        return this.$http.post('app_dev.php/serie/follow', data, id, name, duration)
+        return this.$http.post('serie/follow', data, id, name, duration)
     }
 
     this.followInsc = (id) => {
-        return this.$http.get('app_dev.php/serie/followinsc/' + id)
+        return this.$http.get('serie/followinsc/' + id)
     }
 
     this.doIFollow = (id, data) => {
-        return this.$http.get('app_dev.php/serie/doifollow/'+ id + '/' + data)
+        return this.$http.get('serie/doifollow/'+ id + '/' + data)
     }
 
     this.getAllFollowed = (id) => {
-        return this.$http.get('app_dev.php/serie/'+ id)
+        return this.$http.get('serie/'+ id)
     }
 
 }

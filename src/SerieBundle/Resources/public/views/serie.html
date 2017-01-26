@@ -264,8 +264,8 @@
                           <p>{{vm.episode.season_number ? 'Saison '+vm.episode.season_number+' - Episode '+vm.episode.episode_number : ""}}
                           </p>
                       </div>
-                    <h4 ng-show='vm.exist'>PROCHAIN EPISODE</h4>
-                    <div class="card_episode" ng-href="" ng-show='vm.exist'>
+                    <h4 ng-show='vm.exist && vm.nextEpisodeExist'>PROCHAIN EPISODE</h4>
+                    <div class="card_episode" ng-href="" ng-show='vm.exist && vm.nextEpisodeExist'>
                         <img class="img-responsive episode_img" ng-src="{{!vm.nextEpisode.still_path  ? 'bundles/serie/assets/img/img-default-episode.png' : 'https://image.tmdb.org/t/p/original'+vm.nextEpisode.still_path }}" alt="{{ vm.sheetSerie.name }}" />
                         <p>Saison {{vm.nextEpisode.season_number}} - Episode {{vm.nextEpisode.episode_number}}
                         </p>

@@ -6,11 +6,9 @@ function userService($http, sessionFactory) {
     this.connect = (data) => {
         return this.$http.post('app_dev.php/user/login', data)
     }
-
     this.create = (user) => {
         return this.$http.post('app_dev.php/user/register', user)
     }
-
     this.getAll = () => {
         return this.$http.get('app_dev.php/user/')
     }

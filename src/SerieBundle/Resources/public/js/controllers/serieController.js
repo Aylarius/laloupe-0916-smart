@@ -49,13 +49,18 @@ function serieController(serieService, episodeService, userService, sessionFacto
                         this.tmdbService.seasons(id, this.seasonDefault).then((response) => {
                             this.seasons = response.data;
                             this.episodes = response.data.episodes;
+                            this.nextEpisodeExist = false;
                             this.currentEpisode = this.episodes[this.currentNumber-1];
                             if (typeof this.episodes[this.currentNumber] !== 'undefined') {
                               this.nextEpisode = this.episodes[this.currentNumber];
+                              this.nextEpisodeExist = true;
                             } else if (typeof this.episodes[this.currentNumber] === 'undefined') {
                               this.tmdbService.seasons(id, this.seasonDefault+1).then((response) => {
                                   this.episodes = response.data.episodes;
-                                  this.nextEpisode = this.episodes[0];
+                                  if (this.episodes) {
+                                    this.nextEpisode = this.episodes[0];
+                                    this.nextEpisodeExist = true;
+                                  }
                               });
                             }
                             $timeout(() => {
@@ -268,13 +273,18 @@ function serieController(serieService, episodeService, userService, sessionFacto
             });
             this.tmdbService.seasons(this.lastWatched.serieId.serieId, this.currentSeason).then((response) => {
                 this.episodes = response.data.episodes;
+                this.nextEpisodeExist = false;
                 this.currentEpisode = this.episodes[this.currentNumber-1];
                 if (typeof this.episodes[this.currentNumber] !== 'undefined') {
                   this.nextEpisode = this.episodes[this.currentNumber];
+                  this.nextEpisodeExist = true;
                 } else if (typeof this.episodes[this.currentNumber] === 'undefined') {
                   this.tmdbService.seasons(this.lastWatched.serieId.serieId, this.currentSeason+1).then((response) => {
                     this.episodes = response.data.episodes;
-                    this.nextEpisode = this.episodes[0];
+                    if (this.episodes) {
+                      this.nextEpisode = this.episodes[0];
+                      this.nextEpisodeExist = true;
+                    }
                   });
                 }
             });

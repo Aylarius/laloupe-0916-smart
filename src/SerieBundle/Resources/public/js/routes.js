@@ -110,7 +110,7 @@ const loginStatus = ($http, $rootScope, $window, sessionFactory) => {
 const checkIsConnected = ($q, $http, $location, $window, $rootScope) => {
     let deferred = $q.defer()
 
-    $http.get('app_dev.php/user/loggedin').success(() => {
+    $http.get('user/loggedin').success(() => {
         $rootScope.$emit('loginStatusChanged', true);
         $rootScope.$emit('loginStatusChangedNavbar');
         $rootScope.$emit('loginStatusChangedHomepage');

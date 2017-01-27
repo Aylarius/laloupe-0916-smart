@@ -33,4 +33,13 @@ function loginController(userService, sessionFactory, $timeout, $routeParams, $l
             this.loginMessage.message = res.data;
         });
     };
+    this.getAllUsers = (id) => {
+        this.userService.getAll().then((response) => {
+            this.users = response.data.length;
+          })
+    }
+    this.getAllUsers();
+
+
+
 }

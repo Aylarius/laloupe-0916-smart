@@ -716,7 +716,15 @@ ________________________________________________________________________________
     font-size: 1.25rem;
     margin-bottom: 15px;
 }
-
+#users{
+    color: #F6F7F7;
+    position: absolute;
+    bottom: -70px;
+    right: 0;
+}
+#users:hover{
+    color: #FFFFFF;
+}
 #inscription-page2 i {
     font-size: 1.75rem;
     color: #606060;

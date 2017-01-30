@@ -22,8 +22,7 @@
                                 <tr>
                                     <td>{{vm.sheetSerie.number_of_seasons}}</td>
                                     <td>{{vm.sheetSerie.number_of_episodes}}</td>
-                                    <td>{{vm.sheetSerie.episode_run_time[0]}} min
-                                    </td>
+                                    <td>{{!vm.sheetSerie.episode_run_time[0] ? 'Non fournie' : vm.sheetSerie.episode_run_time[0]+' min'}}</td>
                                     <td class="xxs-hidden">{{vm.sheetSerie.in_production===true ? "En cours" : "Terminée"}}</td>
                                     <td class="xxs-hidden">{{vm.followers}}</td>
                                 </tr>

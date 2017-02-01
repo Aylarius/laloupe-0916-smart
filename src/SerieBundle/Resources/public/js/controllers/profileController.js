@@ -74,7 +74,12 @@ function profileController($location, userService, $rootScope, tmdbService, epis
                       this.serieTrack = res.data;
                       this.tmdbService.sheetSerie(this.series[i].serieId).then((response) => {
                           this.sheetSerie = response.data;
-                          this.sheetSerie.pourcent = "progress-bar bar" + Math.round((this.serieTrack.length * 100) / this.sheetSerie.number_of_episodes);
+                          this.pourcentage = Math.round((this.serieTrack.length * 100) / this.sheetSerie.number_of_episodes);
+                          if (this.pourcentage > 100) {
+                            this.sheetSerie.pourcent = "progress-bar bar100";
+                          } else {
+                            this.sheetSerie.pourcent = "progress-bar bar" + this.pourcentage;
+                          }
                           this.arraySeries.push(this.sheetSerie);
                       });
                 });

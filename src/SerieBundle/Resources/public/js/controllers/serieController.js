@@ -243,7 +243,12 @@ function serieController(serieService, episodeService, userService, sessionFacto
                 this.sheetSerie = response.data;
                 // barre de progression circulaire
                 this.pourcentage = Math.round((this.serieTrack.length * 100) / this.sheetSerie.number_of_episodes);
-                this.circle = "c100 p" + this.pourcentage + " orange";
+                if (this.pourcentage > 100) {
+                  this.circle = "c100 p" + 100 + " orange";
+                  this.pourcentage = 100;
+                } else {
+                  this.circle = "c100 p" + this.pourcentage + " orange";
+                }
 
                 this.episodeService.getLastWatched(id, user).then((res) => {
                     this.lastWatched = res.data;
@@ -325,19 +330,5 @@ this.toAir($routeParams.id);
         })
     }
     this.getFollowers($routeParams.id);
-
-
-
-
-    // $(".seasonSelect").one("click", function() {
-    //     $(this).css("color", "orange");
-    // });
-
-    // $('.seasonSelect').on('click',
-    //     '.onsale-filter',
-    //     function() {
-    //         $('.highlighted').removeClass('highlighted');
-    //         $('.vacation').filter('.onsale').addClass('highlighted');
-    //     });
 
 }
